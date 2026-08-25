@@ -1,0 +1,8650 @@
+{
+  "الله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "رب": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "ملك": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "اهدنا": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "صرط": {
+    "root": "ص.ر.ط",
+    "meaning": "path, way"
+  },
+  "ذلك": {
+    "root": "ذ.ل.ك",
+    "meaning": "that (f)"
+  },
+  "لا": {
+    "root": "ل.ا",
+    "meaning": "no, not"
+  },
+  "يومنون": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "انزل": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "من": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "هم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "علي": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "ربهم": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "ان": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "كفروا": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "ابصرهم": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "عذاب": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "يقول": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "امنا": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "امنوا": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الا": {
+    "root": "ا.ل.ا",
+    "meaning": "except"
+  },
+  "في": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "قالوا": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "نحن": {
+    "root": "ن.ح.ن",
+    "meaning": "we"
+  },
+  "امن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "يعلمون": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الي": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "انا": {
+    "root": "ا.ن.ا",
+    "meaning": "I"
+  },
+  "ما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "ذهب": {
+    "root": "ذ.ه.ب",
+    "meaning": "go, depart"
+  },
+  "يبصرون": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "فهم": {
+    "root": "ف.ه.م",
+    "meaning": "understand"
+  },
+  "يرجعون": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "كل": {
+    "root": "ك.ل",
+    "meaning": "all"
+  },
+  "ربكم": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "خلقكم": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "جعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "تعلمون": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "النار": {
+    "root": "ن.ا.ر",
+    "meaning": "fire, hellfire"
+  },
+  "هذا": {
+    "root": "ه.ذ.ا",
+    "meaning": "this (f)"
+  },
+  "ماذا": {
+    "root": "م.ا.ذ.ا",
+    "meaning": "what"
+  },
+  "يضل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "بعد": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "امر": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "كيف": {
+    "root": "ك.ي.ف",
+    "meaning": "how"
+  },
+  "ثم": {
+    "root": "ث.م",
+    "meaning": "then"
+  },
+  "يحييكم": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "هو": {
+    "root": "ه.و",
+    "meaning": "he"
+  },
+  "خلق": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "قال": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "ربك": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "اعلم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "علم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge, science"
+  },
+  "انت": {
+    "root": "ا.ن.ت",
+    "meaning": "you"
+  },
+  "غيب": {
+    "root": "غ.ي.ب",
+    "meaning": "absent, unseen"
+  },
+  "هذه": {
+    "root": "ه.ذ.ا",
+    "meaning": "this (f)"
+  },
+  "ربه": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "يبني": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "انزلت": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "لما": {
+    "root": "ل.م.ا",
+    "meaning": "when"
+  },
+  "كافر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "سو": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "موسي": {
+    "root": "م.و.س",
+    "meaning": "Moses"
+  },
+  "اتينا": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "حتي": {
+    "root": "ح.ت.ي",
+    "meaning": "until"
+  },
+  "قولا": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "خير": {
+    "root": "خ.ي.ر",
+    "meaning": "good, better, best"
+  },
+  "يكفرون": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "فضل": {
+    "root": "ف.ض.ل",
+    "meaning": "prefer, excel"
+  },
+  "بين": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "ادع": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "هي": {
+    "root": "ه.ي",
+    "meaning": "she"
+  },
+  "خشيه": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "كان": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "يسمعون": {
+    "root": "س.م.ع",
+    "meaning": "hear, listen"
+  },
+  "كلم": {
+    "root": "ك.ل.م",
+    "meaning": "speak, word"
+  },
+  "يعلم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "يقولون": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "ايديهم": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "قل": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "بني": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "جزا": {
+    "root": "ج.ز.ى",
+    "meaning": "reward, recompense"
+  },
+  "يفعل": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "عيسي": {
+    "root": "ع.ي.س",
+    "meaning": "Jesus"
+  },
+  "ابن": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "رسول": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "بل": {
+    "root": "ب.ل",
+    "meaning": "rather"
+  },
+  "ينزل": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "عباده": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "انبيا": {
+    "root": "ن.ب.ي",
+    "meaning": "prophet"
+  },
+  "مومنين": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "عليم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "لو": {
+    "root": "ل.و",
+    "meaning": "if"
+  },
+  "يعمر": {
+    "root": "ع.م.ر",
+    "meaning": "life, age"
+  },
+  "يعملون": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "قلبك": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "يديه": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "يكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "كفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "تكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "تعلم": {
+    "root": "ت.ع.ل.م",
+    "meaning": "learn, study"
+  },
+  "فقد": {
+    "root": "ف.ق.د",
+    "meaning": "lose, miss"
+  },
+  "ضل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "تبين": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "ياتي": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "تلك": {
+    "root": "ذ.ل.ك",
+    "meaning": "that (f)"
+  },
+  "اسلم": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "وجهه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "يحكم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "وجه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "وسع": {
+    "root": "و.س.ع",
+    "meaning": "be spacious"
+  },
+  "قضي": {
+    "root": "ق.ض.ى",
+    "meaning": "decide, decree, fulfill"
+  },
+  "بينا": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "هدي": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "جعلنا": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "يرفع": {
+    "root": "ر.ف.ع",
+    "meaning": "raise, elevate"
+  },
+  "ربنا": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "مسلمين": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "اذ": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "يعقوب": {
+    "root": "ع.ق.ب",
+    "meaning": "Jacob"
+  },
+  "احسن": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "يهدي": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "وجهك": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "اتيت": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "ليلا": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "اذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "جناح": {
+    "root": "ج.ن.اح",
+    "meaning": "wing"
+  },
+  "كفار": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "اله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "شديد": {
+    "root": "ش.د.ي.د",
+    "meaning": "strong, intense"
+  },
+  "مبين": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "يسمع": {
+    "root": "س.م.ع",
+    "meaning": "hear, listen"
+  },
+  "اثم": {
+    "root": "أ.ث.م",
+    "meaning": "sin, crime"
+  },
+  "رحيم": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "نزل": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "ليس": {
+    "root": "ل.ي.س",
+    "meaning": "is not"
+  },
+  "البر": {
+    "root": "ب.ر",
+    "meaning": "righteous, pious"
+  },
+  "حبه": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "خيرا": {
+    "root": "خ.ي.ر",
+    "meaning": "good, better, best"
+  },
+  "المتقين": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "اخر": {
+    "root": "خ.ي.ر",
+    "meaning": "good, better, best"
+  },
+  "شهد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "قريب": {
+    "root": "ق.ر.ب",
+    "meaning": "be near, approach"
+  },
+  "ليله": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "هن": {
+    "root": "ه.ن",
+    "meaning": "they (f)"
+  },
+  "بينكم": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "اتقي": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "يحب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "يبلغ": {
+    "root": "ب.ل.غ",
+    "meaning": "reach, convey"
+  },
+  "يجد": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "رجعتم": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "قوله": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "قلبه": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "عزيز": {
+    "root": "ع.ز.ز",
+    "meaning": "honor, might"
+  },
+  "حكيم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "ياتيهم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "نعمه": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "نصر": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "دينكم": {
+    "root": "د.ي.ن",
+    "meaning": "religion, judge"
+  },
+  "يومن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "مومن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "يدعون": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "غفور": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "ظلم": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "نعمت": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "يوعظ": {
+    "root": "و.ع.ظ",
+    "meaning": "admonish, sermon"
+  },
+  "اتيتم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "بعث": {
+    "root": "ب.ع.ث",
+    "meaning": "resurrect, send forth"
+  },
+  "ياتيكم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "شرب": {
+    "root": "ش.ر.ب",
+    "meaning": "drink"
+  },
+  "داود": {
+    "root": "د.و.د",
+    "meaning": "David"
+  },
+  "بعدهم": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "ولي": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "بعض": {
+    "root": "ب.ع.ض",
+    "meaning": "some"
+  },
+  "العظام": {
+    "root": "ع.ظ.م",
+    "meaning": "bone"
+  },
+  "يضعف": {
+    "root": "ض.ع.ف",
+    "meaning": "weak, feeble"
+  },
+  "غني": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "ينفق": {
+    "root": "ن.ف.ق",
+    "meaning": "spend, exhaust"
+  },
+  "جنه": {
+    "root": "ج.ن.ة",
+    "meaning": "paradise, garden"
+  },
+  "ضعفا": {
+    "root": "ض.ع.ف",
+    "meaning": "weak, feeble"
+  },
+  "روس": {
+    "root": "ر.أ.س",
+    "meaning": "head"
+  },
+  "وليه": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "يخفي": {
+    "root": "خ.ف.ي",
+    "meaning": "hidden, secret"
+  },
+  "وهب": {
+    "root": "و.ه.ب",
+    "meaning": "give, bestow"
+  },
+  "رحمه": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "العين": {
+    "root": "ع.ي.ن",
+    "meaning": "eye"
+  },
+  "حب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "حسن": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "اسلموا": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "دينهم": {
+    "root": "د.ي.ن",
+    "meaning": "religion, judge"
+  },
+  "اوليا": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "عملت": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "انثي": {
+    "root": "أ.ن.ث.ى",
+    "meaning": "female"
+  },
+  "وضعت": {
+    "root": "و.ض.ع",
+    "meaning": "place, put"
+  },
+  "وجد": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "حساب": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "دعا": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "يصلي": {
+    "root": "ص.ل.و",
+    "meaning": "pray, blessing"
+  },
+  "تكلم": {
+    "root": "ك.ل.م",
+    "meaning": "speak, word"
+  },
+  "انبا": {
+    "root": "ن.ب.أ",
+    "meaning": "news, tidings"
+  },
+  "يخلق": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "يضلون": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "ينظر": {
+    "root": "ن.ظ.ر",
+    "meaning": "look, gaze"
+  },
+  "دين": {
+    "root": "د.ي.ن",
+    "meaning": "religion, judge"
+  },
+  "وضع": {
+    "root": "و.ض.ع",
+    "meaning": "place, put"
+  },
+  "شهيد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "رسوله": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "ظلمهم": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "الصدور": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "جعله": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "بشري": {
+    "root": "ب.ش.ر",
+    "meaning": "give good news"
+  },
+  "يتوب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "يعذبهم": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "يغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "مات": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "اغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "قلوب": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "خبير": {
+    "root": "خ.ب.ر",
+    "meaning": "news, information"
+  },
+  "غليظ": {
+    "root": "غ.ل.ي.ظ",
+    "meaning": "severe, harsh"
+  },
+  "القلب": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "غالب": {
+    "root": "غ.ل.ب",
+    "meaning": "overcome, defeat"
+  },
+  "نعلم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "احيا": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "حسبنا": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "يجعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "سمع": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "قول": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "اتوا": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "عمل": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "ذكر": {
+    "root": "ذ.ك.ر",
+    "meaning": "remind, male"
+  },
+  "زوجها": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "شركا": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "نارا": {
+    "root": "ن.ا.ر",
+    "meaning": "fire, hellfire"
+  },
+  "خشي": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "نكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "شهيدا": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "حفظ": {
+    "root": "ح.ف.ظ",
+    "meaning": "guard, memorize"
+  },
+  "يظلم": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "جا": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "يزكي": {
+    "root": "ز.ك.و",
+    "meaning": "purify, charity"
+  },
+  "انظر": {
+    "root": "ن.ظ.ر",
+    "meaning": "look, gaze"
+  },
+  "حكمتم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "شجر": {
+    "root": "ش.ج.ر",
+    "meaning": "tree"
+  },
+  "يغلب": {
+    "root": "غ.ل.ب",
+    "meaning": "overcome, defeat"
+  },
+  "يخشون": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "يعفو": {
+    "root": "ع.ف.و",
+    "meaning": "pardon, forgive"
+  },
+  "يعمل": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "بعيدا": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "اذان": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "خسر": {
+    "root": "خ.س.ر",
+    "meaning": "lose, be a loser"
+  },
+  "يجدون": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "بشر": {
+    "root": "ب.ش.ر",
+    "meaning": "give good news"
+  },
+  "رفعه": {
+    "root": "ر.ف.ع",
+    "meaning": "raise, elevate"
+  },
+  "يشهد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "امين": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "اكل": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "فسق": {
+    "root": "ف.س.ق",
+    "meaning": "rebel, transgress"
+  },
+  "لين": {
+    "root": "ل.ي.ن",
+    "meaning": "soft, gentle"
+  },
+  "يملك": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "نبا": {
+    "root": "ن.ب.أ",
+    "meaning": "news, tidings"
+  },
+  "يدك": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "تاب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "يعذب": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "حكم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "وليكم": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "يد": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "جنت": {
+    "root": "ج.ن.ة",
+    "meaning": "paradise, garden"
+  },
+  "سا": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "بلغ": {
+    "root": "ب.ل.غ",
+    "meaning": "reach, convey"
+  },
+  "لسان": {
+    "root": "ل.س.ان",
+    "meaning": "tongue"
+  },
+  "امره": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "وجدنا": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "اقول": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "سكن": {
+    "root": "س.ك.ن",
+    "meaning": "peace, tranquility"
+  },
+  "الهه": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "يفلح": {
+    "root": "ف.ل.ح",
+    "meaning": "prosper, succeed"
+  },
+  "مشركين": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "بدا": {
+    "root": "ب.د.أ",
+    "meaning": "begin, start"
+  },
+  "كبر": {
+    "root": "ك.ب.ر",
+    "meaning": "be great, pride"
+  },
+  "نسوا": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "فرحوا": {
+    "root": "ف.ر.ح",
+    "meaning": "rejoice, happiness"
+  },
+  "سلم": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "اعبد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "ضللت": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "يابس": {
+    "root": "ي.ب.س",
+    "meaning": "dry, withered"
+  },
+  "توفته": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "يبعث": {
+    "root": "ب.ع.ث",
+    "meaning": "resurrect, send forth"
+  },
+  "ملكوت": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "احب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "علما": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "نشا": {
+    "root": "ن.ش.أ",
+    "meaning": "grow up, bring up"
+  },
+  "ابصر": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "عملهم": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "جات": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "نبي": {
+    "root": "ن.ب.ي",
+    "meaning": "prophet"
+  },
+  "ظهر": {
+    "root": "ظ.ه.ر",
+    "meaning": "apparent, clear"
+  },
+  "رسل": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "صغار": {
+    "root": "ص.غ.ر",
+    "meaning": "be small"
+  },
+  "صدره": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "لقا": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "عملوا": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "بطون": {
+    "root": "ب.ط.ن",
+    "meaning": "belly, stomach"
+  },
+  "لحم": {
+    "root": "ل.ح.م",
+    "meaning": "flesh, meat"
+  },
+  "بطن": {
+    "root": "ب.ط.ن",
+    "meaning": "belly, stomach"
+  },
+  "يجزي": {
+    "root": "ج.ز.ى",
+    "meaning": "reward, recompense"
+  },
+  "شريك": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "ملكين": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "يامر": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "وجدتم": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "نعم": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "اغني": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "ادعوا": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "خبث": {
+    "root": "خ.ب.ث",
+    "meaning": "bad, evil"
+  },
+  "يعبد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الجبال": {
+    "root": "ج.ب.ل",
+    "meaning": "mountain"
+  },
+  "بعثنا": {
+    "root": "ب.ع.ث",
+    "meaning": "resurrect, send forth"
+  },
+  "يده": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "اذن": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "تجلي": {
+    "root": "ج.ل.ي",
+    "meaning": "clear, plain"
+  },
+  "رجع": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "رحمتك": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "ارحم": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "فعل": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "هادي": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "عباد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "كره": {
+    "root": "ك.ر.ه",
+    "meaning": "hate, detest"
+  },
+  "لقيتم": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "حسنا": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "شر": {
+    "root": "ش.ر",
+    "meaning": "evil, bad"
+  },
+  "حي": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "عدو": {
+    "root": "ع.د.و",
+    "meaning": "enemy"
+  },
+  "حسبك": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "صدور": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "نار": {
+    "root": "ن.ا.ر",
+    "meaning": "fire, hellfire"
+  },
+  "عده": {
+    "root": "ع.د.و",
+    "meaning": "enemy"
+  },
+  "نصره": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "كلمه": {
+    "root": "ك.ل.م",
+    "meaning": "speak, word"
+  },
+  "كفرتم": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "حسبهم": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "استغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "فرح": {
+    "root": "ف.ر.ح",
+    "meaning": "rejoice, happiness"
+  },
+  "حزنا": {
+    "root": "ح.ز.ن",
+    "meaning": "grieve, sorrow"
+  },
+  "عملكم": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "تقوي": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "بنوا": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "استغفار": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "نظر": {
+    "root": "ن.ظ.ر",
+    "meaning": "look, gaze"
+  },
+  "انذر": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "ياكل": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "ذله": {
+    "root": "ذ.ل.ل",
+    "meaning": "humble, submissive"
+  },
+  "سييه": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "فسقوا": {
+    "root": "ف.س.ق",
+    "meaning": "rebel, transgress"
+  },
+  "يغني": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "اعمل": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "نوح": {
+    "root": "ن.و.ح",
+    "meaning": "Noah"
+  },
+  "جيتم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "يقضي": {
+    "root": "ق.ض.ى",
+    "meaning": "decide, decree, fulfill"
+  },
+  "يونس": {
+    "root": "و.ن.س",
+    "meaning": "Jonah"
+  },
+  "كبير": {
+    "root": "ك.ب.ر",
+    "meaning": "be great, pride"
+  },
+  "بادي": {
+    "root": "ب.د.أ",
+    "meaning": "begin, start"
+  },
+  "ابنه": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "قوه": {
+    "root": "ق.و.ي",
+    "meaning": "strong, powerful"
+  },
+  "قولك": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "لوط": {
+    "root": "ل.و.ط",
+    "meaning": "Lot"
+  },
+  "هود": {
+    "root": "ه.و.د",
+    "meaning": "Hud"
+  },
+  "عطا": {
+    "root": "ع.ط.ى",
+    "meaning": "give, grant"
+  },
+  "خلقهم": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "يرجع": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "يوسف": {
+    "root": "ي.س.ف",
+    "meaning": "Joseph"
+  },
+  "نجا": {
+    "root": "ن.ج.و",
+    "meaning": "confer secretly"
+  },
+  "ارجع": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "وجدوا": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "فعلتم": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "بصيره": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "رفع": {
+    "root": "ر.ف.ع",
+    "meaning": "raise, elevate"
+  },
+  "يسجد": {
+    "root": "س.ج.د",
+    "meaning": "prostrate, worship"
+  },
+  "اوديه": {
+    "root": "و.اد.ي",
+    "meaning": "valley"
+  },
+  "حكما": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "كفي": {
+    "root": "ك.ف.ى",
+    "meaning": "suffice, enough"
+  },
+  "ضلل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "البعيد": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "يضيق": {
+    "root": "ض.ي.ق",
+    "meaning": "be narrow, distressed"
+  },
+  "اتي": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "قصد": {
+    "root": "ق.ص.د",
+    "meaning": "intend, direct, purpose"
+  },
+  "الهكم": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "رسولا": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "يموت": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "جعلتم": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "شرح": {
+    "root": "ش.ر.ح",
+    "meaning": "expand, explain"
+  },
+  "تاتي": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "ياتيها": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "لباس": {
+    "root": "ل.ب.س",
+    "meaning": "wear, clothe"
+  },
+  "اقرا": {
+    "root": "ق.ر.أ",
+    "meaning": "read, recite"
+  },
+  "يكبر": {
+    "root": "ك.ب.ر",
+    "meaning": "be great, pride"
+  },
+  "ضعف": {
+    "root": "ض.ع.ف",
+    "meaning": "weak, feeble"
+  },
+  "ينشر": {
+    "root": "ن.ش.ر",
+    "meaning": "scatter, spread"
+  },
+  "حكمه": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الوجوه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "اتت": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "صاحبه": {
+    "root": "ص.ح.ب",
+    "meaning": "companion, friend"
+  },
+  "ينقض": {
+    "root": "ن.ق.ض",
+    "meaning": "break, violate"
+  },
+  "عين": {
+    "root": "ع.ي.ن",
+    "meaning": "eye"
+  },
+  "نزلا": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "العظم": {
+    "root": "ع.ظ.م",
+    "meaning": "bone"
+  },
+  "الراس": {
+    "root": "ر.أ.س",
+    "meaning": "head"
+  },
+  "يحيي": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "ولد": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "عبد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "مشهد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "اسمع": {
+    "root": "س.م.ع",
+    "meaning": "hear, listen"
+  },
+  "نبيا": {
+    "root": "ن.ب.ي",
+    "meaning": "prophet"
+  },
+  "يبصر": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "يخشي": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "طغي": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "يطغي": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "ينسي": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "يحشر": {
+    "root": "ح.ش.ر",
+    "meaning": "gather, resurrect"
+  },
+  "شجره": {
+    "root": "ش.ج.ر",
+    "meaning": "tree"
+  },
+  "الهتكم": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "مبارك": {
+    "root": "ب.ر.ك",
+    "meaning": "blessing, abundance"
+  },
+  "نجي": {
+    "root": "ن.ج.و",
+    "meaning": "confer secretly"
+  },
+  "زوجه": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "زوج": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "مكرم": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "كفور": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "يلقي": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "وجوه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "ينطق": {
+    "root": "ن.ط.ق",
+    "meaning": "speak, tongue"
+  },
+  "ضالين": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "تواب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "يذهب": {
+    "root": "ذ.ه.ب",
+    "meaning": "go, depart"
+  },
+  "حسنت": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "كريم": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "عبدت": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "شعيب": {
+    "root": "ش.ع.ب",
+    "meaning": "Shuayb"
+  },
+  "منطق": {
+    "root": "ن.ط.ق",
+    "meaning": "speak, tongue"
+  },
+  "وجدت": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "شكر": {
+    "root": "ش.ك.ر",
+    "meaning": "thank, grateful"
+  },
+  "يشكر": {
+    "root": "ش.ك.ر",
+    "meaning": "thank, grateful"
+  },
+  "علمهم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "صنع": {
+    "root": "ص.ن.ع",
+    "meaning": "make, manufacture"
+  },
+  "حسب": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "يفرح": {
+    "root": "ف.ر.ح",
+    "meaning": "rejoice, happiness"
+  },
+  "ينصر": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "ايدي": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "والد": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "مولود": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "والده": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "قويا": {
+    "root": "ق.و.ي",
+    "meaning": "strong, powerful"
+  },
+  "يقنت": {
+    "root": "ق.ن.ت",
+    "meaning": "obey, worship"
+  },
+  "زوجك": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "يحزن": {
+    "root": "ح.ز.ن",
+    "meaning": "grieve, sorrow"
+  },
+  "ليالي": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "نذير": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "جاعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "عمره": {
+    "root": "ع.م.ر",
+    "meaning": "life, age"
+  },
+  "شكور": {
+    "root": "ش.ك.و",
+    "meaning": "complain"
+  },
+  "كفرهم": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "غفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "سليم": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "ذاهب": {
+    "root": "ذ.ه.ب",
+    "meaning": "go, depart"
+  },
+  "افعل": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "يخلقكم": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "نسي": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "قنت": {
+    "root": "ق.ن.ت",
+    "meaning": "obey, worship"
+  },
+  "لان": {
+    "root": "ل.ي.ن",
+    "meaning": "soft, gentle"
+  },
+  "مضل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "غافر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "يظهر": {
+    "root": "ظ.ه.ر",
+    "meaning": "apparent, clear"
+  },
+  "قلب": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "اعدا": {
+    "root": "ع.د.و",
+    "meaning": "enemy"
+  },
+  "رجعت": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "شرع": {
+    "root": "ش.ر.ع",
+    "meaning": "legislate, prescribe"
+  },
+  "بعيد": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "يبشر": {
+    "root": "ب.ش.ر",
+    "meaning": "give good news"
+  },
+  "يسكن": {
+    "root": "س.ك.ن",
+    "meaning": "peace, tranquility"
+  },
+  "يهب": {
+    "root": "و.ه.ب",
+    "meaning": "give, bestow"
+  },
+  "يخسر": {
+    "root": "خ.س.ر",
+    "meaning": "lose, be a loser"
+  },
+  "حشر": {
+    "root": "ح.ش.ر",
+    "meaning": "gather, resurrect"
+  },
+  "ناصر": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "نزلت": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "فاسق": {
+    "root": "ف.س.ق",
+    "meaning": "rebel, transgress"
+  },
+  "حبل": {
+    "root": "ح.ب.ل",
+    "meaning": "rope, cord"
+  },
+  "دنا": {
+    "root": "ق.ر.ب",
+    "meaning": "be near, approach"
+  },
+  "قوي": {
+    "root": "ق.و.ي",
+    "meaning": "strong, powerful"
+  },
+  "لينه": {
+    "root": "ل.ي.ن",
+    "meaning": "soft, gentle"
+  },
+  "يدعي": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "ظهير": {
+    "root": "ظ.ه.ر",
+    "meaning": "apparent, clear"
+  },
+  "نخل": {
+    "root": "ن.خ.ل",
+    "meaning": "palm tree"
+  },
+  "دعوت": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "المسلمون": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "غيبه": {
+    "root": "غ.ي.ب",
+    "meaning": "absent, unseen"
+  },
+  "النعمه": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "عسير": {
+    "root": "ع.س.ر",
+    "meaning": "hardship, difficulty"
+  },
+  "فكر": {
+    "root": "ف.ك.ر",
+    "meaning": "think, ponder"
+  },
+  "صلي": {
+    "root": "ص.ل.و",
+    "meaning": "pray, blessing"
+  },
+  "يشرب": {
+    "root": "ش.ر.ب",
+    "meaning": "drink"
+  },
+  "شكورا": {
+    "root": "ش.ك.ر",
+    "meaning": "thank, grateful"
+  },
+  "منذر": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "كرام": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "نعيم": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "محفوظ": {
+    "root": "ح.ف.ظ",
+    "meaning": "guard, memorize"
+  },
+  "يسر": {
+    "root": "ي.س.ر",
+    "meaning": "ease, prosperity"
+  },
+  "طغوا": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "بخل": {
+    "root": "ب.خ.ل",
+    "meaning": "stingy, miserly"
+  },
+  "يسرا": {
+    "root": "ي.س.ر",
+    "meaning": "ease, prosperity"
+  },
+  "ينهي": {
+    "root": "ن.ه.ي",
+    "meaning": "forbid, prohibit"
+  },
+  "يحسب": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "ماكول": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "يدا": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "يلد": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "ربب": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "صلو": {
+    "root": "ص.ل.و",
+    "meaning": "pray, blessing"
+  },
+  "زكو": {
+    "root": "ز.ك.و",
+    "meaning": "purify, charity"
+  },
+  "توب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "رحم": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "عذب": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "عفو": {
+    "root": "ع.ف.و",
+    "meaning": "pardon, forgive"
+  },
+  "جزى": {
+    "root": "ج.ز.ى",
+    "meaning": "reward, recompense"
+  },
+  "دعو": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "بصر": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "نسى": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "جاء": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "برأ": {
+    "root": "ب.ر.أ",
+    "meaning": "create, fashion"
+  },
+  "طغى": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "نقض": {
+    "root": "ن.ق.ض",
+    "meaning": "break, violate"
+  },
+  "أثم": {
+    "root": "أ.ث.م",
+    "meaning": "sin, crime"
+  },
+  "خطئ": {
+    "root": "خ.ط.ئ",
+    "meaning": "err, sin"
+  },
+  "نطق": {
+    "root": "ن.ط.ق",
+    "meaning": "speak, tongue"
+  },
+  "لقى": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "عزز": {
+    "root": "ع.ز.ز",
+    "meaning": "honor, might"
+  },
+  "قهر": {
+    "root": "ق.ه.ر",
+    "meaning": "subdue, overpower"
+  },
+  "غلب": {
+    "root": "غ.ل.ب",
+    "meaning": "overcome, defeat"
+  },
+  "فلح": {
+    "root": "ف.ل.ح",
+    "meaning": "prosper, succeed"
+  },
+  "موت": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "حيو": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "نشر": {
+    "root": "ن.ش.ر",
+    "meaning": "scatter, spread"
+  },
+  "صحب": {
+    "root": "ص.ح.ب",
+    "meaning": "companion, friend"
+  },
+  "كفى": {
+    "root": "ك.ف.ى",
+    "meaning": "suffice, enough"
+  },
+  "غنى": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "عسر": {
+    "root": "ع.س.ر",
+    "meaning": "hardship, difficulty"
+  },
+  "قبح": {
+    "root": "ق.ب.ح",
+    "meaning": "ugly, bad"
+  },
+  "طيب": {
+    "root": "ط.ي.ب",
+    "meaning": "good, pure"
+  },
+  "سوء": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "بر": {
+    "root": "ب.ر",
+    "meaning": "righteous, pious"
+  },
+  "فجر": {
+    "root": "ف.ج.ر",
+    "meaning": "wicked, disbeliever"
+  },
+  "تقي": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "شقى": {
+    "root": "ش.ق.ى",
+    "meaning": "wretched, miserable"
+  },
+  "سعي": {
+    "root": "س.ع.ي",
+    "meaning": "happy, fortunate"
+  },
+  "سجد": {
+    "root": "س.ج.د",
+    "meaning": "prostrate, worship"
+  },
+  "ركع": {
+    "root": "ر.ك.ع",
+    "meaning": "bow, submit"
+  },
+  "ذلل": {
+    "root": "ذ.ل.ل",
+    "meaning": "humble, submissive"
+  },
+  "صغر": {
+    "root": "ص.غ.ر",
+    "meaning": "be small"
+  },
+  "عظم": {
+    "root": "ع.ظ.م",
+    "meaning": "bone"
+  },
+  "ضيق": {
+    "root": "ض.ي.ق",
+    "meaning": "be narrow, distressed"
+  },
+  "حزن": {
+    "root": "ح.ز.ن",
+    "meaning": "grieve, sorrow"
+  },
+  "نذر": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "قضى": {
+    "root": "ق.ض.ى",
+    "meaning": "decide, decree, fulfill"
+  },
+  "أنثى": {
+    "root": "أ.ن.ث.ى",
+    "meaning": "female"
+  },
+  "بنى": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "نشأ": {
+    "root": "ن.ش.أ",
+    "meaning": "grow up, bring up"
+  },
+  "أمن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "طول": {
+    "root": "ط.و.ل",
+    "meaning": "length, duration"
+  },
+  "قصر": {
+    "root": "ق.ص.ر",
+    "meaning": "shorten, abbreviate"
+  },
+  "عمر": {
+    "root": "ع.م.ر",
+    "meaning": "life, age"
+  },
+  "شكو": {
+    "root": "ش.ك.و",
+    "meaning": "complain"
+  },
+  "جهد": {
+    "root": "ج.ه.د",
+    "meaning": "strive, effort"
+  },
+  "نفق": {
+    "root": "ن.ف.ق",
+    "meaning": "spend, exhaust"
+  },
+  "سخو": {
+    "root": "س.خ.و",
+    "meaning": "generous, liberal"
+  },
+  "كرم": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "رفق": {
+    "root": "ر.ف.ق",
+    "meaning": "gentle, kind"
+  },
+  "جهل": {
+    "root": "ج.ه.ل",
+    "meaning": "ignorance, foolishness"
+  },
+  "حبب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "بغض": {
+    "root": "ب.غ.ض",
+    "meaning": "hate, enmity"
+  },
+  "أمر": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "نهي": {
+    "root": "ن.ه.ي",
+    "meaning": "forbid, prohibit"
+  },
+  "منح": {
+    "root": "م.ن.ح",
+    "meaning": "grant, bestow"
+  },
+  "عطى": {
+    "root": "ع.ط.ى",
+    "meaning": "give, grant"
+  },
+  "أكل": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "لبس": {
+    "root": "ل.ب.س",
+    "meaning": "wear, clothe"
+  },
+  "حمد": {
+    "root": "ح.م.د",
+    "meaning": "praise, commend"
+  },
+  "ثنى": {
+    "root": "ث.ن.ى",
+    "meaning": "praise, extol"
+  },
+  "برك": {
+    "root": "ب.ر.ك",
+    "meaning": "blessing, abundance"
+  },
+  "خبر": {
+    "root": "خ.ب.ر",
+    "meaning": "news, information"
+  },
+  "نبأ": {
+    "root": "ن.ب.أ",
+    "meaning": "news, tidings"
+  },
+  "قرأ": {
+    "root": "ق.ر.أ",
+    "meaning": "read, recite"
+  },
+  "تلو": {
+    "root": "ت.ل.و",
+    "meaning": "recite, follow"
+  },
+  "وعظ": {
+    "root": "و.ع.ظ",
+    "meaning": "admonish, sermon"
+  },
+  "درس": {
+    "root": "د.ر.س",
+    "meaning": "study, lesson"
+  },
+  "بدأ": {
+    "root": "ب.د.أ",
+    "meaning": "begin, start"
+  },
+  "شرك": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "وحد": {
+    "root": "و.ح.د",
+    "meaning": "one, alone"
+  },
+  "ليل": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "نهر": {
+    "root": "ن.ه.ر",
+    "meaning": "river, day"
+  },
+  "ماء": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "جنة": {
+    "root": "ج.ن.ة",
+    "meaning": "paradise, garden"
+  },
+  "جبل": {
+    "root": "ج.ب.ل",
+    "meaning": "mountain"
+  },
+  "وادي": {
+    "root": "و.اد.ي",
+    "meaning": "valley"
+  },
+  "صحراء": {
+    "root": "ص.ح.ر.ا.ء",
+    "meaning": "desert, plain"
+  },
+  "رأس": {
+    "root": "ر.أ.س",
+    "meaning": "head"
+  },
+  "أذن": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "فم": {
+    "root": "ف.م",
+    "meaning": "mouth"
+  },
+  "شفة": {
+    "root": "ش.ف.ة",
+    "meaning": "lip"
+  },
+  "ركب": {
+    "root": "ر.ك.ب",
+    "meaning": "ride, mount, knee"
+  },
+  "صدر": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "ذنب": {
+    "root": "ذ.ن.ب",
+    "meaning": "tail, sin"
+  },
+  "شعر": {
+    "root": "ش.ع.ر",
+    "meaning": "hair"
+  },
+  "دم": {
+    "root": "د.م",
+    "meaning": "blood"
+  },
+  "رطب": {
+    "root": "ر.ط.ب",
+    "meaning": "moist, fresh"
+  },
+  "يبس": {
+    "root": "ي.ب.س",
+    "meaning": "dry, withered"
+  },
+  "جمد": {
+    "root": "ج.م.د",
+    "meaning": "freeze, congeal"
+  },
+  "قرب": {
+    "root": "ق.ر.ب",
+    "meaning": "be near, approach"
+  },
+  "نجو": {
+    "root": "ن.ج.و",
+    "meaning": "confer secretly"
+  },
+  "خفي": {
+    "root": "خ.ف.ي",
+    "meaning": "hidden, secret"
+  },
+  "جلي": {
+    "root": "ج.ل.ي",
+    "meaning": "clear, plain"
+  },
+  "رهب": {
+    "root": "ر.ه.ب",
+    "meaning": "awe, dread"
+  },
+  "شكل": {
+    "root": "ش.ك.ل",
+    "meaning": "problem, matter"
+  },
+  "والله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "بالله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "كذلك": {
+    "root": "ذ.ل.ك",
+    "meaning": "that (f)"
+  },
+  "ولا": {
+    "root": "ل.ا",
+    "meaning": "no, not"
+  },
+  "فلا": {
+    "root": "ل.ا",
+    "meaning": "no, not"
+  },
+  "ومن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "فمن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "لمن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "وهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "بهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "لهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "وعلي": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "وان": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "فان": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "وفي": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "لفي": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "وقالوا": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "وانا": {
+    "root": "ا.ن.ا",
+    "meaning": "I"
+  },
+  "وما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "فما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "بما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "كما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "بكل": {
+    "root": "ك.ل",
+    "meaning": "all"
+  },
+  "وجعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "وهو": {
+    "root": "ه.و",
+    "meaning": "he"
+  },
+  "فهو": {
+    "root": "ه.و",
+    "meaning": "he"
+  },
+  "وقال": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "فقال": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "كانت": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "ولما": {
+    "root": "ل.م.ا",
+    "meaning": "when"
+  },
+  "فلما": {
+    "root": "ل.م.ا",
+    "meaning": "when"
+  },
+  "وكان": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "ويقولون": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "ولو": {
+    "root": "ل.و",
+    "meaning": "if"
+  },
+  "وجعلنا": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "واذ": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "واذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "فاذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "ربي": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "منهم": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "منكم": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "منه": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "منها": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "عليهم": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "عليكم": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "علينا": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "عليه": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "عليها": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "عليك": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "انهم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "انكم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "انه": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "انك": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "اني": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "انتم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "فيه": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "فيها": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "اليهم": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "اليه": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "اليك": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "ربكما": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "قالت": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "بينهم": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "كانوا": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "ظلموا": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "بعضهم": {
+    "root": "ب.ع.ض",
+    "meaning": "some"
+  },
+  "ينفقون": {
+    "root": "ن.ف.ق",
+    "meaning": "spend, exhaust"
+  },
+  "ومنهم": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "وانه": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "بانهم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "واليه": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "ورسوله": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "الالله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الرب": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الملك": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "الاهدنا": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "الصرط": {
+    "root": "ص.ر.ط",
+    "meaning": "path, way"
+  },
+  "الذلك": {
+    "root": "ذ.ل.ك",
+    "meaning": "that (f)"
+  },
+  "اللا": {
+    "root": "ل.ا",
+    "meaning": "no, not"
+  },
+  "اليومنون": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الانزل": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "المن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "العلي": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الربهم": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الان": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الكفروا": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الابصرهم": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "العذاب": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "اليقول": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الامنا": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الامنوا": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الالا": {
+    "root": "ا.ل.ا",
+    "meaning": "except"
+  },
+  "الفي": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "القالوا": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "النحن": {
+    "root": "ن.ح.ن",
+    "meaning": "we"
+  },
+  "الامن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "اليعلمون": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الالي": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الانا": {
+    "root": "ا.ن.ا",
+    "meaning": "I"
+  },
+  "الما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الذهب": {
+    "root": "ذ.ه.ب",
+    "meaning": "go, depart"
+  },
+  "اليبصرون": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "الفهم": {
+    "root": "ف.ه.م",
+    "meaning": "understand"
+  },
+  "اليرجعون": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الكل": {
+    "root": "ك.ل",
+    "meaning": "all"
+  },
+  "الربكم": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الخلقكم": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "الجعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "التعلمون": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الالنار": {
+    "root": "ن.ا.ر",
+    "meaning": "fire, hellfire"
+  },
+  "الهذا": {
+    "root": "ه.ذ.ا",
+    "meaning": "this (f)"
+  },
+  "الماذا": {
+    "root": "م.ا.ذ.ا",
+    "meaning": "what"
+  },
+  "اليضل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "البعد": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "الامر": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "الكيف": {
+    "root": "ك.ي.ف",
+    "meaning": "how"
+  },
+  "الثم": {
+    "root": "ث.م",
+    "meaning": "then"
+  },
+  "اليحييكم": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "الهو": {
+    "root": "ه.و",
+    "meaning": "he"
+  },
+  "الخلق": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "القال": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الربك": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الاعلم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "العلم": {
+    "root": "ت.ع.ل.م",
+    "meaning": "learn, study"
+  },
+  "الانت": {
+    "root": "ا.ن.ت",
+    "meaning": "you"
+  },
+  "الغيب": {
+    "root": "غ.ي.ب",
+    "meaning": "absent, unseen"
+  },
+  "الهذه": {
+    "root": "ه.ذ.ا",
+    "meaning": "this (f)"
+  },
+  "الربه": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "اليبني": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الانزلت": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "اللما": {
+    "root": "ل.م.ا",
+    "meaning": "when"
+  },
+  "الكافر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "السو": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "الموسي": {
+    "root": "م.و.س",
+    "meaning": "Moses"
+  },
+  "الاتينا": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الحتي": {
+    "root": "ح.ت.ي",
+    "meaning": "until"
+  },
+  "القولا": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الخير": {
+    "root": "خ.ي.ر",
+    "meaning": "good, better, best"
+  },
+  "اليكفرون": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الفضل": {
+    "root": "ف.ض.ل",
+    "meaning": "prefer, excel"
+  },
+  "البين": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الادع": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الهي": {
+    "root": "ه.ي",
+    "meaning": "she"
+  },
+  "الخشيه": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "الكان": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "اليسمعون": {
+    "root": "س.م.ع",
+    "meaning": "hear, listen"
+  },
+  "الكلم": {
+    "root": "ك.ل.م",
+    "meaning": "speak, word"
+  },
+  "اليعلم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "اليقولون": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الايديهم": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "القل": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "البني": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الجزا": {
+    "root": "ج.ز.ى",
+    "meaning": "reward, recompense"
+  },
+  "اليفعل": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "العيسي": {
+    "root": "ع.ي.س",
+    "meaning": "Jesus"
+  },
+  "الابن": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الرسول": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "البل": {
+    "root": "ب.ل",
+    "meaning": "rather"
+  },
+  "الينزل": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "العباده": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الانبيا": {
+    "root": "ن.ب.ي",
+    "meaning": "prophet"
+  },
+  "المومنين": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "العليم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "اللو": {
+    "root": "ل.و",
+    "meaning": "if"
+  },
+  "اليعمر": {
+    "root": "ع.م.ر",
+    "meaning": "life, age"
+  },
+  "اليعملون": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "القلبك": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "اليديه": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "اليكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "التكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "التعلم": {
+    "root": "ت.ع.ل.م",
+    "meaning": "learn, study"
+  },
+  "الفقد": {
+    "root": "ف.ق.د",
+    "meaning": "lose, miss"
+  },
+  "الضل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "التبين": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الياتي": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "التلك": {
+    "root": "ذ.ل.ك",
+    "meaning": "that (f)"
+  },
+  "الاسلم": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الوجهه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "اليحكم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الوجه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "الوسع": {
+    "root": "و.س.ع",
+    "meaning": "be spacious"
+  },
+  "القضي": {
+    "root": "ق.ض.ى",
+    "meaning": "decide, decree, fulfill"
+  },
+  "البينا": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الهدي": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "الجعلنا": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "اليرفع": {
+    "root": "ر.ف.ع",
+    "meaning": "raise, elevate"
+  },
+  "الربنا": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "المسلمين": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الاذ": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "اليعقوب": {
+    "root": "ع.ق.ب",
+    "meaning": "Jacob"
+  },
+  "الاحسن": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "اليهدي": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "الوجهك": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "الاتيت": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الليلا": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "الاذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "الجناح": {
+    "root": "ج.ن.اح",
+    "meaning": "wing"
+  },
+  "الكفار": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الاله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الشديد": {
+    "root": "ش.د.ي.د",
+    "meaning": "strong, intense"
+  },
+  "المبين": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "اليسمع": {
+    "root": "س.م.ع",
+    "meaning": "hear, listen"
+  },
+  "الاثم": {
+    "root": "أ.ث.م",
+    "meaning": "sin, crime"
+  },
+  "الرحيم": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "النزل": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "الليس": {
+    "root": "ل.ي.س",
+    "meaning": "is not"
+  },
+  "الالبر": {
+    "root": "ب.ر",
+    "meaning": "righteous, pious"
+  },
+  "الحبه": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "الخيرا": {
+    "root": "خ.ي.ر",
+    "meaning": "good, better, best"
+  },
+  "الالمتقين": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "الاخر": {
+    "root": "خ.ي.ر",
+    "meaning": "good, better, best"
+  },
+  "الشهد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "القريب": {
+    "root": "ق.ر.ب",
+    "meaning": "be near, approach"
+  },
+  "الليله": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "الهن": {
+    "root": "ه.ن",
+    "meaning": "they (f)"
+  },
+  "البينكم": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الاتقي": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "اليحب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "اليبلغ": {
+    "root": "ب.ل.غ",
+    "meaning": "reach, convey"
+  },
+  "اليجد": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الرجعتم": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "القوله": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "القلبه": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "العزيز": {
+    "root": "ع.ز.ز",
+    "meaning": "honor, might"
+  },
+  "الحكيم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الياتيهم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "النصر": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "الدينكم": {
+    "root": "د.ي.ن",
+    "meaning": "religion, judge"
+  },
+  "اليومن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "المومن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "اليدعون": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الغفور": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "الظلم": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "النعمت": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "اليوعظ": {
+    "root": "و.ع.ظ",
+    "meaning": "admonish, sermon"
+  },
+  "الاتيتم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "البعث": {
+    "root": "ب.ع.ث",
+    "meaning": "resurrect, send forth"
+  },
+  "الياتيكم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الشرب": {
+    "root": "ش.ر.ب",
+    "meaning": "drink"
+  },
+  "الداود": {
+    "root": "د.و.د",
+    "meaning": "David"
+  },
+  "البعدهم": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "الولي": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "البعض": {
+    "root": "ب.ع.ض",
+    "meaning": "some"
+  },
+  "الالعظام": {
+    "root": "ع.ظ.م",
+    "meaning": "bone"
+  },
+  "اليضعف": {
+    "root": "ض.ع.ف",
+    "meaning": "weak, feeble"
+  },
+  "الغني": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "الينفق": {
+    "root": "ن.ف.ق",
+    "meaning": "spend, exhaust"
+  },
+  "الجنه": {
+    "root": "ج.ن.ة",
+    "meaning": "paradise, garden"
+  },
+  "الضعفا": {
+    "root": "ض.ع.ف",
+    "meaning": "weak, feeble"
+  },
+  "الروس": {
+    "root": "ر.أ.س",
+    "meaning": "head"
+  },
+  "الوليه": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "اليخفي": {
+    "root": "خ.ف.ي",
+    "meaning": "hidden, secret"
+  },
+  "الوهب": {
+    "root": "و.ه.ب",
+    "meaning": "give, bestow"
+  },
+  "الرحمه": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "الالعين": {
+    "root": "ع.ي.ن",
+    "meaning": "eye"
+  },
+  "الحب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "الحسن": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "الاسلموا": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الدينهم": {
+    "root": "د.ي.ن",
+    "meaning": "religion, judge"
+  },
+  "الاوليا": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "العملت": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الانثي": {
+    "root": "أ.ن.ث.ى",
+    "meaning": "female"
+  },
+  "الوضعت": {
+    "root": "و.ض.ع",
+    "meaning": "place, put"
+  },
+  "الوجد": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الحساب": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "الدعا": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "اليصلي": {
+    "root": "ص.ل.و",
+    "meaning": "pray, blessing"
+  },
+  "التكلم": {
+    "root": "ك.ل.م",
+    "meaning": "speak, word"
+  },
+  "الانبا": {
+    "root": "ن.ب.أ",
+    "meaning": "news, tidings"
+  },
+  "اليخلق": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "اليضلون": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الينظر": {
+    "root": "ن.ظ.ر",
+    "meaning": "look, gaze"
+  },
+  "الدين": {
+    "root": "د.ي.ن",
+    "meaning": "religion, judge"
+  },
+  "الوضع": {
+    "root": "و.ض.ع",
+    "meaning": "place, put"
+  },
+  "الشهيد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "الرسوله": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "الظلمهم": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "الالصدور": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "الجعله": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "البشري": {
+    "root": "ب.ش.ر",
+    "meaning": "give good news"
+  },
+  "اليتوب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "اليعذبهم": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "اليغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "المات": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "الاغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "القلوب": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "الخبير": {
+    "root": "خ.ب.ر",
+    "meaning": "news, information"
+  },
+  "الغليظ": {
+    "root": "غ.ل.ي.ظ",
+    "meaning": "severe, harsh"
+  },
+  "الالقلب": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "الغالب": {
+    "root": "غ.ل.ب",
+    "meaning": "overcome, defeat"
+  },
+  "النعلم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الاحيا": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "الحسبنا": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "اليجعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "السمع": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "القول": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الاتوا": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "العمل": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الذكر": {
+    "root": "ذ.ك.ر",
+    "meaning": "remind, male"
+  },
+  "الزوجها": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "الشركا": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "النارا": {
+    "root": "ن.ا.ر",
+    "meaning": "fire, hellfire"
+  },
+  "الخشي": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "النكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الشهيدا": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "الحفظ": {
+    "root": "ح.ف.ظ",
+    "meaning": "guard, memorize"
+  },
+  "اليظلم": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "الجا": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "اليزكي": {
+    "root": "ز.ك.و",
+    "meaning": "purify, charity"
+  },
+  "الانظر": {
+    "root": "ن.ظ.ر",
+    "meaning": "look, gaze"
+  },
+  "الحكمتم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الشجر": {
+    "root": "ش.ج.ر",
+    "meaning": "tree"
+  },
+  "اليغلب": {
+    "root": "غ.ل.ب",
+    "meaning": "overcome, defeat"
+  },
+  "اليخشون": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "اليعفو": {
+    "root": "ع.ف.و",
+    "meaning": "pardon, forgive"
+  },
+  "اليعمل": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "البعيدا": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "الاذان": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "الخسر": {
+    "root": "خ.س.ر",
+    "meaning": "lose, be a loser"
+  },
+  "اليجدون": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "البشر": {
+    "root": "ب.ش.ر",
+    "meaning": "give good news"
+  },
+  "الرفعه": {
+    "root": "ر.ف.ع",
+    "meaning": "raise, elevate"
+  },
+  "اليشهد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "الامين": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الاكل": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "الفسق": {
+    "root": "ف.س.ق",
+    "meaning": "rebel, transgress"
+  },
+  "اللين": {
+    "root": "ل.ي.ن",
+    "meaning": "soft, gentle"
+  },
+  "اليملك": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "النبا": {
+    "root": "ن.ب.أ",
+    "meaning": "news, tidings"
+  },
+  "اليدك": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "التاب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "اليعذب": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "الحكم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الوليكم": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "اليد": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الجنت": {
+    "root": "ج.ن.ة",
+    "meaning": "paradise, garden"
+  },
+  "السا": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "البلغ": {
+    "root": "ب.ل.غ",
+    "meaning": "reach, convey"
+  },
+  "اللسان": {
+    "root": "ل.س.ان",
+    "meaning": "tongue"
+  },
+  "الامره": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "الوجدنا": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الاقول": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "السكن": {
+    "root": "س.ك.ن",
+    "meaning": "peace, tranquility"
+  },
+  "الالهه": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "اليفلح": {
+    "root": "ف.ل.ح",
+    "meaning": "prosper, succeed"
+  },
+  "المشركين": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "البدا": {
+    "root": "ب.د.أ",
+    "meaning": "begin, start"
+  },
+  "الكبر": {
+    "root": "ك.ب.ر",
+    "meaning": "be great, pride"
+  },
+  "النسوا": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "الفرحوا": {
+    "root": "ف.ر.ح",
+    "meaning": "rejoice, happiness"
+  },
+  "السلم": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الاعبد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الضللت": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "اليابس": {
+    "root": "ي.ب.س",
+    "meaning": "dry, withered"
+  },
+  "التوفته": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "اليبعث": {
+    "root": "ب.ع.ث",
+    "meaning": "resurrect, send forth"
+  },
+  "الملكوت": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "الاحب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "العلما": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "النشا": {
+    "root": "ن.ش.أ",
+    "meaning": "grow up, bring up"
+  },
+  "الابصر": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "العملهم": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الجات": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "النبي": {
+    "root": "ن.ب.ي",
+    "meaning": "prophet"
+  },
+  "الظهر": {
+    "root": "ظ.ه.ر",
+    "meaning": "apparent, clear"
+  },
+  "الرسل": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "الصغار": {
+    "root": "ص.غ.ر",
+    "meaning": "be small"
+  },
+  "الصدره": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "اللقا": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "العملوا": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "البطون": {
+    "root": "ب.ط.ن",
+    "meaning": "belly, stomach"
+  },
+  "اللحم": {
+    "root": "ل.ح.م",
+    "meaning": "flesh, meat"
+  },
+  "البطن": {
+    "root": "ب.ط.ن",
+    "meaning": "belly, stomach"
+  },
+  "اليجزي": {
+    "root": "ج.ز.ى",
+    "meaning": "reward, recompense"
+  },
+  "الشريك": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "الملكين": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "اليامر": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "الوجدتم": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "النعم": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "الاغني": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "الادعوا": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الخبث": {
+    "root": "خ.ب.ث",
+    "meaning": "bad, evil"
+  },
+  "اليعبد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الالجبال": {
+    "root": "ج.ب.ل",
+    "meaning": "mountain"
+  },
+  "البعثنا": {
+    "root": "ب.ع.ث",
+    "meaning": "resurrect, send forth"
+  },
+  "اليده": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الاذن": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "التجلي": {
+    "root": "ج.ل.ي",
+    "meaning": "clear, plain"
+  },
+  "الرجع": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الرحمتك": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "الارحم": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "الفعل": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "الهادي": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "العباد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الكره": {
+    "root": "ك.ر.ه",
+    "meaning": "hate, detest"
+  },
+  "اللقيتم": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "الحسنا": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "الشر": {
+    "root": "ش.ر",
+    "meaning": "evil, bad"
+  },
+  "الحي": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "العدو": {
+    "root": "ع.د.و",
+    "meaning": "enemy"
+  },
+  "الحسبك": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "العده": {
+    "root": "ع.د.و",
+    "meaning": "enemy"
+  },
+  "النصره": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "الكلمه": {
+    "root": "ك.ل.م",
+    "meaning": "speak, word"
+  },
+  "الكفرتم": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الحسبهم": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "الاستغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "الفرح": {
+    "root": "ف.ر.ح",
+    "meaning": "rejoice, happiness"
+  },
+  "الحزنا": {
+    "root": "ح.ز.ن",
+    "meaning": "grieve, sorrow"
+  },
+  "العملكم": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "التقوي": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "البنوا": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الاستغفار": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "النظر": {
+    "root": "ن.ظ.ر",
+    "meaning": "look, gaze"
+  },
+  "الانذر": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "الياكل": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "الذله": {
+    "root": "ذ.ل.ل",
+    "meaning": "humble, submissive"
+  },
+  "السييه": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "الفسقوا": {
+    "root": "ف.س.ق",
+    "meaning": "rebel, transgress"
+  },
+  "اليغني": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "الاعمل": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "النوح": {
+    "root": "ن.و.ح",
+    "meaning": "Noah"
+  },
+  "الجيتم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "اليقضي": {
+    "root": "ق.ض.ى",
+    "meaning": "decide, decree, fulfill"
+  },
+  "اليونس": {
+    "root": "و.ن.س",
+    "meaning": "Jonah"
+  },
+  "الكبير": {
+    "root": "ك.ب.ر",
+    "meaning": "be great, pride"
+  },
+  "البادي": {
+    "root": "ب.د.أ",
+    "meaning": "begin, start"
+  },
+  "الابنه": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "القوه": {
+    "root": "ق.و.ي",
+    "meaning": "strong, powerful"
+  },
+  "القولك": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "اللوط": {
+    "root": "ل.و.ط",
+    "meaning": "Lot"
+  },
+  "الهود": {
+    "root": "ه.و.د",
+    "meaning": "Hud"
+  },
+  "العطا": {
+    "root": "ع.ط.ى",
+    "meaning": "give, grant"
+  },
+  "الخلقهم": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "اليرجع": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "اليوسف": {
+    "root": "ي.س.ف",
+    "meaning": "Joseph"
+  },
+  "النجا": {
+    "root": "ن.ج.و",
+    "meaning": "confer secretly"
+  },
+  "الارجع": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الوجدوا": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الفعلتم": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "البصيره": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "الرفع": {
+    "root": "ر.ف.ع",
+    "meaning": "raise, elevate"
+  },
+  "اليسجد": {
+    "root": "س.ج.د",
+    "meaning": "prostrate, worship"
+  },
+  "الاوديه": {
+    "root": "و.اد.ي",
+    "meaning": "valley"
+  },
+  "الحكما": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الكفي": {
+    "root": "ك.ف.ى",
+    "meaning": "suffice, enough"
+  },
+  "الضلل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الالبعيد": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "اليضيق": {
+    "root": "ض.ي.ق",
+    "meaning": "be narrow, distressed"
+  },
+  "الاتي": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "القصد": {
+    "root": "ق.ص.د",
+    "meaning": "intend, direct, purpose"
+  },
+  "الالهكم": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الرسولا": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "اليموت": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "الجعلتم": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الشرح": {
+    "root": "ش.ر.ح",
+    "meaning": "expand, explain"
+  },
+  "التاتي": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الياتيها": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "اللباس": {
+    "root": "ل.ب.س",
+    "meaning": "wear, clothe"
+  },
+  "الاقرا": {
+    "root": "ق.ر.أ",
+    "meaning": "read, recite"
+  },
+  "اليكبر": {
+    "root": "ك.ب.ر",
+    "meaning": "be great, pride"
+  },
+  "الضعف": {
+    "root": "ض.ع.ف",
+    "meaning": "weak, feeble"
+  },
+  "الينشر": {
+    "root": "ن.ش.ر",
+    "meaning": "scatter, spread"
+  },
+  "الحكمه": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الالوجوه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "الاتت": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الصاحبه": {
+    "root": "ص.ح.ب",
+    "meaning": "companion, friend"
+  },
+  "الينقض": {
+    "root": "ن.ق.ض",
+    "meaning": "break, violate"
+  },
+  "النزلا": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "الالعظم": {
+    "root": "ع.ظ.م",
+    "meaning": "bone"
+  },
+  "الالراس": {
+    "root": "ر.أ.س",
+    "meaning": "head"
+  },
+  "اليحيي": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "الولد": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "العبد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "المشهد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "الاسمع": {
+    "root": "س.م.ع",
+    "meaning": "hear, listen"
+  },
+  "النبيا": {
+    "root": "ن.ب.ي",
+    "meaning": "prophet"
+  },
+  "اليبصر": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "اليخشي": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "الطغي": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "اليطغي": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "الينسي": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "اليحشر": {
+    "root": "ح.ش.ر",
+    "meaning": "gather, resurrect"
+  },
+  "الشجره": {
+    "root": "ش.ج.ر",
+    "meaning": "tree"
+  },
+  "الالهتكم": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "المبارك": {
+    "root": "ب.ر.ك",
+    "meaning": "blessing, abundance"
+  },
+  "النجي": {
+    "root": "ن.ج.و",
+    "meaning": "confer secretly"
+  },
+  "الزوجه": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "الزوج": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "المكرم": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "الكفور": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "اليلقي": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "الينطق": {
+    "root": "ن.ط.ق",
+    "meaning": "speak, tongue"
+  },
+  "الضالين": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "التواب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "اليذهب": {
+    "root": "ذ.ه.ب",
+    "meaning": "go, depart"
+  },
+  "الحسنت": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "الكريم": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "العبدت": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الشعيب": {
+    "root": "ش.ع.ب",
+    "meaning": "Shuayb"
+  },
+  "المنطق": {
+    "root": "ن.ط.ق",
+    "meaning": "speak, tongue"
+  },
+  "الوجدت": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الشكر": {
+    "root": "ش.ك.ر",
+    "meaning": "thank, grateful"
+  },
+  "اليشكر": {
+    "root": "ش.ك.ر",
+    "meaning": "thank, grateful"
+  },
+  "العلمهم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الصنع": {
+    "root": "ص.ن.ع",
+    "meaning": "make, manufacture"
+  },
+  "الحسب": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "اليفرح": {
+    "root": "ف.ر.ح",
+    "meaning": "rejoice, happiness"
+  },
+  "الينصر": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "الايدي": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الوالد": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "المولود": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "الوالده": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "القويا": {
+    "root": "ق.و.ي",
+    "meaning": "strong, powerful"
+  },
+  "اليقنت": {
+    "root": "ق.ن.ت",
+    "meaning": "obey, worship"
+  },
+  "الزوجك": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "اليحزن": {
+    "root": "ح.ز.ن",
+    "meaning": "grieve, sorrow"
+  },
+  "الليالي": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "النذير": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "الجاعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "العمره": {
+    "root": "ع.م.ر",
+    "meaning": "life, age"
+  },
+  "الشكور": {
+    "root": "ش.ك.و",
+    "meaning": "complain"
+  },
+  "الكفرهم": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "السليم": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الذاهب": {
+    "root": "ذ.ه.ب",
+    "meaning": "go, depart"
+  },
+  "الافعل": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "اليخلقكم": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "النسي": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "القنت": {
+    "root": "ق.ن.ت",
+    "meaning": "obey, worship"
+  },
+  "اللان": {
+    "root": "ل.ي.ن",
+    "meaning": "soft, gentle"
+  },
+  "المضل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الغافر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "اليظهر": {
+    "root": "ظ.ه.ر",
+    "meaning": "apparent, clear"
+  },
+  "الاعدا": {
+    "root": "ع.د.و",
+    "meaning": "enemy"
+  },
+  "الرجعت": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الشرع": {
+    "root": "ش.ر.ع",
+    "meaning": "legislate, prescribe"
+  },
+  "اليبشر": {
+    "root": "ب.ش.ر",
+    "meaning": "give good news"
+  },
+  "اليسكن": {
+    "root": "س.ك.ن",
+    "meaning": "peace, tranquility"
+  },
+  "اليهب": {
+    "root": "و.ه.ب",
+    "meaning": "give, bestow"
+  },
+  "اليخسر": {
+    "root": "خ.س.ر",
+    "meaning": "lose, be a loser"
+  },
+  "الحشر": {
+    "root": "ح.ش.ر",
+    "meaning": "gather, resurrect"
+  },
+  "الناصر": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "النزلت": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "الفاسق": {
+    "root": "ف.س.ق",
+    "meaning": "rebel, transgress"
+  },
+  "الحبل": {
+    "root": "ح.ب.ل",
+    "meaning": "rope, cord"
+  },
+  "الدنا": {
+    "root": "ق.ر.ب",
+    "meaning": "be near, approach"
+  },
+  "القوي": {
+    "root": "ق.و.ي",
+    "meaning": "strong, powerful"
+  },
+  "اللينه": {
+    "root": "ل.ي.ن",
+    "meaning": "soft, gentle"
+  },
+  "اليدعي": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الظهير": {
+    "root": "ظ.ه.ر",
+    "meaning": "apparent, clear"
+  },
+  "النخل": {
+    "root": "ن.خ.ل",
+    "meaning": "palm tree"
+  },
+  "الدعوت": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الالمسلمون": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الغيبه": {
+    "root": "غ.ي.ب",
+    "meaning": "absent, unseen"
+  },
+  "الالنعمه": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "العسير": {
+    "root": "ع.س.ر",
+    "meaning": "hardship, difficulty"
+  },
+  "الفكر": {
+    "root": "ف.ك.ر",
+    "meaning": "think, ponder"
+  },
+  "الصلي": {
+    "root": "ص.ل.و",
+    "meaning": "pray, blessing"
+  },
+  "اليشرب": {
+    "root": "ش.ر.ب",
+    "meaning": "drink"
+  },
+  "الشكورا": {
+    "root": "ش.ك.ر",
+    "meaning": "thank, grateful"
+  },
+  "المنذر": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "الكرام": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "النعيم": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "المحفوظ": {
+    "root": "ح.ف.ظ",
+    "meaning": "guard, memorize"
+  },
+  "اليسر": {
+    "root": "ي.س.ر",
+    "meaning": "ease, prosperity"
+  },
+  "الطغوا": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "البخل": {
+    "root": "ب.خ.ل",
+    "meaning": "stingy, miserly"
+  },
+  "اليسرا": {
+    "root": "ي.س.ر",
+    "meaning": "ease, prosperity"
+  },
+  "الينهي": {
+    "root": "ن.ه.ي",
+    "meaning": "forbid, prohibit"
+  },
+  "اليحسب": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "الماكول": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "اليدا": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "اليلد": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "الربب": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الصلو": {
+    "root": "ص.ل.و",
+    "meaning": "pray, blessing"
+  },
+  "الزكو": {
+    "root": "ز.ك.و",
+    "meaning": "purify, charity"
+  },
+  "التوب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "الرحم": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "العذب": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "العفو": {
+    "root": "ع.ف.و",
+    "meaning": "pardon, forgive"
+  },
+  "الجزى": {
+    "root": "ج.ز.ى",
+    "meaning": "reward, recompense"
+  },
+  "الدعو": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "البصر": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "النسى": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "الجاء": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "البرأ": {
+    "root": "ب.ر.أ",
+    "meaning": "create, fashion"
+  },
+  "الطغى": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "النقض": {
+    "root": "ن.ق.ض",
+    "meaning": "break, violate"
+  },
+  "الأثم": {
+    "root": "أ.ث.م",
+    "meaning": "sin, crime"
+  },
+  "الخطئ": {
+    "root": "خ.ط.ئ",
+    "meaning": "err, sin"
+  },
+  "النطق": {
+    "root": "ن.ط.ق",
+    "meaning": "speak, tongue"
+  },
+  "اللقى": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "العزز": {
+    "root": "ع.ز.ز",
+    "meaning": "honor, might"
+  },
+  "القهر": {
+    "root": "ق.ه.ر",
+    "meaning": "subdue, overpower"
+  },
+  "الغلب": {
+    "root": "غ.ل.ب",
+    "meaning": "overcome, defeat"
+  },
+  "الفلح": {
+    "root": "ف.ل.ح",
+    "meaning": "prosper, succeed"
+  },
+  "الموت": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "الحيو": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "النشر": {
+    "root": "ن.ش.ر",
+    "meaning": "scatter, spread"
+  },
+  "الصحب": {
+    "root": "ص.ح.ب",
+    "meaning": "companion, friend"
+  },
+  "الكفى": {
+    "root": "ك.ف.ى",
+    "meaning": "suffice, enough"
+  },
+  "الغنى": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "العسر": {
+    "root": "ع.س.ر",
+    "meaning": "hardship, difficulty"
+  },
+  "القبح": {
+    "root": "ق.ب.ح",
+    "meaning": "ugly, bad"
+  },
+  "الطيب": {
+    "root": "ط.ي.ب",
+    "meaning": "good, pure"
+  },
+  "السوء": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "الفجر": {
+    "root": "ف.ج.ر",
+    "meaning": "wicked, disbeliever"
+  },
+  "التقي": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "الشقى": {
+    "root": "ش.ق.ى",
+    "meaning": "wretched, miserable"
+  },
+  "السعي": {
+    "root": "س.ع.ي",
+    "meaning": "happy, fortunate"
+  },
+  "السجد": {
+    "root": "س.ج.د",
+    "meaning": "prostrate, worship"
+  },
+  "الركع": {
+    "root": "ر.ك.ع",
+    "meaning": "bow, submit"
+  },
+  "الذلل": {
+    "root": "ذ.ل.ل",
+    "meaning": "humble, submissive"
+  },
+  "الصغر": {
+    "root": "ص.غ.ر",
+    "meaning": "be small"
+  },
+  "الضيق": {
+    "root": "ض.ي.ق",
+    "meaning": "be narrow, distressed"
+  },
+  "الحزن": {
+    "root": "ح.ز.ن",
+    "meaning": "grieve, sorrow"
+  },
+  "النذر": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "القضى": {
+    "root": "ق.ض.ى",
+    "meaning": "decide, decree, fulfill"
+  },
+  "الأنثى": {
+    "root": "أ.ن.ث.ى",
+    "meaning": "female"
+  },
+  "البنى": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "النشأ": {
+    "root": "ن.ش.أ",
+    "meaning": "grow up, bring up"
+  },
+  "الأمن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الطول": {
+    "root": "ط.و.ل",
+    "meaning": "length, duration"
+  },
+  "القصر": {
+    "root": "ق.ص.ر",
+    "meaning": "shorten, abbreviate"
+  },
+  "العمر": {
+    "root": "ع.م.ر",
+    "meaning": "life, age"
+  },
+  "الشكو": {
+    "root": "ش.ك.و",
+    "meaning": "complain"
+  },
+  "الجهد": {
+    "root": "ج.ه.د",
+    "meaning": "strive, effort"
+  },
+  "النفق": {
+    "root": "ن.ف.ق",
+    "meaning": "spend, exhaust"
+  },
+  "السخو": {
+    "root": "س.خ.و",
+    "meaning": "generous, liberal"
+  },
+  "الكرم": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "الرفق": {
+    "root": "ر.ف.ق",
+    "meaning": "gentle, kind"
+  },
+  "الجهل": {
+    "root": "ج.ه.ل",
+    "meaning": "ignorance, foolishness"
+  },
+  "الحبب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "البغض": {
+    "root": "ب.غ.ض",
+    "meaning": "hate, enmity"
+  },
+  "الأمر": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "النهي": {
+    "root": "ن.ه.ي",
+    "meaning": "forbid, prohibit"
+  },
+  "المنح": {
+    "root": "م.ن.ح",
+    "meaning": "grant, bestow"
+  },
+  "العطى": {
+    "root": "ع.ط.ى",
+    "meaning": "give, grant"
+  },
+  "الأكل": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "اللبس": {
+    "root": "ل.ب.س",
+    "meaning": "wear, clothe"
+  },
+  "الحمد": {
+    "root": "ح.م.د",
+    "meaning": "praise, commend"
+  },
+  "الثنى": {
+    "root": "ث.ن.ى",
+    "meaning": "praise, extol"
+  },
+  "البرك": {
+    "root": "ب.ر.ك",
+    "meaning": "blessing, abundance"
+  },
+  "الخبر": {
+    "root": "خ.ب.ر",
+    "meaning": "news, information"
+  },
+  "النبأ": {
+    "root": "ن.ب.أ",
+    "meaning": "news, tidings"
+  },
+  "القرأ": {
+    "root": "ق.ر.أ",
+    "meaning": "read, recite"
+  },
+  "التلو": {
+    "root": "ت.ل.و",
+    "meaning": "recite, follow"
+  },
+  "الوعظ": {
+    "root": "و.ع.ظ",
+    "meaning": "admonish, sermon"
+  },
+  "الدرس": {
+    "root": "د.ر.س",
+    "meaning": "study, lesson"
+  },
+  "البدأ": {
+    "root": "ب.د.أ",
+    "meaning": "begin, start"
+  },
+  "الشرك": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "الوحد": {
+    "root": "و.ح.د",
+    "meaning": "one, alone"
+  },
+  "الليل": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "النهر": {
+    "root": "ن.ه.ر",
+    "meaning": "river, day"
+  },
+  "الماء": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الجنة": {
+    "root": "ج.ن.ة",
+    "meaning": "paradise, garden"
+  },
+  "الجبل": {
+    "root": "ج.ب.ل",
+    "meaning": "mountain"
+  },
+  "الوادي": {
+    "root": "و.اد.ي",
+    "meaning": "valley"
+  },
+  "الصحراء": {
+    "root": "ص.ح.ر.ا.ء",
+    "meaning": "desert, plain"
+  },
+  "الرأس": {
+    "root": "ر.أ.س",
+    "meaning": "head"
+  },
+  "الأذن": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "الفم": {
+    "root": "ف.م",
+    "meaning": "mouth"
+  },
+  "الشفة": {
+    "root": "ش.ف.ة",
+    "meaning": "lip"
+  },
+  "الركب": {
+    "root": "ر.ك.ب",
+    "meaning": "ride, mount, knee"
+  },
+  "الصدر": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "الذنب": {
+    "root": "ذ.ن.ب",
+    "meaning": "tail, sin"
+  },
+  "الشعر": {
+    "root": "ش.ع.ر",
+    "meaning": "hair"
+  },
+  "الدم": {
+    "root": "د.م",
+    "meaning": "blood"
+  },
+  "الرطب": {
+    "root": "ر.ط.ب",
+    "meaning": "moist, fresh"
+  },
+  "اليبس": {
+    "root": "ي.ب.س",
+    "meaning": "dry, withered"
+  },
+  "الجمد": {
+    "root": "ج.م.د",
+    "meaning": "freeze, congeal"
+  },
+  "القرب": {
+    "root": "ق.ر.ب",
+    "meaning": "be near, approach"
+  },
+  "النجو": {
+    "root": "ن.ج.و",
+    "meaning": "confer secretly"
+  },
+  "الخفي": {
+    "root": "خ.ف.ي",
+    "meaning": "hidden, secret"
+  },
+  "الجلي": {
+    "root": "ج.ل.ي",
+    "meaning": "clear, plain"
+  },
+  "الرهب": {
+    "root": "ر.ه.ب",
+    "meaning": "awe, dread"
+  },
+  "الشكل": {
+    "root": "ش.ك.ل",
+    "meaning": "problem, matter"
+  },
+  "الوالله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "البالله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الكذلك": {
+    "root": "ذ.ل.ك",
+    "meaning": "that (f)"
+  },
+  "الولا": {
+    "root": "ل.ا",
+    "meaning": "no, not"
+  },
+  "الفلا": {
+    "root": "ل.ا",
+    "meaning": "no, not"
+  },
+  "الومن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الفمن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "اللمن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الوهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "البهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "اللهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "الوعلي": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الوان": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الفان": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الوفي": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "اللفي": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "الوقالوا": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الوانا": {
+    "root": "ا.ن.ا",
+    "meaning": "I"
+  },
+  "الوما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الفما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "البما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الكما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "البكل": {
+    "root": "ك.ل",
+    "meaning": "all"
+  },
+  "الوجعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الوهو": {
+    "root": "ه.و",
+    "meaning": "he"
+  },
+  "الفهو": {
+    "root": "ه.و",
+    "meaning": "he"
+  },
+  "الوقال": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الفقال": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الكانت": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "الولما": {
+    "root": "ل.م.ا",
+    "meaning": "when"
+  },
+  "الفلما": {
+    "root": "ل.م.ا",
+    "meaning": "when"
+  },
+  "الوكان": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "الويقولون": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الولو": {
+    "root": "ل.و",
+    "meaning": "if"
+  },
+  "الوجعلنا": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الواذ": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "الواذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "الفاذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "الربي": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "المنهم": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "المنكم": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "المنه": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "المنها": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "العليهم": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "العليكم": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "العلينا": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "العليه": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "العليها": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "العليك": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الانهم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الانكم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الانه": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الانك": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الاني": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الانتم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الفيه": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "الفيها": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "الاليهم": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الاليه": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الاليك": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الربكما": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "القالت": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "البينهم": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الكانوا": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "الظلموا": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "البعضهم": {
+    "root": "ب.ع.ض",
+    "meaning": "some"
+  },
+  "الينفقون": {
+    "root": "ن.ف.ق",
+    "meaning": "spend, exhaust"
+  },
+  "الومنهم": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الوانه": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "البانهم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الواليه": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الورسوله": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "ا": {
+    "root": "ا.ل.ه",
+    "meaning": "alef (prefix)"
+  },
+  "ه": {
+    "root": "ه.و",
+    "meaning": "he/it (pronoun)"
+  },
+  "او": {
+    "root": "ا.و",
+    "meaning": "or"
+  },
+  "عن": {
+    "root": "ع.ن",
+    "meaning": "about, from"
+  },
+  "قد": {
+    "root": "ق.د",
+    "meaning": "indeed, already"
+  },
+  "ام": {
+    "root": "ا.م",
+    "meaning": "or (question)"
+  },
+  "يوم": {
+    "root": "ي.و.م",
+    "meaning": "day"
+  },
+  "وهي": {
+    "root": "و.ه.ي",
+    "meaning": "and she"
+  },
+  "به": {
+    "root": "ب.ه",
+    "meaning": "with him"
+  },
+  "بها": {
+    "root": "ب.ه.ا",
+    "meaning": "with it (f)"
+  },
+  "له": {
+    "root": "ل.ه",
+    "meaning": "for him"
+  },
+  "لنا": {
+    "root": "ل.ن.ا",
+    "meaning": "for us"
+  },
+  "لكم": {
+    "root": "ل.ك.م",
+    "meaning": "for you (pl)"
+  },
+  "فيكم": {
+    "root": "ف.ي.ك.م",
+    "meaning": "in you (pl)"
+  },
+  "فيهم": {
+    "root": "ف.ي.ه.م",
+    "meaning": "in them"
+  },
+  "بكم": {
+    "root": "ب.ك.م",
+    "meaning": "with you (pl)"
+  },
+  "اليكم": {
+    "root": "ا.ل.ي.ك.م",
+    "meaning": "to you (pl)"
+  },
+  "الينا": {
+    "root": "ا.ل.ي.ن.ا",
+    "meaning": "to us"
+  },
+  "عنهم": {
+    "root": "ع.ن.ه.م",
+    "meaning": "about them"
+  },
+  "عنه": {
+    "root": "ع.ن.ه",
+    "meaning": "about him"
+  },
+  "عنها": {
+    "root": "ع.ن.ه.ا",
+    "meaning": "about it (f)"
+  },
+  "لها": {
+    "root": "ل.ه.ا",
+    "meaning": "for it (f)"
+  },
+  "اليها": {
+    "root": "ا.ل.ي.ه.ا",
+    "meaning": "to it (f)"
+  },
+  "ولقد": {
+    "root": "و.ل.ق.د",
+    "meaning": "and indeed"
+  },
+  "ففي": {
+    "root": "ف.ف.ي",
+    "meaning": "so in"
+  },
+  "اوليك": {
+    "root": "ا.و.ل",
+    "meaning": "those"
+  },
+  "يايها": {
+    "root": "ي.ا.ا.ي",
+    "meaning": "O you (f)"
+  },
+  "كنت": {
+    "root": "ك.و.ن",
+    "meaning": "you were"
+  },
+  "كنتم": {
+    "root": "ك.و.ن",
+    "meaning": "you (pl) were"
+  },
+  "كنا": {
+    "root": "ك.و.ن",
+    "meaning": "we were"
+  },
+  "حول": {
+    "root": "ح.و.ل",
+    "meaning": "around"
+  },
+  "لكن": {
+    "root": "ل.ك.ن",
+    "meaning": "but"
+  },
+  "سبحان": {
+    "root": "س.ب.ح",
+    "meaning": "glory be"
+  },
+  "كلا": {
+    "root": "ك.ل",
+    "meaning": "never"
+  },
+  "انها": {
+    "root": "ا.ن",
+    "meaning": "indeed she"
+  },
+  "اننا": {
+    "root": "ا.ن",
+    "meaning": "indeed we"
+  },
+  "انما": {
+    "root": "ا.ن",
+    "meaning": "only"
+  },
+  "بلي": {
+    "root": "ب.ل",
+    "meaning": "yes"
+  },
+  "الالالله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الالرب": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الالملك": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "الالاهدنا": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "الالصرط": {
+    "root": "ص.ر.ط",
+    "meaning": "path, way"
+  },
+  "الالذلك": {
+    "root": "ذ.ل.ك",
+    "meaning": "that (f)"
+  },
+  "الاللا": {
+    "root": "ل.ا",
+    "meaning": "no, not"
+  },
+  "الاليومنون": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الالانزل": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "الالمن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الالهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "الالعلي": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الالربهم": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الالان": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالكفروا": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالابصرهم": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "الالعذاب": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "الاليقول": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالامنا": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الالامنوا": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الالالا": {
+    "root": "ا.ل.ا",
+    "meaning": "except"
+  },
+  "الالفي": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "الالقالوا": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالنحن": {
+    "root": "ن.ح.ن",
+    "meaning": "we"
+  },
+  "الالامن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الاليعلمون": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الالالي": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الالانا": {
+    "root": "ا.ن.ا",
+    "meaning": "I"
+  },
+  "الالما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الالذهب": {
+    "root": "ذ.ه.ب",
+    "meaning": "go, depart"
+  },
+  "الاليبصرون": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "الالفهم": {
+    "root": "ف.ه.م",
+    "meaning": "understand"
+  },
+  "الاليرجعون": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الالكل": {
+    "root": "ك.ل",
+    "meaning": "all"
+  },
+  "الالربكم": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الالخلقكم": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "الالجعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الالتعلمون": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الالالنار": {
+    "root": "ن.ا.ر",
+    "meaning": "fire, hellfire"
+  },
+  "الالهذا": {
+    "root": "ه.ذ.ا",
+    "meaning": "this (f)"
+  },
+  "الالماذا": {
+    "root": "م.ا.ذ.ا",
+    "meaning": "what"
+  },
+  "الاليضل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الالبعد": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "الالامر": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "الالكيف": {
+    "root": "ك.ي.ف",
+    "meaning": "how"
+  },
+  "الالثم": {
+    "root": "ث.م",
+    "meaning": "then"
+  },
+  "الاليحييكم": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "الالهو": {
+    "root": "ه.و",
+    "meaning": "he"
+  },
+  "الالخلق": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "الالقال": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالربك": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الالاعلم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الالعلم": {
+    "root": "ت.ع.ل.م",
+    "meaning": "learn, study"
+  },
+  "الالانت": {
+    "root": "ا.ن.ت",
+    "meaning": "you"
+  },
+  "الالغيب": {
+    "root": "غ.ي.ب",
+    "meaning": "absent, unseen"
+  },
+  "الالهذه": {
+    "root": "ه.ذ.ا",
+    "meaning": "this (f)"
+  },
+  "الالربه": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الاليبني": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الالانزلت": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "الاللما": {
+    "root": "ل.م.ا",
+    "meaning": "when"
+  },
+  "الالكافر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالسو": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "الالموسي": {
+    "root": "م.و.س",
+    "meaning": "Moses"
+  },
+  "الالاتينا": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالحتي": {
+    "root": "ح.ت.ي",
+    "meaning": "until"
+  },
+  "الالقولا": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالخير": {
+    "root": "خ.ي.ر",
+    "meaning": "good, better, best"
+  },
+  "الاليكفرون": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالفضل": {
+    "root": "ف.ض.ل",
+    "meaning": "prefer, excel"
+  },
+  "الالبين": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الالادع": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الالهي": {
+    "root": "ه.ي",
+    "meaning": "she"
+  },
+  "الالخشيه": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "الالكان": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "الاليسمعون": {
+    "root": "س.م.ع",
+    "meaning": "hear, listen"
+  },
+  "الالكلم": {
+    "root": "ك.ل.م",
+    "meaning": "speak, word"
+  },
+  "الاليعلم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الاليقولون": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالايديهم": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الالقل": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالبني": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الالجزا": {
+    "root": "ج.ز.ى",
+    "meaning": "reward, recompense"
+  },
+  "الاليفعل": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "الالعيسي": {
+    "root": "ع.ي.س",
+    "meaning": "Jesus"
+  },
+  "الالابن": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الالرسول": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "الالبل": {
+    "root": "ب.ل",
+    "meaning": "rather"
+  },
+  "الالينزل": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "الالعباده": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الالانبيا": {
+    "root": "ن.ب.ي",
+    "meaning": "prophet"
+  },
+  "الالمومنين": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الالعليم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الاللو": {
+    "root": "ل.و",
+    "meaning": "if"
+  },
+  "الاليعمر": {
+    "root": "ع.م.ر",
+    "meaning": "life, age"
+  },
+  "الاليعملون": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الالقلبك": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "الاليديه": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الاليكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالتكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالتعلم": {
+    "root": "ت.ع.ل.م",
+    "meaning": "learn, study"
+  },
+  "الالفقد": {
+    "root": "ف.ق.د",
+    "meaning": "lose, miss"
+  },
+  "الالضل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الالتبين": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الالياتي": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالتلك": {
+    "root": "ذ.ل.ك",
+    "meaning": "that (f)"
+  },
+  "الالاسلم": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الالوجهه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "الاليحكم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الالوجه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "الالوسع": {
+    "root": "و.س.ع",
+    "meaning": "be spacious"
+  },
+  "الالقضي": {
+    "root": "ق.ض.ى",
+    "meaning": "decide, decree, fulfill"
+  },
+  "الالبينا": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الالهدي": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "الالجعلنا": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الاليرفع": {
+    "root": "ر.ف.ع",
+    "meaning": "raise, elevate"
+  },
+  "الالربنا": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الالمسلمين": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الالاذ": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "الاليعقوب": {
+    "root": "ع.ق.ب",
+    "meaning": "Jacob"
+  },
+  "الالاحسن": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "الاليهدي": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "الالوجهك": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "الالاتيت": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالليلا": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "الالاذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "الالجناح": {
+    "root": "ج.ن.اح",
+    "meaning": "wing"
+  },
+  "الالكفار": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالاله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الالشديد": {
+    "root": "ش.د.ي.د",
+    "meaning": "strong, intense"
+  },
+  "الالمبين": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الاليسمع": {
+    "root": "س.م.ع",
+    "meaning": "hear, listen"
+  },
+  "الالاثم": {
+    "root": "أ.ث.م",
+    "meaning": "sin, crime"
+  },
+  "الالرحيم": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "الالنزل": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "الالليس": {
+    "root": "ل.ي.س",
+    "meaning": "is not"
+  },
+  "الالالبر": {
+    "root": "ب.ر",
+    "meaning": "righteous, pious"
+  },
+  "الالحبه": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "الالخيرا": {
+    "root": "خ.ي.ر",
+    "meaning": "good, better, best"
+  },
+  "الالالمتقين": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "الالاخر": {
+    "root": "خ.ي.ر",
+    "meaning": "good, better, best"
+  },
+  "الالشهد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "الالقريب": {
+    "root": "ق.ر.ب",
+    "meaning": "be near, approach"
+  },
+  "الالليله": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "الالهن": {
+    "root": "ه.ن",
+    "meaning": "they (f)"
+  },
+  "الالبينكم": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الالاتقي": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "الاليحب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "الاليبلغ": {
+    "root": "ب.ل.غ",
+    "meaning": "reach, convey"
+  },
+  "الاليجد": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الالرجعتم": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الالقوله": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالقلبه": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "الالعزيز": {
+    "root": "ع.ز.ز",
+    "meaning": "honor, might"
+  },
+  "الالحكيم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الالياتيهم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالنصر": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "الالدينكم": {
+    "root": "د.ي.ن",
+    "meaning": "religion, judge"
+  },
+  "الاليومن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الالمومن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الاليدعون": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الالغفور": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "الالظلم": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "الالنعمت": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "الاليوعظ": {
+    "root": "و.ع.ظ",
+    "meaning": "admonish, sermon"
+  },
+  "الالاتيتم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالبعث": {
+    "root": "ب.ع.ث",
+    "meaning": "resurrect, send forth"
+  },
+  "الالياتيكم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالشرب": {
+    "root": "ش.ر.ب",
+    "meaning": "drink"
+  },
+  "الالداود": {
+    "root": "د.و.د",
+    "meaning": "David"
+  },
+  "الالبعدهم": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "الالولي": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "الالبعض": {
+    "root": "ب.ع.ض",
+    "meaning": "some"
+  },
+  "الالالعظام": {
+    "root": "ع.ظ.م",
+    "meaning": "bone"
+  },
+  "الاليضعف": {
+    "root": "ض.ع.ف",
+    "meaning": "weak, feeble"
+  },
+  "الالغني": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "الالينفق": {
+    "root": "ن.ف.ق",
+    "meaning": "spend, exhaust"
+  },
+  "الالجنه": {
+    "root": "ج.ن.ة",
+    "meaning": "paradise, garden"
+  },
+  "الالضعفا": {
+    "root": "ض.ع.ف",
+    "meaning": "weak, feeble"
+  },
+  "الالروس": {
+    "root": "ر.أ.س",
+    "meaning": "head"
+  },
+  "الالوليه": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "الاليخفي": {
+    "root": "خ.ف.ي",
+    "meaning": "hidden, secret"
+  },
+  "الالوهب": {
+    "root": "و.ه.ب",
+    "meaning": "give, bestow"
+  },
+  "الالرحمه": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "الالالعين": {
+    "root": "ع.ي.ن",
+    "meaning": "eye"
+  },
+  "الالحب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "الالحسن": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "الالاسلموا": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الالدينهم": {
+    "root": "د.ي.ن",
+    "meaning": "religion, judge"
+  },
+  "الالاوليا": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "الالعملت": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الالانثي": {
+    "root": "أ.ن.ث.ى",
+    "meaning": "female"
+  },
+  "الالوضعت": {
+    "root": "و.ض.ع",
+    "meaning": "place, put"
+  },
+  "الالوجد": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الالحساب": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "الالدعا": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الاليصلي": {
+    "root": "ص.ل.و",
+    "meaning": "pray, blessing"
+  },
+  "الالتكلم": {
+    "root": "ك.ل.م",
+    "meaning": "speak, word"
+  },
+  "الالانبا": {
+    "root": "ن.ب.أ",
+    "meaning": "news, tidings"
+  },
+  "الاليخلق": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "الاليضلون": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الالينظر": {
+    "root": "ن.ظ.ر",
+    "meaning": "look, gaze"
+  },
+  "الالدين": {
+    "root": "د.ي.ن",
+    "meaning": "religion, judge"
+  },
+  "الالوضع": {
+    "root": "و.ض.ع",
+    "meaning": "place, put"
+  },
+  "الالشهيد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "الالرسوله": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "الالظلمهم": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "الالالصدور": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "الالجعله": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الالبشري": {
+    "root": "ب.ش.ر",
+    "meaning": "give good news"
+  },
+  "الاليتوب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "الاليعذبهم": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "الاليغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "الالمات": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "الالاغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "الالقلوب": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "الالخبير": {
+    "root": "خ.ب.ر",
+    "meaning": "news, information"
+  },
+  "الالغليظ": {
+    "root": "غ.ل.ي.ظ",
+    "meaning": "severe, harsh"
+  },
+  "الالالقلب": {
+    "root": "ق.ل.ب",
+    "meaning": "heart"
+  },
+  "الالغالب": {
+    "root": "غ.ل.ب",
+    "meaning": "overcome, defeat"
+  },
+  "الالنعلم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الالاحيا": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "الالحسبنا": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "الاليجعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الالسمع": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "الالقول": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالاتوا": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالعمل": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الالذكر": {
+    "root": "ذ.ك.ر",
+    "meaning": "remind, male"
+  },
+  "الالزوجها": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "الالشركا": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "الالنارا": {
+    "root": "ن.ا.ر",
+    "meaning": "fire, hellfire"
+  },
+  "الالخشي": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "الالنكفر": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالشهيدا": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "الالحفظ": {
+    "root": "ح.ف.ظ",
+    "meaning": "guard, memorize"
+  },
+  "الاليظلم": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "الالجا": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الاليزكي": {
+    "root": "ز.ك.و",
+    "meaning": "purify, charity"
+  },
+  "الالانظر": {
+    "root": "ن.ظ.ر",
+    "meaning": "look, gaze"
+  },
+  "الالحكمتم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الالشجر": {
+    "root": "ش.ج.ر",
+    "meaning": "tree"
+  },
+  "الاليغلب": {
+    "root": "غ.ل.ب",
+    "meaning": "overcome, defeat"
+  },
+  "الاليخشون": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "الاليعفو": {
+    "root": "ع.ف.و",
+    "meaning": "pardon, forgive"
+  },
+  "الاليعمل": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الالبعيدا": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "الالاذان": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "الالخسر": {
+    "root": "خ.س.ر",
+    "meaning": "lose, be a loser"
+  },
+  "الاليجدون": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الالبشر": {
+    "root": "ب.ش.ر",
+    "meaning": "give good news"
+  },
+  "الالرفعه": {
+    "root": "ر.ف.ع",
+    "meaning": "raise, elevate"
+  },
+  "الاليشهد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "الالامين": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الالاكل": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "الالفسق": {
+    "root": "ف.س.ق",
+    "meaning": "rebel, transgress"
+  },
+  "الاللين": {
+    "root": "ل.ي.ن",
+    "meaning": "soft, gentle"
+  },
+  "الاليملك": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "الالنبا": {
+    "root": "ن.ب.أ",
+    "meaning": "news, tidings"
+  },
+  "الاليدك": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الالتاب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "الاليعذب": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "الالحكم": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الالوليكم": {
+    "root": "و.ل.ي",
+    "meaning": "govern, be friend"
+  },
+  "الاليد": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الالجنت": {
+    "root": "ج.ن.ة",
+    "meaning": "paradise, garden"
+  },
+  "الالسا": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "الالبلغ": {
+    "root": "ب.ل.غ",
+    "meaning": "reach, convey"
+  },
+  "الاللسان": {
+    "root": "ل.س.ان",
+    "meaning": "tongue"
+  },
+  "الالامره": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "الالوجدنا": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الالاقول": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالسكن": {
+    "root": "س.ك.ن",
+    "meaning": "peace, tranquility"
+  },
+  "الالالهه": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الاليفلح": {
+    "root": "ف.ل.ح",
+    "meaning": "prosper, succeed"
+  },
+  "الالمشركين": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "الالبدا": {
+    "root": "ب.د.أ",
+    "meaning": "begin, start"
+  },
+  "الالكبر": {
+    "root": "ك.ب.ر",
+    "meaning": "be great, pride"
+  },
+  "الالنسوا": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "الالفرحوا": {
+    "root": "ف.ر.ح",
+    "meaning": "rejoice, happiness"
+  },
+  "الالسلم": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الالاعبد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الالضللت": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الاليابس": {
+    "root": "ي.ب.س",
+    "meaning": "dry, withered"
+  },
+  "الالتوفته": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "الاليبعث": {
+    "root": "ب.ع.ث",
+    "meaning": "resurrect, send forth"
+  },
+  "الالملكوت": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "الالاحب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "الالعلما": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الالنشا": {
+    "root": "ن.ش.أ",
+    "meaning": "grow up, bring up"
+  },
+  "الالابصر": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "الالعملهم": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الالجات": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالنبي": {
+    "root": "ن.ب.ي",
+    "meaning": "prophet"
+  },
+  "الالظهر": {
+    "root": "ظ.ه.ر",
+    "meaning": "apparent, clear"
+  },
+  "الالرسل": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "الالصغار": {
+    "root": "ص.غ.ر",
+    "meaning": "be small"
+  },
+  "الالصدره": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "الاللقا": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "الالعملوا": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الالبطون": {
+    "root": "ب.ط.ن",
+    "meaning": "belly, stomach"
+  },
+  "الاللحم": {
+    "root": "ل.ح.م",
+    "meaning": "flesh, meat"
+  },
+  "الالبطن": {
+    "root": "ب.ط.ن",
+    "meaning": "belly, stomach"
+  },
+  "الاليجزي": {
+    "root": "ج.ز.ى",
+    "meaning": "reward, recompense"
+  },
+  "الالشريك": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "الالملكين": {
+    "root": "م.ل.ك",
+    "meaning": "own, possess, kingdom"
+  },
+  "الاليامر": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "الالوجدتم": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الالنعم": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "الالاغني": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "الالادعوا": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الالخبث": {
+    "root": "خ.ب.ث",
+    "meaning": "bad, evil"
+  },
+  "الاليعبد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الالالجبال": {
+    "root": "ج.ب.ل",
+    "meaning": "mountain"
+  },
+  "الالبعثنا": {
+    "root": "ب.ع.ث",
+    "meaning": "resurrect, send forth"
+  },
+  "الاليده": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الالاذن": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "الالتجلي": {
+    "root": "ج.ل.ي",
+    "meaning": "clear, plain"
+  },
+  "الالرجع": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الالرحمتك": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "الالارحم": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "الالفعل": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "الالهادي": {
+    "root": "ه.د.ي",
+    "meaning": "guide, guidance"
+  },
+  "الالعباد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الالكره": {
+    "root": "ك.ر.ه",
+    "meaning": "hate, detest"
+  },
+  "الاللقيتم": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "الالحسنا": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "الالشر": {
+    "root": "ش.ر",
+    "meaning": "evil, bad"
+  },
+  "الالحي": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "الالعدو": {
+    "root": "ع.د.و",
+    "meaning": "enemy"
+  },
+  "الالحسبك": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "الالعده": {
+    "root": "ع.د.و",
+    "meaning": "enemy"
+  },
+  "الالنصره": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "الالكلمه": {
+    "root": "ك.ل.م",
+    "meaning": "speak, word"
+  },
+  "الالكفرتم": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالحسبهم": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "الالاستغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "الالفرح": {
+    "root": "ف.ر.ح",
+    "meaning": "rejoice, happiness"
+  },
+  "الالحزنا": {
+    "root": "ح.ز.ن",
+    "meaning": "grieve, sorrow"
+  },
+  "الالعملكم": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الالتقوي": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "الالبنوا": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الالاستغفار": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "الالنظر": {
+    "root": "ن.ظ.ر",
+    "meaning": "look, gaze"
+  },
+  "الالانذر": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "الالياكل": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "الالذله": {
+    "root": "ذ.ل.ل",
+    "meaning": "humble, submissive"
+  },
+  "الالسييه": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "الالفسقوا": {
+    "root": "ف.س.ق",
+    "meaning": "rebel, transgress"
+  },
+  "الاليغني": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "الالاعمل": {
+    "root": "ع.م.ل",
+    "meaning": "work, deed, act"
+  },
+  "الالنوح": {
+    "root": "ن.و.ح",
+    "meaning": "Noah"
+  },
+  "الالجيتم": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الاليقضي": {
+    "root": "ق.ض.ى",
+    "meaning": "decide, decree, fulfill"
+  },
+  "الاليونس": {
+    "root": "و.ن.س",
+    "meaning": "Jonah"
+  },
+  "الالكبير": {
+    "root": "ك.ب.ر",
+    "meaning": "be great, pride"
+  },
+  "الالبادي": {
+    "root": "ب.د.أ",
+    "meaning": "begin, start"
+  },
+  "الالابنه": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الالقوه": {
+    "root": "ق.و.ي",
+    "meaning": "strong, powerful"
+  },
+  "الالقولك": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الاللوط": {
+    "root": "ل.و.ط",
+    "meaning": "Lot"
+  },
+  "الالهود": {
+    "root": "ه.و.د",
+    "meaning": "Hud"
+  },
+  "الالعطا": {
+    "root": "ع.ط.ى",
+    "meaning": "give, grant"
+  },
+  "الالخلقهم": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "الاليرجع": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الاليوسف": {
+    "root": "ي.س.ف",
+    "meaning": "Joseph"
+  },
+  "الالنجا": {
+    "root": "ن.ج.و",
+    "meaning": "confer secretly"
+  },
+  "الالارجع": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الالوجدوا": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الالفعلتم": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "الالبصيره": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "الالرفع": {
+    "root": "ر.ف.ع",
+    "meaning": "raise, elevate"
+  },
+  "الاليسجد": {
+    "root": "س.ج.د",
+    "meaning": "prostrate, worship"
+  },
+  "الالاوديه": {
+    "root": "و.اد.ي",
+    "meaning": "valley"
+  },
+  "الالحكما": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الالكفي": {
+    "root": "ك.ف.ى",
+    "meaning": "suffice, enough"
+  },
+  "الالضلل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الالالبعيد": {
+    "root": "ب.ع.د",
+    "meaning": "be far, distant"
+  },
+  "الاليضيق": {
+    "root": "ض.ي.ق",
+    "meaning": "be narrow, distressed"
+  },
+  "الالاتي": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالقصد": {
+    "root": "ق.ص.د",
+    "meaning": "intend, direct, purpose"
+  },
+  "الالالهكم": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الالرسولا": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "الاليموت": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "الالجعلتم": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الالشرح": {
+    "root": "ش.ر.ح",
+    "meaning": "expand, explain"
+  },
+  "الالتاتي": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالياتيها": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الاللباس": {
+    "root": "ل.ب.س",
+    "meaning": "wear, clothe"
+  },
+  "الالاقرا": {
+    "root": "ق.ر.أ",
+    "meaning": "read, recite"
+  },
+  "الاليكبر": {
+    "root": "ك.ب.ر",
+    "meaning": "be great, pride"
+  },
+  "الالضعف": {
+    "root": "ض.ع.ف",
+    "meaning": "weak, feeble"
+  },
+  "الالينشر": {
+    "root": "ن.ش.ر",
+    "meaning": "scatter, spread"
+  },
+  "الالحكمه": {
+    "root": "ح.ك.م",
+    "meaning": "judge, rule, wisdom"
+  },
+  "الالالوجوه": {
+    "root": "و.ج.ه",
+    "meaning": "face, direction"
+  },
+  "الالاتت": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالصاحبه": {
+    "root": "ص.ح.ب",
+    "meaning": "companion, friend"
+  },
+  "الالينقض": {
+    "root": "ن.ق.ض",
+    "meaning": "break, violate"
+  },
+  "الالنزلا": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "الالالعظم": {
+    "root": "ع.ظ.م",
+    "meaning": "bone"
+  },
+  "الالالراس": {
+    "root": "ر.أ.س",
+    "meaning": "head"
+  },
+  "الاليحيي": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "الالولد": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "الالعبد": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الالمشهد": {
+    "root": "ش.ه.د",
+    "meaning": "witness, testify"
+  },
+  "الالاسمع": {
+    "root": "س.م.ع",
+    "meaning": "hear, listen"
+  },
+  "الالنبيا": {
+    "root": "ن.ب.ي",
+    "meaning": "prophet"
+  },
+  "الاليبصر": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "الاليخشي": {
+    "root": "خ.ش.ي",
+    "meaning": "fear, be conscious"
+  },
+  "الالطغي": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "الاليطغي": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "الالينسي": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "الاليحشر": {
+    "root": "ح.ش.ر",
+    "meaning": "gather, resurrect"
+  },
+  "الالشجره": {
+    "root": "ش.ج.ر",
+    "meaning": "tree"
+  },
+  "الالالهتكم": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الالمبارك": {
+    "root": "ب.ر.ك",
+    "meaning": "blessing, abundance"
+  },
+  "الالنجي": {
+    "root": "ن.ج.و",
+    "meaning": "confer secretly"
+  },
+  "الالزوجه": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "الالزوج": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "الالمكرم": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "الالكفور": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الاليلقي": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "الالينطق": {
+    "root": "ن.ط.ق",
+    "meaning": "speak, tongue"
+  },
+  "الالضالين": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الالتواب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "الاليذهب": {
+    "root": "ذ.ه.ب",
+    "meaning": "go, depart"
+  },
+  "الالحسنت": {
+    "root": "ح.س.ن",
+    "meaning": "beautiful, good"
+  },
+  "الالكريم": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "الالعبدت": {
+    "root": "ع.ب.د",
+    "meaning": "worship, serve"
+  },
+  "الالشعيب": {
+    "root": "ش.ع.ب",
+    "meaning": "Shuayb"
+  },
+  "الالمنطق": {
+    "root": "ن.ط.ق",
+    "meaning": "speak, tongue"
+  },
+  "الالوجدت": {
+    "root": "و.ج.د",
+    "meaning": "find, discover"
+  },
+  "الالشكر": {
+    "root": "ش.ك.ر",
+    "meaning": "thank, grateful"
+  },
+  "الاليشكر": {
+    "root": "ش.ك.ر",
+    "meaning": "thank, grateful"
+  },
+  "الالعلمهم": {
+    "root": "ع.ل.م",
+    "meaning": "know, knowledge"
+  },
+  "الالصنع": {
+    "root": "ص.ن.ع",
+    "meaning": "make, manufacture"
+  },
+  "الالحسب": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "الاليفرح": {
+    "root": "ف.ر.ح",
+    "meaning": "rejoice, happiness"
+  },
+  "الالينصر": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "الالايدي": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الالوالد": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "الالمولود": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "الالوالده": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "الالقويا": {
+    "root": "ق.و.ي",
+    "meaning": "strong, powerful"
+  },
+  "الاليقنت": {
+    "root": "ق.ن.ت",
+    "meaning": "obey, worship"
+  },
+  "الالزوجك": {
+    "root": "ز.و.ج",
+    "meaning": "spouse, pair"
+  },
+  "الاليحزن": {
+    "root": "ح.ز.ن",
+    "meaning": "grieve, sorrow"
+  },
+  "الالليالي": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "الالنذير": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "الالجاعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الالعمره": {
+    "root": "ع.م.ر",
+    "meaning": "life, age"
+  },
+  "الالشكور": {
+    "root": "ش.ك.و",
+    "meaning": "complain"
+  },
+  "الالكفرهم": {
+    "root": "ك.ف.ر",
+    "meaning": "disbelieve, conceal"
+  },
+  "الالغفر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "الالسليم": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الالذاهب": {
+    "root": "ذ.ه.ب",
+    "meaning": "go, depart"
+  },
+  "الالافعل": {
+    "root": "ف.ع.ل",
+    "meaning": "do, act, cause"
+  },
+  "الاليخلقكم": {
+    "root": "خ.ل.ق",
+    "meaning": "create, creation"
+  },
+  "الالنسي": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "الالقنت": {
+    "root": "ق.ن.ت",
+    "meaning": "obey, worship"
+  },
+  "الاللان": {
+    "root": "ل.ي.ن",
+    "meaning": "soft, gentle"
+  },
+  "الالمضل": {
+    "root": "ض.ل.ل",
+    "meaning": "go astray, mislead"
+  },
+  "الالغافر": {
+    "root": "غ.ف.ر",
+    "meaning": "forgive, pardon"
+  },
+  "الاليظهر": {
+    "root": "ظ.ه.ر",
+    "meaning": "apparent, clear"
+  },
+  "الالاعدا": {
+    "root": "ع.د.و",
+    "meaning": "enemy"
+  },
+  "الالرجعت": {
+    "root": "ر.ج.ع",
+    "meaning": "return, repent"
+  },
+  "الالشرع": {
+    "root": "ش.ر.ع",
+    "meaning": "legislate, prescribe"
+  },
+  "الاليبشر": {
+    "root": "ب.ش.ر",
+    "meaning": "give good news"
+  },
+  "الاليسكن": {
+    "root": "س.ك.ن",
+    "meaning": "peace, tranquility"
+  },
+  "الاليهب": {
+    "root": "و.ه.ب",
+    "meaning": "give, bestow"
+  },
+  "الاليخسر": {
+    "root": "خ.س.ر",
+    "meaning": "lose, be a loser"
+  },
+  "الالحشر": {
+    "root": "ح.ش.ر",
+    "meaning": "gather, resurrect"
+  },
+  "الالناصر": {
+    "root": "ن.ص.ر",
+    "meaning": "help, victory"
+  },
+  "الالنزلت": {
+    "root": "ن.ز.ل",
+    "meaning": "descend, send down"
+  },
+  "الالفاسق": {
+    "root": "ف.س.ق",
+    "meaning": "rebel, transgress"
+  },
+  "الالحبل": {
+    "root": "ح.ب.ل",
+    "meaning": "rope, cord"
+  },
+  "الالدنا": {
+    "root": "ق.ر.ب",
+    "meaning": "be near, approach"
+  },
+  "الالقوي": {
+    "root": "ق.و.ي",
+    "meaning": "strong, powerful"
+  },
+  "الاللينه": {
+    "root": "ل.ي.ن",
+    "meaning": "soft, gentle"
+  },
+  "الاليدعي": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الالظهير": {
+    "root": "ظ.ه.ر",
+    "meaning": "apparent, clear"
+  },
+  "الالنخل": {
+    "root": "ن.خ.ل",
+    "meaning": "palm tree"
+  },
+  "الالدعوت": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الالالمسلمون": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "الالغيبه": {
+    "root": "غ.ي.ب",
+    "meaning": "absent, unseen"
+  },
+  "الالالنعمه": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "الالعسير": {
+    "root": "ع.س.ر",
+    "meaning": "hardship, difficulty"
+  },
+  "الالفكر": {
+    "root": "ف.ك.ر",
+    "meaning": "think, ponder"
+  },
+  "الالصلي": {
+    "root": "ص.ل.و",
+    "meaning": "pray, blessing"
+  },
+  "الاليشرب": {
+    "root": "ش.ر.ب",
+    "meaning": "drink"
+  },
+  "الالشكورا": {
+    "root": "ش.ك.ر",
+    "meaning": "thank, grateful"
+  },
+  "الالمنذر": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "الالكرام": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "الالنعيم": {
+    "root": "ن.ع.م",
+    "meaning": "blessing, favor"
+  },
+  "الالمحفوظ": {
+    "root": "ح.ف.ظ",
+    "meaning": "guard, memorize"
+  },
+  "الاليسر": {
+    "root": "ي.س.ر",
+    "meaning": "ease, prosperity"
+  },
+  "الالطغوا": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "الالبخل": {
+    "root": "ب.خ.ل",
+    "meaning": "stingy, miserly"
+  },
+  "الاليسرا": {
+    "root": "ي.س.ر",
+    "meaning": "ease, prosperity"
+  },
+  "الالينهي": {
+    "root": "ن.ه.ي",
+    "meaning": "forbid, prohibit"
+  },
+  "الاليحسب": {
+    "root": "ح.س.ب",
+    "meaning": "calculate, reckon"
+  },
+  "الالماكول": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "الاليدا": {
+    "root": "ي.د",
+    "meaning": "hand"
+  },
+  "الاليلد": {
+    "root": "و.ل.د",
+    "meaning": "give birth, child"
+  },
+  "الالربب": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الالصلو": {
+    "root": "ص.ل.و",
+    "meaning": "pray, blessing"
+  },
+  "الالزكو": {
+    "root": "ز.ك.و",
+    "meaning": "purify, charity"
+  },
+  "الالتوب": {
+    "root": "ت.و.ب",
+    "meaning": "repent, return"
+  },
+  "الالرحم": {
+    "root": "ر.ح.م",
+    "meaning": "mercy, compassion"
+  },
+  "الالعذب": {
+    "root": "ع.ذ.ب",
+    "meaning": "punish, torment"
+  },
+  "الالعفو": {
+    "root": "ع.ف.و",
+    "meaning": "pardon, forgive"
+  },
+  "الالجزى": {
+    "root": "ج.ز.ى",
+    "meaning": "reward, recompense"
+  },
+  "الالدعو": {
+    "root": "د.ع.و",
+    "meaning": "call, invoke"
+  },
+  "الالبصر": {
+    "root": "ب.ص.ر",
+    "meaning": "see, sight"
+  },
+  "الالنسى": {
+    "root": "ن.س.ى",
+    "meaning": "forget"
+  },
+  "الالجاء": {
+    "root": "ج.ا.ء",
+    "meaning": "come, bring"
+  },
+  "الالبرأ": {
+    "root": "ب.ر.أ",
+    "meaning": "create, fashion"
+  },
+  "الالطغى": {
+    "root": "ط.غ.ى",
+    "meaning": "transgress, tyrannize"
+  },
+  "الالنقض": {
+    "root": "ن.ق.ض",
+    "meaning": "break, violate"
+  },
+  "الالأثم": {
+    "root": "أ.ث.م",
+    "meaning": "sin, crime"
+  },
+  "الالخطئ": {
+    "root": "خ.ط.ئ",
+    "meaning": "err, sin"
+  },
+  "الالنطق": {
+    "root": "ن.ط.ق",
+    "meaning": "speak, tongue"
+  },
+  "الاللقى": {
+    "root": "ل.ق.ى",
+    "meaning": "meet, find"
+  },
+  "الالعزز": {
+    "root": "ع.ز.ز",
+    "meaning": "honor, might"
+  },
+  "الالقهر": {
+    "root": "ق.ه.ر",
+    "meaning": "subdue, overpower"
+  },
+  "الالغلب": {
+    "root": "غ.ل.ب",
+    "meaning": "overcome, defeat"
+  },
+  "الالفلح": {
+    "root": "ف.ل.ح",
+    "meaning": "prosper, succeed"
+  },
+  "الالموت": {
+    "root": "م.و.ت",
+    "meaning": "die, death"
+  },
+  "الالحيو": {
+    "root": "ح.ي.و",
+    "meaning": "live, life"
+  },
+  "الالنشر": {
+    "root": "ن.ش.ر",
+    "meaning": "scatter, spread"
+  },
+  "الالصحب": {
+    "root": "ص.ح.ب",
+    "meaning": "companion, friend"
+  },
+  "الالكفى": {
+    "root": "ك.ف.ى",
+    "meaning": "suffice, enough"
+  },
+  "الالغنى": {
+    "root": "غ.ن.ى",
+    "meaning": "be rich, suffice"
+  },
+  "الالعسر": {
+    "root": "ع.س.ر",
+    "meaning": "hardship, difficulty"
+  },
+  "الالقبح": {
+    "root": "ق.ب.ح",
+    "meaning": "ugly, bad"
+  },
+  "الالطيب": {
+    "root": "ط.ي.ب",
+    "meaning": "good, pure"
+  },
+  "الالسوء": {
+    "root": "س.و.ء",
+    "meaning": "bad, evil"
+  },
+  "الالفجر": {
+    "root": "ف.ج.ر",
+    "meaning": "wicked, disbeliever"
+  },
+  "الالتقي": {
+    "root": "ت.ق.ي",
+    "meaning": "pious, God-fearing"
+  },
+  "الالشقى": {
+    "root": "ش.ق.ى",
+    "meaning": "wretched, miserable"
+  },
+  "الالسعي": {
+    "root": "س.ع.ي",
+    "meaning": "happy, fortunate"
+  },
+  "الالسجد": {
+    "root": "س.ج.د",
+    "meaning": "prostrate, worship"
+  },
+  "الالركع": {
+    "root": "ر.ك.ع",
+    "meaning": "bow, submit"
+  },
+  "الالذلل": {
+    "root": "ذ.ل.ل",
+    "meaning": "humble, submissive"
+  },
+  "الالصغر": {
+    "root": "ص.غ.ر",
+    "meaning": "be small"
+  },
+  "الالضيق": {
+    "root": "ض.ي.ق",
+    "meaning": "be narrow, distressed"
+  },
+  "الالحزن": {
+    "root": "ح.ز.ن",
+    "meaning": "grieve, sorrow"
+  },
+  "الالنذر": {
+    "root": "ن.ذ.ر",
+    "meaning": "warn, forewarn"
+  },
+  "الالقضى": {
+    "root": "ق.ض.ى",
+    "meaning": "decide, decree, fulfill"
+  },
+  "الالأنثى": {
+    "root": "أ.ن.ث.ى",
+    "meaning": "female"
+  },
+  "الالبنى": {
+    "root": "ب.ن.ى",
+    "meaning": "build, son"
+  },
+  "الالنشأ": {
+    "root": "ن.ش.أ",
+    "meaning": "grow up, bring up"
+  },
+  "الالأمن": {
+    "root": "أ.م.ن",
+    "meaning": "believe, be safe"
+  },
+  "الالطول": {
+    "root": "ط.و.ل",
+    "meaning": "length, duration"
+  },
+  "الالقصر": {
+    "root": "ق.ص.ر",
+    "meaning": "shorten, abbreviate"
+  },
+  "الالعمر": {
+    "root": "ع.م.ر",
+    "meaning": "life, age"
+  },
+  "الالشكو": {
+    "root": "ش.ك.و",
+    "meaning": "complain"
+  },
+  "الالجهد": {
+    "root": "ج.ه.د",
+    "meaning": "strive, effort"
+  },
+  "الالنفق": {
+    "root": "ن.ف.ق",
+    "meaning": "spend, exhaust"
+  },
+  "الالسخو": {
+    "root": "س.خ.و",
+    "meaning": "generous, liberal"
+  },
+  "الالكرم": {
+    "root": "ك.ر.م",
+    "meaning": "noble, generous"
+  },
+  "الالرفق": {
+    "root": "ر.ف.ق",
+    "meaning": "gentle, kind"
+  },
+  "الالجهل": {
+    "root": "ج.ه.ل",
+    "meaning": "ignorance, foolishness"
+  },
+  "الالحبب": {
+    "root": "ح.ب.ب",
+    "meaning": "love, dear, beloved"
+  },
+  "الالبغض": {
+    "root": "ب.غ.ض",
+    "meaning": "hate, enmity"
+  },
+  "الالأمر": {
+    "root": "أ.م.ر",
+    "meaning": "command, order"
+  },
+  "الالنهي": {
+    "root": "ن.ه.ي",
+    "meaning": "forbid, prohibit"
+  },
+  "الالمنح": {
+    "root": "م.ن.ح",
+    "meaning": "grant, bestow"
+  },
+  "الالعطى": {
+    "root": "ع.ط.ى",
+    "meaning": "give, grant"
+  },
+  "الالأكل": {
+    "root": "أ.ك.ل",
+    "meaning": "eat, consume"
+  },
+  "الاللبس": {
+    "root": "ل.ب.س",
+    "meaning": "wear, clothe"
+  },
+  "الالحمد": {
+    "root": "ح.م.د",
+    "meaning": "praise, commend"
+  },
+  "الالثنى": {
+    "root": "ث.ن.ى",
+    "meaning": "praise, extol"
+  },
+  "الالبرك": {
+    "root": "ب.ر.ك",
+    "meaning": "blessing, abundance"
+  },
+  "الالخبر": {
+    "root": "خ.ب.ر",
+    "meaning": "news, information"
+  },
+  "الالنبأ": {
+    "root": "ن.ب.أ",
+    "meaning": "news, tidings"
+  },
+  "الالقرأ": {
+    "root": "ق.ر.أ",
+    "meaning": "read, recite"
+  },
+  "الالتلو": {
+    "root": "ت.ل.و",
+    "meaning": "recite, follow"
+  },
+  "الالوعظ": {
+    "root": "و.ع.ظ",
+    "meaning": "admonish, sermon"
+  },
+  "الالدرس": {
+    "root": "د.ر.س",
+    "meaning": "study, lesson"
+  },
+  "الالبدأ": {
+    "root": "ب.د.أ",
+    "meaning": "begin, start"
+  },
+  "الالشرك": {
+    "root": "ش.ر.ك",
+    "meaning": "partner, polytheism"
+  },
+  "الالوحد": {
+    "root": "و.ح.د",
+    "meaning": "one, alone"
+  },
+  "الالليل": {
+    "root": "ل.ي.ل",
+    "meaning": "night"
+  },
+  "الالنهر": {
+    "root": "ن.ه.ر",
+    "meaning": "river, day"
+  },
+  "الالماء": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الالجنة": {
+    "root": "ج.ن.ة",
+    "meaning": "paradise, garden"
+  },
+  "الالجبل": {
+    "root": "ج.ب.ل",
+    "meaning": "mountain"
+  },
+  "الالوادي": {
+    "root": "و.اد.ي",
+    "meaning": "valley"
+  },
+  "الالصحراء": {
+    "root": "ص.ح.ر.ا.ء",
+    "meaning": "desert, plain"
+  },
+  "الالرأس": {
+    "root": "ر.أ.س",
+    "meaning": "head"
+  },
+  "الالأذن": {
+    "root": "أ.ذ.ن",
+    "meaning": "ear"
+  },
+  "الالفم": {
+    "root": "ف.م",
+    "meaning": "mouth"
+  },
+  "الالشفة": {
+    "root": "ش.ف.ة",
+    "meaning": "lip"
+  },
+  "الالركب": {
+    "root": "ر.ك.ب",
+    "meaning": "ride, mount, knee"
+  },
+  "الالصدر": {
+    "root": "ص.د.ر",
+    "meaning": "chest, breast"
+  },
+  "الالذنب": {
+    "root": "ذ.ن.ب",
+    "meaning": "tail, sin"
+  },
+  "الالشعر": {
+    "root": "ش.ع.ر",
+    "meaning": "hair"
+  },
+  "الالدم": {
+    "root": "د.م",
+    "meaning": "blood"
+  },
+  "الالرطب": {
+    "root": "ر.ط.ب",
+    "meaning": "moist, fresh"
+  },
+  "الاليبس": {
+    "root": "ي.ب.س",
+    "meaning": "dry, withered"
+  },
+  "الالجمد": {
+    "root": "ج.م.د",
+    "meaning": "freeze, congeal"
+  },
+  "الالقرب": {
+    "root": "ق.ر.ب",
+    "meaning": "be near, approach"
+  },
+  "الالنجو": {
+    "root": "ن.ج.و",
+    "meaning": "confer secretly"
+  },
+  "الالخفي": {
+    "root": "خ.ف.ي",
+    "meaning": "hidden, secret"
+  },
+  "الالجلي": {
+    "root": "ج.ل.ي",
+    "meaning": "clear, plain"
+  },
+  "الالرهب": {
+    "root": "ر.ه.ب",
+    "meaning": "awe, dread"
+  },
+  "الالشكل": {
+    "root": "ش.ك.ل",
+    "meaning": "problem, matter"
+  },
+  "الالوالله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الالبالله": {
+    "root": "ا.ل.ه",
+    "meaning": "God, deity"
+  },
+  "الالكذلك": {
+    "root": "ذ.ل.ك",
+    "meaning": "that (f)"
+  },
+  "الالولا": {
+    "root": "ل.ا",
+    "meaning": "no, not"
+  },
+  "الالفلا": {
+    "root": "ل.ا",
+    "meaning": "no, not"
+  },
+  "الالومن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الالفمن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الاللمن": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الالوهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "الالبهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "الاللهم": {
+    "root": "ه.م",
+    "meaning": "they"
+  },
+  "الالوعلي": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الالوان": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالفان": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالوفي": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "الاللفي": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "الالوقالوا": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالوانا": {
+    "root": "ا.ن.ا",
+    "meaning": "I"
+  },
+  "الالوما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الالفما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الالبما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الالكما": {
+    "root": "م.ا.ء",
+    "meaning": "water"
+  },
+  "الالبكل": {
+    "root": "ك.ل",
+    "meaning": "all"
+  },
+  "الالوجعل": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الالوهو": {
+    "root": "ه.و",
+    "meaning": "he"
+  },
+  "الالفهو": {
+    "root": "ه.و",
+    "meaning": "he"
+  },
+  "الالوقال": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالفقال": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالكانت": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "الالولما": {
+    "root": "ل.م.ا",
+    "meaning": "when"
+  },
+  "الالفلما": {
+    "root": "ل.م.ا",
+    "meaning": "when"
+  },
+  "الالوكان": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "الالويقولون": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالولو": {
+    "root": "ل.و",
+    "meaning": "if"
+  },
+  "الالوجعلنا": {
+    "root": "ج.ع.ل",
+    "meaning": "make, place, put"
+  },
+  "الالواذ": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "الالواذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "الالفاذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "الالربي": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الالمنهم": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الالمنكم": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الالمنه": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الالمنها": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الالعليهم": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الالعليكم": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الالعلينا": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الالعليه": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الالعليها": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الالعليك": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "الالانهم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالانكم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالانه": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالانك": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالاني": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالانتم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالفيه": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "الالفيها": {
+    "root": "ف.ي",
+    "meaning": "in, at"
+  },
+  "الالاليهم": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الالاليه": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الالاليك": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الالربكما": {
+    "root": "ر.ب.ب",
+    "meaning": "lord, master"
+  },
+  "الالقالت": {
+    "root": "ق.و.ل",
+    "meaning": "say, speech"
+  },
+  "الالبينهم": {
+    "root": "ب.ي.ن",
+    "meaning": "clear, manifest, between"
+  },
+  "الالكانوا": {
+    "root": "ك.و.ن",
+    "meaning": "was"
+  },
+  "الالظلموا": {
+    "root": "ظ.ل.م",
+    "meaning": "oppress, wrong"
+  },
+  "الالبعضهم": {
+    "root": "ب.ع.ض",
+    "meaning": "some"
+  },
+  "الالينفقون": {
+    "root": "ن.ف.ق",
+    "meaning": "spend, exhaust"
+  },
+  "الالومنهم": {
+    "root": "م.ن",
+    "meaning": "from, who"
+  },
+  "الالوانه": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالبانهم": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "الالواليه": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "الالورسوله": {
+    "root": "ر.س.و.ل",
+    "meaning": "messenger, apostle"
+  },
+  "الاو": {
+    "root": "ا.و",
+    "meaning": "or"
+  },
+  "العن": {
+    "root": "ع.ن",
+    "meaning": "about, from"
+  },
+  "القد": {
+    "root": "ق.د",
+    "meaning": "indeed, already"
+  },
+  "الام": {
+    "root": "ا.م",
+    "meaning": "or (question)"
+  },
+  "اليوم": {
+    "root": "ي.و.م",
+    "meaning": "day"
+  },
+  "الوهي": {
+    "root": "و.ه.ي",
+    "meaning": "and she"
+  },
+  "البه": {
+    "root": "ب.ه",
+    "meaning": "with him"
+  },
+  "البها": {
+    "root": "ب.ه.ا",
+    "meaning": "with it (f)"
+  },
+  "اللنا": {
+    "root": "ل.ن.ا",
+    "meaning": "for us"
+  },
+  "اللكم": {
+    "root": "ل.ك.م",
+    "meaning": "for you (pl)"
+  },
+  "الفيكم": {
+    "root": "ف.ي.ك.م",
+    "meaning": "in you (pl)"
+  },
+  "الفيهم": {
+    "root": "ف.ي.ه.م",
+    "meaning": "in them"
+  },
+  "البكم": {
+    "root": "ب.ك.م",
+    "meaning": "with you (pl)"
+  },
+  "الاليكم": {
+    "root": "ا.ل.ي.ك.م",
+    "meaning": "to you (pl)"
+  },
+  "الالينا": {
+    "root": "ا.ل.ي.ن.ا",
+    "meaning": "to us"
+  },
+  "العنهم": {
+    "root": "ع.ن.ه.م",
+    "meaning": "about them"
+  },
+  "العنه": {
+    "root": "ع.ن.ه",
+    "meaning": "about him"
+  },
+  "العنها": {
+    "root": "ع.ن.ه.ا",
+    "meaning": "about it (f)"
+  },
+  "اللها": {
+    "root": "ل.ه.ا",
+    "meaning": "for it (f)"
+  },
+  "الاليها": {
+    "root": "ا.ل.ي.ه.ا",
+    "meaning": "to it (f)"
+  },
+  "الولقد": {
+    "root": "و.ل.ق.د",
+    "meaning": "and indeed"
+  },
+  "الففي": {
+    "root": "ف.ف.ي",
+    "meaning": "so in"
+  },
+  "الاوليك": {
+    "root": "ا.و.ل",
+    "meaning": "those"
+  },
+  "اليايها": {
+    "root": "ي.ا.ا.ي",
+    "meaning": "O you (f)"
+  },
+  "الكنت": {
+    "root": "ك.و.ن",
+    "meaning": "you were"
+  },
+  "الكنتم": {
+    "root": "ك.و.ن",
+    "meaning": "you (pl) were"
+  },
+  "الكنا": {
+    "root": "ك.و.ن",
+    "meaning": "we were"
+  },
+  "الحول": {
+    "root": "ح.و.ل",
+    "meaning": "around"
+  },
+  "اللكن": {
+    "root": "ل.ك.ن",
+    "meaning": "but"
+  },
+  "السبحان": {
+    "root": "س.ب.ح",
+    "meaning": "glory be"
+  },
+  "الكلا": {
+    "root": "ك.ل",
+    "meaning": "never"
+  },
+  "الانها": {
+    "root": "ا.ن",
+    "meaning": "indeed she"
+  },
+  "الاننا": {
+    "root": "ا.ن",
+    "meaning": "indeed we"
+  },
+  "الانما": {
+    "root": "ا.ن",
+    "meaning": "only"
+  },
+  "البلي": {
+    "root": "ب.ل",
+    "meaning": "yes"
+  },
+  "أرض": {
+    "root": "أ.ر.ض",
+    "meaning": "earth, land"
+  },
+  "كتاب": {
+    "root": "ك.ت.ب",
+    "meaning": "book, scripture"
+  },
+  "كتب": {
+    "root": "ك.ت.ب",
+    "meaning": "wrote, books"
+  },
+  "يكتب": {
+    "root": "ك.ت.ب",
+    "meaning": "writes"
+  },
+  "ارض": {
+    "root": "أ.ر.ض",
+    "meaning": "earth, land"
+  },
+  "بسم": {
+    "root": "ب.س.م",
+    "meaning": "in the name of"
+  },
+  "سماء": {
+    "root": "س.م.و",
+    "meaning": "sky, heaven"
+  },
+  "سموت": {
+    "root": "س.م.و",
+    "meaning": "heavens"
+  },
+  "حياة": {
+    "root": "ح.ي.و",
+    "meaning": "life"
+  },
+  "موسى": {
+    "root": "م.و.س",
+    "meaning": "Moses"
+  },
+  "عيسى": {
+    "root": "ع.ي.س",
+    "meaning": "Jesus"
+  },
+  "إبراهيم": {
+    "root": "أ.ب.ر",
+    "meaning": "Abraham"
+  },
+  "صالح": {
+    "root": "ص.ل.ح",
+    "meaning": "Salih"
+  },
+  "إسحاق": {
+    "root": "س.ح.ق",
+    "meaning": "Isaac"
+  },
+  "إسماعيل": {
+    "root": "س.م.ع",
+    "meaning": "Ishmael"
+  },
+  "سليمان": {
+    "root": "س.ل.م",
+    "meaning": "Solomon"
+  },
+  "آدم": {
+    "root": "أ.د.م",
+    "meaning": "Adam"
+  },
+  "إبليس": {
+    "root": "إ.ب.ل",
+    "meaning": "Iblis (Satan)"
+  },
+  "فرعون": {
+    "root": "ف.ر.ع",
+    "meaning": "Pharaoh"
+  },
+  "هارون": {
+    "root": "ه.ر.و",
+    "meaning": "Aaron"
+  },
+  "إليهم": {
+    "root": "ا.ل.ي.ه.م",
+    "meaning": "to them"
+  },
+  "إذ": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "إذا": {
+    "root": "ا.ذ",
+    "meaning": "when"
+  },
+  "إن": {
+    "root": "ا.ن",
+    "meaning": "indeed"
+  },
+  "أن": {
+    "root": "ا.ن",
+    "meaning": "that"
+  },
+  "على": {
+    "root": "ع.ل.ي",
+    "meaning": "on, upon"
+  },
+  "إلى": {
+    "root": "ا.ل.ي",
+    "meaning": "to, toward"
+  },
+  "حتى": {
+    "root": "ح.ت.ي",
+    "meaning": "until"
+  },
+  "عند": {
+    "root": "ع.ن.د",
+    "meaning": "at, with"
+  },
+  "الذي": {
+    "root": "ا.ل.ذ.ي",
+    "meaning": "which, who (m)"
+  },
+  "الذين": {
+    "root": "ا.ل.ذ.ي",
+    "meaning": "those who (m)"
+  },
+  "سنة": {
+    "root": "س.ن.ة",
+    "meaning": "year, way"
+  },
+  "شهر": {
+    "root": "ش.ه.ر",
+    "meaning": "month"
+  },
+  "نهار": {
+    "root": "ن.ه.ر",
+    "meaning": "daytime"
+  },
+  "حين": {
+    "root": "ح.ي.ن",
+    "meaning": "time, while"
+  },
+  "سمو": {
+    "root": "س.م.و",
+    "meaning": "sky, heaven"
+  },
+  "ابراهيم": {
+    "root": "أ.ب.ر",
+    "meaning": "Abraham"
+  },
+  "سما": {
+    "root": "س.م.و",
+    "meaning": "sky, heaven"
+  },
+  "حياه": {
+    "root": "ح.ي.و",
+    "meaning": "life"
+  },
+  "سماوت": {
+    "root": "س.م.و",
+    "meaning": "heavens"
+  }
+}

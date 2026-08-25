@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tajweed — Islam Academy</title>
+<link rel="stylesheet" href="../assets/css/academy.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
+  <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
+  <nav class="nav" id="main-nav"></nav>
+</div></header>
+
+<main class="container">
+  <h1 class="page-title">🎵 Tajweed Rules</h1>
+  <p class="page-sub">The science of beautiful, correct recitation (Hafs an Asim). Study a rule, then hear it applied in the reader.</p>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3>Before you recite</h3>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:10px">
+      <span class="quran-text" style="font-size:26px">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</span>
+      <span style="color:var(--ink-soft);font-size:13px">istiʿādha — seeking refuge</span>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:10px">
+      <span class="quran-text" style="font-size:26px">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+      <span style="color:var(--ink-soft);font-size:13px">basmalah — at surah start (except Surah 9)</span>
+    </div>
+  </div>
+
+  <div id="rules"></div>
+
+  <div class="card" style="margin-top:20px">
+    <h3>Practice loop</h3>
+    <p class="sub" style="margin-bottom:10px">1. Read the rule → 2. Open the reader on a short surah → 3. Recite aloud applying it → 4. Listen to Alafasy reciting the same ayah and compare.</p>
+    <a class="btn small gold" href="quran-reader.html?surah=78">Practice on Juz Amma →</a>
+  </div>
+</main>
+
+<footer class="site-footer">Islam Academy — Tajweed Track · Hafs an Asim</footer>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>
+(async function () {
+  const { el } = Academy;
+  const rules = await Academy.fetchJSON("../data/curriculum/tajweed.json");
+  const wrap = document.getElementById("rules");
+  rules.forEach(group => {
+    const card = el("div", {class:"card", style:"margin-bottom:16px"});
+    card.append(el("h3", null, group.title), el("p", {class:"sub"}, group.body));
+    group.rules.forEach(([name, desc, ex]) => {
+      card.append(el("div", {class:"tajweed-rule", style:"--twc:" + group.color},
+        el("h4", null, name),
+        el("p", {style:"font-size:14px;margin:2px 0"}, desc),
+        ex && ex !== "—" ? el("div", {class:"ex"}, ex) : null));
+    });
+    wrap.append(card);
+  });
+})();
+</script>
+</body>
+</html>

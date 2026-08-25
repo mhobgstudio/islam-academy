@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Practice — Islam Academy</title>
+<link rel="stylesheet" href="../assets/css/academy.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="../index.html"><div class="brand-mark">ق</div><div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
+  <nav class="nav" id="main-nav"></nav>
+</div></header>
+
+<main class="container">
+  <h1 class="page-title">📖 Reading Practice</h1>
+  <p class="page-sub">Practice reading Arabic with harakat, letter joining, and simple words.</p>
+
+  <!-- Harakat Drill -->
+  <div class="card" style="margin-bottom:20px">
+    <h2>〰️ Harakat (Vowel Marks) Drill</h2>
+    <p class="sub">Listen and identify each vowel mark. Click to hear.</p>
+    <div class="drill-vowel-grid" id="vowel-grid"></div>
+  </div>
+
+  <!-- Simple Words -->
+  <div class="card" style="margin-bottom:20px">
+    <h2>📝 Practice Words</h2>
+    <p class="sub">Read these common Arabic words. Tap to hear pronunciation.</p>
+    <div id="word-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px"></div>
+  </div>
+
+  <!-- Reading Exercise -->
+  <div class="card" style="margin-bottom:20px">
+    <h2>🎯 Reading Challenge</h2>
+    <p class="sub">Can you read these words without audio? Then check your answer.</p>
+    <div id="challenge-area"></div>
+  </div>
+</main>
+
+<footer class="site-footer"><span class="arabic" style="display:inline-block">رَبِّ زِدْنِي عِلْمًا</span></footer>
+
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>
+(function(){
+  const { el, speakLocal, addXP } = Academy;
+
+  // Harakat drill
+  const vowels = [
+    {mark:"َ",name:"Fatha",sound:"a",audio:"drills/fatha.mp3"},
+    {mark:"ُ",name:"Damma",sound:"u",audio:"drills/damma.mp3"},
+    {mark:"ِ",name:"Kasra",sound:"i",audio:"drills/kasra.mp3"},
+    {mark:"ْ",name:"Sukoon",sound:"(none)",audio:"drills/sukoon.mp3"},
+    {mark:"ّ",name:"Shadda",sound:"(double)",audio:"drills/shadda.mp3"},
+    {mark:"ً",name:"Fathatan",sound:"-an",audio:"drills/tanween-fath.mp3"},
+    {mark:"ٌ",name:"Dammatan",sound:"-un",audio:"drills/tanween-damm.mp3"},
+    {mark:"ٍ",name:"Kasratan",sound:"-in",audio:"drills/tanween-kasr.mp3"},
+  ];
+
+  const vowelGrid = document.getElementById("vowel-grid");
+  vowels.forEach(v => {
+    vowelGrid.append(el("div", {class:"vowel-card", onclick: function(){speakLocal(v.audio,this)}},
+      el("div", {class:"ar"}, `ب${v.mark}`),
+      el("div", {class:"lbl"}, `${v.name} — "${v.sound}"`)
+    ));
+  });
+
+  // Practice words
+  const words = [
+    {ar:"بَاب",en:"Door",pr:"baab"},{ar:"كِتَاب",en:"Book",pr:"kitaab"},
+    {ar:"مَاء",en:"Water",pr:"maa'"},{ar:"شَمْس",en:"Sun",pr:"shams"},
+    {ar:"قَمَر",en:"Moon",pr:"qamar"},{ar:"يَوْم",en:"Day",pr:"yawm"},
+    {ar:"لَيْل",en:"Night",pr:"layl"},{ar:"رَجُل",en:"Man",pr:"rajul"},
+    {ar:"مَرْأَة",en:"Woman",pr:"mar'ah"},{ar:"بَيْت",en:"House",pr:"bayt"},
+    {ar:"سَلَام",en:"Peace",pr:"salaam"},{ar:"نُور",en:"Light",pr:"noor"},
+    {ar:"صَلَاة",en:"Prayer",pr:"salaah"},{ar:"قُرْآن",en:"Quran",pr:"Qur'aan"},
+    {ar:"مَسْجِد",en:"Mosque",pr:"masjid"},{ar:"عِلْم",en:"Knowledge",pr:"'ilm"},
+    {ar:"كَلِمَة",en:"Word",pr:"kalimah"},{ar:"حَقّ",en:"Truth",pr:"haqq"},
+  ];
+
+  const wordGrid = document.getElementById("word-grid");
+  words.forEach(w => {
+    wordGrid.append(el("div", {class:"card", style:"text-align:center;cursor:pointer;padding:14px", onclick: function(){speakLocal("words/quran-core.mp3",this)}},
+      el("div", {class:"quran-text", style:"font-size:28px;margin-bottom:4px"}, w.ar),
+      el("div", {style:"font-size:13px;color:var(--ink-soft)"}, w.en),
+      el("div", {style:"font-size:11px;color:var(--gold-500);font-style:italic"}, w.pr)
+    ));
+  });
+
+  // Reading challenge
+  const challenges = [
+    {ar:"الْمَسْجِدُ كَبِيرٌ",en:"The mosque is big",hint:"al-masjido kabeerun"},
+    {ar:"الْكِتَابُ جَدِيدٌ",en:"The book is new",hint:"al-kitaabu jadeedun"},
+    {ar:"الشَّمْسُ مُشْرِقَةٌ",en:"The sun is rising",hint:"ash-shamsu mushriqatun"},
+    {ar:"بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",en:"In the name of God, the Most Merciful",hint:"bismillaahir-rahmaanir-raheem"},
+  ];
+
+  const challengeArea = document.getElementById("challenge-area");
+  let cIdx = 0;
+  function showChallenge() {
+    if(cIdx >= challenges.length) {
+      challengeArea.innerHTML = "<p style='color:var(--ok);font-weight:700;text-align:center'>✅ All challenges complete! Masha'Allah!</p>";
+      return;
+    }
+    const c = challenges[cIdx];
+    challengeArea.innerHTML = "";
+    challengeArea.append(
+      el("div", {class:"quran-text", style:"font-size:36px;text-align:center;margin:16px 0;cursor:pointer", onclick: function(){
+        this.nextElementSibling.style.display = this.nextElementSibling.style.display === "none" ? "" : "none";
+      }}, c.ar),
+      el("div", {style:"display:none;text-align:center;margin-bottom:12px"},
+        el("p", {style:"font-weight:700"}, c.en),
+        el("p", {class:"sub", style:"font-style:italic"}, c.hint)
+      ),
+      el("div", {style:"display:flex;gap:8px;justify-content:center"},
+        el("button", {class:"btn small ghost", onclick: () => {cIdx++;showChallenge();}}, "Next →"),
+        el("button", {class:"btn small", onclick: () => {addXP(10);cIdx++;showChallenge();}}, "✅ I got it!")
+      )
+    );
+  }
+  showChallenge();
+})();
+</script>
+</body>
+</html>

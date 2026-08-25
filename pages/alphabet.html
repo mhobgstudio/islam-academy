@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alphabet — Islam Academy</title>
+<link rel="stylesheet" href="../assets/css/academy.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="../index.html"><div class="brand-mark">ق</div><div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
+  <nav class="nav" id="main-nav"></nav>
+</div></header>
+
+<main class="container">
+  <h1 class="page-title">🔤 Arabic Alphabet</h1>
+  <p class="page-sub">All 28 letters with pronunciation, forms, and examples. Tap to hear.</p>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <h3>Letter Grid</h3>
+      <div class="alpha-grid" id="alpha-grid" style="margin-bottom:16px"></div>
+    </div>
+    <div class="card" id="detail-panel">
+      <p class="sub">← Tap a letter to see details</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">Look-Alike Families</h2>
+  <div class="grid cols-3" id="families"></div>
+</main>
+
+<footer class="site-footer"><span class="arabic" style="display:inline-block">رَبِّ زِدْنِي عِلْمًا</span></footer>
+
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>
+(async function(){
+  const { el, fetchJSON, speakLocal } = Academy;
+  const alphabet = await fetchJSON("../data/curriculum/alphabet.json");
+  const grid = document.getElementById("alpha-grid");
+  const detail = document.getElementById("detail-panel");
+
+  // Render grid
+  alphabet.forEach(letter => {
+    const card = el("div", {class:"alpha-card", onclick: () => {
+      grid.querySelectorAll(".alpha-card").forEach(c=>c.classList.remove("selected"));
+      card.classList.add("selected");
+      showDetail(letter);
+      speakLocal(letter.audio, card);
+    }},
+      el("div", {class:"glyph"}, letter.char),
+      el("div", {class:"name"}, letter.name)
+    );
+    grid.append(card);
+  });
+
+  function showDetail(l) {
+    detail.innerHTML = "";
+    detail.append(
+      el("div", {style:"display:flex;align-items:center;gap:16px;margin-bottom:16px"},
+        el("div", {class:"big-glyph", style:"font-size:80px;min-width:auto"}, l.char),
+        el("div", null,
+          el("h2", {style:"margin:0"}, `${l.name} (${l.char})`),
+          el("p", {class:"sub", style:"margin:4px 0"}, `Sound: "${l.translit}"`)
+        )
+      ),
+      el("h4", null, "Four Forms"),
+      el("div", {class:"forms-table", style:"margin-bottom:16px"},
+        ...Object.entries(l.forms).map(([pos,ch])=>
+          el("div", {class:"form-cell"},
+            el("div", {class:"ar"}, ch),
+            el("div", {class:"lbl"}, pos)
+          )
+        )
+      ),
+      el("h4", null, "Example"),
+      el("p", null, `${l.example.word} (${l.example.translit}) = "${l.example.meaning}"`),
+      l.non_connector ? el("p", {style:"color:var(--danger);font-size:13px"}, "⚠ Non-connecting letter") : null,
+      el("button", {class:"btn", style:"margin-top:12px", onclick: () => speakLocal(l.audio)}, "🔊 Listen Again")
+    );
+  }
+
+  // Look-alike families
+  const families = [
+    {name:"ب ت ث", desc:"One dot below, two above, three above", letters:alphabet.filter(l=>["ba","ta","tha"].includes(l.name))},
+    {name:"ج ح خ", desc:"Same shape, different dot positions", letters:alphabet.filter(l=>["jim","ha","kha"].includes(l.name))},
+    {name:"د ذ", desc:"Same shape, one has a dot", letters:alphabet.filter(l=>["dal","dhal"].includes(l.name))},
+    {name:"ر ز", desc:"Same shape, one has a dot", letters:alphabet.filter(l=>["ra","zay"].includes(l.name))},
+    {name:"س ش", desc:"Three teeth vs three teeth with dots", letters:alphabet.filter(l=>["sin","shin"].includes(l.name))},
+    {name:"ص ض", desc:"Emphatic S vs emphatic D", letters:alphabet.filter(l=>["sad","dad"].includes(l.name))},
+    {name:"ط ظ", desc:"Emphatic T vs emphatic DH", letters:alphabet.filter(l=>["ta-heavy","zha-heavy"].includes(l.name))},
+    {name:"ع غ", desc:"Throat brothers", letters:alphabet.filter(l=>["ayn","ghayn"].includes(l.name))},
+  ];
+
+  const famGrid = document.getElementById("families");
+  families.forEach(f => {
+    if(!f.letters || !f.letters.length) return;
+    famGrid.append(el("div", {class:"card"},
+      el("h3", {style:"font-family:'Naskh',serif;font-size:24px;direction:rtl;text-align:center"},
+        f.letters.map(l=>l.char).join(" ")
+      ),
+      el("p", {class:"sub"}, f.desc),
+      el("div", {style:"display:flex;gap:8px;flex-wrap:wrap"},
+        ...f.letters.map(l =>
+          el("button", {class:"btn small ghost", onclick: () => speakLocal(l.audio)}, `${l.name}: ${l.translit}`)
+        )
+      )
+    ));
+  });
+})();
+</script>
+</body>
+</html>

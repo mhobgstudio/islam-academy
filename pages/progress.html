@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress — Islam Academy</title>
+<link rel="stylesheet" href="../assets/css/academy.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
+  <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
+  <nav class="nav" id="main-nav"></nav>
+</div></header>
+
+<main class="container">
+  <h1 class="page-title">📊 Your Progress</h1>
+  <p class="page-sub">Everything is stored locally in this browser.</p>
+
+  <div class="stat-row" id="stats"></div>
+
+  <h2 class="section-title">Lesson scores</h2>
+  <div class="card" id="lesson-scores"></div>
+
+  <h2 class="section-title">Vocabulary memory</h2>
+  <div class="card" id="vocab-stats"></div>
+
+  <div style="margin-top:30px">
+    <button class="btn ghost small" id="export-btn">⬇ Export progress (JSON)</button>
+    <button class="btn ghost small" id="reset-btn" style="color:var(--danger)">Reset everything</button>
+  </div>
+</main>
+
+<footer class="site-footer">Islam Academy</footer>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>
+(async function () {
+  const { el } = Academy;
+  const levels = await Academy.fetchJSON("../data/curriculum/levels.json");
+  const decks = await Academy.fetchJSON("../data/curriculum/decks.json");
+  const allLessons = Object.values(levels).flatMap(l => l.lessons);
+  const done = Object.keys(Academy.state.lessonsDone).length;
+
+  document.getElementById("stats").append(
+    el("div", {class:"stat"}, el("b", null, String(Academy.state.xp)), el("span", null, "Total XP")),
+    el("div", {class:"stat"}, el("b", null, String(Academy.state.streak.count)), el("span", null, "Day streak")),
+    el("div", {class:"stat"}, el("b", null, done + "/" + allLessons.length), el("span", null, "Lessons")),
+    el("div", {class:"stat"}, el("b", null, String(Object.keys(Academy.state.srs).length)), el("span", null, "Cards touched")),
+    el("div", {class:"stat"}, el("b", null, String((Academy.state.hifz.done||[]).length) + "/30"), el("span", null, "Juz memorized")),
+  );
+
+  const ls = document.getElementById("lesson-scores");
+  let any = false;
+  Object.entries(levels).forEach(([num, lv]) => {
+    lv.lessons.forEach(L => {
+      const s = Academy.lessonScore(L.id);
+      if (s == null) return;
+      any = true;
+      ls.append(el("div", {class:"lesson-row"},
+        el("span", {class:"badge"}, "L" + num),
+        el("div", null, el("div", {class:"t"}, L.title)),
+        el("div", {class:"grow"}),
+        el("b", {style:"color:" + (s >= 70 ? "var(--ok)" : "var(--danger)")}, s + "%")));
+    });
+  });
+  if (!any) ls.append(el("p", {class:"sub"}, "Complete a lesson to see scores here."));
+
+  const vs = document.getElementById("vocab-stats");
+  Object.entries(decks).forEach(([id, d]) => {
+    const keys = d.words.map(w => id + "::" + w.ar);
+    const st = Academy.srsStats(keys);
+    vs.append(el("div", {class:"lesson-row"},
+      el("div", null, el("div", {class:"t"}, d.title),
+        el("div", {class:"d"}, st.total + " cards · " + st.due + " due · " + st.young + " learning · " + st.mature + " mature")),
+      el("div", {class:"grow"}),
+      el("a", {class:"btn small ghost", href:"vocabulary.html"}, "Study")));
+  });
+
+  document.getElementById("export-btn").onclick = () => {
+    const blob = new Blob([JSON.stringify(Academy.state, null, 2)], {type:"application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "islam-academy-progress.json";
+    a.click();
+  };
+  document.getElementById("reset-btn").onclick = () => {
+    if (confirm("Erase ALL progress? This cannot be undone.")) {
+      localStorage.removeItem("islam-academy-v1");
+      location.reload();
+    }
+  };
+})();
+</script>
+</body>
+</html>

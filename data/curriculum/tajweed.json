@@ -1,0 +1,104 @@
+[
+ {
+  "id": "noon-sakin",
+  "title": "Noon Sakinah & Tanween Rules",
+  "color": "#22c55e",
+  "body": "When noon ساكنة (or tanween) meets the next letter, one of FOUR things happens:",
+  "rules": [
+   [
+    "Izhar (clear)",
+    "with ء ه ع ح غ خ — pronounce noon plainly, no nasalization.",
+    "مِنْ خَيْر"
+   ],
+   [
+    "Idgham (merge)",
+    "with ي ر م ل و ن — noon melts into the letter. With ي ن م و add ghunnah (nasal).",
+    "مَنْ يَعْمَل"
+   ],
+   [
+    "Iqlab (flip)",
+    "with ب — noon becomes a hidden meem + ghunnah.",
+    "مِنْ بَعْد"
+   ],
+   [
+    "Ikhfa (hide)",
+    "with the remaining 15 letters — noon hides, ghunnah ~2 counts.",
+    "مِنْ قَبْل"
+   ]
+  ]
+ },
+ {
+  "id": "meem-sakin",
+  "title": "Meem Sakinah Rules",
+  "color": "#3b82f6",
+  "body": "Static meem has THREE treatments:",
+  "rules": [
+   [
+    "Ikhfa Shafawi",
+    "followed by ب — hide meem w/ light ghunnah.",
+    "تَمْبِيه"
+   ],
+   [
+    "Idgham Shafawi",
+    "followed by م — merge into meem w/ ghunnah.",
+    "لَهُمْ مَا"
+   ],
+   [
+    "Izhar Shafawi",
+    "any other letter — pronounce plainly.",
+    "أَمْ لَمْ"
+   ]
+  ]
+ },
+ {
+  "id": "madd",
+  "title": "Madd (Elongation) Rules",
+  "color": "#eab308",
+  "body": "Any madd letter (ا و ي) stretches its vowel:",
+  "rules": [
+   [
+    "Madd Tabee'i (natural)",
+    "2 counts — no hamza/sukoon involved.",
+    "قَالَ · يَقُولُ · قِيل"
+   ],
+   [
+    "Madd Muttasil (connected)",
+    "4-5 counts — madd + hamza in SAME word.",
+    "جَاءَ · السَّمَاء"
+   ],
+   [
+    "Madd Munfasil (separated)",
+    "4-5 counts — madd ends word, hamza starts next.",
+    "يَا أَيُّهَا"
+   ],
+   [
+    "Madd Laazim (obligatory)",
+    "6 counts — madd + permanent sukoon.",
+    "الضَّالِّينَ · الضَّاد"
+   ]
+  ]
+ },
+ {
+  "id": "misc",
+  "title": "Qalqalah, Tafkheem & Waqf",
+  "color": "#ef4444",
+  "body": "Finishing touches of beautiful recitation:",
+  "rules": [
+   [
+    "Qalqalah",
+    "echo letters ق ط ب ج د — bounce them when sakinah.",
+    "اقْرَأْ · يَجْعَل"
+   ],
+   [
+    "Tafkheem (heaviness)",
+    "خ ص ض ط ظ غ ق + heavy ر — full mouth.",
+    "صِرَاط vs سراط-light"
+   ],
+   [
+    "Waqf signs",
+    "م stop required · لا don't stop · جلى permissible · صلى preferred.",
+    "—"
+   ]
+  ]
+ }
+]

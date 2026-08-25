@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary SRS — Islam Academy</title>
+<link rel="stylesheet" href="../assets/css/academy.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
+  <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
+  <nav class="nav" id="main-nav"></nav>
+</div></header>
+
+<main class="container">
+  <h1 class="page-title">🗂️ Vocabulary — Spaced Repetition <span class="help-trigger">?<div class="help-tip"><h4>Vocabulary SRS</h4><p>Learn Quran & Arabic vocabulary using spaced repetition. Cards you find hard come back sooner; easy ones drift into long-term memory.</p><ul><li><strong>📚 Study</strong> — Flip flashcards and rate difficulty</li><li><strong>📋 Browse</strong> — See all words in the deck</li><li><strong>🌳 Root Explorer</strong> — Discover Arabic root families</li><li><strong>📊 Frequency</strong> — See word frequency charts</li><li><strong>🧩 Root Quiz</strong> — Guess words from the same root</li></ul></div></span></h1>
+  <p class="page-sub">Flashcards with an SM-2 scheduling engine. Cards you find hard come back sooner; easy ones drift into long-term memory.</p>
+
+  <div class="reader-toolbar" id="deck-picker"></div>
+  <div id="stats-line" style="margin-bottom:14px;color:var(--ink-soft);font-size:13.5px"></div>
+
+  <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+    <button class="btn gold small" id="mode-study" onclick="setMode('study')">📚 Study</button>
+    <button class="btn ghost small" id="mode-browse" onclick="setMode('browse')">📋 Browse All</button>
+    <button class="btn ghost small" id="mode-root" onclick="setMode('root')">🌳 Root Explorer</button>
+    <button class="btn ghost small" id="mode-freq" onclick="setMode('freq')">📊 Frequency</button>
+    <button class="btn ghost small" id="mode-quiz" onclick="setMode('quiz')">🧩 Root Quiz</button>
+  </div>
+
+  <div id="study-area"></div>
+  <div id="browse-area" style="display:none"></div>
+  <div id="root-area" style="display:none"></div>
+  <div id="freq-area" style="display:none"></div>
+  <div id="quiz-area" style="display:none"></div>
+</main>
+
+<footer class="site-footer">Islam Academy — Vocabulary</footer>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>
+(async function () {
+  const { el } = Academy;
+  const decks = await Academy.fetchJSON("../data/curriculum/decks.json");
+  const picker = document.getElementById("deck-picker");
+  const statsLine = document.getElementById("stats-line");
+  const area = document.getElementById("study-area");
+  let deckId = Object.keys(decks)[0];
+
+  Object.entries(decks).forEach(([id, d]) => {
+    picker.append(el("button", {class:"btn small ghost", "data-deck":id, onclick:()=>{deckId=id; start();}}, d.title));
+  });
+
+  function cardKey(w) { return deckId + "::" + w.ar; }
+
+  function start() {
+    picker.querySelectorAll("button").forEach(b => {
+      b.classList.toggle("gold", b.dataset.deck === deckId);
+      b.classList.toggle("ghost", b.dataset.deck !== deckId);
+    });
+    const deck = decks[deckId];
+    const keys = deck.words.map(cardKey);
+    const st = Academy.srsStats(keys);
+    statsLine.textContent = deck.desc + " — " + st.total + " cards · " + st.due + " due now · " + st.mature + " mature";
+    buildQueue();
+  }
+
+  let queue = [], sessionDone = 0;
+  function buildQueue() {
+    const deck = decks[deckId];
+    const dueWords = deck.words.filter(w => Academy.dueCards([cardKey(w)]).length > 0);
+    queue = Academy.shuffle(dueWords).slice(0, 20);
+    if (queue.length === 0) {
+      area.innerHTML = "";
+      area.append(el("div", {class:"card", style:"text-align:center;padding:40px"},
+        el("div", {style:"font-size:44px"}, "🌴"),
+        el("h3", null, "Nothing due in this deck"),
+        el("p", {class:"sub"}, "Come back when cards mature, or review another deck."),
+        el("button", {class:"btn gold", onclick:()=>{ queue = Academy.shuffle(decks[deckId].words).slice(0,10); next(); }}, "Cram 10 anyway")));
+      return;
+    }
+    sessionDone = 0;
+    next();
+  }
+
+  function next() {
+    area.innerHTML = "";
+    if (queue.length === 0) {
+      area.append(el("div", {class:"card", style:"text-align:center;padding:40px"},
+        el("div", {style:"font-size:44px"}, "✅"),
+        el("h3", null, "Session complete"),
+        el("p", {class:"sub"}, sessionDone + " reviews · +" + sessionDone * 2 + " XP"),
+        el("button", {class:"btn gold", onclick:start}, "Continue")));
+      return;
+    }
+    const w = queue[0];
+    let flipped = false;
+
+    // Show frequency badge if available
+    const freqBadge = w.freq ? el("div", {class:"freq-badge", style:"position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;border-radius:12px;padding:2px 8px;font-size:11px;font-weight:600"}, "×" + w.freq) : null;
+
+    const front = el("div", {style:"position:relative"},
+      freqBadge,
+      el("div", {class:"front-ar"}, w.ar),
+      el("div", {class:"tap-hint"}, "tap to reveal"));
+    // Build back content with root decomposition
+    const backChildren = [
+      el("div", {class:"back-en"}, w.en),
+      el("div", {class:"translit"}, w.tl),
+    ];
+    if (w.freq) backChildren.push(el("div", {style:"font-size:12px;color:var(--gold);margin-top:6px"}, "Appears " + w.freq + "× in the Quran"));
+    if (w.root) {
+      const rootParts = w.root.split(".");
+      const rootDisplay = rootParts.map((r, i) => {
+        const colors = ["#dc2626", "#2563eb", "#16a34a"];
+        return el("span", {style:"display:inline-block;width:40px;height:40px;line-height:40px;border-radius:50%;font-size:22px;font-weight:700;margin:0 3px;color:#fff;background:" + colors[i]}, r);
+      });
+      // Reverse root circles for RTL (1st root letter on right)
+      const rtlRootDisplay = [...rootDisplay].reverse();
+      backChildren.push(el("div", {class:"root-decomp", style:"margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)"},
+        el("div", {style:"font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px"}, "Root (جذر)"),
+        el("div", {style:"display:flex;flex-direction:row-reverse;align-items:center;justify-content:center;gap:4px"},
+          el("div", {style:"display:flex;flex-direction:row-reverse;gap:3px"}, ...rtlRootDisplay),
+          el("span", {style:"font-size:11px;color:var(--ink-soft)"}, w.pattern || "")
+        ),
+        el("div", {style:"font-size:11px;color:var(--ink-soft);margin-top:6px;font-style:italic"}, "Root: " + w.root + " — Pattern: " + (w.pattern || "—"))
+      ));
+    }
+    const back = el("div", {style:"display:none"}, ...backChildren);
+
+    const card = el("div", {class:"flashcard", onclick:(e)=>{
+      if (e.target.closest(".speaker-btn") || e.target.closest(".grade-row")) return;
+      flipped = !flipped;
+      front.style.display = flipped ? "none" : "";
+      back.style.display = flipped ? "" : "none";
+      card.classList.toggle("flipped", flipped);
+    }}, front, back, el("button", {class:"speaker-btn", style:"position:absolute;top:12px;right:12px",
+      onclick:(e)=>{ e.stopPropagation(); speakWord(w); }}, "🔊"));
+
+    const grades = el("div", {class:"grade-row", style:"display:none"},
+      gradeBtn("Again", "again", 0), gradeBtn("Hard", "hard", 1), gradeBtn("Good", "good", 2), gradeBtn("Easy", "easy", 3));
+
+    function gradeBtn(label, cls, g) {
+      return el("button", {class:"grade-btn " + cls, onclick:(e)=>{
+        e.stopPropagation();
+        Academy.reviewCard(cardKey(w), g);
+        Academy.addXP(2);
+        sessionDone++;
+        queue.shift();
+        next();
+      }}, label);
+    }
+
+    // reveal grades on flip
+    card.addEventListener("click", () => { if (flipped) grades.style.display = ""; });
+
+    area.append(
+      el("p", {style:"color:var(--ink-soft);font-size:13px;margin:0 0 10px;display:flex;align-items:center;gap:6px"},
+        queue.length + " left in this session",
+        el("span", {class:"help-trigger", style:"font-size:10px;width:16px;height:16px"}, "?",
+          el("div", {class:"help-tip"},
+            el("h4", null, "Flashcard Study"),
+            el("p", null, "Tap the card to flip and reveal the answer."),
+            el("ul", null,
+              el("li", null, "🔊 ", el("span", {class:"key"}, "Listen"), " — hear pronunciation"),
+              el("li", null, "Again ", el("span", {class:"key"}, "0"), " — didn't know, review soon"),
+              el("li", null, "Hard ", el("span", {class:"key"}, "1"), " — knew but struggled"),
+              el("li", null, "Good ", el("span", {class:"key"}, "2"), " — remembered correctly"),
+              el("li", null, "Easy ", el("span", {class:"key"}, "3"), " — instant recall"),
+            ),
+            el("p", null, "Cards rated 'Again' return sooner. 'Easy' cards drift into long-term memory.")
+          )
+        )
+      ),
+      card, grades
+    );
+  }
+
+  function speakWord(w) {
+    // try local generated audio by hash key (same scheme as gen_audio.py)
+    const h = Math.abs([...w.ar].reduce((a, c) => (a * 31 + c.codePointAt(0)) | 0, 7)) % 10**10;
+    Academy.speak("../assets/audio/vocab/" + deckId + "/" + h + ".mp3");
+  }
+
+  let currentMode = 'study';
+  window.setMode = function(m) {
+    currentMode = m;
+    document.getElementById('mode-study').className = m==='study' ? 'btn gold small' : 'btn ghost small';
+    document.getElementById('mode-browse').className = m==='browse' ? 'btn gold small' : 'btn ghost small';
+    document.getElementById('mode-root').className = m==='root' ? 'btn gold small' : 'btn ghost small';
+    document.getElementById('mode-freq').className = m==='freq' ? 'btn gold small' : 'btn ghost small';
+    document.getElementById('mode-quiz').className = m==='quiz' ? 'btn gold small' : 'btn ghost small';
+    document.getElementById('study-area').style.display = m==='study' ? '' : 'none';
+    document.getElementById('browse-area').style.display = m==='browse' ? '' : 'none';
+    document.getElementById('root-area').style.display = m==='root' ? '' : 'none';
+    document.getElementById('freq-area').style.display = m==='freq' ? '' : 'none';
+    document.getElementById('quiz-area').style.display = m==='quiz' ? '' : 'none';
+    if (m==='browse') renderBrowse();
+    if (m==='root') renderRootExplorer();
+    if (m==='freq') renderFrequency();
+    if (m==='quiz') startRootQuiz();
+    if (m==='study') buildQueue();
+  };
+
+  function renderBrowse() {
+    const deck = decks[deckId];
+    const browse = document.getElementById('browse-area');
+    browse.innerHTML = '';
+    const grid = el('div', {style:'display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px'});
+    deck.words.forEach((w, i) => {
+      const row = el('div', {class:'card', style:'padding:12px;display:flex;align-items:center;gap:10px;cursor:pointer'},
+        el('div', {style:'min-width:36px;height:36px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700'}, w.freq ? '×'+w.freq : (i+1)),
+        el('div', {style:'flex:1'},
+          el('div', {class:'ar', style:'font-size:22px;font-weight:600;line-height:1.3'}, w.ar),
+          el('div', {style:'font-size:13px;color:var(--ink-soft)'}, w.en),
+          el('div', {style:'font-size:11px;color:var(--ink-soft);font-style:italic'}, w.tl)
+        ),
+        el('button', {class:'speaker-btn', style:'background:none;border:none;cursor:pointer;font-size:20px', onclick:(e)=>{ e.stopPropagation(); speakWord(w); }}, '🔊')
+      );
+      grid.append(row);
+    });
+    browse.append(
+      el('h3', {style:'margin-bottom:10px;display:flex;align-items:center;gap:6px'},
+        deck.title + ' — ' + deck.words.length + ' words',
+        el('span', {class:'help-trigger', style:'font-size:10px;width:16px;height:16px'}, '?',
+          el('div', {class:'help-tip'},
+            el('h4', null, 'Browse Mode'),
+            el('p', null, 'View all words in the current deck sorted by frequency or alphabetically.'),
+            el('ul', null,
+              el('li', null, '🔊 — tap to hear pronunciation'),
+              el('li', null, 'Gold circles show frequency (×2699 = appears 2699× in Quran)'),
+              el('li', null, 'Switch decks using the buttons at the top'),
+            )
+          )
+        )
+      ),
+      grid
+    );
+  }
+
+  function renderRootExplorer() {
+    const deck = decks[deckId];
+    const rootArea = document.getElementById('root-area');
+    rootArea.innerHTML = '';
+
+    // Group words by root
+    const rootGroups = {};
+    const noRoot = [];
+    deck.words.forEach(w => {
+      if (w.root) {
+        if (!rootGroups[w.root]) rootGroups[w.root] = { root: w.root, words: [] };
+        rootGroups[w.root].words.push(w);
+      } else {
+        noRoot.push(w);
+      }
+    });
+
+    // Sort roots by number of derived words (descending)
+    const sorted = Object.values(rootGroups).sort((a, b) => b.words.length - a.words.length);
+
+    // Summary stats
+    const totalRoots = sorted.length;
+    const totalWordsWithRoot = sorted.reduce((s, g) => s + g.words.length, 0);
+    rootArea.append(el('div', {style:'margin-bottom:16px;padding:14px;background:var(--cream);border-radius:12px'},
+      el('div', {style:'font-weight:700;font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:6px'},
+        '🌳 Root System Overview',
+        el('span', {class:'help-trigger', style:'font-size:10px;width:16px;height:16px'}, '?',
+          el('div', {class:'help-tip'},
+            el('h4', null, 'Arabic Root System'),
+            el('p', null, 'Most Arabic words derive from 3-letter roots (جذر) that carry a core meaning.'),
+            el('ul', null,
+              el('li', null, '🔴🔵🟢 — Each color = one root letter'),
+              el('li', null, 'Words sharing a root are related in meaning'),
+              el('li', null, 'Patterns (وزن) change the meaning: verb → noun → adjective'),
+            ),
+            el('p', null, 'Example: Root ك.ت.ب (writing) → كتاب (book), كاتب (writer), مكتوب (written)')
+          )
+        )
+      ),
+      el('div', {style:'font-size:13px;color:var(--ink-soft)'},
+        totalRoots + ' unique roots · ' + totalWordsWithRoot + ' words with roots · ' + noRoot.length + ' particles/irregulars'),
+      el('div', {style:'font-size:12px;color:var(--ink-soft);margin-top:6px'},
+        'Arabic derives from ~10,000 trilateral roots. Each root carries a core meaning that expands through patterns (أوزان).')
+    ));
+
+    // Render each root group
+    sorted.forEach(group => {
+      const rootParts = group.root.split('.');
+      const colors = ['#dc2626', '#2563eb', '#16a34a'];
+      const rootSpans = rootParts.map((r, i) =>
+        el('span', {style:'display:inline-block;width:32px;height:32px;line-height:32px;border-radius:50%;font-size:18px;font-weight:700;color:#fff;background:' + colors[i], title: ['1st root letter (فَعْل)', '2nd root letter (فَعْل)', '3rd root letter (فَعْل)'][i]}, r)
+      );
+
+      const wordCards = group.words.map(w => {
+        const card = el('div', {class:'root-word-card', style:'display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--paper);border:1px solid var(--line);border-radius:8px;cursor:pointer'},
+          el('div', {class:'ar', style:'font-size:20px;font-weight:600'}, w.ar),
+          el('div', {style:'flex:1'},
+            el('div', {style:'font-size:12px;color:var(--ink-soft)'}, w.en),
+            el('div', {style:'font-size:11px;color:var(--gold-500);font-style:italic'}, w.pattern || '')
+          ),
+          el('button', {class:'speaker-btn', style:'background:none;border:none;cursor:pointer;font-size:16px', onclick: (e) => { e.stopPropagation(); speakWord(w); }}, '🔊')
+        );
+        return card;
+      });
+
+      const groupEl = el('div', {class:'card', style:'margin-bottom:12px;padding:16px'},
+        el('div', {style:'display:flex;align-items:center;gap:12px;margin-bottom:10px'},
+          el('div', {style:'display:flex;flex-direction:row-reverse;gap:3px'}, ...rootSpans),
+          el('span', {style:'font-size:14px;font-weight:700;color:var(--ink)'}, 'Root: ' + group.root.replace(/\./g, ' ')),
+          el('span', {style:'font-size:12px;color:var(--ink-soft);margin-left:auto'}, group.words.length + ' word' + (group.words.length > 1 ? 's' : ''))
+        ),
+        el('div', {style:'display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px'}, ...wordCards)
+      );
+
+      rootArea.append(groupEl);
+    });
+
+    // Show particles section
+    if (noRoot.length > 0) {
+      rootArea.append(el('div', {class:'card', style:'margin-top:16px;padding:16px'},
+        el('div', {style:'font-weight:700;margin-bottom:8px'}, '📝 Particles & Irregulars (' + noRoot.length + ' words)'),
+        el('div', {style:'font-size:12px;color:var(--ink-soft);margin-bottom:10px'}, 'These words are particles (حروف), pronouns, or proper nouns that don\'t follow the standard root system.'),
+        el('div', {style:'display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px'},
+          ...noRoot.slice(0, 40).map(w => el('div', {style:'padding:6px 8px;background:var(--cream);border-radius:6px;font-size:13px'},
+            el('span', {class:'ar', style:'font-size:16px;font-weight:600'}, w.ar),
+            el('span', {style:'color:var(--ink-soft);margin-left:4px'}, ' — ' + w.en)
+          ))
+        )
+      ));
+    }
+  }
+
+  function renderFrequency() {
+    const deck = decks[deckId];
+    const freqArea = document.getElementById('freq-area');
+    freqArea.innerHTML = '';
+
+    const wordsWithFreq = deck.words.filter(w => w.freq && w.freq > 0);
+    if (wordsWithFreq.length === 0) {
+      freqArea.append(el('div', {class:'card', style:'text-align:center;padding:40px'},
+        el('div', {style:'font-size:44px'}, '📊'),
+        el('h3', null, 'No frequency data'),
+        el('p', {class:'sub'}, 'Switch to a Quran vocabulary deck to see frequency charts.')));
+      return;
+    }
+
+    const sorted = [...wordsWithFreq].sort((a,b) => b.freq - a.freq);
+    const maxFreq = sorted[0].freq;
+    const totalFreq = sorted.reduce((s,w) => s + w.freq, 0);
+
+    // === SECTION 1: Summary Stats ===
+    const ranges = [
+      {label: '1000+', min: 1000, color: '#dc2626'},
+      {label: '500–999', min: 500, max: 999, color: '#ea580c'},
+      {label: '100–499', min: 100, max: 499, color: '#d97706'},
+      {label: '50–99', min: 50, max: 99, color: '#65a30d'},
+      {label: '10–49', min: 10, max: 49, color: '#0d9488'},
+      {label: '1–9', min: 1, max: 9, color: '#6366f1'},
+    ];
+
+    const rangeData = ranges.map(r => {
+      const words = sorted.filter(w => w.freq >= r.min && (!r.max || w.freq <= r.max));
+      const coverage = words.reduce((s,w) => s + w.freq, 0);
+      return { ...r, count: words.length, coverage };
+    }).filter(r => r.count > 0);
+
+    const statsCard = el('div', {class:'card', style:'margin-bottom:16px;padding:20px'},
+      el('div', {style:'font-weight:700;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:6px'},
+        '📊 Frequency Distribution',
+        el('span', {class:'help-trigger', style:'font-size:10px;width:16px;height:16px'}, '?',
+          el('div', {class:'help-tip'},
+            el('h4', null, 'Quran Word Frequency'),
+            el('p', null, 'See how often each word appears in the Quran.'),
+            el('ul', null,
+              el('li', null, '📊 Bar chart — words grouped by frequency range'),
+              el('li', null, '📈 Coverage — how much of the Quran you can read by learning top N words'),
+              el('li', null, '☁️ Word cloud — bigger = more frequent'),
+              el('li', null, '🏆 Top 30 — leaderboard of most frequent words'),
+            ),
+            el('p', null, 'Learning the top 20 words covers ~50% of Quran text!')
+          )
+        )
+      ),
+      el('div', {style:'display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px'},
+        el('div', {style:'text-align:center;padding:12px;background:var(--cream);border-radius:10px'},
+          el('div', {style:'font-size:28px;font-weight:800;color:var(--emerald-700)'}, wordsWithFreq.length),
+          el('div', {style:'font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:1px'}, 'Words with freq')
+        ),
+        el('div', {style:'text-align:center;padding:12px;background:var(--cream);border-radius:10px'},
+          el('div', {style:'font-size:28px;font-weight:800;color:var(--gold)'}, totalFreq.toLocaleString()),
+          el('div', {style:'font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:1px'}, 'Total occurrences')
+        ),
+        el('div', {style:'text-align:center;padding:12px;background:var(--cream);border-radius:10px'},
+          el('div', {style:'font-size:28px;font-weight:800;color:var(--emerald-600)'}, Math.round(totalFreq / wordsWithFreq.length)),
+          el('div', {style:'font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:1px'}, 'Avg frequency')
+        )
+      )
+    );
+
+    // === SECTION 2: Bar Chart ===
+    const barChart = el('div', {class:'card', style:'margin-bottom:16px;padding:20px'},
+      el('div', {style:'font-weight:700;margin-bottom:14px'}, 'Frequency Ranges')
+    );
+
+    rangeData.forEach(r => {
+      const barWidth = Math.max(2, (r.count / sorted.length) * 100);
+      const coverageBar = Math.max(2, (r.coverage / totalFreq) * 100);
+      barChart.append(el('div', {style:'margin-bottom:12px'},
+        el('div', {style:'display:flex;justify-content:space-between;align-items:center;margin-bottom:4px'},
+          el('span', {style:'font-weight:600;font-size:13px'}, r.label),
+          el('span', {style:'font-size:12px;color:var(--ink-soft)'}, r.count + ' words · ' + r.coverage.toLocaleString() + '× total')
+        ),
+        el('div', {style:'position:relative;height:28px;background:var(--cream);border-radius:6px;overflow:hidden'},
+          el('div', {style:'position:absolute;left:0;top:0;height:100%;width:' + barWidth + '%;background:' + r.color + ';border-radius:6px;transition:width .5s;min-width:2px;display:flex;align-items:center;padding-left:8px'},
+            el('span', {style:'color:#fff;font-size:11px;font-weight:700;white-space:nowrap'}, r.count + ' words')
+          )
+        )
+      ));
+    });
+
+    // === SECTION 3: Cumulative Coverage ===
+    let cumulative = 0;
+    const coverageSteps = [1, 2, 3, 5, 10, 15, 20, 30, 50, 100, 150, 200];
+    const coverageData = [];
+    sorted.forEach((w, i) => {
+      cumulative += w.freq;
+      const pct = Math.round((cumulative / totalFreq) * 100);
+      if (coverageSteps.includes(i + 1) || i === sorted.length - 1) {
+        coverageData.push({ rank: i + 1, pct, word: w.ar, freq: w.freq });
+      }
+    });
+
+    const coverageCard = el('div', {class:'card', style:'margin-bottom:16px;padding:20px'},
+      el('div', {style:'font-weight:700;margin-bottom:4px'}, '📈 Cumulative Quran Coverage'),
+      el('div', {style:'font-size:12px;color:var(--ink-soft);margin-bottom:14px'}, 'How much of the Quran can you read by learning the top N words?'),
+      el('div', {style:'display:flex;flex-direction:column;gap:6px'},
+        ...coverageData.map(d => {
+          const barColor = d.pct >= 50 ? '#16a34a' : d.pct >= 25 ? '#d97706' : '#6366f1';
+          return el('div', {style:'display:flex;align-items:center;gap:10px'},
+            el('div', {style:'min-width:70px;text-align:right;font-size:12px;color:var(--ink-soft)'}, 'Top ' + d.rank),
+            el('div', {style:'flex:1;height:22px;background:var(--cream);border-radius:6px;overflow:hidden;position:relative'},
+              el('div', {style:'position:absolute;left:0;top:0;height:100%;width:' + d.pct + '%;background:' + barColor + ';border-radius:6px;transition:width .6s;display:flex;align-items:center;justify-content:flex-end;padding-right:6px'},
+                el('span', {style:'color:#fff;font-size:10px;font-weight:700'}, d.pct > 8 ? d.pct + '%' : '')
+              )
+            ),
+            el('div', {style:'min-width:50px;font-size:11px;color:var(--ink-soft)'}, d.pct + '%')
+          );
+        })
+      )
+    );
+
+    // === SECTION 4: Word Cloud ===
+    const cloudCard = el('div', {class:'card', style:'margin-bottom:16px;padding:20px'},
+      el('div', {style:'font-weight:700;margin-bottom:14px'}, '☁️ Word Cloud — Sized by Frequency')
+    );
+    const cloudContainer = el('div', {style:'display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 8px;padding:10px;min-height:120px'});
+
+    const maxFontSize = 42, minFontSize = 12;
+    sorted.slice(0, 100).forEach(w => {
+      const ratio = w.freq / maxFreq;
+      const fontSize = minFontSize + (maxFontSize - minFontSize) * Math.pow(ratio, 0.5);
+      const hue = Math.round(140 + (1 - ratio) * 60);
+      const opacity = 0.5 + 0.5 * ratio;
+      const word = el('span', {
+        class: 'ar',
+        style: 'font-size:' + fontSize + 'px;color:hsl(' + hue + ',50%,35%);opacity:' + opacity + ';cursor:pointer;line-height:1.3;transition:all .2s',
+        title: w.ar + ' — ' + w.en + ' (' + w.freq + '×)',
+        onmouseenter: function(e) { this.style.transform='scale(1.15)'; this.style.color='var(--emerald-700)'; },
+        onmouseleave: function(e) { this.style.transform=''; this.style.color='hsl('+hue+',50%,35%)'; }
+      }, w.ar);
+      cloudContainer.append(word);
+    });
+    cloudCard.append(cloudContainer);
+
+    // === SECTION 5: Top 30 Bar List ===
+    const topCard = el('div', {class:'card', style:'padding:20px'},
+      el('div', {style:'font-weight:700;margin-bottom:14px'}, '🏆 Top 30 Most Frequent Words')
+    );
+    sorted.slice(0, 30).forEach((w, i) => {
+      const barW = (w.freq / maxFreq) * 100;
+      const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1);
+      topCard.append(el('div', {style:'display:flex;align-items:center;gap:8px;margin-bottom:6px'},
+        el('div', {style:'min-width:28px;text-align:center;font-size:' + (i < 3 ? '16px' : '12px') + ';font-weight:700'}, medal),
+        el('div', {class:'ar', style:'min-width:60px;font-size:20px;font-weight:600'}, w.ar),
+        el('div', {style:'flex:1;height:20px;background:var(--cream);border-radius:5px;overflow:hidden;position:relative'},
+          el('div', {style:'position:absolute;left:0;top:0;height:100%;width:' + barW + '%;background:linear-gradient(90deg,var(--emerald-700),var(--gold));border-radius:5px;transition:width .5s'}),
+          el('span', {style:'position:absolute;right:6px;top:2px;font-size:10px;font-weight:600;color:var(--ink-soft)'}, w.freq + '×')
+        ),
+        el('div', {style:'min-width:100px;font-size:12px;color:var(--ink-soft);text-align:right'}, w.en)
+      ));
+    });
+
+    freqArea.append(statsCard, barChart, coverageCard, cloudCard, topCard);
+  }
+
+  // ============ ROOT QUIZ ============
+  let quizScore = 0, quizTotal = 0, quizRoot = null, quizFound = [], quizAllWords = [];
+
+  function startRootQuiz() {
+    const quizArea = document.getElementById('quiz-area');
+    quizArea.innerHTML = '';
+    quizScore = 0; quizTotal = 0;
+    nextQuizRound();
+  }
+
+  function nextQuizRound() {
+    const quizArea = document.getElementById('quiz-area');
+    quizArea.innerHTML = '';
+
+    // Build root index from current deck
+    const deck = decks[deckId];
+    const rootIdx = {};
+    deck.words.forEach(w => {
+      if (w.root) {
+        if (!rootIdx[w.root]) rootIdx[w.root] = [];
+        rootIdx[w.root].push(w);
+      }
+    });
+
+    // Pick a root with 2+ words
+    const rootsWithMultiple = Object.entries(rootIdx).filter(([r, ws]) => ws.length >= 2);
+    if (rootsWithMultiple.length === 0) {
+      quizArea.append(el('div', {class:'card', style:'text-align:center;padding:40px'},
+        el('div', {style:'font-size:44px'}, '🧩'),
+        el('h3', null, 'Not enough root data'),
+        el('p', {class:'sub'}, 'Switch to a deck with root annotations.')));
+      return;
+    }
+
+    const [root, words] = rootsWithMultiple[Math.floor(Math.random() * rootsWithMultiple.length)];
+    quizRoot = root;
+    quizAllWords = words;
+    quizFound = [];
+
+    // Root circles
+    const rootParts = root.split('.');
+    const colors = ['#dc2626', '#2563eb', '#16a34a'];
+    const rootCircles = rootParts.map((r, i) =>
+      el('span', {style:'display:inline-block;width:40px;height:40px;line-height:40px;border-radius:50%;font-size:20px;font-weight:700;color:#fff;background:' + colors[i], title: ['1st (\u0641)', '2nd (\u0639)', '3rd (\u0644)'][i]}, r)
+    );
+
+    // Score display
+    const scoreEl = el('div', {style:'text-align:center;margin-bottom:12px;font-size:13px;color:var(--ink-soft)'},
+      'Score: ' + quizScore + '/' + quizTotal + ' rounds'
+    );
+
+    // Root display
+    const rootDisplay = el('div', {style:'text-align:center;margin-bottom:20px'},
+      el('div', {style:'font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--ink-soft);margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:6px'},
+        'Guess all words from this root',
+        el('span', {class:'help-trigger', style:'font-size:10px;width:16px;height:16px'}, '?',
+          el('div', {class:'help-tip'},
+            el('h4', null, 'Root Family Quiz'),
+            el('p', null, 'A random root is shown. Click all words that derive from it!'),
+            el('ul', null,
+              el('li', null, '🔴🔵🟢 — The 3 root letters'),
+              el('li', null, 'Click correct words to score +3 XP each'),
+              el('li', null, 'Find all words to complete the round'),
+              el('li', null, 'Skip if you want to try a different root'),
+            ),
+            el('p', null, 'This builds root awareness — key to understanding Arabic morphology!')
+          )
+        )
+      ),
+      el('div', {style:'display:flex;flex-direction:row-reverse;justify-content:center;gap:6px'}, ...rootCircles),
+      el('div', {style:'font-size:11px;color:var(--ink-soft);margin-top:6px'}, words.length + ' words to find')
+    );
+
+    // Found words area
+    const foundArea = el('div', {style:'display:flex;flex-wrap:wrap;gap:6px;justify-content:center;min-height:50px;margin-bottom:16px'});
+
+    // Answer grid - shuffle words and show as clickable options
+    const shuffled = Academy.shuffle([...words]);
+    const answerGrid = el('div', {style:'display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px'});
+
+    shuffled.forEach(w => {
+      const btn = el('button', {
+        class: 'card',
+        style: 'padding:12px;text-align:center;cursor:pointer;transition:all .2s',
+        onclick: () => {
+          if (quizFound.includes(w.ar)) return;
+          quizFound.push(w.ar);
+          quizTotal++;
+          quizScore++;
+          btn.style.background = 'var(--emerald-100)';
+          btn.style.borderColor = 'var(--emerald-600)';
+          btn.style.opacity = '0.5';
+          btn.style.pointerEvents = 'none';
+          foundArea.append(el('span', {
+            class: 'ar',
+            style: 'display:inline-block;padding:4px 10px;background:var(--emerald-100);border:1px solid var(--emerald-600);border-radius:8px;font-size:18px;direction:rtl;unicode-bidi:embed'
+          }, w.ar + ' — ' + w.en));
+          Academy.addXP(3);
+          scoreEl.textContent = 'Score: ' + quizScore + '/' + quizTotal + ' rounds';
+          checkQuizComplete();
+        }
+      },
+        el('div', {class:'ar', style:'font-size:22px;font-weight:600;line-height:1.4;direction:rtl;unicode-bidi:embed'}, w.ar),
+        el('div', {style:'font-size:12px;color:var(--ink-soft);margin-top:4px'}, w.en)
+      );
+      answerGrid.append(btn);
+    });
+
+    // Skip button
+    const skipBtn = el('button', {class:'btn ghost small', style:'margin-top:16px', onclick: () => {
+      quizTotal++;
+      scoreEl.textContent = 'Score: ' + quizScore + '/' + quizTotal + ' rounds';
+      nextQuizRound();
+    }}, 'Skip this root →');
+
+    quizArea.append(scoreEl, rootDisplay, foundArea, answerGrid, skipBtn);
+  }
+
+  function checkQuizComplete() {
+    if (quizFound.length >= quizAllWords.length) {
+      const quizArea = document.getElementById('quiz-area');
+      const msg = el('div', {class:'card', style:'text-align:center;padding:20px;margin-top:16px;background:linear-gradient(135deg,var(--emerald-50),var(--cream))'},
+        el('div', {style:'font-size:36px;margin-bottom:8px'}, '🎉'),
+        el('h3', {style:'margin:0 0 4px'}, 'Root Complete!'),
+        el('p', {style:'font-size:13px;color:var(--ink-soft);margin:0 0 12px'}, 'You found all ' + quizAllWords.length + ' words from root ' + quizRoot),
+        el('button', {class:'btn gold', onclick: nextQuizRound}, 'Next Root →')
+      );
+      quizArea.append(msg);
+    }
+  }
+
+  start();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1519 @@
+{
+ "0": {
+  "title": "Foundations",
+  "subtitle": "Script & sounds",
+  "lessons": [
+   {
+    "id": "L0.1",
+    "title": "The Arabic Alphabet",
+    "level": 0,
+    "minutes": 15,
+    "explain": [
+     "Arabic has 28 letters, written right-to-left. Each letter has a NAME (used when reciting the alphabet) and a SOUND.",
+     "Letters connect to each other like links in a chain — this is why Arabic words look woven together.",
+     "Click any card below to hear its name and an example word."
+    ],
+    "interactive": {
+     "kind": "alphabet"
+    },
+    "drills": [
+     {
+      "type": "mc",
+      "q": "Which letter is ب ?",
+      "options": [
+       "Alif ا",
+       "Ba ب",
+       "Ta ت",
+       "Ya ي"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "What is the FIRST letter of the alphabet?",
+      "options": [
+       "ب",
+       "ا",
+       "م",
+       "ن"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "How many letters does Arabic have?",
+      "options": [
+       "26",
+       "27",
+       "28",
+       "29"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "Arabic is written…",
+      "options": [
+       "left-to-right",
+       "top-to-bottom",
+       "right-to-left",
+       "bottom-to-top"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "ا",
+        "alif"
+       ],
+       [
+        "م",
+        "meem"
+       ],
+       [
+        "ن",
+        "noon"
+       ],
+       [
+        "ي",
+        "ya"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L0.2",
+    "title": "Letter Forms: One Letter, Four Shapes",
+    "level": 0,
+    "minutes": 20,
+    "explain": [
+     "Every letter changes shape depending on WHERE it sits in a word: isolated (alone), initial (start), medial (middle), final (end).",
+     "Most letters have TWO tails: a connecting tail (like ـبـ) used inside words, and their own shape at word ends.",
+     "Six letters are 'proud' — they refuse to connect to what comes AFTER them: ا د ذ ر ز و. They only connect on their RIGHT side."
+    ],
+    "interactive": {
+     "kind": "forms"
+    },
+    "drills": [
+     {
+      "type": "mc",
+      "q": "Which letter NEVER connects to the following letter?",
+      "options": [
+       "ب",
+       "م",
+       "د",
+       "س"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "The initial form of م is:",
+      "options": [
+       "مـ",
+       "ـمـ",
+       "ـم",
+       "م"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "In the word كتاب (kitab), the ب appears in which form?",
+      "options": [
+       "isolated",
+       "initial",
+       "medial",
+       "final"
+      ],
+      "answer": 3,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "How many non-connecting letters are there?",
+      "options": [
+       "4",
+       "5",
+       "6",
+       "7"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "بـ",
+        "initial ba"
+       ],
+       [
+        "ـبـ",
+        "medial ba"
+       ],
+       [
+        "ـب",
+        "final ba"
+       ],
+       [
+        "ب",
+        "isolated ba"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L0.3",
+    "title": "Look-Alike Families",
+    "level": 0,
+    "minutes": 15,
+    "explain": [
+     "Many letters share the same skeleton and differ ONLY by dots:",
+     "• ب ت ث — one dot below, two above, three above\n• ج ح خ — dot inside, no dot, dot above\n• د ذ — no dot, dot above\n• ر ز — no dot, dot above\n• س ش — no dots, three dots\n• ص ض • ط ظ • ع غ • ف ق",
+     "Train your eye: dots are meaning-critical. بيت (house) vs تيت (not a word!)."
+    ],
+    "interactive": {
+     "kind": "quiz"
+    },
+    "drills": [
+     {
+      "type": "mc",
+      "q": "ب has its dot…",
+      "options": [
+       "above",
+       "below",
+       "inside",
+       "no dot"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "ح differs from ج by:",
+      "options": [
+       "dots above",
+       "having NO dot",
+       "dot below",
+       "shape"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "Which pair differs by ONE dot?",
+      "options": [
+       "س ش",
+       "ب ت",
+       "ع غ",
+       "all of them"
+      ],
+      "answer": 3,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "ط vs ظ differ by:",
+      "options": [
+       "nothing",
+       "one dot above",
+       "two dots",
+       "shape"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "ث",
+        "three dots above"
+       ],
+       [
+        "ت",
+        "two dots above"
+       ],
+       [
+        "ب",
+        "one dot below"
+       ],
+       [
+        "ج",
+        "one dot inside"
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "1": {
+  "title": "Reading",
+  "subtitle": "Harakat to fluency",
+  "lessons": [
+   {
+    "id": "L1.1",
+    "title": "Short Vowels: Fatha, Damma, Kasra",
+    "level": 1,
+    "minutes": 20,
+    "explain": [
+     "Arabic short vowels are small MARKS above or below letters (harakaat):",
+     "• Fatha َ (above): 'a' sound — بَ = ba\n• Damma ُ (above, tiny waw): 'u' sound — بُ = bu\n• Kasra ِ (below): 'i' sound — بِ = bi",
+     "Unvoweled text (like newspapers) omits these — but the Quran ALWAYS shows them. That's why we learn with mushaf-style text."
+    ],
+    "interactive": {
+     "kind": "vowels"
+    },
+    "drills": [
+     {
+      "type": "mc",
+      "q": "بَ reads as:",
+      "options": [
+       "bi",
+       "bu",
+       "ba",
+       "ab"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "The kasra ِ gives which sound?",
+      "options": [
+       "a",
+       "u",
+       "i",
+       "e"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "Where is the damma written?",
+      "options": [
+       "below the letter",
+       "above the letter",
+       "after the letter",
+       "before the letter"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "مُ reads as:",
+      "options": [
+       "mu",
+       "mi",
+       "ma",
+       "um"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "بِ",
+        "bi"
+       ],
+       [
+        "بُ",
+        "bu"
+       ],
+       [
+        "بَ",
+        "ba"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L1.2",
+    "title": "Sukoon: The Silent Mark",
+    "level": 1,
+    "minutes": 15,
+    "explain": [
+     "Sukoon ْ sits ABOVE a letter and means 'no vowel here' — the letter closes the syllable.",
+     "بَبْ = bab (two beats: ba-b). Every syllable is either open (CV: بَ) or closed (CVC: بَبْ).",
+     "This is the rhythm engine of Arabic reading."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "أَبْ reads as:",
+      "options": [
+       "aab",
+       "ab",
+       "abi",
+       "ba"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "Sukoon means the letter has…",
+      "options": [
+       "a long vowel",
+       "no vowel",
+       "double sound",
+       "an echo"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "كَتَبْ has how many syllables?",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "بْ",
+        "no vowel"
+       ],
+       [
+        "بَ",
+        "short a"
+       ],
+       [
+        "بُ",
+        "short u"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L1.3",
+    "title": "Tanween: The Indefinite '-n'",
+    "level": 1,
+    "minutes": 15,
+    "explain": [
+     "Tanween doubles the vowel mark and adds an 'n':",
+     "• Fathatan ً : بً = ban\n• Dammatan ٌ : بٌ = bun\n• Kasratan ٍ : بٍ = bin",
+     "Tanween marks INDEFINITE nouns (a house vs THE house). It's the grammar of 'a/an'."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "كِتَابٌ reads as:",
+      "options": [
+       "kitaban",
+       "kitabun",
+       "kitabin",
+       "kitab"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "Fathatan ً adds which ending?",
+      "options": [
+       "-un",
+       "-in",
+       "-an",
+       "-een"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "بَيْتٍ ends with:",
+      "options": [
+       "-an",
+       "-un",
+       "-in",
+       "silent"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "بً",
+        "ban"
+       ],
+       [
+        "بٌ",
+        "bun"
+       ],
+       [
+        "بٍ",
+        "bin"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L1.4",
+    "title": "Long Vowels: Madd",
+    "level": 1,
+    "minutes": 15,
+    "explain": [
+     "Stretch each short vowel with its long partner:\n• ا after fatha: بَا = baa (2 beats)\n• و after damma: بُو = buu\n• ي after kasra: بِي = bii",
+     "Rule of thumb: long vowel = hold 2 counts. In the Quran some stretches run 4–6 counts (tajweed madd) — we'll mark those later."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "قَالَ reads as:",
+      "options": [
+       "qala",
+       "qaala",
+       "qila",
+       "qul"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "بِي stretches the sound:",
+      "options": [
+       "a",
+       "u",
+       "i",
+       "none"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "A natural madd lasts about:",
+      "options": [
+       "half beat",
+       "1 beat",
+       "2 beats",
+       "6 beats"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "بَا",
+        "baa"
+       ],
+       [
+        "بُو",
+        "buu"
+       ],
+       [
+        "بِي",
+        "bii"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L1.5",
+    "title": "Shadda: The Doubler",
+    "level": 1,
+    "minutes": 15,
+    "explain": [
+     "Shadda ّ fuses two identical letters into one written shape: read it twice.",
+     "مُحَمَّد = mu-ham-mad (the م is doubled). First half carries the previous vowel, second half gets its own.",
+     "Pattern: Cَ + Cْ merged = Cَّ ."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "رَبَّ reads as:",
+      "options": [
+       "raba",
+       "rabba",
+       "raaba",
+       "barra"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "Shadda means the letter is…",
+      "options": [
+       "silent",
+       "long",
+       "doubled",
+       "heavy"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "In مُدَرِّس the doubled letter is:",
+      "options": [
+       "م",
+       "د",
+       "ر",
+       "س"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "بَّ",
+        "bba"
+       ],
+       [
+        "بْ",
+        "silent b"
+       ],
+       [
+        "بَا",
+        "baa"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L1.6",
+    "title": "Sun & Moon Letters: the ال Rule",
+    "level": 1,
+    "minutes": 20,
+    "explain": [
+     "ال (al-) = 'the'. But its ل behaves differently depending on the next letter:",
+     "• MOON letters (14): pronounced normally — القَمَر = al-qamar (hear the l)\n• SUN letters (14): the ل vanishes into the next letter, which takes shadda — الشَّمْس = ash-shams (NOT al-shams)",
+     "Moon: ا ب ج ح خ ع غ ف ق ك م ه و ي\nSun: ت ث د ذ ر ز س ش ص ض ط ظ ل ن"
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "الشَّمْس is pronounced:",
+      "options": [
+       "al-shams",
+       "ash-shams",
+       "al-sams",
+       "shams-al"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "القَمَر is pronounced:",
+      "options": [
+       "aq-qamar",
+       "al-qamar",
+       "al-gamar",
+       "qamar-al"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "ر is a … letter.",
+      "options": [
+       "sun",
+       "moon",
+       "neutral",
+       "non-existent"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "After ال, a sun letter gets…",
+      "options": [
+       "sukoon",
+       "shadda",
+       "tanween",
+       "madd"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "الشمس",
+        "ash-shams"
+       ],
+       [
+        "القمر",
+        "al-qamar"
+       ],
+       [
+        "النور",
+        "an-nur"
+       ],
+       [
+        "الكتاب",
+        "al-kitab"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L1.7",
+    "title": "Special Letters: ء ة ى ٰ",
+    "level": 1,
+    "minutes": 20,
+    "explain": [
+     "• Hamza ء: the glottal stop. Rides on carriers: أ إ ؤ ئ.\n• Taa marbuta ة: 'circle-taa', sounds like 'a/h' at word end — مدرسة madrasa(t).\n• Alif maqsura ى: looks like ya without dots, sounds like long aa — موسى Moosa.\n• Dagger alif ٰ : hidden long aa written as small alif — رَحْمَٰن rahmaan.",
+     "These four cause 90% of beginner spelling confusion. Meet them now, master them with practice."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "مدرسة ends with the sound:",
+      "options": [
+       "-ta",
+       "-a/-h",
+       "-at always",
+       "-ya"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "موسى ends with:",
+      "options": [
+       "ya sound",
+       "aa sound",
+       "a sound",
+       "silent"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "The dagger alif ٰ represents:",
+      "options": [
+       "short a",
+       "long aa",
+       "hamza",
+       "waw"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "أ carries:",
+      "options": [
+       "kasra under",
+       "hamza above",
+       "shadda",
+       "sukoon"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "ة",
+        "taa marbuta"
+       ],
+       [
+        "ى",
+        "alif maqsura"
+       ],
+       [
+        "ء",
+        "hamza"
+       ],
+       [
+        "ٰ",
+        "dagger alif"
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "2": {
+  "title": "Grammar I",
+  "subtitle": "Sentences & verbs",
+  "lessons": [
+   {
+    "id": "L2.1",
+    "title": "First Sentences: Mubtada & Khabar",
+    "level": 2,
+    "minutes": 25,
+    "explain": [
+     "Arabic's simplest sentence needs NO verb: TOPIC (mubtada) + COMMENT (khabar).",
+     "• الْبَيْتُ كَبِيرٌ — al-baytu kabeerun — 'The house (is) big.'\n• اللُّغَةُ جَمِيلَةٌ — 'The language (is) beautiful.'",
+     "Notice: definite topic (الـ…) pairs with indefinite comment (-un tanween). No verb 'is' needed — it's implied."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "الْبَيْتُ كَبِيرٌ means:",
+      "options": [
+       "The big house",
+       "The house is big",
+       "A big house",
+       "Houses are big"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "In Arabic, 'is/am/are' is…",
+      "options": [
+       "a required verb",
+       "usually omitted",
+       "always هو",
+       "never allowed"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "Which is 'The door is new'?",
+      "options": [
+       "الباب الجديد",
+       "البابُ جديدٌ",
+       "باب جديد",
+       "جديد الباب"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "الْبَيْتُ كَبِيرٌ",
+        "The house is big"
+       ],
+       [
+        "اللُّغَةُ جَمِيلَةٌ",
+        "The language is beautiful"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L2.2",
+    "title": "Pronouns & Demonstratives",
+    "level": 2,
+    "minutes": 25,
+    "explain": [
+     "Detached pronouns: أنا I · أنتَ you(m) · أنتِ you(f) · هو he · هي she · نحن we · أنتم you(pl) · هم they.",
+     "Demonstratives: هذا (this-m) · هذه (this-f) · ذلك (that-m) · تلك (that-f).",
+     "هذا كِتَابٌ — 'This is a book.' Note: demonstrative + indefinite noun = sentence."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "هِيَ means:",
+      "options": [
+       "he",
+       "she",
+       "they",
+       "we"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "'This is a mosque' =",
+      "options": [
+       "هذا مسجد",
+       "هذه مسجد",
+       "ذلك مساجد",
+       "مسجد هذا"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "تِلْكَ refers to something…",
+      "options": [
+       "near, masculine",
+       "far, feminine",
+       "plural only",
+       "abstract"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "أنا",
+        "I"
+       ],
+       [
+        "هو",
+        "he"
+       ],
+       [
+        "نحن",
+        "we"
+       ],
+       [
+        "هم",
+        "they"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L2.3",
+    "title": "Idafa: The Possessive Chain",
+    "level": 2,
+    "minutes": 25,
+    "explain": [
+     "Possession = two nouns glued together, SECOND noun takes no ال and often drops its final vowel:",
+     "• كِتَابُ الطَّالِبِ — kitabu-t-talibi — 'the student's book'\n• بَيْتُ اللهِ — baytu-llahi — 'the House of Allah'",
+     "Rule: first noun NEVER takes ال or tanween. The idafa chain is everywhere in the Quran: رَبِّ الْعَالَمِينَ 'Lord OF the worlds'."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "رَبِّ الْعَالَمِينَ means:",
+      "options": [
+       "The worlds' Lord is",
+       "Lord of the worlds",
+       "Worlds of the Lord",
+       "The Lord and worlds"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "In idafa, the FIRST noun never takes:",
+      "options": [
+       "any vowels",
+       "ال or tanween",
+       "shadda",
+       "a plural"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "'The teacher's book' =",
+      "options": [
+       "كتاب المعلم",
+       "كتابُ المعلّمِ",
+       "المعلم كتاب",
+       "كتاب في معلم"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "بَيْتُ اللهِ",
+        "House of Allah"
+       ],
+       [
+        "كِتَابُ الطَّالِبِ",
+        "student's book"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L2.4",
+    "title": "Prepositions & Attached Pronouns",
+    "level": 2,
+    "minutes": 30,
+    "explain": [
+     "Core prepositions: في in · مِن from · إلى to · على on · مَع with · لِ for.",
+     "Prepositions glue pronouns directly: فيه in-it · منه from-it · إليه to-it · عليه on-it · له for-him.",
+     "Quranic rhythm: فِيهِ هُدًى — 'IN it (is) guidance.'"
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "فِيهِ means:",
+      "options": [
+       "in him/it",
+       "from it",
+       "to him",
+       "on it"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "مِنَ الْكِتَابِ means:",
+      "options": [
+       "in the book",
+       "from the book",
+       "on the book",
+       "for the book"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "له means:",
+      "options": [
+       "with him",
+       "for him",
+       "against him",
+       "without him"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "في",
+        "in"
+       ],
+       [
+        "من",
+        "from"
+       ],
+       [
+        "إلى",
+        "to"
+       ],
+       [
+        "مع",
+        "with"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L2.5",
+    "title": "Past-Tense Verbs",
+    "level": 2,
+    "minutes": 30,
+    "explain": [
+     "The past tense is built on a 3-letter root: كَتَبَ (he wrote). Swap endings for person:",
+     "• كَتَبْتُ I wrote · كَتَبْتَ you(m) wrote · كَتَبَتْ she wrote\n• كَتَبْنَا we wrote · كَتَبُوا they wrote",
+     "Quranic core: قَالَ he said · قَالُوا they said · كَانَ was · خَلَقَ created."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "كَتَبْتُ means:",
+      "options": [
+       "he wrote",
+       "I wrote",
+       "we wrote",
+       "she wrote"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "قَالُوا means:",
+      "options": [
+       "he said",
+       "she said",
+       "they said",
+       "you said"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "The root of كَتَبَ is:",
+      "options": [
+       "ك ت ب",
+       "ت ب ك",
+       "ب ك ت",
+       "ك ب ت"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "كَتَبْنَا",
+        "we wrote"
+       ],
+       [
+        "كَتَبَتْ",
+        "she wrote"
+       ],
+       [
+        "كَتَبْتَ",
+        "you (m) wrote"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L2.6",
+    "title": "Present-Tense Verbs",
+    "level": 2,
+    "minutes": 30,
+    "explain": [
+     "Present tense starts with a prefix: يَكْتُبُ he writes · تَكْتُبُ she writes · أَكْتُبُ I write · نَكْتُبُ we write.",
+     "Prefix map: يـ he/they(m) · تـ she/you · أـ I · نـ we.",
+     "Compare: كَتَبَ (past) vs يَكْتُبُ (present) — same root, different frame."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "يَكْتُبُ means:",
+      "options": [
+       "he wrote",
+       "he writes",
+       "I write",
+       "write!"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "Which prefix marks 'I' in present tense?",
+      "options": [
+       "يـ",
+       "تـ",
+       "أـ",
+       "نـ"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "نَعْبُدُ means:",
+      "options": [
+       "we worship",
+       "he worships",
+       "they worshipped",
+       "worship!"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "يَقْرَأُ",
+        "he reads"
+       ],
+       [
+        "نَقْرَأُ",
+        "we read"
+       ],
+       [
+        "أَقْرَأُ",
+        "I read"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L2.7",
+    "title": "Plurals & Numbers",
+    "level": 2,
+    "minutes": 30,
+    "explain": [
+     "Sound plurals add endings: مُسْلِمون (masc pl) · مُسْلِمَات (fem pl).",
+     "Broken plurals reshape the word: كِتَاب → كُتُب (books) · رَجُل → رِجَال (men). Memorize as pairs.",
+     "Numbers 1-10: واحِد اثْنان ثلاثة أربعة خمسة ستة سبعة ثمانية تسعة عشرة. (Number-noun agreement is famously reversed — later lesson!)"
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "كُتُب is the plural of:",
+      "options": [
+       "كاتب",
+       "كتاب",
+       "مكتب",
+       "كتب"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "ثلاثة means:",
+      "options": [
+       "3",
+       "8",
+       "9",
+       "10"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "مُسْلِمَات is:",
+      "options": [
+       "singular",
+       "dual",
+       "sound fem plural",
+       "broken plural"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "اثنان",
+        "2"
+       ],
+       [
+        "خمسة",
+        "5"
+       ],
+       [
+        "عشرة",
+        "10"
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "3": {
+  "title": "Grammar II & Quran",
+  "subtitle": "Roots, cases, Fatihah",
+  "lessons": [
+   {
+    "id": "L3.1",
+    "title": "Roots: The DNA of Arabic",
+    "level": 3,
+    "minutes": 30,
+    "explain": [
+     "Nearly every Arabic word grows from a 3-letter ROOT carrying a core meaning.",
+     "From ك-ت-ب (writing): كِتَاب book · كَاتِب writer · مَكْتَب desk · مَكْتَبَة library · كِتَابَة writing.",
+     "Learn roots, not words — one root unlocks a whole family. The Quranic Arabic Corpus tags every Quran word by root."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "Words from root ع-ل-م relate to:",
+      "options": [
+       "water",
+       "knowledge",
+       "writing",
+       "peace"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "مَكْتَبَة most likely means:",
+      "options": [
+       "writer",
+       "library",
+       "letter",
+       "pen"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "The root of إِسْلَام is:",
+      "options": [
+       "س ل م",
+       "ل م س",
+       "س م ل",
+       "إ س ل"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "ك-ت-ب",
+        "writing"
+       ],
+       [
+        "ع-ل-م",
+        "knowing"
+       ],
+       [
+        "س-ل-م",
+        "peace/submission"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L3.2",
+    "title": "Case Endings: I'rab in Miniature",
+    "level": 3,
+    "minutes": 35,
+    "explain": [
+     "Final vowels do GRAMMAR work: -u (subject/default) · -a (object/after prepositions) · -i (possessed/after preposition).",
+     "• الطَّالِبُ جَاءَ — the student (SUBJECT) came.\n• رَأَيْتُ الطَّالِبَ — I saw the student (OBJECT).\n• كِتَابُ الطَّالِبِ — the student's book (POSSESSOR).",
+     "Full-vowel text (like the mushaf) encodes all of this. That's why reading the Quran trains real grammar instinct."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "The ending -i typically marks:",
+      "options": [
+       "subject",
+       "object",
+       "possessor/prepositional",
+       "verb"
+      ],
+      "answer": 2,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "In رَأَيْتُ الطَّالِبَ, الطَّالِبَ is the:",
+      "options": [
+       "subject",
+       "object",
+       "possessor",
+       "verb"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "Case endings are visible in:",
+      "options": [
+       "newspapers only",
+       "the mushaf text",
+       "never",
+       "English"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "-u",
+        "subject"
+       ],
+       [
+        "-a",
+        "object"
+       ],
+       [
+        "-i",
+        "possessor"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L3.3",
+    "title": "Reading Fatihah Word-by-Word",
+    "level": 3,
+    "minutes": 40,
+    "explain": [
+     "Now assemble everything on Surah Al-Fatihah — the most-recited chapter:",
+     "• الْحَمْدُ لِلَّهِ — 'ALL praise (belongs) to Allah' (nominal sentence + idafa-like لِ)\n• رَبِّ الْعَالَمِينَ — idafa: 'Lord of the worlds'\n• نَعْبُدُ وَنَسْتَعِينُ — 'We worship and we seek help' (present verbs, نـ prefix)",
+     "Open the Quran Reader → Surah 1, tap each word, hear it, see its meaning. Then return and take the quiz."
+    ],
+    "link": "/pages/quran-reader.html?surah=1",
+    "drills": [
+     {
+      "type": "mc",
+      "q": "الْحَمْدُ لِلَّهِ literally structures as:",
+      "options": [
+       "verb + subject",
+       "praise + to Allah",
+       "question + answer",
+       "past + present"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "نَسْتَعِينُ breaks down as:",
+      "options": [
+       "we-seek-help",
+       "he-helped",
+       "help!",
+       "helper"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ means:",
+      "options": [
+       "Guide us to the straight path",
+       "The path is straight",
+       "We found the path",
+       "Straighten our road"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "نَعْبُدُ",
+        "we worship"
+       ],
+       [
+        "الْعَالَمِينَ",
+        "the worlds"
+       ],
+       [
+        "الصِّرَاطَ الْمُسْتَقِيمَ",
+        "the straight path"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "L3.4",
+    "title": "Quranic Connectors & Phrases",
+    "level": 3,
+    "minutes": 30,
+    "explain": [
+     "High-frequency glue words that stitch verses together:",
+     "• وَ and · ثُمَّ then · فَ so/then · بَل rather · إِنَّ indeed · أَلَّا / أَنْ that\n• كَمَا just as · لَكِنْ but · حَتَّى until · إِذْ when",
+     "Spotting these while reading lets your eyes ride the verse's logic instead of drowning in vocabulary."
+    ],
+    "drills": [
+     {
+      "type": "mc",
+      "q": "إِنَّ adds emphasis meaning roughly:",
+      "options": [
+       "maybe",
+       "indeed",
+       "but",
+       "or"
+      ],
+      "answer": 1,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "فَ usually means:",
+      "options": [
+       "so/then",
+       "never",
+       "because not",
+       "without"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "mc",
+      "q": "حَتَّى means:",
+      "options": [
+       "until",
+       "except",
+       "if",
+       "why"
+      ],
+      "answer": 0,
+      "hint": ""
+     },
+     {
+      "type": "match",
+      "pairs": [
+       [
+        "وَ",
+        "and"
+       ],
+       [
+        "ثُمَّ",
+        "then"
+       ],
+       [
+        "لَكِنْ",
+        "but"
+       ],
+       [
+        "إِذْ",
+        "when"
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

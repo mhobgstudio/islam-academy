@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hifz Planner — Islam Academy</title>
+<link rel="stylesheet" href="../assets/css/academy.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
+  <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
+  <nav class="nav" id="main-nav"></nav>
+</div></header>
+
+<main class="container">
+  <h1 class="page-title">🧠 Hifz Planner</h1>
+  <p class="page-sub">Memorization tracker using the classic 3-tier system: new lesson (sabaq), recent revision (sabqi), older revision (manzil).</p>
+
+  <div class="grid cols-2" style="margin-bottom:20px">
+    <div class="card">
+      <h3>The daily method</h3>
+      <p class="sub" style="margin-bottom:8px">
+        • <b>Sabaq</b> (new): memorize ~5 lines / half a page daily. Read each ayah 10× looking, then 10× from memory.<br>
+        • <b>Sabqi</b> (recent): recite the last 7 days of lessons to a partner or recording.<br>
+        • <b>Manzil</b> (old): cycle everything you have memorized — e.g. one juz per day.<br>
+        • Recite NEW lessons in your 5 daily prayers to lock them in.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Your plan</h3>
+      <p class="sub" id="plan-summary">No plan yet.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+        <select id="start-juz"></select>
+        <select id="end-juz"></select>
+        <button class="btn small gold" id="make-plan">Set goal</button>
+        <button class="btn small ghost" id="reset-plan">Reset</button>
+      </div>
+      <div class="progress-bar"><div id="plan-bar" style="width:0%"></div></div>
+      <p style="font-size:12.5px;color:var(--ink-soft);margin-top:6px" id="plan-pct"></p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3>Juz map</h3>
+    <p class="sub">Click a juz to mark it memorized / un-memorized.</p>
+    <div class="juz-grid" id="juz-grid"></div>
+  </div>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <h3>Log today</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <input type="text" id="log-text" placeholder="e.g. Al-Mulk 1-10" style="flex:1;min-width:160px">
+        <button class="btn small" id="add-log">Add</button>
+      </div>
+      <ul class="hifz-log" id="log-list"></ul>
+    </div>
+    <div class="card">
+      <h3>Morning/evening revision helper</h3>
+      <p class="sub">Open a random memorized surah and recite it cold:</p>
+      <button class="btn gold" id="random-surah">🎲 Test me</button>
+      <p id="random-result" style="margin-top:10px;font-weight:700"></p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">Islam Academy — Hifz Track</footer>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>
+(async function () {
+  const { el } = Academy;
+  const meta = await Academy.fetchJSON("../data/quran/surah_meta.json");
+  const grid = document.getElementById("juz-grid");
+  const summary = document.getElementById("plan-summary");
+  const bar = document.getElementById("plan-bar");
+  const pctEl = document.getElementById("plan-pct");
+  const hifz = Academy.state.hifz;
+  if (!hifz.done) hifz.done = [];
+
+  for (let i = 1; i <= 30; i++) {
+    document.getElementById("start-juz").append(el("option", {value:i}, "Juz " + i));
+    document.getElementById("end-juz").append(el("option", {value:i}, "Juz " + i));
+  }
+  document.getElementById("end-juz").value = 30;
+
+  function render() {
+    grid.innerHTML = "";
+    for (let i = 1; i <= 30; i++) {
+      const c = el("div", {class:"juz-cell" + (hifz.done.includes(i) ? " done" : ""), onclick:()=>{
+        if (hifz.done.includes(i)) hifz.done = hifz.done.filter(x=>x!==i);
+        else { hifz.done.push(i); Academy.addXP(50); }
+        Academy.save(); render();
+      }}, String(i));
+      grid.append(c);
+    }
+    const total = hifz.plan ? hifz.plan[1] - hifz.plan[0] + 1 : 30;
+    const doneInRange = hifz.done.filter(j => !hifz.plan || (j >= hifz.plan[0] && j <= hifz.plan[1])).length;
+    bar.style.width = (doneInRange/total*100) + "%";
+    pctEl.textContent = doneInRange + " / " + total + " juz (" + Math.round(doneInRange/total*100) + "%)";
+    summary.textContent = hifz.plan
+      ? "Goal: Juz " + hifz.plan[0] + " → " + hifz.plan[1] + ". At one juz per month you finish in " + (total - doneInRange) + " months."
+      : "No plan yet — set a goal below.";
+    // log list
+    const ul = document.getElementById("log-list");
+    ul.innerHTML = "";
+    hifz.log.slice(-15).reverse().forEach(entry => {
+      ul.append(el("li", null, entry.date + " — " + entry.text));
+    });
+  }
+
+  document.getElementById("make-plan").onclick = () => {
+    const a = parseInt(document.getElementById("start-juz").value, 10);
+    const b = parseInt(document.getElementById("end-juz").value, 10);
+    hifz.plan = [Math.min(a,b), Math.max(a,b)];
+    Academy.save(); render();
+  };
+  document.getElementById("reset-plan").onclick = () => {
+    hifz.plan = null; hifz.done = []; hifz.log = [];
+    Academy.save(); render();
+  };
+  document.getElementById("add-log").onclick = () => {
+    const t = document.getElementById("log-text").value.trim();
+    if (!t) return;
+    hifz.log.push({date: Academy.todayStr(), text: t});
+    Academy.addXP(10);
+    document.getElementById("log-text").value = "";
+    Academy.save(); render();
+  };
+  document.getElementById("random-surah").onclick = () => {
+    const doneSurahs = meta.filter(m => m.number >= 78);
+    const s = doneSurahs[Math.floor(Math.random()*doneSurahs.length)];
+    document.getElementById("random-result").innerHTML =
+      "Recite Surah <a href=\"quran-reader.html?surah=" + s.number + "\">" + s.name + "</a> (" + s.ayahs + " ayat) from memory.";
+  };
+
+  render();
+})();
+</script>
+</body>
+</html>

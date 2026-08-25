@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISLAM ACADEMY — Learn Arabic & Quran from Scratch</title>
+<link rel="stylesheet" href="assets/css/academy.css">
+<link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-mark">ق</div>
+      <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div>
+    </a>
+    <nav class="nav" id="main-nav"></nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="bismillah quran-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h1>Learn Arabic &amp; the Quran — from absolute zero.</h1>
+    <p>A complete self-study academy: 28 letters → fluent reading → grammar → understanding the Quran in its own language. Interactive lessons, spaced-repetition vocabulary, word-by-word reader, tajweed rules, and a memorization planner. Everything works offline once loaded.</p>
+    <div style="margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; position:relative;">
+      <a class="btn gold" href="#start">Start Learning ↓</a>
+      <a class="btn ghost" style="color:#e6c860;border-color:rgba(230,200,96,.4)" href="pages/quran-reader.html">Open Quran Reader</a>
+    </div>
+  </section>
+
+  <div class="stat-row" id="stats"></div>
+
+  <h2 class="section-title" id="start">Your Path — Four Levels + Two Tracks</h2>
+  <div class="grid cols-3" id="levels-grid"></div>
+
+  <h2 class="section-title">Quran Track</h2>
+  <div class="grid cols-3">
+    <div class="card">
+      <span class="badge">Track</span>
+      <h3>📖 Quran Reader</h3>
+      <p class="sub">Full mushaf text (Uthmani script), Saheeh International translation, tap any word for meaning + audio, recitation by Alafasy &amp; more.</p>
+      <a class="btn small" href="pages/quran-reader.html">Open Reader</a>
+    </div>
+    <div class="card">
+      <span class="badge">Track</span>
+      <h3>🎵 Tajweed Rules</h3>
+      <p class="sub">Noon sakinah, meem sakinah, madd lengths, qalqalah, tafkheem and stopping signs — with color-coded examples.</p>
+      <a class="btn small" href="pages/tajweed.html">Study Tajweed</a>
+    </div>
+    <div class="card">
+      <span class="badge">Track</span>
+      <h3>🧠 Hifz Planner</h3>
+      <p class="sub">Memorize juz by juz with a revision schedule built on proven interval methods. Track every page you seal.</p>
+      <a class="btn small" href="pages/hifz.html">Plan Hifz</a>
+    </div>
+  </div>
+
+  <h2 class="section-title">How This Academy Was Built</h2>
+  <div class="grid cols-2">
+    <div class="card">
+      <h3>Curriculum lineage</h3>
+      <p class="sub" style="margin-bottom:0">The lesson sequence follows the celebrated Madinah Books method (Dr. V. Abdur Rahim, Islamic University of Madinah) for non-native speakers, combined with frequency-first vocabulary from the Quranic Arabic Corpus — so you learn the words that appear most in the Quran first. Tajweed modules follow the standard Hafs 'an 'Asim rules taught worldwide.</p>
+    </div>
+    <div class="card">
+      <h3>Data sources (free & open)</h3>
+      <p class="sub" style="margin-bottom:8px">
+        • Quran text: Tanzil Uthmani via fawazahmed0/quran-api<br>
+        • Translation: Saheeh International<br>
+        • Word-by-word + audio: quran.com API v4 / verses.quran.com<br>
+        • Recitation: cdn.islamic.network (Mishary Alafasy)<br>
+        • Pronunciation audio: Microsoft Edge neural TTS (ar-SA-Zariyah)
+      </p>
+      <a class="btn small ghost" href="README.md">Full documentation →</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  Built as an offline-first study companion. Progress saves locally in your browser.<br>
+  <span class="arabic" style="display:inline-block;margin-top:6px">رَبِّ زِدْنِي عِلْمًا — “My Lord, increase me in knowledge” (20:114)</span>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/nav.js"></script>
+<script>
+(async function () {
+  const { el } = Academy;
+  // stats
+  const levels = await Academy.fetchJSON("data/curriculum/levels.json");
+  const decks = await Academy.fetchJSON("data/curriculum/decks.json");
+  const meta = await Academy.fetchJSON("data/quran/surah_meta.json");
+  const allLessons = Object.values(levels).flatMap(l => l.lessons);
+  const doneCount = allLessons.filter(l => Academy.state.lessonsDone[l.id]).length;
+  const totalWords = Object.values(decks).reduce((s, d) => s + d.words.length, 0);
+  const totalAyahs = meta.reduce((s, m) => s + m.ayahs, 0);
+  document.getElementById("stats").append(
+    el("div", {class:"stat"}, el("b", null, String(Academy.state.xp)), el("span", null, "XP")),
+    el("div", {class:"stat"}, el("b", null, String(Academy.state.streak.count)), el("span", null, "Day streak")),
+    el("div", {class:"stat"}, el("b", null, `${doneCount}/${allLessons.length}`), el("span", null, "Lessons")),
+    el("div", {class:"stat"}, el("b", null, String(totalWords)), el("span", null, "Vocab cards")),
+    el("div", {class:"stat"}, el("b", null, String(totalAyahs)), el("span", null, "Ayat available")),
+  );
+
+  // levels grid
+  const grid = document.getElementById("levels-grid");
+  const icons = ["🔤","📗","📘","📕","🔬"];
+  Object.entries(levels).forEach(([num, lv]) => {
+    const done = lv.lessons.filter(l => Academy.state.lessonsDone[l.id]).length;
+    const card = el("div", {class:"card"},
+      el("span", {class:"badge"}, `Level ${num} · ${lv.subtitle}`),
+      el("h3", null, `${icons[num]} ${lv.title}`),
+      el("p", {class:"sub"}, `${lv.lessons.length} lessons`),
+      el("div", {class:"progress-bar", style:"margin-bottom:12px"}, el("div", {style:`width:${lv.lessons.length?done/lv.lessons.length*100:0}%`})),
+      el("a", {class:"btn small", href:`pages/grammar.html?level=${num}`}, done === lv.lessons.length ? "Review" : "Continue")
+    );
+    grid.append(card);
+  });
+})();
+</script>
+</body>
+</html>

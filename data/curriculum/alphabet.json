@@ -1,0 +1,562 @@
+[
+ {
+  "id": 1,
+  "name": "alif",
+  "char": "ا",
+  "translit": "a",
+  "forms": {
+   "isolated": "ا",
+   "initial": "ا",
+   "medial": "ـا",
+   "final": "ـا"
+  },
+  "non_connector": true,
+  "example": {
+   "word": "أسَد",
+   "translit": "asad",
+   "meaning": "lion"
+  },
+  "audio": "letters/alif.mp3",
+  "example_audio": "words/alif.mp3"
+ },
+ {
+  "id": 2,
+  "name": "ba",
+  "char": "ب",
+  "translit": "b",
+  "forms": {
+   "isolated": "ب",
+   "initial": "بـ",
+   "medial": "ـبـ",
+   "final": "ـب"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "باب",
+   "translit": "bab",
+   "meaning": "door"
+  },
+  "audio": "letters/ba.mp3",
+  "example_audio": "words/ba.mp3"
+ },
+ {
+  "id": 3,
+  "name": "ta",
+  "char": "ت",
+  "translit": "t",
+  "forms": {
+   "isolated": "ت",
+   "initial": "تـ",
+   "medial": "ـتـ",
+   "final": "ـت"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "تمر",
+   "translit": "tamr",
+   "meaning": "dates"
+  },
+  "audio": "letters/ta.mp3",
+  "example_audio": "words/ta.mp3"
+ },
+ {
+  "id": 4,
+  "name": "tha",
+  "char": "ث",
+  "translit": "th",
+  "forms": {
+   "isolated": "ث",
+   "initial": "ثـ",
+   "medial": "ـثـ",
+   "final": "ـث"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "ثلج",
+   "translit": "thalj",
+   "meaning": "snow"
+  },
+  "audio": "letters/tha.mp3",
+  "example_audio": "words/tha.mp3"
+ },
+ {
+  "id": 5,
+  "name": "jim",
+  "char": "ج",
+  "translit": "j",
+  "forms": {
+   "isolated": "ج",
+   "initial": "جـ",
+   "medial": "ـجـ",
+   "final": "ـج"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "جمل",
+   "translit": "jamal",
+   "meaning": "camel"
+  },
+  "audio": "letters/jim.mp3",
+  "example_audio": "words/jim.mp3"
+ },
+ {
+  "id": 6,
+  "name": "ha",
+  "char": "ح",
+  "translit": "h (deep)",
+  "forms": {
+   "isolated": "ح",
+   "initial": "حـ",
+   "medial": "ـحـ",
+   "final": "ـح"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "حوت",
+   "translit": "hut",
+   "meaning": "whale"
+  },
+  "audio": "letters/ha.mp3",
+  "example_audio": "words/ha.mp3"
+ },
+ {
+  "id": 7,
+  "name": "kha",
+  "char": "خ",
+  "translit": "kh",
+  "forms": {
+   "isolated": "خ",
+   "initial": "خـ",
+   "medial": "ـخـ",
+   "final": "ـخ"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "خرzuf",
+   "translit": "khuruf",
+   "meaning": "sheep"
+  },
+  "audio": "letters/kha.mp3",
+  "example_audio": "words/kha.mp3"
+ },
+ {
+  "id": 8,
+  "name": "dal",
+  "char": "د",
+  "translit": "d",
+  "forms": {
+   "isolated": "د",
+   "initial": "د",
+   "medial": "ـد",
+   "final": "ـد"
+  },
+  "non_connector": true,
+  "example": {
+   "word": "دار",
+   "translit": "dar",
+   "meaning": "house"
+  },
+  "audio": "letters/dal.mp3",
+  "example_audio": "words/dal.mp3"
+ },
+ {
+  "id": 9,
+  "name": "dhal",
+  "char": "ذ",
+  "translit": "dh",
+  "forms": {
+   "isolated": "ذ",
+   "initial": "ذ",
+   "medial": "ـذ",
+   "final": "ـذ"
+  },
+  "non_connector": true,
+  "example": {
+   "word": "ذهب",
+   "translit": "dhahab",
+   "meaning": "gold"
+  },
+  "audio": "letters/dhal.mp3",
+  "example_audio": "words/dhal.mp3"
+ },
+ {
+  "id": 10,
+  "name": "ra",
+  "char": "ر",
+  "translit": "r",
+  "forms": {
+   "isolated": "ر",
+   "initial": "ر",
+   "medial": "ـر",
+   "final": "ـر"
+  },
+  "non_connector": true,
+  "example": {
+   "word": "ريح",
+   "translit": "rih",
+   "meaning": "wind"
+  },
+  "audio": "letters/ra.mp3",
+  "example_audio": "words/ra.mp3"
+ },
+ {
+  "id": 11,
+  "name": "zay",
+  "char": "ز",
+  "translit": "z",
+  "forms": {
+   "isolated": "ز",
+   "initial": "ز",
+   "medial": "ـز",
+   "final": "ـز"
+  },
+  "non_connector": true,
+  "example": {
+   "word": "زيتون",
+   "translit": "zaytun",
+   "meaning": "olive"
+  },
+  "audio": "letters/zay.mp3",
+  "example_audio": "words/zay.mp3"
+ },
+ {
+  "id": 12,
+  "name": "sin",
+  "char": "س",
+  "translit": "s",
+  "forms": {
+   "isolated": "س",
+   "initial": "سـ",
+   "medial": "ـسـ",
+   "final": "ـس"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "سمك",
+   "translit": "samak",
+   "meaning": "fish"
+  },
+  "audio": "letters/sin.mp3",
+  "example_audio": "words/sin.mp3"
+ },
+ {
+  "id": 13,
+  "name": "shin",
+  "char": "ش",
+  "translit": "sh",
+  "forms": {
+   "isolated": "ش",
+   "initial": "شـ",
+   "medial": "ـشـ",
+   "final": "ـش"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "شمس",
+   "translit": "shams",
+   "meaning": "sun"
+  },
+  "audio": "letters/shin.mp3",
+  "example_audio": "words/shin.mp3"
+ },
+ {
+  "id": 14,
+  "name": "sad",
+  "char": "ص",
+  "translit": "s (heavy)",
+  "forms": {
+   "isolated": "ص",
+   "initial": "صـ",
+   "medial": "ـصـ",
+   "final": "ـص"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "صقر",
+   "translit": "saqr",
+   "meaning": "falcon"
+  },
+  "audio": "letters/sad.mp3",
+  "example_audio": "words/sad.mp3"
+ },
+ {
+  "id": 15,
+  "name": "dad",
+  "char": "ض",
+  "translit": "d (heavy)",
+  "forms": {
+   "isolated": "ض",
+   "initial": "ضـ",
+   "medial": "ـضـ",
+   "final": "ـض"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "ضيف",
+   "translit": "dayf",
+   "meaning": "guest"
+  },
+  "audio": "letters/dad.mp3",
+  "example_audio": "words/dad.mp3"
+ },
+ {
+  "id": 16,
+  "name": "ta-heavy",
+  "char": "ط",
+  "translit": "t (heavy)",
+  "forms": {
+   "isolated": "ط",
+   "initial": "طـ",
+   "medial": "ـطـ",
+   "final": "ـط"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "طير",
+   "translit": "tayr",
+   "meaning": "bird"
+  },
+  "audio": "letters/ta-heavy.mp3",
+  "example_audio": "words/ta-heavy.mp3"
+ },
+ {
+  "id": 17,
+  "name": "zha-heavy",
+  "char": "ظ",
+  "translit": "dh (heavy)",
+  "forms": {
+   "isolated": "ظ",
+   "initial": "ظـ",
+   "medial": "ـظـ",
+   "final": "ـظ"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "ظل",
+   "translit": "zill",
+   "meaning": "shade"
+  },
+  "audio": "letters/zha-heavy.mp3",
+  "example_audio": "words/zha-heavy.mp3"
+ },
+ {
+  "id": 18,
+  "name": "ayn",
+  "char": "ع",
+  "translit": "ʿ",
+  "forms": {
+   "isolated": "ع",
+   "initial": "عـ",
+   "medial": "ـعـ",
+   "final": "ـع"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "عين",
+   "translit": "ayn",
+   "meaning": "eye"
+  },
+  "audio": "letters/ayn.mp3",
+  "example_audio": "words/ayn.mp3"
+ },
+ {
+  "id": 19,
+  "name": "ghayn",
+  "char": "غ",
+  "translit": "gh",
+  "forms": {
+   "isolated": "غ",
+   "initial": "غـ",
+   "medial": "ـغـ",
+   "final": "ـغ"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "غيم",
+   "translit": "ghaym",
+   "meaning": "cloud"
+  },
+  "audio": "letters/ghayn.mp3",
+  "example_audio": "words/ghayn.mp3"
+ },
+ {
+  "id": 20,
+  "name": "fa",
+  "char": "ف",
+  "translit": "f",
+  "forms": {
+   "isolated": "ف",
+   "initial": "فـ",
+   "medial": "ـفـ",
+   "final": "ـف"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "فيل",
+   "translit": "fil",
+   "meaning": "elephant"
+  },
+  "audio": "letters/fa.mp3",
+  "example_audio": "words/fa.mp3"
+ },
+ {
+  "id": 21,
+  "name": "qaf",
+  "char": "ق",
+  "translit": "q",
+  "forms": {
+   "isolated": "ق",
+   "initial": "قـ",
+   "medial": "ـقـ",
+   "final": "ـق"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "قمر",
+   "translit": "qamar",
+   "meaning": "moon"
+  },
+  "audio": "letters/qaf.mp3",
+  "example_audio": "words/qaf.mp3"
+ },
+ {
+  "id": 22,
+  "name": "kaf",
+  "char": "ك",
+  "translit": "k",
+  "forms": {
+   "isolated": "ك",
+   "initial": "كـ",
+   "medial": "ـكـ",
+   "final": "ـك"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "كتاب",
+   "translit": "kitab",
+   "meaning": "book"
+  },
+  "audio": "letters/kaf.mp3",
+  "example_audio": "words/kaf.mp3"
+ },
+ {
+  "id": 23,
+  "name": "lam",
+  "char": "ل",
+  "translit": "l",
+  "forms": {
+   "isolated": "ل",
+   "initial": "لـ",
+   "medial": "ـلـ",
+   "final": "ـل"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "ليل",
+   "translit": "layl",
+   "meaning": "night"
+  },
+  "audio": "letters/lam.mp3",
+  "example_audio": "words/lam.mp3"
+ },
+ {
+  "id": 24,
+  "name": "mim",
+  "char": "م",
+  "translit": "m",
+  "forms": {
+   "isolated": "م",
+   "initial": "مـ",
+   "medial": "ـمـ",
+   "final": "ـم"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "ماء",
+   "translit": "maa",
+   "meaning": "water"
+  },
+  "audio": "letters/mim.mp3",
+  "example_audio": "words/mim.mp3"
+ },
+ {
+  "id": 25,
+  "name": "nun",
+  "char": "ن",
+  "translit": "n",
+  "forms": {
+   "isolated": "ن",
+   "initial": "نـ",
+   "medial": "ـنـ",
+   "final": "ـن"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "نور",
+   "translit": "nur",
+   "meaning": "light"
+  },
+  "audio": "letters/nun.mp3",
+  "example_audio": "words/nun.mp3"
+ },
+ {
+  "id": 26,
+  "name": "ha-round",
+  "char": "ه",
+  "translit": "h (light)",
+  "forms": {
+   "isolated": "ه",
+   "initial": "هـ",
+   "medial": "ـهـ",
+   "final": "ـه"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "هدية",
+   "translit": "hadiyya",
+   "meaning": "gift"
+  },
+  "audio": "letters/ha-round.mp3",
+  "example_audio": "words/ha-round.mp3"
+ },
+ {
+  "id": 27,
+  "name": "waw",
+  "char": "و",
+  "translit": "w / u",
+  "forms": {
+   "isolated": "و",
+   "initial": "و",
+   "medial": "ـو",
+   "final": "ـو"
+  },
+  "non_connector": true,
+  "example": {
+   "word": "ورد",
+   "translit": "ward",
+   "meaning": "rose"
+  },
+  "audio": "letters/waw.mp3",
+  "example_audio": "words/waw.mp3"
+ },
+ {
+  "id": 28,
+  "name": "ya",
+  "char": "ي",
+  "translit": "y / i",
+  "forms": {
+   "isolated": "ي",
+   "initial": "يـ",
+   "medial": "ـيـ",
+   "final": "ـي"
+  },
+  "non_connector": false,
+  "example": {
+   "word": "يد",
+   "translit": "yad",
+   "meaning": "hand"
+  },
+  "audio": "letters/ya.mp3",
+  "example_audio": "words/ya.mp3"
+ }
+]
