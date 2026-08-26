@@ -119,49 +119,54 @@
     return "https://verses.quran.com/" + urlSuffix;
   }
 
-  // Universal Arabic TTS — tries Web Speech API first, then edge-tts CDN, then local audio
+  // Universal Arabic TTS — Web Speech API (Chrome/Edge/Safari have ar-SA voices)
   const speechSynth = typeof speechSynthesis !== "undefined" ? speechSynthesis : null;
   let arabicVoice = null;
+  let voicesLoaded = false;
   function getArabicVoice() {
-    if (arabicVoice) return arabicVoice;
+    if (arabicVoice !== null) return arabicVoice;
     if (!speechSynth) return null;
     const voices = speechSynth.getVoices();
-    // prefer ar-SA voices (Zariyah, Tarik, etc.)
-    arabicVoice = voices.find(v => v.lang === "ar-SA") || voices.find(v => v.lang && v.lang.startsWith("ar")) || null;
+    if (voices.length === 0) return null; // not loaded yet
+    voicesLoaded = true;
+    // prefer ar-SA voices (Zariyah, Tarik, Hamed, etc.)
+    arabicVoice = voices.find(v => v.lang === "ar-SA")
+      || voices.find(v => v.lang && v.lang.startsWith("ar"))
+      || null;
     return arabicVoice;
   }
-  // Pre-load voices (they load async in some browsers)
-  if (speechSynth) speechSynth.onvoiceschanged = () => { arabicVoice = null; getArabicVoice(); };
+  // Pre-load voices (they load async in Chrome/Edge)
+  if (speechSynth) {
+    speechSynth.onvoiceschanged = () => { arabicVoice = null; getArabicVoice(); };
+    // Also try immediately in case they're already loaded
+    getArabicVoice();
+  }
 
   function speakArabic(text, btn) {
     if (!text) return;
-    // highlight button while playing
-    if (btn) { btn.classList.add("speaking"); player.onended = () => btn.classList.remove("speaking"); }
+    if (btn) { btn.classList.add("speaking"); }
     const voice = getArabicVoice();
     if (speechSynth && voice) {
-      // Cancel any ongoing speech
       speechSynth.cancel();
       const u = new SpeechSynthesisUtterance(text);
       u.voice = voice;
       u.lang = "ar-SA";
       u.rate = 0.8;
       u.onend = () => { if (btn) btn.classList.remove("speaking"); };
-      u.onerror = () => {
-        // fallback: try local audio
-        btn && btn.classList.remove("speaking");
-        speakLocalAudio(text, btn);
-      };
+      u.onerror = () => { if (btn) btn.classList.remove("speaking"); };
       speechSynth.speak(u);
+    } else if (speechSynth && !voicesLoaded) {
+      // Voices haven't loaded yet — retry after a short delay
+      setTimeout(() => speakArabic(text, btn), 200);
     } else {
-      speakLocalAudio(text, btn);
+      // No Arabic voice available — flash the button as visual feedback
+      if (btn) {
+        btn.classList.remove("speaking");
+        btn.style.background = "var(--danger)";
+        btn.style.color = "#fff";
+        setTimeout(() => { btn.style.background = ""; btn.style.color = ""; }, 800);
+      }
     }
-  }
-  // Edge-tts CDN fallback (free, no key needed)
-  function speakLocalAudio(text, btn) {
-    // encode text for URL (strip diacritics for cleaner TTS)
-    const clean = text.replace(/[\u064B-\u065F\u0670]/g, "");
-    const url = "https://rpg.stavros.io/tts/?voice=ar-SA-ZariyahNeural&text=" + encodeURIComponent(clean);
-    speak(url, btn);
   }
 
   // Create a speaker button element
