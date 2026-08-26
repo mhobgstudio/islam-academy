@@ -23,10 +23,12 @@
     <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:10px">
       <span class="quran-text" style="font-size:26px">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</span>
       <span style="color:var(--ink-soft);font-size:13px">istiʿādha — seeking refuge</span>
+      <button class="btn small ghost" id="btn-istiadha" title="Listen">🔊</button>
     </div>
     <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:10px">
       <span class="quran-text" style="font-size:26px">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
       <span style="color:var(--ink-soft);font-size:13px">basmalah — at surah start (except Surah 9)</span>
+      <button class="btn small ghost" id="btn-basmalah" title="Listen">🔊</button>
     </div>
   </div>
 
@@ -39,22 +41,41 @@
   </div>
 </main>
 
-<footer class="site-footer">Islam Academy — Tajweed Track · Hafs an Asim</footer>
+<footer class="site-footer">Islam Academy — Tajweed Track · Hafs an Asim · <button onclick="Academy.speakArabic('رَبِّ زِدْنِي عِلْمًا', this)" class="btn small ghost" style="font-size:12px;padding:2px 8px">🔊 رَبِّ زِدْنِي عِلْمًا</button></footer>
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/nav.js"></script>
 <script>
 (async function () {
-  const { el } = Academy;
+  const { el, speakArabic } = Academy;
   const rules = await Academy.fetchJSON("../data/curriculum/tajweed.json");
   const wrap = document.getElementById("rules");
+
+  // Wire up istiadha & basmalah buttons
+  document.getElementById("btn-istiadha").onclick = function() {
+    speakArabic("أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ", this);
+  };
+  document.getElementById("btn-basmalah").onclick = function() {
+    speakArabic("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", this);
+  };
+
   rules.forEach(group => {
     const card = el("div", {class:"card", style:"margin-bottom:16px"});
     card.append(el("h3", null, group.title), el("p", {class:"sub"}, group.body));
     group.rules.forEach(([name, desc, ex]) => {
-      card.append(el("div", {class:"tajweed-rule", style:"--twc:" + group.color},
+      const ruleEl = el("div", {class:"tajweed-rule", style:"--twc:" + group.color},
         el("h4", null, name),
-        el("p", {style:"font-size:14px;margin:2px 0"}, desc),
-        ex && ex !== "—" ? el("div", {class:"ex"}, ex) : null));
+        el("p", {style:"font-size:14px;margin:2px 0"}, desc));
+      if (ex && ex !== "—") {
+        ruleEl.append(el("div", {style:"display:flex;align-items:center;gap:8px;flex-wrap:wrap"},
+          el("div", {class:"ex"}, ex),
+          el("button", {
+            class: "btn small ghost",
+            title: "Listen to this example",
+            onclick: function() { speakArabic(ex, this); }
+          }, "🔊")
+        ));
+      }
+      card.append(ruleEl);
     });
     wrap.append(card);
   });

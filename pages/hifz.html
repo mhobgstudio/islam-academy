@@ -27,6 +27,10 @@
         • <b>Manzil</b> (old): cycle everything you have memorized — e.g. one juz per day.<br>
         • Recite NEW lessons in your 5 daily prayers to lock them in.
       </p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+        <button class="btn small ghost" id="btn-basmalah">🔊 Basmalah</button>
+        <button class="btn small ghost" id="btn-istiadha">🔊 Isti'adha</button>
+      </div>
     </div>
     <div class="card">
       <h3>Your plan</h3>
@@ -61,6 +65,9 @@
       <h3>Morning/evening revision helper</h3>
       <p class="sub">Open a random memorized surah and recite it cold:</p>
       <button class="btn gold" id="random-surah">🎲 Test me</button>
+      <div id="random-listen" style="margin-top:8px;display:none">
+        <button class="btn small ghost" id="listen-surah">🔊 Listen to this surah (Alafasy)</button>
+      </div>
       <p id="random-result" style="margin-top:10px;font-weight:700"></p>
     </div>
   </div>
@@ -129,11 +136,41 @@
     document.getElementById("log-text").value = "";
     Academy.save(); render();
   };
+
+  // Audio buttons
+  document.getElementById("btn-basmalah").onclick = function() {
+    Academy.speakArabic("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", this);
+  };
+  document.getElementById("btn-istiadha").onclick = function() {
+    Academy.speakArabic("أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ", this);
+  };
+
+  // Random surah with audio playback
+  let currentRandomMeta = null;
+  const surahPlayer = new Audio();
   document.getElementById("random-surah").onclick = () => {
     const doneSurahs = meta.filter(m => m.number >= 78);
     const s = doneSurahs[Math.floor(Math.random()*doneSurahs.length)];
+    currentRandomMeta = s;
     document.getElementById("random-result").innerHTML =
       "Recite Surah <a href=\"quran-reader.html?surah=" + s.number + "\">" + s.name + "</a> (" + s.ayahs + " ayat) from memory.";
+    document.getElementById("random-listen").style.display = "";
+  };
+  document.getElementById("listen-surah").onclick = function() {
+    if (!currentRandomMeta) return;
+    // Play first 3 ayat as preview
+    surahPlayer.pause();
+    // Use the global ayah number calculation
+    let globalStart = 1;
+    for (let i = 0; i < meta.length; i++) {
+      if (meta[i].number === currentRandomMeta.number) break;
+      globalStart += meta[i].ayahs;
+    }
+    const url = Academy.ayahAudio("ar.alafasy", globalStart);
+    surahPlayer.src = url;
+    surahPlayer.play().catch(() => {});
+    this.textContent = "⏸ Playing...";
+    surahPlayer.onended = () => { this.textContent = "🔊 Listen to this surah (Alafasy)"; };
   };
 
   render();

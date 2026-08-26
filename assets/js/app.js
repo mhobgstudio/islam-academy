@@ -119,6 +119,60 @@
     return "https://verses.quran.com/" + urlSuffix;
   }
 
+  // Universal Arabic TTS — tries Web Speech API first, then edge-tts CDN, then local audio
+  const speechSynth = typeof speechSynthesis !== "undefined" ? speechSynthesis : null;
+  let arabicVoice = null;
+  function getArabicVoice() {
+    if (arabicVoice) return arabicVoice;
+    if (!speechSynth) return null;
+    const voices = speechSynth.getVoices();
+    // prefer ar-SA voices (Zariyah, Tarik, etc.)
+    arabicVoice = voices.find(v => v.lang === "ar-SA") || voices.find(v => v.lang && v.lang.startsWith("ar")) || null;
+    return arabicVoice;
+  }
+  // Pre-load voices (they load async in some browsers)
+  if (speechSynth) speechSynth.onvoiceschanged = () => { arabicVoice = null; getArabicVoice(); };
+
+  function speakArabic(text, btn) {
+    if (!text) return;
+    // highlight button while playing
+    if (btn) { btn.classList.add("speaking"); player.onended = () => btn.classList.remove("speaking"); }
+    const voice = getArabicVoice();
+    if (speechSynth && voice) {
+      // Cancel any ongoing speech
+      speechSynth.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.voice = voice;
+      u.lang = "ar-SA";
+      u.rate = 0.8;
+      u.onend = () => { if (btn) btn.classList.remove("speaking"); };
+      u.onerror = () => {
+        // fallback: try local audio
+        btn && btn.classList.remove("speaking");
+        speakLocalAudio(text, btn);
+      };
+      speechSynth.speak(u);
+    } else {
+      speakLocalAudio(text, btn);
+    }
+  }
+  // Edge-tts CDN fallback (free, no key needed)
+  function speakLocalAudio(text, btn) {
+    // encode text for URL (strip diacritics for cleaner TTS)
+    const clean = text.replace(/[\u064B-\u065F\u0670]/g, "");
+    const url = "https://rpg.stavros.io/tts/?voice=ar-SA-ZariyahNeural&text=" + encodeURIComponent(clean);
+    speak(url, btn);
+  }
+
+  // Create a speaker button element
+  function speakerBtn(text, label) {
+    return el("button", {
+      class: "btn small ghost speaker-inline",
+      title: "Listen",
+      onclick: (e) => { e.stopPropagation(); speakArabic(text, e.currentTarget); }
+    }, "🔊" + (label ? " " + label : ""));
+  }
+
   // ---------- utils ----------
   function el(tag, attrs, ...children) {
     const e = document.createElement(tag);
@@ -153,6 +207,7 @@
     reviewCard, dueCards, srsStats,
     completeLesson, lessonScore,
     speak, speakLocal, ayahAudio, wbwAudio,
+    speakArabic, speakerBtn,
     el, shuffle, fetchJSON, todayStr,
   };
 })();

@@ -76,9 +76,16 @@
         )
       ),
       el("h4", null, "Example"),
-      el("p", null, `${l.example.word} (${l.example.translit}) = "${l.example.meaning}"`),
+      el("div", {style:"display:flex;align-items:center;gap:8px;flex-wrap:wrap"},
+        el("p", null, `${l.example.word} (${l.example.translit}) = "${l.example.meaning}"`),
+        l.example_audio ? el("button", {class:"btn small ghost", style:"padding:2px 8px",
+          onclick: () => speakLocal(l.example_audio)}, "🔊 example word") : null
+      ),
       l.non_connector ? el("p", {style:"color:var(--danger);font-size:13px"}, "⚠ Non-connecting letter") : null,
-      el("button", {class:"btn", style:"margin-top:12px", onclick: () => speakLocal(l.audio)}, "🔊 Listen Again")
+      el("div", {style:"display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"},
+        el("button", {class:"btn", onclick: () => speakLocal(l.audio)}, "🔊 Listen to letter"),
+        el("button", {class:"btn ghost", onclick: () => speakLocal(l.example_audio || l.audio)}, "🔊 Listen to example")
+      )
     );
   }
 

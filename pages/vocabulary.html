@@ -564,7 +564,10 @@
         )
       ),
       el('div', {style:'display:flex;flex-direction:row-reverse;justify-content:center;gap:6px'}, ...rootCircles),
-      el('div', {style:'font-size:11px;color:var(--ink-soft);margin-top:6px'}, words.length + ' words to find')
+      el('div', {style:'font-size:11px;color:var(--ink-soft);margin-top:6px'}, words.length + ' words to find'),
+      el('button', {class:'btn small ghost', style:'margin-top:8px', onclick: function() {
+        Academy.speakArabic(root.split('.').join(' '), this);
+      }}, '🔊 Listen to root letters')
     );
 
     // Found words area
@@ -597,7 +600,12 @@
         }
       },
         el('div', {class:'ar', style:'font-size:22px;font-weight:600;line-height:1.4;direction:rtl;unicode-bidi:embed'}, w.ar),
-        el('div', {style:'font-size:12px;color:var(--ink-soft);margin-top:4px'}, w.en)
+        el('div', {style:'font-size:12px;color:var(--ink-soft);margin-top:4px'}, w.en),
+        el('button', {
+          class: 'btn small ghost',
+          style: 'margin-top:6px;padding:2px 8px;font-size:11px',
+          onclick: (e) => { e.stopPropagation(); Academy.speakArabic(w.ar, e.currentTarget); }
+        }, '🔊 listen')
       );
       answerGrid.append(btn);
     });

@@ -117,7 +117,7 @@
       ];
       const card = el("div", {class:"card", style:"margin-bottom:16px"});
       card.append(el("h3", null, "🔍 Root Explorer — Try It!"));
-      card.append(el("p", {class:"sub"}, "Click a root to see all its word family."));
+      card.append(el("p", {class:"sub"}, "Click a root to see all its word family. 🔊 to hear each word."));
       const grid = el("div", {style:"display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:12px"});
       const detail = el("div", {style:"margin-top:16px;padding:16px;background:var(--cream);border-radius:12px;display:none"});
       function showRoot(r) {
@@ -131,7 +131,8 @@
           detail.append(el("div", {style:"display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)"},
             el("span", {class:"ar", style:"font-size:20px"}, w.ar),
             el("span", {style:"font-size:13px;color:var(--ink-soft)"}, w.en),
-            el("span", {class:"badge", style:"font-size:10px"}, w.pattern)
+            el("span", {class:"badge", style:"font-size:10px"}, w.pattern),
+            Academy.speakerBtn(w.ar)
           ));
         });
       }
@@ -141,7 +142,10 @@
         card2.append(
           el("div", {class:"ar", style:"font-size:24px;margin-bottom:4px"}, root.letters.replace(/-/g," ")),
           el("div", {style:"font-size:13px;color:var(--ink-soft)"}, root.meaning),
-          el("div", {style:"font-size:11px;color:var(--gold-500);margin-top:4px"}, root.words.length + " words")
+          el("div", {style:"font-size:11px;color:var(--gold-500);margin-top:4px"}, root.words.length + " words"),
+          el("button", {class:"btn small ghost", style:"margin-top:6px",
+            onclick: (e) => { e.stopPropagation(); Academy.speakArabic(root.words.map(w=>w.ar).join(" ، "), e.currentTarget); }
+          }, "🔊 all")
         );
         grid.append(card2);
       });
@@ -173,7 +177,12 @@
         grid.append(el("div", {style:`padding:14px;border-radius:12px;border-left:4px solid ${p.color};background:var(--paper)`},
           el("div", {class:"ar", style:"font-size:28px;margin-bottom:4px"}, p.prefix),
           el("div", {style:"font-weight:700;font-size:14px"}, p.meaning),
-          el("div", {class:"ar", style:"font-size:14px;color:var(--gold-500);margin-top:4px;direction:rtl"}, p.example)
+          el("div", {style:"display:flex;align-items:center;gap:6px;margin-top:4px"},
+            el("div", {class:"ar", style:"font-size:14px;color:var(--gold-500);direction:rtl"}, p.example),
+            el("button", {class:"btn small ghost", style:"padding:2px 6px;font-size:12px",
+              onclick: (e) => { e.stopPropagation(); Academy.speakArabic(p.example.split("=")[0].trim(), e.currentTarget); }
+            }, "🔊")
+          )
         ));
       });
       card.append(grid);
@@ -210,7 +219,10 @@
       possessive.forEach(p => {
         possGrid.append(el("div", {style:"display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);border:1px solid var(--line)"},
           el("span", {class:"ar", style:"font-size:22px;min-width:60px;text-align:center"}, p.suffix),
-          el("span", null, el("b", null, p.meaning), el("br"), el("span", {style:"font-size:12px;color:var(--ink-soft)"}, p.example))
+          el("span", {style:"flex:1"}, el("b", null, p.meaning), el("br"), el("span", {style:"font-size:12px;color:var(--ink-soft)"}, p.example)),
+          el("button", {class:"btn small ghost", style:"padding:2px 6px;font-size:12px",
+            onclick: (e) => { e.stopPropagation(); Academy.speakArabic(p.example.split("=")[0].trim(), e.currentTarget); }
+          }, "🔊")
         ));
       });
       card.append(possGrid);
@@ -219,9 +231,13 @@
       card.append(el("h4", {style:"margin:16px 0 8px;color:var(--gold-500)"}, "Past Tense Subject Suffixes (who did it)"));
       const pastGrid = el("div", {style:"display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px"});
       pastSubject.forEach(p => {
+        const arText = p.example.split("=")[0].trim();
         pastGrid.append(el("div", {style:"display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);border:1px solid var(--line)"},
           el("span", {class:"ar", style:"font-size:22px;min-width:60px;text-align:center"}, p.suffix),
-          el("span", null, el("b", null, p.meaning), el("br"), el("span", {style:"font-size:12px;color:var(--ink-soft)"}, p.example))
+          el("span", {style:"flex:1"}, el("b", null, p.meaning), el("br"), el("span", {style:"font-size:12px;color:var(--ink-soft)"}, p.example)),
+          arText !== "(none)" ? el("button", {class:"btn small ghost", style:"padding:2px 6px;font-size:12px",
+            onclick: (e) => { e.stopPropagation(); Academy.speakArabic(arText, e.currentTarget); }
+          }, "🔊") : null
         ));
       });
       card.append(pastGrid);
@@ -239,7 +255,10 @@
           el("div", {class:"ar", style:"font-size:20px"}, c.ending),
           el("div", {style:"font-weight:700;font-size:13px"}, c.role),
           el("div", {style:"font-size:11px;color:var(--ink-soft)"}, c.use),
-          el("div", {class:"ar", style:"font-size:13px;color:var(--gold-500);margin-top:4px"}, c.example)
+          el("div", {class:"ar", style:"font-size:13px;color:var(--gold-500);margin-top:4px"}, c.example),
+          el("button", {class:"btn small ghost", style:"margin-top:6px;padding:2px 6px;font-size:12px",
+            onclick: (e) => { e.stopPropagation(); Academy.speakArabic(c.example, e.currentTarget); }
+          }, "🔊 listen")
         ));
       });
       card.append(caseGrid);
@@ -267,7 +286,16 @@
     }
 
     function renderMC(d) {
-      area.append(el("p", {class:"quiz-q"}, d.q));
+      const qEl = el("p", {class:"quiz-q"}, d.q);
+      // If question contains Arabic text, add a listen button
+      if (/[\u0600-\u06FF]/.test(d.q)) {
+        area.append(el("div", {style:"display:flex;align-items:center;gap:8px"},
+          qEl,
+          el("button", {class:"btn small ghost", onclick: () => Academy.speakArabic(d.q.replace(/[^ا-ي\s]/g, "").trim())}, "🔊")
+        ));
+      } else {
+        area.append(qEl);
+      }
       const opts = d.options.map((o, i) => ({o, i}));
       Academy.shuffle(opts).forEach(({o, i}) => {
         const isAr = /[\u0600-\u06FF]/.test(o);
@@ -323,7 +351,7 @@
       area.append(
         el("div", {style:"text-align:center;padding:20px"},
           el("div", {style:"font-size:44px"}, passed ? "🎉" : "💪"),
-          el("h3", null, pct + "% — " + (passed ? "Lesson complete!" : "Almost — try again")),
+          el("h3", null, pct + "% (" + correct + "/" + total + ") — " + (passed ? "Lesson complete!" : "Almost — try again")),
           el("p", {class:"sub"}, "+" + Math.round(20 + pct * 0.5) + " XP earned"),
           el("button", {class:"btn gold", onclick:()=>{ idx=0; correct=0; renderDrill(); }}, "Retry"),
           " ",
