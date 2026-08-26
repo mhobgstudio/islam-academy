@@ -47,16 +47,23 @@
 <script>
 (async function () {
   const { el, speakArabic } = Academy;
-  const rules = await Academy.fetchJSON("../data/curriculum/tajweed.json");
-  const wrap = document.getElementById("rules");
 
-  // Wire up istiadha & basmalah buttons
+  // Wire up istiadha & basmalah buttons FIRST (before async fetch)
   document.getElementById("btn-istiadha").onclick = function() {
     speakArabic("أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ", this);
   };
   document.getElementById("btn-basmalah").onclick = function() {
     speakArabic("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", this);
   };
+
+  let rules;
+  try {
+    rules = await Academy.fetchJSON("../data/curriculum/tajweed.json");
+  } catch(e) {
+    document.getElementById("rules").innerHTML = '<div class="card"><p class="sub">Could not load tajweed rules. Check that you are serving this site via HTTP (not file://).</p></div>';
+    return;
+  }
+  const wrap = document.getElementById("rules");
 
   rules.forEach(group => {
     const card = el("div", {class:"card", style:"margin-bottom:16px"});

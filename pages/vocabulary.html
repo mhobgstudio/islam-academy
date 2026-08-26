@@ -42,7 +42,13 @@
 <script>
 (async function () {
   const { el } = Academy;
-  const decks = await Academy.fetchJSON("../data/curriculum/decks.json");
+  let decks;
+  try {
+    decks = await Academy.fetchJSON("../data/curriculum/decks.json");
+  } catch(e) {
+    document.getElementById("study-area").innerHTML = '<div class="card"><p class="sub">Could not load vocabulary. Serve via HTTP not file://.</p></div>';
+    return;
+  }
   const picker = document.getElementById("deck-picker");
   const statsLine = document.getElementById("stats-line");
   const area = document.getElementById("study-area");

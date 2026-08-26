@@ -119,32 +119,160 @@
     return "https://verses.quran.com/" + urlSuffix;
   }
 
-  // Universal Arabic TTS — Web Speech API (Chrome/Edge/Safari have ar-SA voices)
+  // Universal Arabic TTS — local MP3 first, then Web Speech API, then visual feedback
   const speechSynth = typeof speechSynthesis !== "undefined" ? speechSynthesis : null;
   let arabicVoice = null;
-  let voicesLoaded = false;
+  let voicesChecked = false;
   function getArabicVoice() {
-    if (arabicVoice !== null) return arabicVoice;
+    if (voicesChecked && arabicVoice === false) return null;
+    if (arabicVoice && arabicVoice !== false) return arabicVoice;
     if (!speechSynth) return null;
     const voices = speechSynth.getVoices();
-    if (voices.length === 0) return null; // not loaded yet
-    voicesLoaded = true;
-    // prefer ar-SA voices (Zariyah, Tarik, Hamed, etc.)
+    if (voices.length === 0) return null;
+    voicesChecked = true;
     arabicVoice = voices.find(v => v.lang === "ar-SA")
       || voices.find(v => v.lang && v.lang.startsWith("ar"))
-      || null;
-    return arabicVoice;
+      || false;
+    return arabicVoice || null;
   }
-  // Pre-load voices (they load async in Chrome/Edge)
   if (speechSynth) {
-    speechSynth.onvoiceschanged = () => { arabicVoice = null; getArabicVoice(); };
-    // Also try immediately in case they're already loaded
+    speechSynth.onvoiceschanged = () => { arabicVoice = null; voicesChecked = false; getArabicVoice(); };
     getArabicVoice();
+  }
+
+  // Known text → local audio file mapping (curated from gen_audio.py)
+  const audioMap = {
+    // Phrases
+    "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ": "drills/phrases/bismillah.mp3",
+    "بِسْمِ اللَّهِ": "drills/phrases/bismillah.mp3",
+    "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ": "drills/phrases/istiadha.mp3",
+    "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ": "drills/phrases/alhamdulillah.mp3",
+    "سُبْحَانَ اللهِ": "drills/phrases/subhanallah.mp3",
+    "اللهُ أَكْبَرُ": "drills/phrases/allahuakbar.mp3",
+    "أَسْتَغْفِرُ اللهَ": "drills/phrases/astaghfirullah.mp3",
+    "جَزَاكَ اللهُ خَيْرًا": "drills/phrases/jazakallah.mp3",
+    "إِنْ شَاءَ اللهُ": "drills/phrases/inshallah.mp3",
+    "مَا شَاءَ اللهُ": "drills/phrases/mashallah.mp3",
+    "رَبِّ زِدْنِي عِلْمًا": "drills/phrases/bismillah.mp3", // reuse
+    // Tajweed
+    "مِنْ خَيْر": "drills/tajweed/izhar.mp3",
+    "مَنْ يَعْمَل": "drills/tajweed/idgham.mp3",
+    "مِنْ بَعْد": "drills/tajweed/iqlab.mp3",
+    "مِنْ قَبْل": "drills/tajweed/ikhfa.mp3",
+    "قَالَ": "drills/madd-aa.mp3",
+    "جَاءَ": "drills/tajweed/madd-muttasil.mp3",
+    "يَا أَيُّهَا": "drills/tajweed/madd-munfasil.mp3",
+    "الضَّالِّينَ": "drills/tajweed/madd-laazim.mp3",
+    "اقْرَأْ": "drills/tajweed/qalqalah.mp3",
+    "صِرَاط": "drills/tajweed/tafkheem.mp3",
+    // Vowels
+    "بَ": "drills/fatha.mp3",
+    "بُ": "drills/damma.mp3",
+    "بِ": "drills/kasra.mp3",
+    "أَبْ": "drills/sukoon.mp3",
+    "رَبَّ": "drills/shadda.mp3",
+    "الشَّمْسُ وَالْقَمَرُ": "drills/sun-moon.mp3",
+    // Reading words
+    "بَاب": "drills/reading/baab.mp3",
+    "كِتَاب": "drills/reading/kitaab.mp3",
+    "مَاء": "drills/reading/maa.mp3",
+    "شَمْس": "drills/reading/shams.mp3",
+    "قَمَر": "drills/reading/qamar.mp3",
+    "يَوْم": "drills/reading/yawm.mp3",
+    "لَيْل": "drills/reading/layl.mp3",
+    "رَجُل": "drills/reading/rajul.mp3",
+    "مَرْأَة": "drills/reading/mar'a.mp3",
+    "بَيْت": "drills/reading/bayt.mp3",
+    "سَلَام": "drills/reading/salaam.mp3",
+    "نُور": "drills/reading/noor.mp3",
+    "صَلَاة": "drills/reading/salaah.mp3",
+    "قُرْآن": "drills/reading/quran.mp3",
+    "مَسْجِد": "drills/reading/masjid.mp3",
+    "عِلْم": "drills/reading/ilm.mp3",
+    "كَلِمَة": "drills/reading/kalimah.mp3",
+    "حَقّ": "drills/reading/haqq.mp3",
+    // Challenge sentences
+    "الْمَسْجِدُ كَبِيرٌ": "drills/reading/challenge-0.mp3",
+    "الْكِتَابُ جَدِيدٌ": "drills/reading/challenge-1.mp3",
+    "الشَّمْسُ مُشْرِقَةٌ": "drills/reading/challenge-2.mp3",
+    // Grammar roots
+    "كِتَاب": "drills/grammar/kitaab.mp3",
+    "كَاتِب": "drills/grammar/katib.mp3",
+    "كَتَبَ": "drills/grammar/kataba.mp3",
+    "مَكْتَبَة": "drills/grammar/maktaba.mp3",
+    "مَكْتُوب": "drills/grammar/maktub.mp3",
+    "عِلْم": "drills/grammar/ilm.mp3",
+    "عَالِم": "drills/grammar/aalim.mp3",
+    "مَعْلُوم": "drills/grammar/ma'lum.mp3",
+    "تَعْلِيم": "drills/grammar/ta'leem.mp3",
+    "رَحْمَة": "drills/grammar/rahma.mp3",
+    "رَحِيم": "drills/grammar/raheem.mp3",
+    "رَحَمَ": "drills/grammar/rahima.mp3",
+    "إِسْلَام": "drills/grammar/islam.mp3",
+    "مُسْلِم": "drills/grammar/muslim.mp3",
+    "سَلِيم": "drills/grammar/saleem.mp3",
+    "فَتْح": "drills/grammar/fath.mp3",
+    "فَاتِحَة": "drills/grammar/fatiha.mp3",
+    "فَتَحَ": "drills/grammar/fataha.mp3",
+    "قِرَاءَة": "drills/grammar/qira'ah.mp3",
+    "قَارِئ": "drills/grammar/qaari.mp3",
+    "قَرَأَ": "drills/grammar/qara'a.mp3",
+    "مَقْرَأ": "drills/grammar/maqra.mp3",
+    // Grammar prefixes
+    "الْكِتَابُ": "drills/grammar/al-kitaab.mp3",
+    "بِالْكِتَابِ": "drills/grammar/bil-kitaab.mp3",
+    "لِلَّهِ": "drills/grammar/lillah.mp3",
+    "كَالشَّمْسِ": "drills/grammar/kash-shams.mp3",
+    "وَالْكِتَابُ": "drills/grammar/wal-kitaab.mp3",
+    "يَكْتُبُ": "drills/grammar/yaktubu.mp3",
+    "نَكْتُبُ": "drills/grammar/naktubu.mp3",
+    "أَكْتُبُ": "drills/grammar/aktubu.mp3",
+    "لَمْ يَكْتُبْ": "drills/grammar/lam-yaktub.mp3",
+    "لَنْ يَكْتُبَ": "drills/grammar/lan-yaktuba.mp3",
+    "مَا كَتَبَ": "drills/grammar/ma-kataba.mp3",
+    // Grammar suffixes
+    "كِتَابِي": "drills/grammar/kitaabi.mp3",
+    "كِتَابُكَ": "drills/grammar/kitaabuka.mp3",
+    "كِتَابُكِ": "drills/grammar/kitaabuki.mp3",
+    "كِتَابُهُ": "drills/grammar/kitaabuhu.mp3",
+    "كِتَابُهَا": "drills/grammar/kitaabuha.mp3",
+    "كِتَابُنَا": "drills/grammar/kitaabuna.mp3",
+    "كِتَابُكُمْ": "drills/grammar/kitaabukum.mp3",
+    "كِتَابُهُمْ": "drills/grammar/kitaabuhum.mp3",
+    "كَتَبْتُ": "drills/grammar/katabtu.mp3",
+    "كَتَبْتَ": "drills/grammar/katabta.mp3",
+    "كَتَبْتِ": "drills/grammar/katabti.mp3",
+    "كَتَبَتْ": "drills/grammar/katabat.mp3",
+    "كَتَبْنَا": "drills/grammar/katabna.mp3",
+    "كَتَبْتُمْ": "drills/grammar/katabtum.mp3",
+  };
+
+  // Strip diacritics for fuzzy matching
+  function stripDiac(s) { return s.replace(/[\u064B-\u065F\u0670]/g, "").replace(/\s+/g, " ").trim(); }
+
+  function findLocalAudio(text) {
+    // Exact match
+    if (audioMap[text]) return "../assets/audio/" + audioMap[text];
+    // Strip diacritics and try again
+    const stripped = stripDiac(text);
+    for (const [key, val] of Object.entries(audioMap)) {
+      if (stripDiac(key) === stripped) return "../assets/audio/" + val;
+    }
+    return null;
   }
 
   function speakArabic(text, btn) {
     if (!text) return;
     if (btn) { btn.classList.add("speaking"); }
+
+    // 1) Try local MP3 file first (fastest, most reliable)
+    const localPath = findLocalAudio(text);
+    if (localPath) {
+      speak(localPath, btn);
+      return;
+    }
+
+    // 2) Try Web Speech API
     const voice = getArabicVoice();
     if (speechSynth && voice) {
       speechSynth.cancel();
@@ -155,11 +283,11 @@
       u.onend = () => { if (btn) btn.classList.remove("speaking"); };
       u.onerror = () => { if (btn) btn.classList.remove("speaking"); };
       speechSynth.speak(u);
-    } else if (speechSynth && !voicesLoaded) {
-      // Voices haven't loaded yet — retry after a short delay
-      setTimeout(() => speakArabic(text, btn), 200);
+    } else if (speechSynth && !voicesChecked) {
+      // Voices not loaded yet — retry
+      setTimeout(() => speakArabic(text, btn), 300);
     } else {
-      // No Arabic voice available — flash the button as visual feedback
+      // 3) No audio available — flash red
       if (btn) {
         btn.classList.remove("speaking");
         btn.style.background = "var(--danger)";

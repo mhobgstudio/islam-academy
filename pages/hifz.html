@@ -79,7 +79,22 @@
 <script>
 (async function () {
   const { el } = Academy;
-  const meta = await Academy.fetchJSON("../data/quran/surah_meta.json");
+
+  // Wire up audio buttons FIRST (before async fetch)
+  document.getElementById("btn-basmalah").onclick = function() {
+    Academy.speakArabic("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", this);
+  };
+  document.getElementById("btn-istiadha").onclick = function() {
+    Academy.speakArabic("أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ", this);
+  };
+
+  let meta;
+  try {
+    meta = await Academy.fetchJSON("../data/quran/surah_meta.json");
+  } catch(e) {
+    document.getElementById("juz-grid").innerHTML = '<div class="card"><p class="sub">Could not load surah data. Serve via HTTP not file://.</p></div>';
+    return;
+  }
   const grid = document.getElementById("juz-grid");
   const summary = document.getElementById("plan-summary");
   const bar = document.getElementById("plan-bar");
@@ -135,14 +150,6 @@
     Academy.addXP(10);
     document.getElementById("log-text").value = "";
     Academy.save(); render();
-  };
-
-  // Audio buttons
-  document.getElementById("btn-basmalah").onclick = function() {
-    Academy.speakArabic("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", this);
-  };
-  document.getElementById("btn-istiadha").onclick = function() {
-    Academy.speakArabic("أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ", this);
   };
 
   // Random surah with audio playback

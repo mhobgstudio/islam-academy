@@ -28,7 +28,13 @@
 <script>
 (async function () {
   const { el } = Academy;
-  const levels = await Academy.fetchJSON("../data/curriculum/levels.json");
+  let levels;
+  try {
+    levels = await Academy.fetchJSON("../data/curriculum/levels.json");
+  } catch(e) {
+    document.getElementById("lesson-view").innerHTML = '<div class="card"><p class="sub">Could not load lessons. Serve this site via HTTP (python3 -m http.server) not file://.</p></div>';
+    return;
+  }
   const tabs = document.getElementById("level-tabs");
   const list = document.getElementById("lesson-list");
   const view = document.getElementById("lesson-view");
