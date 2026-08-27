@@ -153,7 +153,7 @@
     "جَزَاكَ اللهُ خَيْرًا": "drills/phrases/jazakallah.mp3",
     "إِنْ شَاءَ اللهُ": "drills/phrases/inshallah.mp3",
     "مَا شَاءَ اللهُ": "drills/phrases/mashallah.mp3",
-    "رَبِّ زِدْنِي عِلْمًا": "drills/phrases/bismillah.mp3", // reuse
+    "رَبِّ زِدْنِي عِلْمًا": "drills/phrases/rabbi-zidni-ilma.mp3",
     // Tajweed
     "مِنْ خَيْر": "drills/tajweed/izhar.mp3",
     "مَنْ يَعْمَل": "drills/tajweed/idgham.mp3",

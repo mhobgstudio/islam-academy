@@ -6,10 +6,6 @@
 <title>Quran Reader — Islam Academy</title>
 <link rel="stylesheet" href="../assets/css/academy.css">
 <link rel="stylesheet" href="../assets/css/components.css">
-<style>
-  .ayah-ar { font-size: 32px; }
-  @media (max-width:600px){ .ayah-ar { font-size: 26px; } }
-</style>
 </head>
 <body>
 <header class="site-header"><div class="header-inner">
@@ -20,225 +16,128 @@
 
 <main class="container">
   <h1 class="page-title">📖 Quran Reader</h1>
-  <p class="page-sub">Uthmani script · Saheeh International translation · tap any word for instant meaning &amp; audio.</p>
+  <p class="page-sub">Read the Noble Quran in Uthmani script with Saheeh International translation. Tap any word for meaning and audio.</p>
 
-  <div class="reader-toolbar">
-    <select id="surah-select"></select>
-    <button class="btn small" id="play-surah">▶ Recite surah</button>
-    <button class="btn small ghost" id="stop-audio">■ Stop</button>
-    <label style="font-size:13px;display:flex;align-items:center;gap:6px">
-      <input type="checkbox" id="show-trans" checked> translation
-    </label>
-    <select id="reciter">
+  <div class="reader-toolbar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
+    <select id="surah-select" style="padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-family:inherit;background:var(--paper);min-width:180px"></select>
+    <select id="reciter-select" style="padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-family:inherit;background:var(--paper)">
       <option value="ar.alafasy">Mishary Alafasy</option>
-      <option value="ar.abdulbasitmurattal">Abdul Basit (murattal)</option>
-      <option value="ar.husary">Mahmoud Khalil Al-Husary</option>
-      <option value="ar.minshawi">Mohamed Al-Minshawi</option>
-      <option value="ar.muhammadsiddiqalminshawi">Al-Minshawi (children)</option>
+      <option value="ar.abdulbasit">Abdul Basit (Murattal)</option>
+      <option value="ar.husary">Mahmoud Khalil Husary</option>
+      <option value="ar.minshawi">Mohamed Siddiq El-Minshawi</option>
     </select>
+    <button class="btn small" id="play-surah-btn">🔊 Play Surah</button>
   </div>
 
-  <div id="reader"></div>
+  <div class="card" id="surah-info" style="margin-bottom:16px;display:none">
+    <h3 id="surah-name"></h3>
+    <p class="sub" id="surah-meta"></p>
+  </div>
+
+  <div id="ayah-container"></div>
 </main>
 
-<footer class="site-footer">Text: Tanzil Uthmani · Translation: Saheeh International · Audio: islamic.network CDN + quran.com wbw</footer>
+<footer class="site-footer">Islam Academy — Quran Reader</footer>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/nav.js"></script>
 <script>
 (async function () {
-  const { el } = Academy;
-  const [uthmani, trans, meta, words, rootsDict] = await Promise.all([
-    Academy.fetchJSON("../data/quran/uthmani.json"),
-    Academy.fetchJSON("../data/quran/translation_en.json"),
-    Academy.fetchJSON("../data/quran/surah_meta.json"),
-    Academy.fetchJSON("../data/quran/words.json"),
-    Academy.fetchJSON("../data/quran/roots.json").catch(()=>({})),
-  ]);
+  const { el, speakArabic, ayahAudio } = Academy;
 
-  // Build inverted index: root -> [{ar, meaning, pattern}, ...]
-  const rootIndex = {};
-  Object.entries(rootsDict).forEach(([ar, data]) => {
-    if (data && data.root) {
-      if (!rootIndex[data.root]) rootIndex[data.root] = [];
-      rootIndex[data.root].push({ ar, meaning: data.meaning, pattern: data.pattern });
-    }
-  });
+  let quranText, quranTrans, surahMeta;
+  try {
+    [quranText, quranTrans, surahMeta] = await Promise.all([
+      Academy.fetchJSON("../data/quran/quran_text.json"),
+      Academy.fetchJSON("../data/quran/quran_trans.json"),
+      Academy.fetchJSON("../data/quran/surah_meta.json"),
+    ]);
+  } catch(e) {
+    document.getElementById("ayah-container").innerHTML = '<div class="card"><p class="sub">Could not load Quran data. Serve via HTTP not file://.</p></div>';
+    return;
+  }
+
+  // Populate surah select
   const sel = document.getElementById("surah-select");
-  const reader = document.getElementById("reader");
-  const showTrans = document.getElementById("show-trans");
-  const reciterSel = document.getElementById("reciter");
-
-  // global ayah number lookup: cumulative
-  const globalNum = {};
-  let g = 1;
-  meta.forEach(m => { globalNum[m.number] = g; g += m.ayahs; });
-
-  meta.forEach(m => {
-    const o = el("option", {value:m.number}, m.number + ". " + m.name + " (" + m.ayahs + ")");
-    sel.append(o);
+  surahMeta.forEach(s => {
+    sel.append(el("option", {value: s.number}, s.number + ". " + s.name + " (" + s.englishName + ") — " + s.ayahs + " ayat"));
   });
 
+  // Parse URL params
   const params = new URLSearchParams(location.search);
-  const initial = parseInt(params.get("surah") || "1", 10);
-  sel.value = String(initial);
+  if (params.get("surah")) sel.value = params.get("surah");
 
-  let playQueue = [], playing = false;
-  const player = new Audio();
+  let currentSurah = parseInt(sel.value) || 1;
+  let audioPlayer = new Audio();
+  let currentPlaying = null;
 
-  function stopAll() { player.pause(); playQueue = []; playing = false; }
+  function renderSurah(num) {
+    currentSurah = num;
+    const info = surahMeta[num - 1];
+    const container = document.getElementById("ayah-container");
+    container.innerHTML = "";
 
-  document.getElementById("stop-audio").onclick = stopAll;
+    // Surah info
+    const infoCard = document.getElementById("surah-info");
+    infoCard.style.display = "";
+    document.getElementById("surah-name").textContent = info.name + " — " + info.englishName;
+    document.getElementById("surah-meta").textContent = info.englishNameTranslation + " • " + info.ayahs + " ayat • " + info.revelationType;
 
-  document.getElementById("play-surah").onclick = () => {
-    const s = parseInt(sel.value, 10);
-    playQueue = uthmani[s].map(v => v.v);
-    playing = true;
-    playNext(s);
-  };
-  function playNext(s) {
-    if (!playing || playQueue.length === 0) { stopAll(); return; }
-    const v = playQueue.shift();
-    const url = Academy.ayahAudio(reciterSel.value, globalNum[s] + v - 1);
-    player.src = url;
-    player.play().catch(()=>{});
-    player.onended = () => playNext(s);
-  }
+    // Calculate global ayah start
+    let globalStart = 1;
+    for (let i = 0; i < num - 1; i++) globalStart += surahMeta[i].ayahs;
 
-  // Strip Arabic diacritics and normalize for root lookup
-  function stripArabic(s) {
-    return s.replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g, '')
-      .replace(/\u0671/g, '\u0627')
-      .replace(/[\u0622\u0623\u0625]/g, '\u0627')
-      .replace(/\u0629/g, '\u0647')
-      .replace(/\u0649/g, '\u064A')
-      .replace(/\u0621/g, '')
-      .replace(/\u0624/g, '\u0648')
-      .replace(/\u0626/g, '\u064A')
-      .trim();
-  }
-
-  function lookupRoot(arabic) {
-    const stripped = stripArabic(arabic);
-    if (rootsDict[stripped]) return rootsDict[stripped];
-    const noArticle = stripped.replace(/^\u0627\u0644/, '');
-    if (noArticle !== stripped && rootsDict[noArticle]) return rootsDict[noArticle];
-    return null;
-  }
-
-  function renderPopover(anchor, w) {
-    document.querySelectorAll(".word-popover").forEach(p=>p.remove());
-    const rootData = lookupRoot(w.u);
-    const children = [
-      el("div", {class:"w-ar"}, w.u),
-      el("div", null, w.tr),
-      w.tl ? el("div", {class:"w-tl"}, w.tl) : null,
-    ];
-    if (rootData && rootData.root) {
-      const rootParts = rootData.root.split(".");
-      const colors = ["#dc2626", "#2563eb", "#16a34a"];
-      const rootCircles = rootParts.map((r, i) =>
-        el("span", {style:"display:inline-block;width:28px;height:28px;line-height:28px;border-radius:50%;font-size:15px;font-weight:700;margin:0 2px;color:#fff;background:" + colors[i], title: ['1st (\u0641)', '2nd (\u0639)', '3rd (\u0644)'][i]}, r)
+    // Bismillah (except At-Tawbah)
+    if (num !== 9) {
+      const bCard = el("div", {class:"card", style:"text-align:center;margin-bottom:12px;padding:20px"},
+        el("div", {class:"quran-text", style:"font-size:28px"}, "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ"),
+        el("div", {style:"font-size:12px;color:var(--ink-soft);margin-top:4px"}, "In the name of Allah, the Most Gracious, the Most Merciful"),
+        el("button", {class:"btn small ghost", style:"margin-top:8px", onclick: function() {
+          speakArabic("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", this);
+        }}, "🔊 Listen")
       );
-      // Reverse root circles for RTL (1st root letter on right)
-      const rtlCircles = [...rootCircles].reverse();
-      children.push(el("div", {class:"root-decomp", style:"margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.15)"},
-        el("div", {class:"root-label", style:"font-size:10px;text-transform:uppercase;letter-spacing:1px;opacity:.6;margin-bottom:4px"}, "\u062c\u0630\u0631 (root)"),
-        el("div", {style:"display:flex;flex-direction:row-reverse;align-items:center;gap:6px;justify-content:center"},
-          el("div", {style:"display:flex;flex-direction:row-reverse;gap:3px"}, ...rtlCircles),
-          el("span", {style:"font-size:10px;opacity:.7"}, rootData.pattern || '')
-        ),
-        rootData.meaning ? el("div", {class:"root-meaning", style:"font-size:11px;opacity:.7;margin-top:4px;font-style:italic"}, rootData.meaning) : null
-      ));
-      // Related words from same root
-      const siblings = (rootIndex[rootData.root] || []).filter(s => s.ar !== stripArabic(w.u));
-      if (siblings.length > 0) {
-        const chips = siblings.slice(0, 8).map(s =>
-          el("span", {class:"ar", style:"display:inline-block;padding:2px 8px;margin:2px;border-radius:6px;background:rgba(255,255,255,.1);font-size:14px;direction:rtl;unicode-bidi:embed", title: s.meaning}, s.ar)
-        );
-        children.push(el("div", {style:"margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.15)"},
-          el("div", {style:"font-size:10px;text-transform:uppercase;letter-spacing:1px;opacity:.6;margin-bottom:4px"}, "\u0625\u0634\u062a\u0642\u0627\u0642 (related)"),
-          el("div", {style:"display:flex;flex-wrap:wrap;gap:2px;justify-content:center"}, ...chips),
-          siblings.length > 8 ? el("div", {style:"font-size:10px;opacity:.5;margin-top:2px"}, "+" + (siblings.length - 8) + " more") : null
-        ));
-      }
+      container.append(bCard);
     }
-    if (w.au) children.push(el("button", {class:"btn small gold", style:"margin-top:8px",
-      onclick:(e)=>{e.stopPropagation(); Academy.speak(Academy.wbwAudio(w.au));}}, "🔊 listen"));
-    const pop = el("div", {class:"word-popover"}, ...children);
-    const rect = anchor.getBoundingClientRect();
-    pop.style.top = (window.scrollY + rect.bottom + 6) + "px";
-    pop.style.left = Math.max(10, window.scrollX + rect.left - 60) + "px";
-    document.body.append(pop);
-    setTimeout(()=>document.addEventListener("click", function rm(){ pop.remove(); document.removeEventListener("click", rm); }), 50);
-  }
 
-  async function loadSurah() {
-    stopAll();
-    const s = parseInt(sel.value, 10);
-    location.hash = "";
-    history.replaceState(null, "", "?surah=" + s);
-    reader.innerHTML = "";
-    const info = meta[s-1];
-    reader.append(el("p", {style:"text-align:center;color:var(--ink-soft);font-size:13px;margin-bottom:16px"},
-      "Surah " + info.name + " · " + info.revelation + " · " + info.ayahs + " ayat"));
-    const wbwSurah = words[String(s)] || {};
-
-    uthmani[s].forEach((v, i) => {
-      const t = trans[s][i];
-      const card = el("div", {class:"ayah-card"});
-      const head = el("div", {class:"ayah-head"},
-        el("span", {class:"ayah-num"}, s + ":" + v.v),
-        el("button", {class:"speaker-btn", title:"Recite this ayah",
-          onclick:(e)=>{ e.stopPropagation(); Academy.speak(Academy.ayahAudio(reciterSel.value, globalNum[s] + v.v - 1), e.currentTarget); }}, "🔊"),
-        el("div", {style:"flex:1"}));
-      card.append(head);
-
-      const arDiv = el("div", {class:"ayah-ar quran-text"});
-      const wbwWords = (wbwWordsFor(wbwSurah, v.v)) || [];
-      if (wbwWords.length > 0) {
-        wbwWords.forEach(w => {
-          arDiv.append(el("span", {class:"word-chip", onclick:(e)=>{
-            renderPopover(e.currentTarget, w);
-            if (w.au) Academy.speak(Academy.wbwAudio(w.au));
-          }}, w.u), " ");
-        });
-      } else {
-        arDiv.append(el("span", {class:"word-chip"}, v.t));
-      }
-      card.append(arDiv);
-
-      if (wbwWords.length > 0 && Academy.state.settings.translit !== false) {
-        const tlLine = el("div", {style:"font-size:12.5px;color:var(--gold-500);margin-top:4px;text-align:right;direction:ltr"},
-          wbwWords.map(w => w.tl).filter(Boolean).join(" · "));
-        card.append(tlLine);
-      }
-
-      const trEl = el("div", {class:"ayah-trans"}, t.t);
-      trEl.style.display = showTrans.checked ? "" : "none";
-      card.append(trEl);
-      reader.append(card);
+    // Ayat
+    const ayat = quranText[num] || [];
+    const trans = quranTrans[num] || [];
+    ayat.forEach((text, i) => {
+      const ayahNum = globalStart + i;
+      const card = el("div", {class:"card", style:"margin-bottom:10px;padding:16px;cursor:pointer", onclick: function() {
+        audioPlayer.pause();
+        audioPlayer.src = ayahAudio(document.getElementById("reciter-select").value, ayahNum);
+        audioPlayer.play().catch(() => {});
+        currentPlaying = this;
+        this.style.borderColor = "var(--gold)";
+      }},
+        el("div", {style:"display:flex;justify-content:space-between;align-items:flex-start;gap:12px"},
+          el("div", {class:"quran-text", style:"font-size:22px;flex:1;line-height:1.8", lang:"ar"}, text),
+          el("span", {style:"font-size:11px;color:var(--gold);background:var(--cream);padding:2px 8px;border-radius:12px;white-space:nowrap;flex-shrink:0"}, String(i + 1))
+        ),
+        el("div", {style:"font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.6"}, trans[i] || "")
+      );
+      container.append(card);
     });
+
+    // Play surah button
+    document.getElementById("play-surah-btn").onclick = function() {
+      audioPlayer.pause();
+      audioPlayer.src = ayahAudio(document.getElementById("reciter-select").value, globalStart);
+      audioPlayer.play().catch(() => {});
+    };
+
+    audioPlayer.onended = () => { currentPlaying = null; };
   }
 
-  function wbwWordsFor(wbwSurah, vnum) {
-    return wbwSurah[String(vnum)];
-  }
-
-  sel.onchange = loadSurah;
-  showTrans.onchange = () => {
-    document.querySelectorAll(".ayah-trans").forEach(t =>
-      t.style.display = showTrans.checked ? "" : "none");
-  };
-  reciterSel.onchange = () => {
-    try {
-      const st = JSON.parse(localStorage.getItem("islam-academy-v1"));
-      st.settings.reciter = reciterSel.value;
-      localStorage.setItem("islam-academy-v1", JSON.stringify(st));
-    } catch(e){}
-  };
-  try { reciterSel.value = JSON.parse(localStorage.getItem("islam-academy-v1")).settings.reciter || "ar.alafasy"; } catch(e){}
-
-  loadSurah();
+  sel.addEventListener("change", () => renderSurah(parseInt(sel.value)));
+  renderSurah(currentSurah);
 })();
 </script>
 </body>

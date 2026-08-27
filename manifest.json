@@ -1,0 +1,16 @@
+{
+  "name": "Islam Academy — Learn Arabic & Quran",
+  "short_name": "Islam Academy",
+  "description": "Complete self-study academy: Arabic letters → fluent reading → grammar → Quran understanding",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#fefce8",
+  "theme_color": "#065f46",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ق</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

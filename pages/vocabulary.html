@@ -184,9 +184,8 @@
   }
 
   function speakWord(w) {
-    // try local generated audio by hash key (same scheme as gen_audio.py)
-    const h = Math.abs([...w.ar].reduce((a, c) => (a * 31 + c.codePointAt(0)) | 0, 7)) % 10**10;
-    Academy.speak("../assets/audio/vocab/" + deckId + "/" + h + ".mp3");
+    // Use the universal speakArabic which tries local MP3, then Web Speech API, then visual feedback
+    Academy.speakArabic(w.ar);
   }
 
   let currentMode = 'study';

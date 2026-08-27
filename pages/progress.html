@@ -16,80 +16,167 @@
 
 <main class="container">
   <h1 class="page-title">📊 Your Progress</h1>
-  <p class="page-sub">Everything is stored locally in this browser.</p>
+  <p class="page-sub">Track your learning journey — XP, streaks, vocabulary stats, and more.</p>
 
-  <div class="stat-row" id="stats"></div>
+  <div class="grid cols-3" id="stats-grid"></div>
 
-  <h2 class="section-title">Lesson scores</h2>
-  <div class="card" id="lesson-scores"></div>
+  <div class="card" style="margin-top:20px">
+    <h3>XP Over Time</h3>
+    <p class="sub">Your experience points earned.</p>
+    <div id="xp-display" style="font-size:48px;font-weight:800;color:var(--gold);margin:20px 0"></div>
+  </div>
 
-  <h2 class="section-title">Vocabulary memory</h2>
-  <div class="card" id="vocab-stats"></div>
+  <div class="grid cols-2" style="margin-top:20px">
+    <div class="card">
+      <h3>Lesson Scores</h3>
+      <div id="lesson-scores"></div>
+    </div>
+    <div class="card">
+      <h3>SRS Statistics</h3>
+      <div id="srs-stats"></div>
+    </div>
+  </div>
 
-  <div style="margin-top:30px">
-    <button class="btn ghost small" id="export-btn">⬇ Export progress (JSON)</button>
-    <button class="btn ghost small" id="reset-btn" style="color:var(--danger)">Reset everything</button>
+  <div class="card" style="margin-top:20px">
+    <h3>Streak Calendar</h3>
+    <p class="sub">Your learning streaks over the past 30 days.</p>
+    <div id="streak-calendar" style="display:flex;gap:4px;flex-wrap:wrap;margin-top:12px"></div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <h3>Export / Import Progress</h3>
+    <p class="sub">Back up your progress or transfer it to another device.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+      <button class="btn small" id="export-btn">📤 Export JSON</button>
+      <button class="btn small ghost" id="import-btn">📥 Import JSON</button>
+      <input type="file" id="import-file" accept=".json" style="display:none">
+    </div>
   </div>
 </main>
 
-<footer class="site-footer">Islam Academy</footer>
+<footer class="site-footer">Islam Academy — Progress</footer>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/nav.js"></script>
 <script>
 (async function () {
-  const { el } = Academy;
-  const levels = await Academy.fetchJSON("../data/curriculum/levels.json");
-  const decks = await Academy.fetchJSON("../data/curriculum/decks.json");
+  const { el, state } = Academy;
+
+  // Load data
+  let levels, decks, meta;
+  try {
+    levels = await Academy.fetchJSON("../data/curriculum/levels.json");
+    decks = await Academy.fetchJSON("../data/curriculum/decks.json");
+    meta = await Academy.fetchJSON("../data/quran/surah_meta.json");
+  } catch(e) {
+    document.body.innerHTML = '<div class="container"><div class="card"><p class="sub">Could not load data. Serve via HTTP not file://.</p></div></div>';
+    return;
+  }
+
+  // Stats grid
   const allLessons = Object.values(levels).flatMap(l => l.lessons);
-  const done = Object.keys(Academy.state.lessonsDone).length;
+  const doneCount = allLessons.filter(l => state.lessonsDone[l.id]).length;
+  const totalWords = Object.values(decks).reduce((s, d) => s + d.words.length, 0);
+  const allSrsKeys = Object.values(decks).flatMap(d => d.words.map(w => d.title + "::" + w.ar));
+  const srsInfo = Academy.srsStats(allSrsKeys);
+  const totalAyahs = meta.reduce((s, m) => s + m.ayahs, 0);
+  const hifzCount = (state.hifz.done || []).length;
 
-  document.getElementById("stats").append(
-    el("div", {class:"stat"}, el("b", null, String(Academy.state.xp)), el("span", null, "Total XP")),
-    el("div", {class:"stat"}, el("b", null, String(Academy.state.streak.count)), el("span", null, "Day streak")),
-    el("div", {class:"stat"}, el("b", null, done + "/" + allLessons.length), el("span", null, "Lessons")),
-    el("div", {class:"stat"}, el("b", null, String(Object.keys(Academy.state.srs).length)), el("span", null, "Cards touched")),
-    el("div", {class:"stat"}, el("b", null, String((Academy.state.hifz.done||[]).length) + "/30"), el("span", null, "Juz memorized")),
-  );
+  const statsGrid = document.getElementById("stats-grid");
+  [
+    { label: "Total XP", value: state.xp },
+    { label: "Day Streak", value: state.streak.count },
+    { label: "Lessons Done", value: doneCount + "/" + allLessons.length },
+    { label: "Vocab Cards", value: totalWords },
+    { label: "SRS Due", value: srsInfo.due },
+    { label: "SRS Mature", value: srsInfo.mature },
+    { label: "Hifz Juz", value: hifzCount + "/30" },
+    { label: "Ayat Available", value: totalAyahs },
+    { label: "Settings", value: state.settings.reciter.replace("ar.", "") },
+  ].forEach(s => {
+    statsGrid.append(el("div", {class:"card", style:"text-align:center;padding:20px"},
+      el("div", {style:"font-size:28px;font-weight:800;color:var(--gold)"}, String(s.value)),
+      el("div", {style:"font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:1px;margin-top:4px"}, s.label)
+    ));
+  });
 
-  const ls = document.getElementById("lesson-scores");
-  let any = false;
-  Object.entries(levels).forEach(([num, lv]) => {
-    lv.lessons.forEach(L => {
-      const s = Academy.lessonScore(L.id);
-      if (s == null) return;
-      any = true;
-      ls.append(el("div", {class:"lesson-row"},
-        el("span", {class:"badge"}, "L" + num),
-        el("div", null, el("div", {class:"t"}, L.title)),
-        el("div", {class:"grow"}),
-        el("b", {style:"color:" + (s >= 70 ? "var(--ok)" : "var(--danger)")}, s + "%")));
+  // XP display
+  document.getElementById("xp-display").textContent = state.xp.toLocaleString() + " XP";
+
+  // Lesson scores
+  const lessonScores = document.getElementById("lesson-scores");
+  const scored = Object.entries(state.lessonsDone);
+  if (scored.length === 0) {
+    lessonScores.innerHTML = '<p class="sub">No lessons completed yet.</p>';
+  } else {
+    scored.forEach(([id, data]) => {
+      const pct = Math.round(data.score);
+      lessonScores.append(el("div", {style:"display:flex;align-items:center;gap:8px;margin-bottom:8px"},
+        el("span", {style:"flex:1;font-size:13px"}, id),
+        el("div", {class:"progress-bar", style:"flex:2;height:8px"}, el("div", {style:"width:" + pct + "%"})),
+        el("span", {style:"font-size:12px;color:var(--ink-soft);min-width:36px"}, pct + "%")
+      ));
     });
-  });
-  if (!any) ls.append(el("p", {class:"sub"}, "Complete a lesson to see scores here."));
+  }
 
-  const vs = document.getElementById("vocab-stats");
-  Object.entries(decks).forEach(([id, d]) => {
-    const keys = d.words.map(w => id + "::" + w.ar);
-    const st = Academy.srsStats(keys);
-    vs.append(el("div", {class:"lesson-row"},
-      el("div", null, el("div", {class:"t"}, d.title),
-        el("div", {class:"d"}, st.total + " cards · " + st.due + " due · " + st.young + " learning · " + st.mature + " mature")),
-      el("div", {class:"grow"}),
-      el("a", {class:"btn small ghost", href:"vocabulary.html"}, "Study")));
-  });
+  // SRS stats
+  const srsStats = document.getElementById("srs-stats");
+  srsStats.innerHTML = `
+    <p style="font-size:14px;margin-bottom:4px"><b>Total cards:</b> ${srsInfo.total}</p>
+    <p style="font-size:14px;margin-bottom:4px"><b>Due now:</b> ${srsInfo.due}</p>
+    <p style="font-size:14px;margin-bottom:4px"><b>Young (learning):</b> ${srsInfo.young}</p>
+    <p style="font-size:14px;margin-bottom:4px"><b>Mature (long-term):</b> ${srsInfo.mature}</p>
+  `;
 
+  // Streak calendar (last 30 days)
+  const calendar = document.getElementById("streak-calendar");
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(Date.now() - i * 86400000);
+    const key = "islam-academy-v1";
+    const dateStr = d.toISOString().slice(0, 10);
+    // Check if there was activity (streak.last matches or lessonsDone on that date)
+    const isActive = state.streak.last === dateStr ||
+      Object.values(state.lessonsDone).some(l => new Date(l.date).toISOString().slice(0, 10) === dateStr);
+    const cell = el("div", {
+      style:"width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;" +
+        (isActive ? "background:var(--gold);color:#fff;font-weight:700" : "background:var(--cream);color:var(--ink-soft)"),
+      title: dateStr
+    }, isActive ? "✓" : d.getDate());
+    calendar.append(cell);
+  }
+
+  // Export
   document.getElementById("export-btn").onclick = () => {
-    const blob = new Blob([JSON.stringify(Academy.state, null, 2)], {type:"application/json"});
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = "islam-academy-progress.json";
     a.click();
   };
-  document.getElementById("reset-btn").onclick = () => {
-    if (confirm("Erase ALL progress? This cannot be undone.")) {
-      localStorage.removeItem("islam-academy-v1");
-      location.reload();
-    }
+
+  // Import
+  document.getElementById("import-btn").onclick = () => document.getElementById("import-file").click();
+  document.getElementById("import-file").onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        Object.assign(state, data);
+        Academy.save();
+        location.reload();
+      } catch (err) {
+        alert("Invalid JSON file.");
+      }
+    };
+    reader.readAsText(file);
   };
 })();
 </script>

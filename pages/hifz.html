@@ -156,7 +156,19 @@
   let currentRandomMeta = null;
   const surahPlayer = new Audio();
   document.getElementById("random-surah").onclick = () => {
-    const doneSurahs = meta.filter(m => m.number >= 78);
+    // Use memorized surahs if any, otherwise fall back to short surahs
+    const memorizedJuz = (hifz.done || []);
+    let doneSurahs;
+    if (memorizedJuz.length > 0) {
+      // Map memorized juz to surah ranges
+      doneSurahs = meta.filter(m => {
+        // Approximate: surahs in memorized juz
+        return memorizedJuz.some(j => m.number >= (j-1)*4+1 && m.number <= j*4+2);
+      });
+    }
+    if (!doneSurahs || doneSurahs.length === 0) {
+      doneSurahs = meta.filter(m => m.number >= 78);
+    }
     const s = doneSurahs[Math.floor(Math.random()*doneSurahs.length)];
     currentRandomMeta = s;
     document.getElementById("random-result").innerHTML =
