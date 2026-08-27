@@ -1,0 +1,78 @@
+name: Validate & Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate HTML files
+        run: |
+          echo "Checking HTML files..."
+          for f in index.html pages/*.html; do
+            if [ -f "$f" ]; then
+              echo "  ✅ $f exists"
+            else
+              echo "  ❌ $f missing"
+              exit 1
+            fi
+          done
+
+      - name: Validate service worker
+        run: |
+          echo "Checking sw.js..."
+          node --check sw.js && echo "  ✅ Syntax valid" || exit 1
+
+      - name: Validate manifest
+        run: |
+          echo "Checking manifest.json..."
+          node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8'))" && echo "  ✅ Valid JSON" || exit 1
+
+      - name: Check offline.html exists
+        run: |
+          test -f offline.html && echo "✅ offline.html exists" || exit 1
+
+      - name: Validate CSS files
+        run: |
+          echo "Checking CSS files..."
+          for f in assets/css/*.css; do
+            test -f "$f" && echo "  ✅ $f" || echo "  ⚠️ $f missing"
+          done
+
+      - name: Validate JS files
+        run: |
+          echo "Checking JS files..."
+          for f in assets/js/*.js; do
+            test -f "$f" && echo "  ✅ $f" || echo "  ⚠️ $f missing"
+          done
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
