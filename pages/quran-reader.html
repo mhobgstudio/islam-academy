@@ -76,9 +76,57 @@ if ('serviceWorker' in navigator) {
   let currentSurah = parseInt(sel.value) || 1;
   let audioPlayer = new Audio();
   let currentPlaying = null;
+  let surahQueue = null; // [ayahNum, ...] for sequential playback
+
+  function highlightCard(card, playing) {
+    if (currentPlaying && currentPlaying !== card) {
+      currentPlaying.style.borderColor = "";
+      currentPlaying.style.background = "";
+    }
+    currentPlaying = playing ? card : null;
+  }
+
+  function playAyah(ayahNum, card) {
+    audioPlayer.pause();
+    surahQueue = null; // single ayah stops sequential playback
+    audioPlayer.src = ayahAudio(document.getElementById("reciter-select").value, ayahNum);
+    audioPlayer.play().catch(() => {});
+    if (card) {
+      highlightCard(card, true);
+      card.style.borderColor = "var(--gold)";
+      card.style.background = "color-mix(in srgb, var(--gold) 5%, transparent)";
+    }
+  }
+
+  function playNextInQueue(reciter) {
+    if (!surahQueue || surahQueue.length === 0) {
+      highlightCard(null, false);
+      return;
+    }
+    const ayahNum = surahQueue.shift();
+    audioPlayer.src = ayahAudio(reciter, ayahNum);
+    audioPlayer.play().catch(() => {});
+    const card = document.querySelector(`[data-ayah="${ayahNum}"]`);
+    if (card) {
+      highlightCard(card, true);
+      card.style.borderColor = "var(--gold)";
+      card.style.background = "color-mix(in srgb, var(--gold) 5%, transparent)";
+    }
+  }
+
+  function playSurah() {
+    const reciter = document.getElementById("reciter-select").value;
+    let globalStart = 1;
+    for (let i = 0; i < currentSurah - 1; i++) globalStart += surahMeta[i].ayahs;
+    const count = surahMeta[currentSurah - 1].ayahs;
+    surahQueue = Array.from({length: count}, (_, i) => globalStart + i);
+    audioPlayer.pause();
+    playNextInQueue(reciter);
+  }
 
   function renderSurah(num) {
     currentSurah = num;
+    surahQueue = null;
     const info = surahMeta[num - 1];
     const container = document.getElementById("ayah-container");
     container.innerHTML = "";
@@ -110,30 +158,43 @@ if ('serviceWorker' in navigator) {
     const trans = (quranTrans[num] || []).map(a => typeof a === 'object' ? a.t : a);
     ayat.forEach((text, i) => {
       const ayahNum = globalStart + i;
-      const card = el("div", {class:"card", style:"margin-bottom:10px;padding:16px;cursor:pointer", onclick: function() {
-        audioPlayer.pause();
-        audioPlayer.src = ayahAudio(document.getElementById("reciter-select").value, ayahNum);
-        audioPlayer.play().catch(() => {});
-        currentPlaying = this;
-        this.style.borderColor = "var(--gold)";
-      }},
-        el("div", {style:"display:flex;justify-content:space-between;align-items:flex-start;gap:12px"},
-          el("div", {class:"quran-text", style:"font-size:22px;flex:1;line-height:1.8", lang:"ar"}, text),
-          el("span", {style:"font-size:11px;color:var(--gold);background:var(--cream);padding:2px 8px;border-radius:12px;white-space:nowrap;flex-shrink:0"}, String(i + 1))
-        ),
-        el("div", {style:"font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.6"}, trans[i] || "")
-      );
+      const card = el("div", {
+        class: "card",
+        style: "margin-bottom:10px;padding:16px;cursor:pointer",
+        "data-ayah": ayahNum,
+      });
+
+      const playBtn = el("button", {
+        class: "btn small",
+        style: "flex-shrink:0",
+        onclick: function(e) {
+          e.stopPropagation();
+          playAyah(ayahNum, card);
+        }
+      }, "🔊");
+
+      card.appendChild(el("div", {style:"display:flex;justify-content:space-between;align-items:flex-start;gap:12px"},
+        el("div", {class:"quran-text", style:"font-size:22px;flex:1;line-height:1.8", lang:"ar"}, text),
+        el("div", {style:"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0"},
+          el("span", {style:"font-size:11px;color:var(--gold);background:var(--cream);padding:2px 8px;border-radius:12px;white-space:nowrap"}, String(i + 1)),
+          playBtn
+        )
+      ));
+      card.appendChild(el("div", {style:"font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.6"}, trans[i] || ""));
+      card.addEventListener("click", function() { playAyah(ayahNum, card); });
       container.append(card);
     });
 
-    // Play surah button
-    document.getElementById("play-surah-btn").onclick = function() {
-      audioPlayer.pause();
-      audioPlayer.src = ayahAudio(document.getElementById("reciter-select").value, globalStart);
-      audioPlayer.play().catch(() => {});
-    };
+    // Play surah button — plays full surah in sequence
+    document.getElementById("play-surah-btn").onclick = playSurah;
 
-    audioPlayer.onended = () => { currentPlaying = null; };
+    audioPlayer.onended = function() {
+      if (surahQueue && surahQueue.length > 0) {
+        playNextInQueue(document.getElementById("reciter-select").value);
+      } else {
+        highlightCard(null, false);
+      }
+    };
   }
 
   sel.addEventListener("change", () => renderSurah(parseInt(sel.value)));
