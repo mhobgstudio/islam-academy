@@ -54,8 +54,8 @@ if ('serviceWorker' in navigator) {
   let quranText, quranTrans, surahMeta;
   try {
     [quranText, quranTrans, surahMeta] = await Promise.all([
-      Academy.fetchJSON("../data/quran/quran_text.json"),
-      Academy.fetchJSON("../data/quran/quran_trans.json"),
+      Academy.fetchJSON("../data/quran/uthmani.json"),
+      Academy.fetchJSON("../data/quran/translation_en.json"),
       Academy.fetchJSON("../data/quran/surah_meta.json"),
     ]);
   } catch(e) {
@@ -106,8 +106,8 @@ if ('serviceWorker' in navigator) {
     }
 
     // Ayat
-    const ayat = quranText[num] || [];
-    const trans = quranTrans[num] || [];
+    const ayat = (quranText[num] || []).map(a => typeof a === 'object' ? a.t : a);
+    const trans = (quranTrans[num] || []).map(a => typeof a === 'object' ? a.t : a);
     ayat.forEach((text, i) => {
       const ayahNum = globalStart + i;
       const card = el("div", {class:"card", style:"margin-bottom:10px;padding:16px;cursor:pointer", onclick: function() {
