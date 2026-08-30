@@ -41,7 +41,7 @@
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    navigator.serviceWorker.register('../sw.js').catch(() => {});
   });
 }
 </script>
@@ -66,7 +66,7 @@ if ('serviceWorker' in navigator) {
   // Populate surah select
   const sel = document.getElementById("surah-select");
   surahMeta.forEach(s => {
-    sel.append(el("option", {value: s.number}, s.number + ". " + s.name + " (" + s.englishName + ") — " + s.ayahs + " ayat"));
+    sel.append(el("option", {value: s.number}, s.number + ". " + s.name + " — " + s.ayahs + " ayat"));
   });
 
   // Parse URL params
@@ -134,8 +134,8 @@ if ('serviceWorker' in navigator) {
     // Surah info
     const infoCard = document.getElementById("surah-info");
     infoCard.style.display = "";
-    document.getElementById("surah-name").textContent = info.name + " — " + info.englishName;
-    document.getElementById("surah-meta").textContent = info.englishNameTranslation + " • " + info.ayahs + " ayat • " + info.revelationType;
+    document.getElementById("surah-name").textContent = info.name + " — Surah " + info.number;
+    document.getElementById("surah-meta").textContent = info.revelation.charAt(0).toUpperCase() + info.revelation.slice(1) + " • " + info.ayahs + " ayat";
 
     // Calculate global ayah start
     let globalStart = 1;
