@@ -106,7 +106,7 @@
     // Show frequency badge if available
     const freqBadge = w.freq ? el("div", {class:"freq-badge", style:"position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;border-radius:12px;padding:2px 8px;font-size:11px;font-weight:600"}, "×" + w.freq) : null;
 
-    const front = el("div", {style:"position:relative"},
+    const front = el("div", {class:"flashcard-front"},
       freqBadge,
       el("div", {class:"front-ar"}, w.ar),
       el("div", {class:"tap-hint"}, "tap to reveal"));

@@ -32,6 +32,7 @@
 }
 .flashcard.flipped { background: linear-gradient(160deg, var(--paper), #f4efdf); }
 [data-theme="dark"] .flashcard.flipped { background: linear-gradient(160deg, var(--paper), #182b22); }
+.flashcard .flashcard-front { position: relative; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 0 34px; }
 .flashcard .front-ar { font-family: "Naskh", serif; font-size: 56px; direction: rtl; unicode-bidi: embed; text-align: center; line-height: 1.4; }
 .flashcard .back-en { font-size: 26px; font-weight: 700; }
 .flashcard .translit { color: var(--gold-500); font-style: italic; margin-top: 6px; }
