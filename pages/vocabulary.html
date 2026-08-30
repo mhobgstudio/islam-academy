@@ -122,12 +122,10 @@
         const colors = ["#dc2626", "#2563eb", "#16a34a"];
         return el("span", {style:"display:inline-block;width:40px;height:40px;line-height:40px;border-radius:50%;font-size:22px;font-weight:700;margin:0 3px;color:#fff;background:" + colors[i]}, r);
       });
-      // Reverse root circles for RTL (1st root letter on right)
-      const rtlRootDisplay = [...rootDisplay].reverse();
       backChildren.push(el("div", {class:"root-decomp", style:"margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)"},
         el("div", {style:"font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px"}, "Root (جذر)"),
         el("div", {style:"display:flex;flex-direction:row-reverse;align-items:center;justify-content:center;gap:4px"},
-          el("div", {style:"display:flex;flex-direction:row-reverse;gap:3px"}, ...rtlRootDisplay),
+          el("div", {style:"display:flex;flex-direction:row-reverse;gap:3px"}, ...rootDisplay),
           el("span", {style:"font-size:11px;color:var(--ink-soft)"}, w.pattern || "")
         ),
         el("div", {style:"font-size:11px;color:var(--ink-soft);margin-top:6px;font-style:italic"}, "Root: " + w.root + " — Pattern: " + (w.pattern || "—"))
