@@ -106,10 +106,12 @@
     // Show frequency badge if available
     const freqBadge = w.freq ? el("div", {class:"freq-badge", style:"position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;border-radius:12px;padding:2px 8px;font-size:11px;font-weight:600"}, "×" + w.freq) : null;
 
+    const frontAr = el("div", {class:"front-ar"}, w.ar);
+    const tapHint = el("div", {class:"tap-hint"}, "tap to reveal");
     const front = el("div", {class:"flashcard-front"},
       freqBadge,
-      el("div", {class:"front-ar"}, w.ar),
-      el("div", {class:"tap-hint"}, "tap to reveal"));
+      frontAr,
+      tapHint);
     // Build back content with root decomposition
     const backChildren = [
       el("div", {class:"back-en"}, w.en),
@@ -136,7 +138,8 @@
     const card = el("div", {class:"flashcard", onclick:(e)=>{
       if (e.target.closest(".speaker-btn") || e.target.closest(".grade-row")) return;
       flipped = !flipped;
-      front.style.display = flipped ? "none" : "";
+      if (freqBadge) freqBadge.style.display = flipped ? "none" : "";
+      tapHint.style.display = flipped ? "none" : "";
       back.style.display = flipped ? "" : "none";
       card.classList.toggle("flipped", flipped);
     }}, front, back, el("button", {class:"speaker-btn", style:"position:absolute;top:12px;right:12px",
