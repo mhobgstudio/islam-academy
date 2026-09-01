@@ -529,7 +529,7 @@
     const cloudCard = el('div', {class:'card', style:'margin-bottom:16px;padding:20px'},
       el('div', {style:'font-weight:700;margin-bottom:14px'}, '☁️ Word Cloud — Sized by Frequency')
     );
-    const cloudContainer = el('div', {style:'display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 8px;padding:10px;min-height:120px'});
+    const cloudContainer = el('div', {style:'direction:rtl;unicode-bidi:bidi-override;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 8px;padding:10px;min-height:120px'});
 
     const maxFontSize = 42, minFontSize = 12;
     sorted.slice(0, 100).forEach(w => {
@@ -542,6 +542,7 @@
         style: 'font-size:' + fontSize + 'px;color:hsl(' + hue + ',50%,35%);opacity:' + opacity + ';cursor:pointer;line-height:1.3;transition:all .2s;direction:rtl;unicode-bidi:embed',
         title: w.ar + ' — ' + w.en + ' (' + w.freq + '×)',
         onclick: function() {
+          Academy.speakArabic(w.ar);
           const target = document.getElementById('top30-' + w.ar);
           if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'center' });
