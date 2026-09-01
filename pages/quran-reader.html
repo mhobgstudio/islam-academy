@@ -418,8 +418,23 @@ if ('serviceWorker' in navigator) {
       return;
     }
 
+    // Wrapper with left/right turn zones
+    var wrapper = el('div', {style:'display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto;max-width:720px;position:relative;direction:ltr'});
+
+    // Left side: previous page (RTL book — going back is to the right, but visually left for LTR page turn feel)
+    var prevZone = el('div', {style:'flex:0 0 60px;display:flex;align-items:center;justify-content:center;height:520px;cursor:pointer;border-radius:8px 0 0 8px;transition:background .2s;color:var(--gold);font-size:28px;opacity:.35;user-select:none'}, '\u276E');
+    prevZone.addEventListener('mouseenter', function(){ this.style.opacity='1'; this.style.background='rgba(184,134,11,.08)'; });
+    prevZone.addEventListener('mouseleave', function(){ this.style.opacity='.35'; this.style.background=''; });
+    prevZone.addEventListener('click', function(){ if (currentPage > 1) loadMushafPage(currentPage - 1); });
+
+    // Right side: next page
+    var nextZone = el('div', {style:'flex:0 0 60px;display:flex;align-items:center;justify-content:center;height:520px;cursor:pointer;border-radius:0 8px 8px 0;transition:background .2s;color:var(--gold);font-size:28px;opacity:.35;user-select:none'}, '\u276F');
+    nextZone.addEventListener('mouseenter', function(){ this.style.opacity='1'; this.style.background='rgba(184,134,11,.08)'; });
+    nextZone.addEventListener('mouseleave', function(){ this.style.opacity='.35'; this.style.background=''; });
+    nextZone.addEventListener('click', function(){ if (currentPage < 604) loadMushafPage(currentPage + 1); });
+
     // Physical mushaf proportions: ~15cm x 20cm = 3:4 ratio
-    var page = el('div', {style:'max-width:520px;margin:0 auto 20px;background:var(--paper);border:3px solid #b8860b;border-radius:4px;padding:20px 16px 16px;box-shadow:0 4px 20px rgba(0,0,0,.12);position:relative;overflow:hidden'});
+    var page = el('div', {style:'flex:1;max-width:520px;margin:0 auto 20px;background:var(--paper);border:3px solid #b8860b;border-radius:4px;padding:20px 16px 16px;box-shadow:0 4px 20px rgba(0,0,0,.12);position:relative;overflow:hidden'});
 
     // Top decorative border
     page.append(el('div', {style:'position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#b8860b,#daa520,#b8860b)'}));
@@ -452,7 +467,8 @@ if ('serviceWorker' in navigator) {
     // Bottom page number
     page.append(el('div', {style:'text-align:center;font-size:11px;color:#b8860b;margin-top:8px;font-weight:600'}, '\uFD3F ' + data.page + ' \uFD3E'));
 
-    container.append(page);
+    wrapper.append(prevZone, page, nextZone);
+    container.append(wrapper);
   }
 
   async function loadMushafPage(num) {
@@ -472,6 +488,41 @@ if ('serviceWorker' in navigator) {
   document.getElementById('mushaf-next').addEventListener('click', function() {
     if (currentPage < 604) loadMushafPage(currentPage + 1);
   });
+
+  // Keyboard arrow navigation for mushaf
+  document.addEventListener('keydown', function(e) {
+    if (viewMode !== 'mushaf') return;
+    // RTL book: left arrow = next page, right arrow = prev page
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (currentPage < 604) loadMushafPage(currentPage + 1);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (currentPage > 1) loadMushafPage(currentPage - 1);
+    }
+  });
+
+  // Touch swipe navigation for mushaf
+  (function() {
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var container = document.getElementById('ayah-container');
+    container.addEventListener('touchstart', function(e) {
+      if (viewMode !== 'mushaf') return;
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, {passive: true});
+    container.addEventListener('touchend', function(e) {
+      if (viewMode !== 'mushaf') return;
+      var dx = e.changedTouches[0].screenX - touchStartX;
+      var dy = e.changedTouches[0].screenY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        // RTL: swipe left = next, swipe right = prev
+        if (dx < 0 && currentPage < 604) loadMushafPage(currentPage + 1);
+        else if (dx > 0 && currentPage > 1) loadMushafPage(currentPage - 1);
+      }
+    }, {passive: true});
+  })();
   document.getElementById('mushaf-page-input').addEventListener('change', function() {
     loadMushafPage(parseInt(this.value) || 1);
   });
