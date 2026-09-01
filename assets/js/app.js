@@ -818,7 +818,8 @@
     });
     children.flat().forEach((c) => {
       if (c == null) return;
-      e.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+      if (typeof c === "string" || typeof c === "number") e.appendChild(document.createTextNode(c));
+      else e.appendChild(c);
     });
     return e;
   }
