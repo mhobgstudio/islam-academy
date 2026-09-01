@@ -539,8 +539,18 @@
       const opacity = 0.5 + 0.5 * ratio;
       const word = el('span', {
         class: 'ar',
-        style: 'font-size:' + fontSize + 'px;color:hsl(' + hue + ',50%,35%);opacity:' + opacity + ';cursor:pointer;line-height:1.3;transition:all .2s',
+        style: 'font-size:' + fontSize + 'px;color:hsl(' + hue + ',50%,35%);opacity:' + opacity + ';cursor:pointer;line-height:1.3;transition:all .2s;direction:rtl;unicode-bidi:embed',
         title: w.ar + ' — ' + w.en + ' (' + w.freq + '×)',
+        onclick: function() {
+          const target = document.getElementById('top30-' + w.ar);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.style.transition = 'background .3s, box-shadow .3s';
+            target.style.background = 'var(--emerald-50, #ecfdf5)';
+            target.style.boxShadow = '0 0 0 2px var(--emerald-500, #10b981)';
+            setTimeout(() => { target.style.background = ''; target.style.boxShadow = ''; }, 1500);
+          }
+        },
         onmouseenter: function(e) { this.style.transform='scale(1.15)'; this.style.color='var(--emerald-700)'; },
         onmouseleave: function(e) { this.style.transform=''; this.style.color='hsl('+hue+',50%,35%)'; }
       }, w.ar);
@@ -555,9 +565,9 @@
     sorted.slice(0, 30).forEach((w, i) => {
       const barW = (w.freq / maxFreq) * 100;
       const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1);
-      topCard.append(el('div', {style:'display:flex;align-items:center;gap:8px;margin-bottom:6px'},
+      topCard.append(el('div', {id:'top30-' + w.ar, style:'display:flex;align-items:center;gap:8px;margin-bottom:6px;border-radius:6px;padding:4px 0'},
         el('div', {style:'min-width:28px;text-align:center;font-size:' + (i < 3 ? '16px' : '12px') + ';font-weight:700'}, medal),
-        el('div', {class:'ar', style:'min-width:60px;font-size:20px;font-weight:600'}, w.ar),
+        el('div', {class:'ar', style:'min-width:60px;font-size:20px;font-weight:600;direction:rtl;unicode-bidi:embed'}, w.ar),
         el('div', {style:'flex:1;height:20px;background:var(--cream);border-radius:5px;overflow:hidden;position:relative'},
           el('div', {style:'position:absolute;left:0;top:0;height:100%;width:' + barW + '%;background:linear-gradient(90deg,var(--emerald-700),var(--gold));border-radius:5px;transition:width .5s'}),
           el('span', {style:'position:absolute;right:6px;top:2px;font-size:10px;font-weight:600;color:var(--ink-soft)'}, w.freq + '×')
@@ -648,28 +658,43 @@
     // Found words area
     const foundArea = el('div', {style:'display:flex;flex-wrap:wrap;gap:6px;justify-content:center;min-height:50px;margin-bottom:16px'});
 
-    // Answer grid - shuffle words and show as clickable options
-    const shuffled = Academy.shuffle([...words]);
+    // Collect distractor words from OTHER roots (2-4 distractors)
+    const otherRootWords = deck.words.filter(w => w.root && w.root !== root && w.freq && w.freq > 0);
+    const shuffledOthers = Academy.shuffle(otherRootWords);
+    const numDistractors = Math.min(4, Math.max(2, shuffledOthers.length));
+    const distractors = shuffledOthers.slice(0, numDistractors);
+
+    // Combine correct + distractor words, shuffle
+    const allOptions = Academy.shuffle([...words, ...distractors]);
+    const correctArabic = new Set(words.map(w => w.ar));
     const answerGrid = el('div', {style:'display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px'});
 
-    shuffled.forEach(w => {
+    allOptions.forEach(w => {
+      const isCorrect = correctArabic.has(w.ar);
       const btn = el('button', {
         class: 'card',
         style: 'padding:12px;text-align:center;cursor:pointer;transition:all .2s',
         onclick: () => {
-          if (quizFound.includes(w.ar)) return;
-          quizFound.push(w.ar);
+          if (btn.dataset.answered) return;
+          btn.dataset.answered = '1';
           quizTotal++;
-          quizScore++;
-          btn.style.background = 'var(--emerald-100)';
-          btn.style.borderColor = 'var(--emerald-600)';
-          btn.style.opacity = '0.5';
+          if (isCorrect) {
+            quizFound.push(w.ar);
+            quizScore++;
+            btn.style.background = 'var(--emerald-100)';
+            btn.style.borderColor = 'var(--emerald-600)';
+            foundArea.append(el('span', {
+              class: 'ar',
+              style: 'display:inline-block;padding:4px 10px;background:var(--emerald-100);border:1px solid var(--emerald-600);border-radius:8px;font-size:18px;direction:rtl;unicode-bidi:embed'
+            }, w.ar + ' — ' + w.en));
+            Academy.addXP(3);
+          } else {
+            btn.style.background = '#fef2f2';
+            btn.style.borderColor = '#ef4444';
+            btn.style.opacity = '0.5';
+            btn.querySelector('.quiz-result') && (btn.querySelector('.quiz-result').textContent = '✗ wrong root');
+          }
           btn.style.pointerEvents = 'none';
-          foundArea.append(el('span', {
-            class: 'ar',
-            style: 'display:inline-block;padding:4px 10px;background:var(--emerald-100);border:1px solid var(--emerald-600);border-radius:8px;font-size:18px;direction:rtl;unicode-bidi:embed'
-          }, w.ar + ' — ' + w.en));
-          Academy.addXP(3);
           scoreEl.textContent = 'Score: ' + quizScore + '/' + quizTotal + ' rounds';
           checkQuizComplete();
         }
@@ -680,7 +705,8 @@
           class: 'btn small ghost',
           style: 'margin-top:6px;padding:2px 8px;font-size:11px',
           onclick: (e) => { e.stopPropagation(); Academy.speakArabic(w.ar, e.currentTarget); }
-        }, '🔊 listen')
+        }, '\ud83d\udd0a listen'),
+        el('div', {class:'quiz-result', style:'font-size:11px;margin-top:4px;min-height:14px'}, '')
       );
       answerGrid.append(btn);
     });
