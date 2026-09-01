@@ -8646,5 +8646,165 @@
   "سماوت": {
     "root": "س.م.و",
     "meaning": "heavens"
+  },
+  "_root_سبل": {
+    "root": "س.ب.ل",
+    "meaning": "way, path"
+  },
+  "_root_فرغ": {
+    "root": "ف.ر.غ",
+    "meaning": "empty, free"
+  },
+  "_root_أتي": {
+    "root": "أ.ت.ي",
+    "meaning": "come, bring"
+  },
+  "_root_قدر": {
+    "root": "ق.د.ر",
+    "meaning": "decree, power, worth"
+  },
+  "_root_صدق": {
+    "root": "ص.د.ق",
+    "meaning": "truthful, sincere"
+  },
+  "_root_حمل": {
+    "root": "ح.م.ل",
+    "meaning": "carry, bear"
+  },
+  "_root_أنس": {
+    "root": "أ.ن.س",
+    "meaning": "familiar, intimate"
+  },
+  "_root_سعر": {
+    "root": "س.ع.ر",
+    "meaning": "price, value"
+  },
+  "_root_قوم": {
+    "root": "ق.و.م",
+    "meaning": "stand, rise, people"
+  },
+  "_root_يدي": {
+    "root": "ي.د.ي",
+    "meaning": "hand, power"
+  },
+  "_root_شءي": {
+    "root": "ش.ء.ي",
+    "meaning": "thing, will, intend"
+  },
+  "_root_شطن": {
+    "root": "ش.ط.ن",
+    "meaning": "rebel, distant"
+  },
+  "_root_عيم": {
+    "root": "ع.ي.م",
+    "meaning": "blind"
+  },
+  "_root_نصب": {
+    "root": "ن.ص.ب",
+    "meaning": "erect, set up"
+  },
+  "_root_سءي": {
+    "root": "س.ء.ي",
+    "meaning": "ask, seek"
+  },
+  "_root_بره": {
+    "root": "ب.ر.ه",
+    "meaning": "clear, evident"
+  },
+  "_root_سءل": {
+    "root": "س.ء.ل",
+    "meaning": "ask, question"
+  },
+  "_root_درج": {
+    "root": "د.ر.ج",
+    "meaning": "step, degree"
+  },
+  "_root_حجر": {
+    "root": "ح.ج.ر",
+    "meaning": "stone, prevent"
+  },
+  "_root_ذور": {
+    "root": "ذ.و.ر",
+    "meaning": "perish, scatter"
+  },
+  "_root_أيي": {
+    "root": "أ.ي.ي",
+    "meaning": "sign, verse"
+  },
+  "_root_نوس": {
+    "root": "ن.و.س",
+    "meaning": "people, forget"
+  },
+  "_root_ضرر": {
+    "root": "ض.ر.ر",
+    "meaning": "harm, injury"
+  },
+  "_root_مءي": {
+    "root": "م.ء.ي",
+    "meaning": "water"
+  },
+  "_root_رءي": {
+    "root": "ر.ء.ي",
+    "meaning": "see, vision"
+  },
+  "_root_رءف": {
+    "root": "ر.ء.ف",
+    "meaning": "kind, merciful"
+  },
+  "_root_نور": {
+    "root": "ن.و.ر",
+    "meaning": "light"
+  },
+  "_root_طير": {
+    "root": "ط.ي.ر",
+    "meaning": "fly, bird"
+  },
+  "_root_جنن": {
+    "root": "ج.ن.ن",
+    "meaning": "cover, hide, garden"
+  },
+  "_root_غير": {
+    "root": "غ.ي.ر",
+    "meaning": "other, change"
+  },
+  "_root_قرء": {
+    "root": "ق.ر.ء",
+    "meaning": "read, recite"
+  },
+  "_root_رسل": {
+    "root": "ر.س.ل",
+    "meaning": "send, messenger"
+  },
+  "_root_كلل": {
+    "root": "ك.ل.ل",
+    "meaning": "all, entire"
+  },
+  "_root_بيت": {
+    "root": "ب.ي.ت",
+    "meaning": "house, verse"
+  },
+  "_root_مثل": {
+    "root": "م.ث.ل",
+    "meaning": "like, example"
+  },
+  "_root_سءو": {
+    "root": "س.ء.و",
+    "meaning": "ask, seek"
+  },
+  "_root_ءخر": {
+    "root": "ء.خ.ر",
+    "meaning": "other, last"
+  },
+  "_root_طهر": {
+    "root": "ط.ه.ر",
+    "meaning": "pure, clean"
+  },
+  "_root_حقق": {
+    "root": "ح.ق.ق",
+    "meaning": "truth, reality"
+  },
+  "_root_جيء": {
+    "root": "ج.ي.ء",
+    "meaning": "come, bring"
   }
 }
