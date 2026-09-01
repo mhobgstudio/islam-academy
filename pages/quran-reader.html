@@ -76,8 +76,12 @@
   <h1 class="page-title">📖 Quran Reader</h1>
   <p class="page-sub">Read the Noble Quran in Uthmani script with Saheeh International translation. Tap any word for meaning and audio.</p>
 
+  <div id="resume-banner" class="card" style="display:none;margin-bottom:16px;padding:12px 16px;background:color-mix(in srgb, var(--emerald-500) 8%, var(--paper));border-left:3px solid var(--emerald-500);align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"></div>
+
   <div class="reader-toolbar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
+    <button class="btn small" id="surah-prev" title="Previous surah">\u276E</button>
     <select id="surah-select" style="padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-family:inherit;background:var(--paper);min-width:180px"></select>
+    <button class="btn small" id="surah-next" title="Next surah">\u276F</button>
     <select id="reciter-select" style="padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-family:inherit;background:var(--paper)">
       <option value="ar.alafasy">Mishary Alafasy</option>
       <option value="ar.abdulbasit">Abdul Basit (Murattal)</option>
@@ -92,6 +96,14 @@
     <div style="display:flex;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden" id="view-mode-toggle">
       <button class="btn small" data-view="ayah" style="border-radius:0;border:none;border-right:1px solid var(--line);background:var(--gold);color:#fff">Ayat View</button>
       <button class="btn small ghost" data-view="mushaf" style="border-radius:0;border:none">\u{FDFD} Mushaf</button>
+    </div>
+    <div style="display:flex;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden">
+      <button class="btn small ghost" id="font-down" style="border-radius:0;border:none;border-right:1px solid var(--line)" title="Decrease font size">A-</button>
+      <button class="btn small ghost" id="font-up" style="border-radius:0;border:none" title="Increase font size">A+</button>
+    </div>
+    <div style="display:flex;gap:4px;align-items:center">
+      <span style="font-size:11px;color:var(--ink-soft)" title="Jump to ayah">\u23cf</span>
+      <input id="ayajump-input" type="number" min="1" placeholder="#" style="width:48px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;font-family:inherit;text-align:center;font-size:13px;background:var(--paper)" title="Jump to ayah">
     </div>
     <button class="btn small" id="play-surah-btn">🔊 Play Surah</button>
   </div>
@@ -561,15 +573,184 @@ if ('serviceWorker' in navigator) {
     return 1; // Will be improved by user navigation
   }
 
-  sel.addEventListener("change", function() {
-    currentSurah = parseInt(sel.value);
-    if (viewMode === 'mushaf') {
-      // Try to find approximate page for this surah
-      loadMushafPage(currentPage);
-    } else {
-      renderSurah(currentSurah);
+  // === Surah prev/next navigation ===
+  document.getElementById('surah-prev').addEventListener('click', function() {
+    var target = parseInt(sel.value) - 1;
+    if (target >= 1) {
+      sel.value = target;
+      sel.dispatchEvent(new Event('change'));
     }
   });
+  document.getElementById('surah-next').addEventListener('click', function() {
+    var target = parseInt(sel.value) + 1;
+    if (target <= 114) {
+      sel.value = target;
+      sel.dispatchEvent(new Event('change'));
+    }
+  });
+  function updateSurahNavBtns() {
+    var n = parseInt(sel.value) || 1;
+    document.getElementById('surah-prev').disabled = n <= 1;
+    document.getElementById('surah-next').disabled = n >= 114;
+  }
+  sel.addEventListener('change', updateSurahNavBtns);
+
+  // === Font size controls ===
+  var fontSize = 22;
+  function applyFontSize() {
+    document.querySelectorAll('#ayah-container .quran-text[lang="ar"]').forEach(function(e) {
+      if (!e.closest('[style*="max-width:520px"]')) {
+        e.style.fontSize = fontSize + 'px';
+      }
+    });
+    document.querySelectorAll('#ayah-container [style*="font-size:13px;color:var(--ink-soft)"]').forEach(function(e) {
+      e.style.fontSize = Math.max(11, fontSize - 9) + 'px';
+    });
+  }
+  document.getElementById('font-down').addEventListener('click', function() {
+    fontSize = Math.max(14, fontSize - 2);
+    applyFontSize();
+  });
+  document.getElementById('font-up').addEventListener('click', function() {
+    fontSize = Math.min(40, fontSize + 2);
+    applyFontSize();
+  });
+
+  // === Go-to-ayah input ===
+  var ayaJump = document.getElementById('ayajump-input');
+  ayaJump.max = surahMeta[currentSurah - 1] ? surahMeta[currentSurah - 1].ayahs : 286;
+  ayaJump.addEventListener('change', function() {
+    var n = parseInt(this.value);
+    if (!n || n < 1) return;
+    var maxAya = surahMeta[currentSurah - 1].ayahs;
+    if (n > maxAya) n = maxAya;
+    var globalStart = 1;
+    for (var i = 0; i < currentSurah - 1; i++) globalStart += surahMeta[i].ayahs;
+    var target = globalStart + n - 1;
+    var card = document.querySelector('[data-ayah="' + target + '"]');
+    if (card) {
+      card.scrollIntoView({behavior:'smooth', block:'center'});
+      card.style.borderColor = 'var(--gold)';
+      card.style.background = 'color-mix(in srgb, var(--gold) 8%, transparent)';
+      setTimeout(function() {
+        card.style.borderColor = '';
+        card.style.background = '';
+      }, 2000);
+    }
+    this.value = '';
+  });
+  sel.addEventListener('change', function() {
+    ayaJump.max = surahMeta[currentSurah - 1] ? surahMeta[currentSurah - 1].ayahs : 286;
+  });
+
+  // === Auto-scroll during playback ===
+  var origHighlight = highlightCard;
+  highlightCard = function(card, playing) {
+    origHighlight(card, playing);
+    if (playing && card) {
+      var rect = card.getBoundingClientRect();
+      if (rect.top < 0 || rect.bottom > window.innerHeight) {
+        card.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    }
+  };
+
+  // === Last-read bookmark ===
+  var BOOKMARK_KEY = 'quran-last-read';
+  function saveBookmark() {
+    try {
+      localStorage.setItem(BOOKMARK_KEY, JSON.stringify({
+        surah: currentSurah,
+        name: surahMeta[currentSurah - 1].name,
+        time: Date.now()
+      }));
+    } catch(e) {}
+  }
+  sel.addEventListener('change', function() {
+    if (viewMode === 'ayah') saveBookmark();
+  });
+  setInterval(function() {
+    if (viewMode === 'ayah' && document.visibilityState === 'visible') saveBookmark();
+  }, 30000);
+
+  function showResumeBanner() {
+    try {
+      var saved = JSON.parse(localStorage.getItem(BOOKMARK_KEY) || 'null');
+      if (!saved || !saved.surah) return;
+      var banner = document.getElementById('resume-banner');
+      banner.style.display = 'flex';
+      banner.innerHTML = '';
+      banner.append(
+        el('div', {style:'font-size:14px'},
+          el('span', {style:'font-weight:600;color:var(--ink)'}, '\u23fa Last read: '),
+          el('span', {style:'color:var(--emerald-500)'}, saved.name + ' (Surah ' + saved.surah + ')')
+        ),
+        el('div', {style:'display:flex;gap:6px'},
+          el('button', {class:'btn small', style:'background:var(--emerald-500);color:#fff', onclick: function() {
+            sel.value = saved.surah;
+            sel.dispatchEvent(new Event('change'));
+            banner.style.display = 'none';
+          }}, 'Resume'),
+          el('button', {class:'btn small ghost', onclick: function() {
+            banner.style.display = 'none';
+          }}, 'Dismiss')
+        )
+      );
+    } catch(e) {}
+  }
+  showResumeBanner();
+
+  // === Copy ayah button (delegated) ===
+  document.getElementById('ayah-container').addEventListener('click', function(e) {
+    var copyBtn = e.target.closest('[data-copy]');
+    if (!copyBtn) return;
+    e.stopPropagation();
+    var text = copyBtn.dataset.copy;
+    navigator.clipboard.writeText(text).then(function() {
+      copyBtn.textContent = '\u2713';
+      copyBtn.style.color = 'var(--emerald-500)';
+      setTimeout(function() {
+        copyBtn.textContent = '\u2398';
+        copyBtn.style.color = '';
+      }, 1500);
+    }).catch(function() {});
+  });
+  var copyObserver = new MutationObserver(function() {
+    document.querySelectorAll('#ayah-container .card[data-ayah]:not([data-copy-added])').forEach(function(card) {
+      card.setAttribute('data-copy-added', '1');
+      var quranText = card.querySelector('.quran-text[lang="ar"]');
+      if (!quranText) return;
+      var copyBtn = el('button', {
+        class: 'btn small ghost',
+        style: 'font-size:11px;padding:2px 6px;min-height:auto',
+        title: 'Copy Arabic text',
+        'data-copy': quranText.textContent
+      }, '\u2398');
+      var playBtn = card.querySelector('.btn.small:not([data-copy])');
+      if (playBtn && playBtn.parentElement) {
+        playBtn.parentElement.append(copyBtn);
+      }
+    });
+  });
+  copyObserver.observe(document.getElementById('ayah-container'), {childList: true, subtree: true});
+
+  // === Keyboard shortcuts ===
+  document.addEventListener('keydown', function(e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+    if (viewMode === 'mushaf') return;
+    if (e.code === 'Space') {
+      e.preventDefault();
+      if (surahQueue && surahQueue.length > 0) {
+        audioPlayer.pause();
+        surahQueue = null;
+        highlightCard(null, false);
+      } else {
+        playSurah();
+      }
+    }
+  });
+
+  updateSurahNavBtns();
   renderSurah(currentSurah);
 })();
 </script>
