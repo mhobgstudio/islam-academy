@@ -84,6 +84,11 @@
       <option value="ar.husary">Mahmoud Khalil Husary</option>
       <option value="ar.minshawi">Mohamed Siddiq El-Minshawi</option>
     </select>
+    <div style="display:flex;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden" id="text-mode-toggle">
+      <button class="btn small" data-mode="uthmani" style="border-radius:0;border:none;border-right:1px solid var(--line);background:var(--gold);color:#fff">Uthmani</button>
+      <button class="btn small ghost" data-mode="clean" style="border-radius:0;border:none;border-right:1px solid var(--line)">Clean</button>
+      <button class="btn small ghost" data-mode="standard" style="border-radius:0;border:none">Standard</button>
+    </div>
     <button class="btn small" id="play-surah-btn">🔊 Play Surah</button>
   </div>
 
@@ -109,13 +114,25 @@ if ('serviceWorker' in navigator) {
 (async function () {
   const { el, speakArabic, ayahAudio } = Academy;
 
+  const CACHE_KEY = 'quran-data-v2';
   let quranText, quranTrans, surahMeta;
   try {
-    [quranText, quranTrans, surahMeta] = await Promise.all([
-      Academy.fetchJSON("../data/quran/uthmani.json"),
-      Academy.fetchJSON("../data/quran/translation_en.json"),
-      Academy.fetchJSON("../data/quran/surah_meta.json"),
-    ]);
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      quranText = parsed.uthmani;
+      quranTrans = parsed.translation;
+      surahMeta = parsed.meta;
+    } else {
+      [quranText, quranTrans, surahMeta] = await Promise.all([
+        Academy.fetchJSON("../data/quran/uthmani.json"),
+        Academy.fetchJSON("../data/quran/translation_en.json"),
+        Academy.fetchJSON("../data/quran/surah_meta.json"),
+      ]);
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ uthmani: quranText, translation: quranTrans, meta: surahMeta }));
+      } catch(e) { /* quota exceeded — fine, will refetch next time */ }
+    }
   } catch(e) {
     document.getElementById("ayah-container").innerHTML = '<div class="card"><p class="sub">Could not load Quran data. Serve via HTTP not file://.</p></div>';
     return;
@@ -135,6 +152,58 @@ if ('serviceWorker' in navigator) {
   let audioPlayer = new Audio();
   let currentPlaying = null;
   let surahQueue = null; // [ayahNum, ...] for sequential playback
+  let textMode = 'uthmani'; // 'uthmani' | 'clean' | 'standard'
+
+  // --- Text transformation functions ---
+  // Strip all Arabic diacritics/tashkeel (U+0610-U+065F, U+0670, U+06D6-U+06DC, U+06DF-U+06E4, U+06E7-U+06E8, U+06EA-U+06ED, U+0610-U+061A, U+064B-U+065F, U+0670, U+06D6-U+06DC, U+06DF-U+06E4, U+06E7-U+06E8, U+06EA-U+06ED)
+  function stripDiacritics(text) {
+    return text.replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7-\u06E8\u06EA-\u06ED\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]/g, '');
+  }
+  // Clean: strip diacritics only
+  function toClean(text) {
+    return stripDiacritics(text);
+  }
+  // Standard: strip diacritics AND normalize special Uthmani glyphs
+  function toStandard(text) {
+    let t = stripDiacritics(text);
+    // Normalize hamzat wasl (ٱ -> ا), small alef, etc.
+    t = t.replace(/\u0671/g, '\u0627'); // alef wasla -> alef
+    t = t.replace(/\u06E5/g, '\u0648'); // small waw -> waw
+    t = t.replace(/\u06E6/g, '\u064A'); // small ya -> ya
+    t = t.replace(/\u06E7/g, '\u064A'); // small high ya -> ya
+    t = t.replace(/\u06E8/g, '\u0646'); // small high nun -> nun
+    t = t.replace(/\u06ED/g, '\u0645'); // small low meem -> meem
+    t = t.replace(/\u0622/g, '\u0627'); // alef madda -> alef
+    t = t.replace(/\u0623/g, '\u0627'); // alef with hamza above -> alef
+    t = t.replace(/\u0625/g, '\u0627'); // alef with hamza below -> alef
+    t = t.replace(/\u0629/g, '\u0647'); // ta marbuta -> ha
+    return t;
+  }
+  function transformText(text) {
+    if (textMode === 'clean') return toClean(text);
+    if (textMode === 'standard') return toStandard(text);
+    return text; // uthmani
+  }
+  function renderTextModeButtons() {
+    document.querySelectorAll('#text-mode-toggle button').forEach(btn => {
+      const isActive = btn.dataset.mode === textMode;
+      btn.className = isActive ? 'btn small' : 'btn small ghost';
+      if (isActive) {
+        btn.style.background = 'var(--gold)';
+        btn.style.color = '#fff';
+      } else {
+        btn.style.background = '';
+        btn.style.color = '';
+      }
+    });
+  }
+  document.getElementById('text-mode-toggle').addEventListener('click', function(e) {
+    const btn = e.target.closest('button[data-mode]');
+    if (!btn) return;
+    textMode = btn.dataset.mode;
+    renderTextModeButtons();
+    renderSurah(currentSurah);
+  });
 
   function highlightCard(card, playing) {
     if (currentPlaying && currentPlaying !== card) {
@@ -199,10 +268,23 @@ if ('serviceWorker' in navigator) {
     let globalStart = 1;
     for (let i = 0; i < num - 1; i++) globalStart += surahMeta[i].ayahs;
 
-    // Bismillah (except At-Tawbah)
-    if (num !== 9) {
+    // Bismillah
+    if (num === 1) {
+      // Fatiha: bismillah is already ayah 1 in the data, no extra card needed
+    } else if (num === 9) {
+      // At-Tawbah: no bismillah — show hadith reference
+      const hadithCard = el("div", {class:"card", style:"text-align:center;margin-bottom:12px;padding:20px;border-left:3px solid var(--gold)"},
+        el("div", {style:"font-size:22px;color:var(--gold);margin-bottom:6px"}, "بِسْمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ"),
+        el("div", {style:"font-size:13px;color:var(--ink-soft);margin-top:6px;line-height:1.6;max-width:560px;margin-left:auto;margin-right:auto"},
+          el("strong", null, "Why is there no Basmalah here?"),
+          el("p", {style:"margin:6px 0 0"}, "Surah At-Tawbah is the only surah of the Quran that does not begin with the Basmalah. According to the earliest authorities, this surah was originally connected to Surah Al-Anfal (8), as one continuous revelation. The great reciter Qatadah (d. 735 CE) explained that it was separated because of the severity of its content — a stern warning against the hypocrites who betrayed the believers."),
+          el("p", {style:"margin:6px 0 0;font-style:italic"}, 'Ibn Abbas reported: "The Prophet (\u{FDF2}) used to recite Surah Al-Anfal and Surah Bara\u2019ah together." — Sahih al-Bukhari 4969')
+        )
+      );
+      container.append(hadithCard);
+    } else {
       const bCard = el("div", {class:"card", style:"text-align:center;margin-bottom:12px;padding:20px"},
-        el("div", {class:"quran-text", style:"font-size:28px"}, "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ"),
+        el("div", {class:"quran-text", style:"font-size:28px"}, transformText(ayat[0] || "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ")),
         el("div", {style:"font-size:12px;color:var(--ink-soft);margin-top:4px"}, "In the name of Allah, the Most Gracious, the Most Merciful"),
         el("button", {class:"btn small ghost", style:"margin-top:8px", onclick: function() {
           speakArabic("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", this);
@@ -232,7 +314,7 @@ if ('serviceWorker' in navigator) {
       }, "🔊");
 
       card.appendChild(el("div", {style:"display:flex;justify-content:space-between;align-items:flex-start;gap:12px"},
-        el("div", {class:"quran-text", style:"font-size:22px;flex:1;line-height:1.8", lang:"ar"}, text),
+        el("div", {class:"quran-text", style:"font-size:22px;flex:1;line-height:1.8", lang:"ar"}, transformText(text)),
         el("div", {style:"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0"},
           el("span", {style:"font-size:11px;color:var(--gold);background:var(--cream);padding:2px 8px;border-radius:12px;white-space:nowrap"}, String(i + 1)),
           playBtn
