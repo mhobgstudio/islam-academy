@@ -254,27 +254,8 @@
   }
 
   function speakWord(w) {
-    // Use Web Speech API directly for consistent voice
-    const speechSynth = window.speechSynthesis;
-    if (!speechSynth) return;
-    
-    // Get Arabic voice
-    let arabicVoice = null;
-    const voices = speechSynthesis.getVoices();
-    if (voices.length > 0) {
-      arabicVoice = voices.find(v => v.lang === 'ar-SA')
-        || voices.find(v => v.lang && v.lang.startsWith('ar'))
-        || null;
-    }
-    
-    if (arabicVoice) {
-      speechSynth.cancel();
-      const u = new SpeechSynthesisUtterance(w.ar);
-      u.voice = arabicVoice;
-      u.lang = 'ar-SA';
-      u.rate = 0.8;
-      speechSynth.speak(u);
-    }
+    // Use the universal speakArabic which tries local MP3, then Web Speech API, then visual feedback
+    Academy.speakArabic(w.ar);
   }
 
   let currentMode = 'study';

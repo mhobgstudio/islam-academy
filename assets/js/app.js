@@ -172,6 +172,8 @@
     "أَبْ": "drills/sukoon.mp3",
     "رَبَّ": "drills/shadda.mp3",
     "الشَّمْسُ وَالْقَمَرُ": "drills/sun-moon.mp3",
+    // Vocab deck entries (hash-named MP3s from gen_audio.py)
+    "الله": "vocab/quran-freq-200/2716692615.mp3",
     // Reading words
     "بَاب": "drills/reading/baab.mp3",
     "كِتَاب": "drills/reading/kitaab.mp3",
