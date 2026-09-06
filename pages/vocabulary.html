@@ -294,6 +294,9 @@
       )
     );
 
+    const rank = { Again: 0, Hard: 1, Good: 2, Easy: 3, "": 4 };
+    entries.sort((a, b) => rank[a.grade] - rank[b.grade] || 0);
+
     entries.forEach(entry => {
       const g = entry.grade;
       const badge = g ? el("span", {style:"display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;color:#fff;background:" + gradeColors[g]}, g)
