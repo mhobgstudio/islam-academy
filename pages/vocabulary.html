@@ -259,31 +259,27 @@
   function renderSessionResults() {
     const box = document.getElementById("session-results");
     box.innerHTML = "";
+    if (!decks) return;
 
     const evals = Academy.gradedVocab();
-    const entries = Object.entries(evals).map(([key, v]) => {
-      const [dId, ar] = key.split("::");
-      const deck = decks[dId];
-      const word = deck ? deck.words.find(w => w.ar === ar) : null;
-      return { ar, en: word ? word.en : "", tl: word ? word.tl : "", freq: word ? word.freq : null, grade: v.grade, ts: v.ts };
-    });
-    if (entries.length === 0) { box.style.display = "none"; return; }
-    box.style.display = "";
-
     const gradeOrder = ["Again", "Hard", "Good", "Easy"];
     const gradeColors = { Again: "#dc2626", Hard: "#ea580c", Good: "#2563eb", Easy: "#16a34a" };
     const gradeBgs = { Again: "#fef2f2", Hard: "#fff7ed", Good: "#eff6ff", Easy: "#f0fdf4" };
 
-    const grouped = {};
-    gradeOrder.forEach(g => grouped[g] = []);
-    entries.forEach(entry => grouped[entry.grade].push(entry));
-    gradeOrder.forEach(g => grouped[g].sort((a, b) => a.ts - b.ts));
+    const deck = decks[deckId];
+    const entries = deck.words.map(w => {
+      const ev = evals[cardKey(w)];
+      return { ar: w.ar, en: w.en, tl: w.tl, freq: w.freq, grade: ev ? ev.grade : "" };
+    });
+    box.style.display = "block";
 
     const summaryRow = el("div", {style:"display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"},
       ...gradeOrder.map(g =>
         el("span", {style:"padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;color:" + gradeColors[g] + ";background:" + gradeBgs[g]},
-          g + ": " + grouped[g].length)
-      )
+          g + ": " + entries.filter(e => e.grade === g).length)
+      ),
+      el("span", {style:"padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;color:var(--ink-soft);background:var(--cream)"},
+        "Not rated: " + entries.filter(e => e.grade === "").length)
     );
 
     const table = el("table", {style:"width:100%;border-collapse:collapse;font-size:13px"},
@@ -298,25 +294,24 @@
       )
     );
 
-    gradeOrder.forEach(g => {
-      grouped[g].forEach(entry => {
-        const row = el("tr", {style:"border-bottom:1px solid var(--line)"},
-          el("td", {class:"ar", style:"padding:8px 10px;font-size:18px;font-weight:600;direction:rtl;unicode-bidi:embed"}, entry.ar),
-          el("td", {style:"padding:8px 10px"}, entry.en),
-          el("td", {style:"padding:8px 10px;font-style:italic;color:var(--ink-soft)"}, entry.tl || "—"),
-          el("td", {style:"padding:8px 10px;text-align:center;font-weight:600;color:var(--gold)"}, entry.freq ? "×" + entry.freq : "—"),
-          el("td", {style:"padding:8px 10px;text-align:center"},
-            el("span", {style:"display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;color:#fff;background:" + gradeColors[g]}, g)
-          )
-        );
-        table.append(row);
-      });
+    entries.forEach(entry => {
+      const g = entry.grade;
+      const badge = g ? el("span", {style:"display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;color:#fff;background:" + gradeColors[g]}, g)
+                      : el("span", {style:"display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;color:var(--ink-soft);background:var(--cream)"}, "—");
+      const row = el("tr", {style:"border-bottom:1px solid var(--line)"},
+        el("td", {class:"ar", style:"padding:8px 10px;font-size:18px;font-weight:600;direction:rtl;unicode-bidi:embed"}, entry.ar),
+        el("td", {style:"padding:8px 10px"}, entry.en),
+        el("td", {style:"padding:8px 10px;font-style:italic;color:var(--ink-soft)"}, entry.tl || "—"),
+        el("td", {style:"padding:8px 10px;text-align:center;font-weight:600;color:var(--gold)"}, entry.freq ? "×" + entry.freq : "—"),
+        el("td", {style:"padding:8px 10px;text-align:center"}, badge)
+      );
+      table.append(row);
     });
 
     box.append(
       el("div", {class:"card", style:"padding:20px"},
         el("h3", {style:"margin:0 0 6px"}, "📋 Evaluated Words"),
-        el("p", {style:"font-size:12px;color:var(--ink-soft);margin:0 0 12px"}, "All words you've ever rated, grouped Again → Easy. Re-rating a word updates its row."),
+        el("p", {style:"font-size:12px;color:var(--ink-soft);margin:0 0 12px"}, "Full deck — words you've rated show Again/Hard/Good/Easy; unevaluated ones stay blank. Re-rating updates a word."),
         summaryRow,
         table
       )
