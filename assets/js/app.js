@@ -8,6 +8,7 @@
     streak: { count: 0, last: null },
     lessonsDone: {},          // lessonId -> {score, date}
     srs: {},                  // cardKey -> {ease, interval, due, reps, lapses}
+    vocabEval: {},            // cardKey -> {grade, ts} — latest evaluation per word
     hifz: { plan: null, log: [] },
     settings: { reciter: "ar.alafasy", translit: true, theme: "light" },
   };
@@ -67,8 +68,12 @@
       c.due = now + c.interval * 86400000;
     }
     state.srs[cardKey] = c;
+    state.vocabEval[cardKey] = { grade: ["Again", "Hard", "Good", "Easy"][grade] || "Good", ts: Date.now() };
     save();
     return c;
+  }
+  function gradedVocab() {
+    return state.vocabEval || {};
   }
   function dueCards(keys) {
     const now = Date.now();
@@ -841,6 +846,7 @@
     get state() { return state; },
     save, addXP, touchStreak,
     reviewCard, dueCards, srsStats,
+    gradedVocab,
     completeLesson, lessonScore,
     speak, speakLocal, ayahAudio, wbwAudio,
     speakArabic, speakerBtn,

@@ -140,10 +140,8 @@
     buildQueue();
   }
 
-  let queue = [], sessionDone = 0, sessionLog = [];
+  let queue = [], sessionDone = 0;
   function buildQueue() {
-    sessionLog = [];
-    document.getElementById("session-results").style.display = "none";
     const deck = decks[deckId];
     const dueWords = deck.words.filter(w => Academy.dueCards([cardKey(w)]).length > 0);
     queue = Academy.shuffle(dueWords).slice(0, 20);
@@ -226,9 +224,9 @@
         e.stopPropagation();
         Academy.reviewCard(cardKey(w), g);
         Academy.addXP(2);
-        sessionLog.push({ ar: w.ar, en: w.en, tl: w.tl, freq: w.freq, grade: label });
         sessionDone++;
         queue.shift();
+        renderSessionResults();
         next();
       }}, label);
     }
@@ -261,7 +259,15 @@
   function renderSessionResults() {
     const box = document.getElementById("session-results");
     box.innerHTML = "";
-    if (sessionLog.length === 0) { box.style.display = "none"; return; }
+
+    const evals = Academy.gradedVocab();
+    const entries = Object.entries(evals).map(([key, v]) => {
+      const [dId, ar] = key.split("::");
+      const deck = decks[dId];
+      const word = deck ? deck.words.find(w => w.ar === ar) : null;
+      return { ar, en: word ? word.en : "", tl: word ? word.tl : "", freq: word ? word.freq : null, grade: v.grade, ts: v.ts };
+    });
+    if (entries.length === 0) { box.style.display = "none"; return; }
     box.style.display = "";
 
     const gradeOrder = ["Again", "Hard", "Good", "Easy"];
@@ -270,7 +276,8 @@
 
     const grouped = {};
     gradeOrder.forEach(g => grouped[g] = []);
-    sessionLog.forEach(entry => grouped[entry.grade].push(entry));
+    entries.forEach(entry => grouped[entry.grade].push(entry));
+    gradeOrder.forEach(g => grouped[g].sort((a, b) => a.ts - b.ts));
 
     const summaryRow = el("div", {style:"display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"},
       ...gradeOrder.map(g =>
@@ -308,8 +315,8 @@
 
     box.append(
       el("div", {class:"card", style:"padding:20px"},
-        el("h3", {style:"margin:0 0 6px"}, "📋 Session Review — Evaluated Words"),
-        el("p", {style:"font-size:12px;color:var(--ink-soft);margin:0 0 12px"}, "All words rated this session, grouped from Again → Easy."),
+        el("h3", {style:"margin:0 0 6px"}, "📋 Evaluated Words"),
+        el("p", {style:"font-size:12px;color:var(--ink-soft);margin:0 0 12px"}, "All words you've ever rated, grouped Again → Easy. Re-rating a word updates its row."),
         summaryRow,
         table
       )
@@ -799,6 +806,7 @@
   }
 
   start();
+  renderSessionResults();
 })();
 </script>
 </body>
