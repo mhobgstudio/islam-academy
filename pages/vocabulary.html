@@ -147,6 +147,12 @@
     queue = [w];
     next();
   }
+  function startBatchReeval(words) {
+    if (currentMode !== 'study') setMode('study');
+    reevalMode = true;
+    queue = Academy.shuffle(words);
+    next();
+  }
   function buildQueue() {
     const deck = decks[deckId];
     const dueWords = deck.words.filter(w => Academy.dueCards([cardKey(w)]).length > 0);
@@ -289,12 +295,24 @@
     box.style.display = "block";
 
     const summaryRow = el("div", {style:"display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"},
-      ...gradeOrder.map(g =>
-        el("span", {style:"padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;color:" + gradeColors[g] + ";background:" + gradeBgs[g]},
-          g + ": " + entries.filter(e => e.grade === g).length)
-      ),
-      el("span", {style:"padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;color:var(--ink-soft);background:var(--cream)"},
-        "Not rated: " + entries.filter(e => e.grade === "").length)
+      ...gradeOrder.map(g => {
+        const words = entries.filter(e => e.grade === g).map(e => e.word);
+        return el("span", {
+          style: "padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;transition:transform .15s;" + (words.length ? "opacity:1" : "opacity:0.45;cursor:default") + ";color:" + gradeColors[g] + ";background:" + gradeBgs[g],
+          onclick: words.length ? () => startBatchReeval(words) : undefined,
+          onmouseenter: words.length ? function(){ this.style.transform = "scale(1.06)"; } : undefined,
+          onmouseleave: words.length ? function(){ this.style.transform = ""; } : undefined,
+        }, g + ": " + words.length);
+      }),
+      (() => {
+        const words = entries.filter(e => e.grade === "").map(e => e.word);
+        return el("span", {
+          style: "padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;transition:transform .15s;" + (words.length ? "opacity:1" : "opacity:0.45;cursor:default") + ";color:var(--ink-soft);background:var(--cream)",
+          onclick: words.length ? () => startBatchReeval(words) : undefined,
+          onmouseenter: words.length ? function(){ this.style.transform = "scale(1.06)"; } : undefined,
+          onmouseleave: words.length ? function(){ this.style.transform = ""; } : undefined,
+        }, "Not rated: " + words.length);
+      })()
     );
 
     const table = el("table", {style:"width:100%;border-collapse:collapse;font-size:13px"},
