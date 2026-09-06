@@ -88,6 +88,7 @@
   </div>
 
   <div id="study-area"></div>
+  <div id="session-results" style="display:none;margin-top:24px"></div>
   <div id="browse-area" style="display:none"></div>
   <div id="root-area" style="display:none"></div>
   <div id="freq-area" style="display:none"></div>
@@ -139,8 +140,10 @@
     buildQueue();
   }
 
-  let queue = [], sessionDone = 0;
+  let queue = [], sessionDone = 0, sessionLog = [];
   function buildQueue() {
+    sessionLog = [];
+    document.getElementById("session-results").style.display = "none";
     const deck = decks[deckId];
     const dueWords = deck.words.filter(w => Academy.dueCards([cardKey(w)]).length > 0);
     queue = Academy.shuffle(dueWords).slice(0, 20);
@@ -160,6 +163,7 @@
   function next() {
     area.innerHTML = "";
     if (queue.length === 0) {
+      renderSessionResults();
       area.append(el("div", {class:"card", style:"text-align:center;padding:40px"},
         el("div", {style:"font-size:44px"}, "✅"),
         el("h3", null, "Session complete"),
@@ -222,6 +226,7 @@
         e.stopPropagation();
         Academy.reviewCard(cardKey(w), g);
         Academy.addXP(2);
+        sessionLog.push({ ar: w.ar, en: w.en, tl: w.tl, freq: w.freq, grade: label });
         sessionDone++;
         queue.shift();
         next();
@@ -250,6 +255,64 @@
         )
       ),
       card, grades
+    );
+  }
+
+  function renderSessionResults() {
+    const box = document.getElementById("session-results");
+    box.innerHTML = "";
+    if (sessionLog.length === 0) { box.style.display = "none"; return; }
+    box.style.display = "";
+
+    const gradeOrder = ["Again", "Hard", "Good", "Easy"];
+    const gradeColors = { Again: "#dc2626", Hard: "#ea580c", Good: "#2563eb", Easy: "#16a34a" };
+    const gradeBgs = { Again: "#fef2f2", Hard: "#fff7ed", Good: "#eff6ff", Easy: "#f0fdf4" };
+
+    const grouped = {};
+    gradeOrder.forEach(g => grouped[g] = []);
+    sessionLog.forEach(entry => grouped[entry.grade].push(entry));
+
+    const summaryRow = el("div", {style:"display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"},
+      ...gradeOrder.map(g =>
+        el("span", {style:"padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;color:" + gradeColors[g] + ";background:" + gradeBgs[g]},
+          g + ": " + grouped[g].length)
+      )
+    );
+
+    const table = el("table", {style:"width:100%;border-collapse:collapse;font-size:13px"},
+      el("thead", null,
+        el("tr", null,
+          el("th", {style:"text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "Arabic"),
+          el("th", {style:"text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "English"),
+          el("th", {style:"text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "Transliteration"),
+          el("th", {style:"text-align:center;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "Freq"),
+          el("th", {style:"text-align:center;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "Grade")
+        )
+      )
+    );
+
+    gradeOrder.forEach(g => {
+      grouped[g].forEach(entry => {
+        const row = el("tr", {style:"border-bottom:1px solid var(--line)"},
+          el("td", {class:"ar", style:"padding:8px 10px;font-size:18px;font-weight:600;direction:rtl;unicode-bidi:embed"}, entry.ar),
+          el("td", {style:"padding:8px 10px"}, entry.en),
+          el("td", {style:"padding:8px 10px;font-style:italic;color:var(--ink-soft)"}, entry.tl || "—"),
+          el("td", {style:"padding:8px 10px;text-align:center;font-weight:600;color:var(--gold)"}, entry.freq ? "×" + entry.freq : "—"),
+          el("td", {style:"padding:8px 10px;text-align:center"},
+            el("span", {style:"display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;color:#fff;background:" + gradeColors[g]}, g)
+          )
+        );
+        table.append(row);
+      });
+    });
+
+    box.append(
+      el("div", {class:"card", style:"padding:20px"},
+        el("h3", {style:"margin:0 0 6px"}, "📋 Session Review — Evaluated Words"),
+        el("p", {style:"font-size:12px;color:var(--ink-soft);margin:0 0 12px"}, "All words rated this session, grouped from Again → Easy."),
+        summaryRow,
+        table
+      )
     );
   }
 
