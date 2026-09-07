@@ -9,6 +9,7 @@
     lessonsDone: {},          // lessonId -> {score, date}
     srs: {},                  // cardKey -> {ease, interval, due, reps, lapses}
     vocabEval: {},            // cardKey -> {grade, ts} — latest evaluation per word
+    vocabFlags: {},           // cardKey -> {ts} — user-flagged words (wrong translation, etc.)
     hifz: { plan: null, log: [] },
     settings: { reciter: "ar.alafasy", translit: true, theme: "light" },
   };
@@ -74,6 +75,18 @@
   }
   function gradedVocab() {
     return state.vocabEval || {};
+  }
+  function vocabFlags() {
+    return state.vocabFlags || {};
+  }
+  function toggleVocabFlag(cardKey) {
+    if (state.vocabFlags[cardKey]) {
+      delete state.vocabFlags[cardKey];
+    } else {
+      state.vocabFlags[cardKey] = { ts: Date.now() };
+    }
+    save();
+    return !!state.vocabFlags[cardKey];
   }
   function dueCards(keys) {
     const now = Date.now();
@@ -846,7 +859,7 @@
     get state() { return state; },
     save, addXP, touchStreak,
     reviewCard, dueCards, srsStats,
-    gradedVocab,
+    gradedVocab, vocabFlags, toggleVocabFlag,
     completeLesson, lessonScore,
     speak, speakLocal, ayahAudio, wbwAudio,
     speakArabic, speakerBtn,

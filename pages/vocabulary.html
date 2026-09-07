@@ -228,7 +228,7 @@
     const back = el("div", {style:"display:none"}, ...backChildren);
 
     const card = el("div", {class:"flashcard", onclick:(e)=>{
-      if (e.target.closest(".speaker-btn") || e.target.closest(".grade-row")) return;
+      if (e.target.closest(".speaker-btn") || e.target.closest(".grade-row") || e.target.closest(".flag-btn")) return;
       flipped = !flipped;
       if (freqBadge) freqBadge.style.display = flipped ? "none" : "";
       tapHint.style.display = flipped ? "none" : "";
@@ -236,6 +236,30 @@
       card.classList.toggle("flipped", flipped);
     }}, front, back, el("button", {class:"speaker-btn", style:"position:absolute;top:12px;right:12px",
       onclick:(e)=>{ e.stopPropagation(); speakWord(w); }}, "🔊"));
+
+    const flagBtn = el("button", {
+      class: "flag-btn",
+      style: "position:absolute;top:12px;right:52px;background:none;border:none;cursor:pointer;font-size:18px;line-height:1;padding:4px",
+      title: "Flag this word as problematic",
+      onclick: (e) => {
+        e.stopPropagation();
+        const on = Academy.toggleVocabFlag(cardKey(w));
+        flagBtn.textContent = on ? "🚩" : "⚑";
+        flagBtn.style.opacity = on ? "1" : "0.45";
+        card.style.outline = on ? "2px solid #dc2626" : "";
+        card.style.outlineOffset = on ? "2px" : "";
+      }
+    }, Academy.vocabFlags()[cardKey(w)] ? "🚩" : "⚑");
+    if (Academy.vocabFlags()[cardKey(w)]) {
+      flagBtn.style.opacity = "1";
+    } else {
+      flagBtn.style.opacity = "0.45";
+    }
+    card.append(flagBtn);
+    if (Academy.vocabFlags()[cardKey(w)]) {
+      card.style.outline = "2px solid #dc2626";
+      card.style.outlineOffset = "2px";
+    }
 
     const grades = el("div", {class:"grade-row", style:"display:none"},
       gradeBtn("Again", "again", 0), gradeBtn("Hard", "hard", 1), gradeBtn("Good", "good", 2), gradeBtn("Easy", "easy", 3));
@@ -322,6 +346,7 @@
           el("th", {style:"text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "English"),
           el("th", {style:"text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "Transliteration"),
           el("th", {style:"text-align:center;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "Freq"),
+          el("th", {style:"text-align:center;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "Flag"),
           el("th", {style:"text-align:center;padding:8px 10px;border-bottom:2px solid var(--line);color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:1px"}, "Grade")
         )
       )
@@ -339,6 +364,12 @@
         el("td", {style:"padding:8px 10px"}, entry.en),
         el("td", {style:"padding:8px 10px;font-style:italic;color:var(--ink-soft)"}, entry.tl || "—"),
         el("td", {style:"padding:8px 10px;text-align:center;font-weight:600;color:var(--gold)"}, entry.freq ? "×" + entry.freq : "—"),
+        el("td", {style:"padding:8px 10px;text-align:center"}, (() => {
+          const k = cardKey(entry.word);
+          const on = !!Academy.vocabFlags()[k];
+          const btn = el("button", {style:"background:none;border:none;cursor:pointer;font-size:16px;padding:2px", title: on ? "Unflag" : "Flag", onclick:(e)=>{ e.stopPropagation(); const n = Academy.toggleVocabFlag(k); btn.textContent = n ? "🚩" : "⚑"; btn.title = n ? "Unflag" : "Flag"; }}, on ? "🚩" : "⚑");
+          return btn;
+        })()),
         el("td", {style:"padding:8px 10px;text-align:center"}, badge)
       );
       table.append(row);
@@ -385,13 +416,30 @@
     browse.innerHTML = '';
     const grid = el('div', {style:'display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px'});
     deck.words.forEach((w, i) => {
-      const row = el('div', {class:'card', style:'padding:12px;display:flex;align-items:center;gap:10px;cursor:pointer'},
+      const key = cardKey(w);
+      const flagged = !!Academy.vocabFlags()[key];
+      const flagBtn = el('button', {
+        class: 'flag-btn',
+        style: 'background:none;border:none;cursor:pointer;font-size:18px;line-height:1;padding:4px;' + (flagged ? '' : 'opacity:0.4'),
+        title: flagged ? 'Unflag this word' : 'Flag this word as problematic',
+        onclick: (e) => {
+          e.stopPropagation();
+          const on = Academy.toggleVocabFlag(key);
+          flagBtn.textContent = on ? '🚩' : '⚑';
+          flagBtn.style.opacity = on ? '1' : '0.4';
+          flagBtn.title = on ? 'Unflag this word' : 'Flag this word as problematic';
+          row.style.outline = on ? '2px solid #dc2626' : '';
+          row.style.outlineOffset = on ? '2px' : '';
+        }
+      }, flagged ? '🚩' : '⚑');
+      const row = el('div', {class:'card', style:'padding:12px;display:flex;align-items:center;gap:10px;cursor:pointer' + (flagged ? ';outline:2px solid #dc2626;outline-offset:2px' : '')},
         el('div', {style:'min-width:36px;height:36px;border-radius:50%;background:#d97706;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700'}, w.freq ? '×'+w.freq : (i+1)),
         el('div', {style:'flex:1'},
           el('div', {class:'ar', style:'font-size:22px;font-weight:600;line-height:1.3'}, w.ar),
           el('div', {style:'font-size:13px;color:var(--ink-soft)'}, w.en),
           el('div', {style:'font-size:11px;color:var(--ink-soft);font-style:italic'}, w.tl)
         ),
+        flagBtn,
         el('button', {class:'speaker-btn', style:'background:none;border:none;cursor:pointer;font-size:20px', onclick:(e)=>{ e.stopPropagation(); speakWord(w); }}, '🔊')
       );
       grid.append(row);
