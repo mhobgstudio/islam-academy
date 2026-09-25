@@ -1,0 +1,27 @@
+# ISLAM ACADEMY — .gitignore
+#
+# A `$HOME/` directory was copied into this repo and committed. It contains a
+# copy of a home directory: Claude/OmniRoute session state, config backups, and
+# an active session key at
+#   $HOME/.claude-omniroute/sessions/<session>.key
+#
+# It is not project source and it must not be published, so the whole tree is
+# ignored and has been removed from the index. Note that removing it does not
+# scrub it from history -- the key still needs rotating.
+
+$HOME/
+
+# local secrets
+.env
+.env.*
+*.key
+credentials*
+*credentials*.txt
+
+# tooling
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+.DS_Store
