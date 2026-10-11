@@ -82,9 +82,12 @@
     </div>
   </div>
 
+  <h2 class="section-title">Quran Mushafs</h2>
+  <p class="sub" style="margin-bottom:12px">Download complete mushafs — colour-coded tajweed, Madinah Hafs, Warsh — as PDF or zip.</p>
+  <div id="mushafs" class="grid cols-3" style="margin-bottom:26px"></div>
+
   <div id="results"></div>
   <nav id="pager" class="reader-toolbar" style="justify-content:center;display:none" aria-label="Pagination"></nav>
-
   <div id="fileModal" class="file-modal" role="dialog" aria-modal="true" aria-labelledby="fileModalTitle">
     <div class="file-modal-panel">
       <div class="file-modal-head">
@@ -123,6 +126,15 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   const EXTS = [".pdf", ".epub", ".mobi", ".azw3", ".txt", ".djvu", ".zip"];
   const EXT_ORDER = { ".pdf": 0, ".epub": 1, ".mobi": 2, ".azw3": 3, ".txt": 4, ".djvu": 5, ".zip": 6 };
   const FILES_PREVIEW = 60;
+
+  // Curated complete mushafs on archive.org, always shown above search results.
+  const MUSHAFS = [
+    { identifier: "MUSHAF__ALTAGWEED-COLORED-QURAN-ALMADEENAH-HAFS-PDF-READ-ON-LINE-AND-DOWNLOAD", title: "Mushaf at-Tajweed — colour-coded (Madinah, Hafs)", creator: "Colour-coded tajweed rules" },
+    { identifier: "quran-mushaf-almadinah-hafs", title: "Mushaf al-Madinah — Hafs (604 pages)", creator: "Madinah mushaf" },
+    { identifier: "quran-warsh", title: "Mushaf al-Madinah — Warsh", creator: "Warsh recitation" },
+    { identifier: "QuranWithColourCodedTajweed_201303", title: "Quran with colour-coded Tajweed", creator: "Tajweed rules" },
+    { identifier: "MadinahQuran", title: "Quran Mushaf al-Madinah (multi-part)", creator: "Madinah mushaf" }
+  ];
 
   const input = document.getElementById("q");
   const status = document.getElementById("status");
@@ -243,7 +255,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     return el("div", { class: "card", style: "display:flex;flex-direction:column" },
       el("h3", { style: "margin:0 0 4px;font-size:16px;line-height:1.35" }, asText(doc.title) || id),
       meta.length ? el("div", { class: "sub", style: "font-size:12px;color:var(--ink-soft);margin-bottom:6px" }, meta.join(" · ")) : null,
-      el("div", { style: "font-size:11px;color:var(--gold-600);margin-bottom:10px" }, "⬇ " + fmt(doc.downloads) + " downloads"),
+      doc.downloads != null ? el("div", { style: "font-size:11px;color:var(--gold-600);margin-bottom:10px" }, "⬇ " + fmt(doc.downloads) + " downloads") : null,
       el("div", { style: "margin-top:auto;display:flex;gap:8px;flex-wrap:wrap" },
         btn,
         el("a", { class: "btn small ghost", href: API + "/details/" + encodeURIComponent(id), target: "_blank", rel: "noopener" }, "archive.org")),
@@ -452,6 +464,8 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   document.getElementById("fileModalList").addEventListener("change", updateModalCount);
   document.getElementById("fileModalSelected").addEventListener("click", downloadSelected);
   document.getElementById("fileModalCopy").addEventListener("click", function (e) { copyModalLinks(e.currentTarget); });
+
+  document.getElementById("mushafs").replaceChildren.apply(document.getElementById("mushafs"), MUSHAFS.map(card));
 
   run(1);
 })();
