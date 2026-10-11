@@ -1082,7 +1082,11 @@
   }
   const jsonCache = new Map();
   async function fetchJSON(path) {
-    const url = new URL(path, BASE).href;
+    // Callers pass document-relative paths ("../data/…" from /pages, "data/…"
+    // from the root). Resolve against BASE, but strip any leading "../" first:
+    // joined straight to BASE they escape a repository sub-path
+    // (e.g. /islam-academy/) and 404 on GitHub Pages.
+    const url = new URL(String(path).replace(/^(?:\.\.\/)+/, ""), BASE).href;
     if (jsonCache.has(url)) return jsonCache.get(url);
     let r;
     try {

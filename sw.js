@@ -12,7 +12,7 @@
  * - Recitation/WBW audio is deliberately NOT cached. Those are megabytes of
  *   third-party media; the player already degrades to silence offline.
  */
-const VERSION = 'v9';
+const VERSION = 'v10';
 const CACHE = `islam-academy-${VERSION}`;
 const BASE = new URL('./', self.location.href).href;
 
@@ -139,22 +139,21 @@ self.addEventListener('fetch', (event) => {
   const sameOrigin = url.origin === self.location.origin;
   if (!sameOrigin && !RUNTIME.test(req.url)) return;
 
-  // 1) Navigations: cache-first on the shell so a cold offline start works,
-  //    with a network refresh in the background.
+  // 1) Navigations: network-first so a fresh deploy is picked up on the next
+  //    visit, falling back to the cached shell when offline (cold start still
+  //    works).
   if (req.mode === 'navigate') {
     event.respondWith(
-      caches.match(req, { ignoreSearch: true }).then((cached) => {
-        const network = fetch(req)
-          .then((res) => {
-            if (res && res.ok) {
-              const copy = res.clone();
-              caches.open(CACHE).then((c) => c.put(req, copy));
-            }
-            return res;
-          })
-          .catch(() => null);
-        return cached || network.then((res) => res || offlineFallback(req));
-      })
+      fetch(req)
+        .then((res) => {
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(req, { ignoreSearch: true })
+          .then((cached) => cached || offlineFallback(req)))
     );
     return;
   }
