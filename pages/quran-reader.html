@@ -127,6 +127,7 @@
         <option value="hafs">Hafs (KFGQPC)</option>
         <option value="warsh">Warsh</option>
         <option value="tajweed-offline">Tajweed (offline)</option>
+        <option value="hafs-offline">Hafs (offline)</option>
       </select>
     </div>
     <div class="tb-group">
@@ -608,7 +609,8 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     'tajweed': { label: 'Tajweed (colour-coded)', url: function (n) { return 'https://cdn.jsdelivr.net/gh/QuranHub/quran-pages-images@main/ayat/tajweed/' + n + '.png'; } },
     'hafs': { label: 'Hafs (KFGQPC)', url: function (n) { return 'https://cdn.jsdelivr.net/gh/QuranHub/quran-pages-images@main/kfgqpc/hafs-wasat/' + n + '.jpg'; } },
     'warsh': { label: 'Warsh', url: function (n) { return 'https://cdn.jsdelivr.net/gh/QuranHub/quran-pages-images@main/ayat/warsh/' + n + '.png'; } },
-    'tajweed-offline': { label: 'Tajweed (offline)', url: function (n) { return '../assets/images/mushaf/tajweed/' + n + '.png'; } }
+    'tajweed-offline': { label: 'Tajweed (offline)', url: function (n) { return '../assets/images/mushaf/tajweed/' + n + '.png'; } },
+    'hafs-offline': { label: 'Hafs (offline)', url: function (n) { return '../assets/images/mushaf/hafs/' + n + '.png'; } }
   };
   var currentPage = 1;
   var mushafToken = 0;          // guards against out-of-order async renders

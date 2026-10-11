@@ -78,7 +78,7 @@
           <option>24</option><option>48</option><option>96</option>
         </select>
       </div>
-      <p class="sub" id="status" role="status" aria-live="polite" style="flex:1 1 100%">Browsing the whole library — type a title in Arabic or English, or press Search.</p>
+      <p class="sub" id="status" role="status" aria-live="polite" style="flex:1 1 100%">Browsing the whole library — type a title in Arabic or English, or press Search. Results are filtered to Islamic texts.</p>
     </div>
   </div>
 
@@ -166,7 +166,9 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   function buildQuery(q) {
     const parts = [];
     if (q) parts.push("(" + q + ")");
-    else parts.push('(subject:(islam OR quran OR qur\'an OR hadith OR tafsir OR fiqh OR seerah OR aqeedah OR sunnah OR "islamic studies"))');
+    // Always scope to Islamic texts so a free-text query cannot surface
+    // non-halal material (fiction, other religions, etc.).
+    parts.push('(subject:(islam OR quran OR qur\'an OR hadith OR tafsir OR fiqh OR seerah OR aqeedah OR sunnah OR "islamic studies"))');
     parts.push("mediatype:texts");
     parts.push("NOT collection:printdisabled");
     parts.push("format:(pdf OR epub OR mobi OR txt OR djvu)");
