@@ -9,10 +9,13 @@
 <link rel="stylesheet" href="../assets/css/responsive.css">
 <style>
 #main:fullscreen{max-width:100%}
-#main:fullscreen .mushaf-spread{max-width:100%}
-#main:fullscreen .mushaf-page{max-width:100%}
-#main:fullscreen .mushaf-image-page{max-width:100%!important}
-#main:fullscreen .mushaf-image{width:auto!important;max-width:100%;max-height:calc(100vh - 150px);margin:0 auto}
+#mushaf-fs-wrap:fullscreen{max-width:100%;background:var(--cream);padding:10px;overflow:auto}
+#mushaf-fs-wrap:fullscreen .mushaf-spread{max-width:100%}
+#mushaf-fs-wrap:fullscreen .mushaf-page{max-width:100%}
+#mushaf-fs-wrap:fullscreen .mushaf-image-page{max-width:100%!important}
+#mushaf-fs-wrap:fullscreen .mushaf-image{width:auto!important;max-width:100%;max-height:calc(100vh - 96px);margin:0 auto}
+#fs-exit{display:none}
+#mushaf-fs-wrap:fullscreen #fs-exit{display:inline-flex;position:fixed;top:12px;right:12px;z-index:10}
 </style>
 <link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
@@ -150,7 +153,10 @@
     </p>
   </div>
 
-  <div id="ayah-container"></div>
+  <div id="mushaf-fs-wrap">
+    <button id="fs-exit" class="btn small" onclick="if(document.exitFullscreen)document.exitFullscreen()">✕ Exit fullscreen</button>
+    <div id="ayah-container"></div>
+  </div>
 
   <details class="card" id="schedule" style="margin-top:26px">
     <summary style="cursor:pointer;font-weight:700;font-size:15px">📅 Daily Qur'an recitation schedule — sunnah times</summary>
@@ -1015,7 +1021,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     if (document.fullscreenElement) {
       document.exitFullscreen().catch(function () {});
     } else {
-      var target = document.getElementById('main') || document.documentElement;
+      var target = document.getElementById('mushaf-fs-wrap') || document.documentElement;
       if (target.requestFullscreen) target.requestFullscreen().catch(function () {});
     }
   }
