@@ -6,73 +6,38 @@
 <title>Vocabulary SRS — Islam Academy</title>
 <link rel="stylesheet" href="../assets/css/academy.css">
 <link rel="stylesheet" href="../assets/css/components.css">
-<style>
-/* === RESPONSIVE FIX (auto-injected) === */
-@media (max-width: 768px) {
-  /* Prevent horizontal overflow on body */
-  body, html { max-width: 100vw; overflow-x: hidden; }
-  
-  /* Tables scroll horizontally instead of overflowing */
-  table { max-width: 100%; overflow-x: auto; display: block; }
-  
-  /* Grain overlays — constrain to viewport */
-  .grain-overlay { width: 100vw !important; max-width: 100vw !important; left: 0 !important; right: 0 !important; }
-  
-  /* Chat pages — make responsive */
-  .chat_page, .page_body { max-width: 100vw !important; width: 100% !important; }
-  .content { max-width: 100vw !important; width: 100% !important; }
-  .history { max-width: 100% !important; }
-  .message { max-width: 100% !important; word-wrap: break-word; overflow-wrap: break-word; }
-  .body { max-width: 100% !important; }
-  .media.clearfix { max-width: 100% !important; }
-  
-  /* Nebula/glows — constrain */
-  .nebula, .glow { max-width: 100vw !important; }
-  
-  /* Orb animations — constrain */
-  .orb { max-width: 100vw !important; }
-  
-  /* Larger touch targets */
-  a, button, input, select, textarea, [role="button"], [onclick] {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Fix small text */
-  body { font-size: max(14px, inherit); }
-  
-  /* Chips/buttons wrap */
-  .chips { flex-wrap: wrap !important; overflow: hidden !important; }
-  .chip { flex-shrink: 1 !important; }
-  
-  /* Reminder bars — constrain */
-  .due-date-reminder { max-width: 100vw !important; width: 100% !important; left: 0 !important; right: 0 !important; }
-  
-  /* Timer/countdown blocks */
-  .timer, .timer-unit, .moon-countdown { max-width: 100% !important; }
-  
-  /* KPI tables, data tables */
-  .kpi-table, .cyber-table, .org-table, .bp-table, .ptrack { max-width: 100% !important; overflow-x: auto; display: block; }
-  
-  /* Notebook/book pages */
-  .page.cover, .page { max-width: 100% !important; width: 100% !important; }
-  
-  /* Tape tracks — hide overflow on mobile */
-  .tape-track { overflow: hidden !important; }
-  
-  /* Banner/topbar */
-  .topbar-right { max-width: 100% !important; flex-wrap: wrap; }
-}
-</style>
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#065f46" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1512" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Arabic vocabulary flashcards with an SM-2 spaced-repetition engine, roots and frequency data.">
+<meta name="color-scheme" content="light dark">
+<script>
+/* Apply the stored theme before first paint, otherwise a dark-mode learner
+   gets a white flash on every navigation. An explicit choice always wins;
+   with no saved preference the OS setting is followed. */
+(function () {
+  var t = null;
+  try {
+    var s = JSON.parse(localStorage.getItem("islam-academy-v1") || "null");
+    if (s && s.settings && s.settings.theme) t = s.settings.theme;
+  } catch (e) {}
+  if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.dataset.theme = t;
+})();
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="header-inner">
   <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
   <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
   <nav class="nav" id="main-nav"></nav>
 </div></header>
 
-<main class="container">
+<main class="container" id="main" tabindex="-1">
   <h1 class="page-title">🗂️ Vocabulary — Spaced Repetition <span class="help-trigger">?<div class="help-tip"><h4>Vocabulary SRS</h4><p>Learn Quran & Arabic vocabulary using spaced repetition. Cards you find hard come back sooner; easy ones drift into long-term memory.</p><ul><li><strong>📚 Study</strong> — Flip flashcards and rate difficulty</li><li><strong>📋 Browse</strong> — See all words in the deck</li><li><strong>🌳 Root Explorer</strong> — Discover Arabic root families</li><li><strong>📊 Frequency</strong> — See word frequency charts</li><li><strong>🧩 Root Quiz</strong> — Guess words from the same root</li></ul></div></span></h1>
   <p class="page-sub">Flashcards with an SM-2 scheduling engine. Cards you find hard come back sooner; easy ones drift into long-term memory.</p>
 
@@ -85,6 +50,7 @@
     <button class="btn ghost small" id="mode-root" onclick="setMode('root')">🌳 Root Explorer</button>
     <button class="btn ghost small" id="mode-freq" onclick="setMode('freq')">📊 Frequency</button>
     <button class="btn ghost small" id="mode-quiz" onclick="setMode('quiz')">🧩 Root Quiz</button>
+    <button class="btn ghost small" id="mode-weak" style="display:none" onclick="startWeakRoots()">🎯 Weak Roots</button>
   </div>
 
   <div id="study-area"></div>
@@ -99,34 +65,110 @@
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/nav.js"></script>
 <script>
+if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('../sw.js').catch(function () {});
+  });
+}
+</script>
+<script>
 (async function () {
   const { el } = Academy;
   let decks, rootMeanings = {};
   try {
     [decks, rootMeanings] = await Promise.all([
       Academy.fetchJSON("../data/curriculum/decks.json"),
-      Academy.fetchJSON("../data/quran/roots.json").then(data => {
-        const map = {};
-        for (const [, v] of Object.entries(data)) {
-          if (v.root && v.meaning) map[v.root] = v.meaning;
-        }
-        return map;
-      })
+      Academy.fetchJSON("../data/curriculum/root-lexicon.json")
     ]);
   } catch(e) {
     document.getElementById("study-area").innerHTML = '<div class="card"><p class="sub">Could not load vocabulary. Serve via HTTP not file://.</p></div>';
     return;
   }
+  // Every card gets a root block. Words with a triliteral root show the root
+  // letters + pattern; function words show what kind of word they are instead.
+  const WORD_TYPES = {
+    particle:      { ar: "حَرْف",           en: "Particle" },
+    pronoun:       { ar: "ضَمِير",          en: "Pronoun" },
+    demonstrative: { ar: "اِسْمُ إِشَارَة",  en: "Demonstrative" },
+    relative:      { ar: "اِسْمٌ مَوْصُول",  en: "Relative pronoun" },
+    properNoun:    { ar: "عَلَم",           en: "Proper noun" }
+  };
+  const ROOT_COLORS = ["#dc2626", "#2563eb", "#16a34a"];
+  const ROOT_ROLE = ["1st root letter — فاء الكلمة", "2nd root letter — عين الكلمة", "3rd root letter — لام الكلمة"];
+  const UNROOTED_TYPES = ["particle", "pronoun", "demonstrative", "relative", "properNoun"];
+
+  function hasRoot(w) { return !!w.root; }
+
+  function rootDecomp(w) {
+    const kids = [el("div", {style:"font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px"},
+      hasRoot(w) ? "Root (جذر)" : "No root (غير مشتق)")];
+    if (hasRoot(w)) {
+      const circles = w.root.split(".").map((r, i) =>
+        el("span", {style:"display:inline-block;min-width:40px;height:40px;line-height:40px;border-radius:50%;font-size:22px;font-weight:700;margin:0 3px;color:#fff;background:" + ROOT_COLORS[i % ROOT_COLORS.length], title: ROOT_ROLE[i] || ""}, r));
+      kids.push(el("div", {style:"display:flex;flex-direction:row-reverse;align-items:center;justify-content:center;gap:4px"},
+        el("div", {style:"display:flex;flex-direction:row-reverse;gap:3px"}, ...circles),
+        el("span", {style:"font-size:11px;color:var(--ink-soft)"}, w.pattern || "")));
+      if (rootMeanings[w.root]) {
+        kids.push(el("div", {style:"font-size:13px;color:var(--emerald-700);margin-top:8px;font-weight:600"}, "⟶ " + rootMeanings[w.root]));
+      }
+      kids.push(el("div", {style:"font-size:11px;color:var(--ink-soft);margin-top:4px;font-style:italic"},
+        "Root: " + w.root + " — Pattern: " + (w.pattern || "—")));
+    } else {
+      const t = WORD_TYPES[w.type];
+      kids.push(el("div", {style:"display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap"},
+        t ? el("span", {style:"font-size:21px;font-weight:700;color:var(--gold-500)"}, t.ar) : null,
+        el("span", {style:"font-size:12px;color:var(--ink-soft)"}, t ? "· " + t.en : "Function word")));
+      kids.push(el("div", {style:"font-size:11px;color:var(--ink-soft);margin-top:6px;font-style:italic"},
+        "Non-derived — no triliteral root"));
+    }
+    return el("div", {class:"root-decomp", style:"margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)"}, ...kids);
+  }
+
   const picker = document.getElementById("deck-picker");
   const statsLine = document.getElementById("stats-line");
   const area = document.getElementById("study-area");
   let deckId = Object.keys(decks)[0];
+  // Deep links from the Search page: preselect a deck and, optionally, filter
+  // its Browse list down to the word that was searched for.
+  const params = new URLSearchParams(location.search);
+  const wantDeck = params.get("deck");
+  if (wantDeck && decks[wantDeck]) deckId = wantDeck;
+  let browseFilter = (params.get("q") || "").trim();
 
   Object.entries(decks).forEach(([id, d]) => {
     picker.append(el("button", {class:"btn small ghost", "data-deck":id, onclick:()=>{deckId=id; start();}}, d.title));
   });
 
-  function cardKey(w) { return deckId + "::" + w.ar; }
+  // A word carries its own deck when it comes from a cross-deck session
+  // (the weak-root queue), so its SRS key stays stable either way. The format
+  // itself comes from Academy.cardKey so this page and the Progress page can
+  // never drift apart.
+  function cardKey(w) { return Academy.cardKey(w.__deck || deckId, w); }
+
+  // ---------- weak roots (fed by the Grammar Roots drill) ----------
+  function weakRootSet() {
+    return new Set(Academy.weakRoots());
+  }
+  // Every deck word whose root the learner has been getting wrong.
+  function weakRootWords() {
+    const weak = weakRootSet();
+    if (!weak.size) return [];
+    const out = [];
+    Object.entries(decks).forEach(([id, d]) => {
+      d.words.forEach(w => {
+        if (w.root && weak.has(w.root)) out.push(Object.assign({}, w, {__deck: id}));
+      });
+    });
+    return out;
+  }
+  function refreshWeakButton() {
+    const btn = document.getElementById('mode-weak');
+    if (!btn) return;
+    const roots = Academy.weakRoots();
+    const n = weakRootWords().length;
+    btn.style.display = roots.length ? '' : 'none';
+    btn.textContent = '\ud83c\udfaf Weak Roots (' + n + ' words \u00b7 ' + roots.length + ' roots)';
+  }
 
   function start() {
     picker.querySelectorAll("button").forEach(b => {
@@ -136,11 +178,29 @@
     const deck = decks[deckId];
     const keys = deck.words.map(cardKey);
     const st = Academy.srsStats(keys);
-    statsLine.textContent = deck.desc + " — " + st.total + " cards · " + st.due + " due now · " + st.mature + " mature";
+    const weak = weakRootSet();
+    const weakDue = deck.words.filter(w => weak.has(w.root)).length;
+    statsLine.textContent = deck.desc + " — " + st.total + " cards · " + st.due + " due now · " + st.mature + " mature"
+      + (weakDue ? " · \ud83c\udfaf " + weakDue + " from weak roots" : "");
+    refreshWeakButton();
     buildQueue();
   }
 
-  let queue = [], sessionDone = 0, reevalMode = false;
+  let queue = [], sessionDone = 0, reevalMode = false, weakSession = false;
+  // The card currently on screen, exposed so the keyboard shortcuts can drive
+  // the exact same flip/grade path as the mouse.
+  let activeCardApi = null;
+  function startWeakRoots() {
+    const words = weakRootWords();
+    if (!words.length) return;
+    if (currentMode !== 'study') setMode('study');
+    reevalMode = false;
+    weakSession = true;
+    queue = Academy.shuffle(words);
+    sessionDone = 0;
+    next();
+  }
+  window.startWeakRoots = startWeakRoots;
   function startReeval(w) {
     if (currentMode !== 'study') setMode('study');
     reevalMode = true;
@@ -155,8 +215,14 @@
   }
   function buildQueue() {
     const deck = decks[deckId];
+    weakSession = false;
     const dueWords = deck.words.filter(w => Academy.dueCards([cardKey(w)]).length > 0);
-    queue = Academy.shuffle(dueWords).slice(0, 20);
+    // Roots the learner has been missing jump the queue, so the words that
+    // explain a repeated mistake come up before the rest of the backlog.
+    const weak = weakRootSet();
+    const weakDue = Academy.shuffle(dueWords.filter(w => weak.has(w.root)));
+    const otherDue = Academy.shuffle(dueWords.filter(w => !weak.has(w.root)));
+    queue = weakDue.concat(otherDue).slice(0, 20);
     if (queue.length === 0) {
       area.innerHTML = "";
       area.append(el("div", {class:"card", style:"text-align:center;padding:40px"},
@@ -172,6 +238,7 @@
 
   function next() {
     area.innerHTML = "";
+    activeCardApi = null;
     if (queue.length === 0) {
       renderSessionResults();
       if (reevalMode) {
@@ -187,7 +254,8 @@
         el("div", {style:"font-size:44px"}, "✅"),
         el("h3", null, "Session complete"),
         el("p", {class:"sub"}, sessionDone + " reviews · +" + sessionDone * 2 + " XP"),
-        el("button", {class:"btn gold", onclick:start}, "Continue")));
+        el("button", {class:"btn gold", onclick:()=>{ weakSession ? startWeakRoots() : start(); }}, "Continue")));
+      refreshWeakButton();
       return;
     }
     const w = queue[0];
@@ -208,34 +276,25 @@
       el("div", {class:"translit"}, w.tl),
     ];
     if (w.freq) backChildren.push(el("div", {style:"font-size:12px;color:var(--gold);margin-top:6px"}, "Appears " + w.freq + "× in the Quran"));
-    if (w.root) {
-      const rootParts = w.root.split(".");
-      const rootDisplay = rootParts.map((r, i) => {
-        const colors = ["#dc2626", "#2563eb", "#16a34a"];
-        return el("span", {style:"display:inline-block;width:40px;height:40px;line-height:40px;border-radius:50%;font-size:22px;font-weight:700;margin:0 3px;color:#fff;background:" + colors[i]}, r);
-      });
-      const rootMeaning = rootMeanings[w.root];
-      backChildren.push(el("div", {class:"root-decomp", style:"margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)"},
-        el("div", {style:"font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px"}, "Root (جذر)"),
-        el("div", {style:"display:flex;flex-direction:row-reverse;align-items:center;justify-content:center;gap:4px"},
-          el("div", {style:"display:flex;flex-direction:row-reverse;gap:3px"}, ...rootDisplay),
-          el("span", {style:"font-size:11px;color:var(--ink-soft)"}, w.pattern || "")
-        ),
-        rootMeaning ? el("div", {style:"font-size:13px;color:var(--emerald-700);margin-top:8px;font-weight:600"}, "⟶ " + rootMeaning) : null,
-        el("div", {style:"font-size:11px;color:var(--ink-soft);margin-top:4px;font-style:italic"}, "Root: " + w.root + " — Pattern: " + (w.pattern || "—"))
-      ));
-    }
+    backChildren.push(rootDecomp(w));
     const back = el("div", {style:"display:none"}, ...backChildren);
 
-    const card = el("div", {class:"flashcard", onclick:(e)=>{
-      if (e.target.closest(".speaker-btn") || e.target.closest(".grade-row") || e.target.closest(".flag-btn")) return;
-      flipped = !flipped;
+    // Flip state lives in one place so the tap handler and the keyboard
+    // shortcuts can never disagree about whether the answer is showing.
+    function setFlipped(v) {
+      flipped = v;
       if (freqBadge) freqBadge.style.display = flipped ? "none" : "";
       tapHint.style.display = flipped ? "none" : "";
       back.style.display = flipped ? "" : "none";
       card.classList.toggle("flipped", flipped);
-    }}, front, back, el("button", {class:"speaker-btn", style:"position:absolute;top:12px;right:12px",
-      onclick:(e)=>{ e.stopPropagation(); speakWord(w); }}, "🔊"));
+      if (flipped) grades.style.display = "";
+    }
+    const speakerEl = el("button", {class:"speaker-btn", style:"position:absolute;top:12px;right:12px", title:"Listen to " + w.ar,
+      onclick:(e)=>{ e.stopPropagation(); speakWord(w, e.currentTarget); }}, "🔊");
+    const card = el("div", {class:"flashcard", onclick:(e)=>{
+      if (e.target.closest(".speaker-btn") || e.target.closest(".grade-row") || e.target.closest(".flag-btn")) return;
+      setFlipped(!flipped);
+    }}, front, back, speakerEl);
 
     const flagBtn = el("button", {
       class: "flag-btn",
@@ -264,20 +323,26 @@
     const grades = el("div", {class:"grade-row", style:"display:none"},
       gradeBtn("Again", "again", 0), gradeBtn("Hard", "hard", 1), gradeBtn("Good", "good", 2), gradeBtn("Easy", "easy", 3));
 
+    function gradeWith(g) {
+      Academy.reviewCard(cardKey(w), g);
+      Academy.addXP(2);
+      sessionDone++;
+      queue.shift();
+      renderSessionResults();
+      next();
+    }
     function gradeBtn(label, cls, g) {
       return el("button", {class:"grade-btn " + cls, onclick:(e)=>{
         e.stopPropagation();
-        Academy.reviewCard(cardKey(w), g);
-        Academy.addXP(2);
-        sessionDone++;
-        queue.shift();
-        renderSessionResults();
-        next();
+        gradeWith(g);
       }}, label);
     }
 
-    // reveal grades on flip
-    card.addEventListener("click", () => { if (flipped) grades.style.display = ""; });
+    activeCardApi = {
+      flip: function () { setFlipped(!flipped); },
+      grade: function (g) { if (flipped) gradeWith(g); else setFlipped(true); },
+      speak: function () { speakWord(w, speakerEl); },
+    };
 
     area.append(
       el("p", {style:"color:var(--ink-soft);font-size:13px;margin:0 0 10px;display:flex;align-items:center;gap:6px"},
@@ -385,14 +450,17 @@
     );
   }
 
-  function speakWord(w) {
-    // Use the universal speakArabic which tries local MP3, then Web Speech API, then visual feedback
-    Academy.speakArabic(w.ar);
+  // The button is threaded through so the speaker shows a "speaking" state
+  // and a missing clip can flash the control. Calling speakArabic() with no
+  // button gave the learner no feedback at all on a silent failure.
+  function speakWord(w, btn) {
+    Academy.speakArabic(w.ar, btn || null);
   }
 
   let currentMode = 'study';
   window.setMode = function(m) {
     currentMode = m;
+    if (m !== 'study') activeCardApi = null;
     document.getElementById('mode-study').className = m==='study' ? 'btn gold small' : 'btn ghost small';
     document.getElementById('mode-browse').className = m==='browse' ? 'btn gold small' : 'btn ghost small';
     document.getElementById('mode-root').className = m==='root' ? 'btn gold small' : 'btn ghost small';
@@ -408,14 +476,23 @@
     if (m==='freq') renderFrequency();
     if (m==='quiz') startRootQuiz();
     if (m==='study') buildQueue();
+    refreshWeakButton();
   };
 
   function renderBrowse() {
     const deck = decks[deckId];
     const browse = document.getElementById('browse-area');
     browse.innerHTML = '';
+    const filter = browseFilter.toLowerCase();
+    const words = browseFilter
+      ? deck.words.filter(function (w) {
+          return (w.ar && w.ar.indexOf(browseFilter) >= 0) ||
+                 (w.en && w.en.toLowerCase().indexOf(filter) >= 0) ||
+                 (w.tl && w.tl.toLowerCase().indexOf(filter) >= 0);
+        })
+      : deck.words;
     const grid = el('div', {style:'display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px'});
-    deck.words.forEach((w, i) => {
+    words.forEach((w, i) => {
       const key = cardKey(w);
       const flagged = !!Academy.vocabFlags()[key];
       const flagBtn = el('button', {
@@ -437,16 +514,22 @@
         el('div', {style:'flex:1'},
           el('div', {class:'ar', style:'font-size:22px;font-weight:600;line-height:1.3'}, w.ar),
           el('div', {style:'font-size:13px;color:var(--ink-soft)'}, w.en),
-          el('div', {style:'font-size:11px;color:var(--ink-soft);font-style:italic'}, w.tl)
+          el('div', {style:'font-size:11px;color:var(--ink-soft);font-style:italic'}, w.tl),
+          el('div', {style:'font-size:11px;margin-top:3px'},
+            hasRoot(w)
+              ? el('span', {style:'color:var(--gold-500);font-weight:600'}, w.root.replace(/\./g, '·'), w.pattern ? el('span', {style:'color:var(--ink-soft);font-weight:400'}, '  ' + w.pattern) : null)
+              : el('span', {style:'color:var(--gold-500)'}, WORD_TYPES[w.type] ? WORD_TYPES[w.type].ar + ' · ' + WORD_TYPES[w.type].en : 'no root'))
         ),
         flagBtn,
-        el('button', {class:'speaker-btn', style:'background:none;border:none;cursor:pointer;font-size:20px', onclick:(e)=>{ e.stopPropagation(); speakWord(w); }}, '🔊')
+        el('button', {class:'speaker-btn speaker-plain', title:'Listen to ' + w.ar, onclick:(e)=>{ e.stopPropagation(); speakWord(w, e.currentTarget); }}, '🔊')
       );
       grid.append(row);
     });
     browse.append(
-      el('h3', {style:'margin-bottom:10px;display:flex;align-items:center;gap:6px'},
-        deck.title + ' — ' + deck.words.length + ' words',
+      el('h3', {style:'margin-bottom:10px;display:flex;align-items:center;gap:6px;flex-wrap:wrap'},
+        deck.title + ' — ' + (browseFilter ? words.length + ' of ' + deck.words.length : String(words.length)) + ' words',
+        browseFilter ? el('button', {class:'btn small ghost', onclick: function(){ browseFilter = ''; renderBrowse(); }, title:'Show the whole deck'}, '✕ filter: ' + browseFilter) : null,
+        !words.length ? el('span', {style:'font-size:13px;color:var(--ink-soft);font-weight:400'}, 'No word in this deck matches.') : null,
         el('span', {class:'help-trigger', style:'font-size:10px;width:16px;height:16px'}, '?',
           el('div', {class:'help-tip'},
             el('h4', null, 'Browse Mode'),
@@ -472,7 +555,7 @@
     const rootGroups = {};
     const noRoot = [];
     deck.words.forEach(w => {
-      if (w.root) {
+      if (hasRoot(w)) {
         if (!rootGroups[w.root]) rootGroups[w.root] = { root: w.root, words: [] };
         rootGroups[w.root].words.push(w);
       } else {
@@ -523,7 +606,7 @@
             el('div', {style:'font-size:12px;color:var(--ink-soft)'}, w.en),
             el('div', {style:'font-size:11px;color:var(--gold-500);font-style:italic'}, w.pattern || '')
           ),
-          el('button', {class:'speaker-btn', style:'background:none;border:none;cursor:pointer;font-size:16px', onclick: (e) => { e.stopPropagation(); speakWord(w); }}, '🔊')
+          el('button', {class:'speaker-btn speaker-plain', title:'Listen to ' + w.ar, onclick: (e) => { e.stopPropagation(); speakWord(w, e.currentTarget); }}, '🔊')
         );
         return card;
       });
@@ -544,11 +627,12 @@
     if (noRoot.length > 0) {
       rootArea.append(el('div', {class:'card', style:'margin-top:16px;padding:16px'},
         el('div', {style:'font-weight:700;margin-bottom:8px'}, '📝 Particles & Irregulars (' + noRoot.length + ' words)'),
-        el('div', {style:'font-size:12px;color:var(--ink-soft);margin-bottom:10px'}, 'These words are particles (حروف), pronouns, or proper nouns that don\'t follow the standard root system.'),
+        el('div', {style:'font-size:12px;color:var(--ink-soft);margin-bottom:10px'}, 'These words are particles (حروف), pronouns, demonstratives or proper nouns — they carry meaning by function rather than by a triliteral root.'),
         el('div', {style:'display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px'},
-          ...noRoot.slice(0, 40).map(w => el('div', {style:'padding:6px 8px;background:var(--cream);border-radius:6px;font-size:13px'},
+          ...noRoot.map(w => el('div', {style:'padding:6px 8px;background:var(--cream);border-radius:6px;font-size:13px'},
             el('span', {class:'ar', style:'font-size:16px;font-weight:600'}, w.ar),
-            el('span', {style:'color:var(--ink-soft);margin-left:4px'}, ' — ' + w.en)
+            el('span', {style:'color:var(--ink-soft);margin-left:4px'}, ' — ' + w.en),
+            WORD_TYPES[w.type] ? el('div', {style:'font-size:10px;color:var(--gold-500);letter-spacing:.5px'}, WORD_TYPES[w.type].en) : null
           ))
         )
       ));
@@ -691,16 +775,15 @@
         style: 'font-size:' + fontSize + 'px;color:hsl(' + hue + ',50%,35%);opacity:' + opacity + ';cursor:pointer;line-height:1.3;transition:all .2s;direction:rtl;unicode-bidi:embed',
         title: w.ar + ' — ' + w.en + ' (' + w.freq + '×)',
         onclick: function() {
-          Academy.speakArabic(w.ar);
+          Academy.speakArabic(w.ar, this);
           const target = document.getElementById('top30-' + w.ar);
           if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            target.style.transition = 'background .3s, box-shadow .3s';
-            target.style.background = 'var(--emerald-50, #ecfdf5)';
-            target.style.boxShadow = '0 0 0 2px var(--emerald-500, #10b981)';
-            setTimeout(() => { target.style.background = ''; target.style.boxShadow = ''; }, 1500);
+            target.classList.add('is-hl');
+            setTimeout(function () { target.classList.remove('is-hl'); }, 1500);
           }
         },
+
         onmouseenter: function(e) { this.style.transform='scale(1.15)'; this.style.color='var(--emerald-700)'; },
         onmouseleave: function(e) { this.style.transform=''; this.style.color='hsl('+hue+',50%,35%)'; }
       }, w.ar);
@@ -884,8 +967,26 @@
     }
   }
 
+  // Keyboard shortcuts — the same ones the flashcard help tooltip advertises.
+  // Space/Enter reveals the answer, 0-3 grade it (Again/Hard/Good/Easy) and S
+  // replays the pronunciation, so a full session can be run without the mouse.
+  document.addEventListener("keydown", function (e) {
+    if (currentMode !== "study" || !activeCardApi) return;
+    const t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+    // A focused control already handles Enter/Space itself; without this an
+    // Enter on the speaker button would also flip the card.
+    if (t && t.closest && t.closest("button, a, input, select, textarea")) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.code === "Space" || e.key === "Enter") { e.preventDefault(); activeCardApi.flip(); }
+    else if (e.key >= "0" && e.key <= "3") { e.preventDefault(); activeCardApi.grade(Number(e.key)); }
+    else if (e.key === "s" || e.key === "S") { activeCardApi.speak(); }
+  });
+
   start();
   renderSessionResults();
+  // A search result opens Browse on the searched word instead of the study queue.
+  if (browseFilter || params.get("mode") === "browse") setMode("browse");
 })();
 </script>
 </body>

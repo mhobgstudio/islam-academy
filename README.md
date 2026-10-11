@@ -6,11 +6,24 @@ A complete, offline-first academy that teaches **Arabic and the Quran from absol
 
 ```bash
 cd "ISLAM ACADEMY"
-python3 -m http.server 8777
-# open http://localhost:8777
+./start.sh                 # serve on :8777 in the foreground
+./start.sh --detach        # background, then open a browser
+./stop.sh                  # stop it (also ./start.sh --stop)
 ```
 
-No build step, no dependencies, no account. Progress is saved in your browser (localStorage) and can be exported from the Progress page.
+Prefer the plain command? `python3 -m http.server 8777` works too. No build step,
+no dependencies, no account. Progress is saved in your browser (localStorage) and
+can be exported from the Progress page.
+
+### Verifying a change
+
+```bash
+./start.sh --check            # data + JS/link + icon checks, scheduling unit tests,
+                              # then the headless smoke test
+node tools/test_srs.mjs       # SM-2 / XP / streak unit tests (dependency-free)
+node tools/smoke.mjs --deep   # drives every page's real interactions and asserts
+                              # the visualisations actually render (needs Node 22+/Chrome)
+```
 
 ## What is inside
 
@@ -20,11 +33,12 @@ No build step, no dependencies, no account. Progress is saved in your browser (l
 | **Alphabet** | All 28 letters: names, sounds (audio), 4 positional forms, example words |
 | **Reading** | Harakat, sukoon, tanween, madd, shadda, sun/moon letters — with audio drills |
 | **Lessons** | 21 interactive lessons in 4 levels (Madinah-method progression) with quizzes and matching exercises |
-| **Vocabulary** | 238 flashcards in 4 decks with an SM-2 spaced-repetition engine |
-| **Quran Reader** | All 6,236 ayat: Uthmani script, Saheeh International translation, tap-any-word meaning + audio, 5 reciters, surah recitation |
+| **Vocabulary** | 586 flashcards (493 unique words) in 8 decks with an SM-2 spaced-repetition engine |
+| **Quran Reader** | All 6,236 ayat: Uthmani script, Saheeh International translation, tap-any-word meaning + audio, 5 reciters, surah recitation — plus a fully offline **Mushaf** view with per-page bookmarks and resume |
 | **Tajweed** | Noon/meem sakinah rules, madd lengths, qalqalah, tafkheem, waqf signs |
 | **Hifz Planner** | Juz tracker, sabaq/sabqi/manzil method, revision log, random self-test |
-| **Progress** | Scores, streaks, memory stats, JSON export |
+| **Search** | One box over vocabulary, lessons, surah names and all 6,236 ayat — Arabic (no diacritics needed) or English, with deep links to the exact word/lesson/ayah |
+| **Progress** | Scores, streaks, memory stats, streak calendar, activity chart, "you now know X% of the Quran's running words" coverage, JSON export/import |
 
 ## Curriculum design
 
@@ -42,9 +56,10 @@ The sequence follows the **Madinah Books** method (Dr. V. Abdur Rahim, Islamic U
 | fawazahmed0/quran-api (Tanzil Uthmani text) | Quran text, 114 surahs | cdn.jsdelivr.net/gh/fawazahmed0/quran-api |
 | Saheeh International (eng-ummmuhammad) | English translation | same CDN |
 | quran.com API v4 | word-by-word text, transliteration, per-word audio (Juz Amma + Fatihah) | api.quran.com/api/v4 |
+| Quranic Arabic Corpus morphology (v0.4, GPL) | triliteral root of every Quran word — powers the reader's word popover | github.com/mustafa0x/quran-morphology |
 | cdn.islamic.network | full recitations (Alafasy, Abdul Basit, Husary, Minshawi) | cdn.islamic.network/quran/audio |
 | verses.quran.com | word-by-word MP3s | verses.quran.com/wbw/... |
-| Microsoft Edge neural TTS (ar-SA-Zariyah) | 325 local pronunciation clips (letters, examples, vocab, drills) | edge-tts |
+| Microsoft Edge neural TTS (ar-SA-Zariyah) | 1,000+ local pronunciation clips (letters, examples, vocab, drills) | edge-tts |
 | Amiri Quran + Noto Naskh fonts | mushaf-grade Arabic typography | Google Fonts (bundled locally) |
 
 ## Rebuilding the data
@@ -52,15 +67,35 @@ The sequence follows the **Madinah Books** method (Dr. V. Abdur Rahim, Islamic U
 ```bash
 python3 tools/fetch_quran.py      # Quran text + translation + metadata (6236 ayat)
 python3 tools/fetch_wbw.py        # word-by-word data for Fatihah + Juz Amma
+python3 tools/fetch_roots.py      # verified word -> root map (Quranic Arabic Corpus)
+python3 tools/fetch_mushaf.py     # re-vendor the 604 Madinah mushaf page layouts
+python3 tools/build_word_freq.py  # headword occurrence counts for the coverage estimate
 python3 tools/build_curriculum.py # regenerate curriculum JSON
 python3 tools/gen_audio.py        # regenerate TTS audio (needs internet, edge-tts)
 ```
 
 ## Offline behavior
 
-- Quran **text**, translation, word-by-word data, curriculum, fonts and all 325 pronunciation clips are stored locally — the academy works with no internet.
+- Quran **text**, translation, word-by-word data, all 604 Madinah **mushaf page layouts**, the headword occurrence counts behind the Progress coverage estimate, curriculum, fonts and all 1,000+ pronunciation clips (~20 MB) are stored locally — the academy works with no internet, including the Mushaf view.
 - Full-surah recitation and word-by-word MP3s stream from CDNs when online (graceful silence offline).
+
+## Keyboard shortcuts
+
+Vocabulary study: **Space/Enter** reveal the answer, **0–3** grade it
+(Again/Hard/Good/Easy), **S** replay the pronunciation. Quran reader: **←/→**
+turn mushaf pages, **B** bookmark the page you are on, **Space** play/stop the
+surah, **Esc** close the word popover.
+
+## Deep links
+
+The Search page (and any bookmark) can jump straight to content:
+
+```
+pages/vocabulary.html?deck=quran-core&q=كتاب   # Browse filtered to a word
+pages/grammar.html?level=2&lesson=L2.1         # open a lesson
+pages/quran-reader.html?surah=2&ayah=255       # scroll to an ayah
+```
 
 ## Tech
 
-Pure HTML/CSS/JS (no framework), Python build scripts. ~4 MB of local audio, ~1 MB of data JSON.
+Pure HTML/CSS/JS (no framework), Python build scripts. ~20 MB of local audio, ~5 MB of data JSON.

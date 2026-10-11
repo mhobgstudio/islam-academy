@@ -52,11 +52,20 @@
     /* Theme toggle */
     .theme-toggle { position: fixed; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); color: var(--gold); cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; z-index: 10; }
     .theme-toggle:hover { transform: scale(1.1); }
+    .skip-link { position: absolute; left: 8px; top: -60px; z-index: 200; background: var(--blue);
+      color: #fff; padding: 10px 16px; border-radius: 0 0 10px 10px; font-weight: 700;
+      font-size: 14px; text-decoration: none; transition: top .16s ease; }
+    .skip-link:focus { top: 0; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
 
     footer { font-size: .75rem; color: var(--text-dim); margin-top: 16px; }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
   <div class="container">
     <div class="mosque">🕌</div>
@@ -87,16 +96,18 @@
     </button>
 
     <div class="apps">
-      <a href="/" class="app"><div class="icon">🏠</div><div class="name">Home</div></a>
-      <a href="/index.html" class="app"><div class="icon">📖</div><div class="name">Current App</div></a>
-      <a href="/pages/quran-reader.html" class="app"><div class="icon">📗</div><div class="name">Quran</div></a>
-      <a href="/pages/vocabulary.html" class="app"><div class="icon">🗂️</div><div class="name">Vocab</div></a>
-      <a href="/pages/tajweed.html" class="app"><div class="icon">🎵</div><div class="name">Tajweed</div></a>
-      <a href="/pages/hifz.html" class="app"><div class="icon">🧠</div><div class="name">Hifz</div></a>
+      <a href="./" class="app"><div class="icon">🏠</div><div class="name">Home</div></a>
+      <a href="./index.html" class="app"><div class="icon">📖</div><div class="name">Current App</div></a>
+      <a href="./pages/quran-reader.html" class="app"><div class="icon">📗</div><div class="name">Quran</div></a>
+      <a href="./pages/vocabulary.html" class="app"><div class="icon">🗂️</div><div class="name">Vocab</div></a>
+      <a href="./pages/tajweed.html" class="app"><div class="icon">🎵</div><div class="name">Tajweed</div></a>
+      <a href="./pages/hifz.html" class="app"><div class="icon">🧠</div><div class="name">Hifz</div></a>
+      <a href="./pages/alphabet.html" class="app"><div class="icon">🔤</div><div class="name">Alphabet</div></a>
+      <a href="./pages/grammar.html" class="app"><div class="icon">📘</div><div class="name">Lessons</div></a>
     </div>
 
     <footer>
-      <p>Islamic Apps Suite — Offline-first study companions</p>
+      <p>Islam Academy — Offline-first Arabic &amp; Quran study companion</p>
       <p style="margin-top:4px">رَبِّ زِدْنِي عِلْمًا — "My Lord, increase me in knowledge" (20:114)</p>
     </footer>
   </div>
@@ -161,17 +172,23 @@
     setInterval(updateConn, 3000);
 
     // Retry
+    // A relative probe path matters: this page is also served from a repo
+    // sub-path, where an absolute "/manifest.json" 404s and the check always
+    // reports "still offline".
     function retryConnection() {
       const btn = document.getElementById('retryBtn');
       const txt = document.getElementById('retryText');
       btn.classList.add('loading');
       txt.textContent = 'Testing...';
-      fetch('/manifest.json', { cache: 'no-store' })
-        .then(r => { if (r.ok) window.location.reload(); else throw 0; })
-        .catch(() => { btn.classList.remove('loading'); txt.textContent = '❌ Still offline'; setTimeout(() => { txt.textContent = '🔄 Try Again'; }, 2000); });
+      fetch('manifest.json', { cache: 'no-store' })
+        .then(r => { if (r.ok) location.reload(); else throw new Error('bad status'); })
+        .catch(() => {
+          btn.classList.remove('loading');
+          txt.textContent = '❌ Still offline';
+          setTimeout(() => { txt.textContent = '🔄 Try Again'; }, 2000);
+        });
     }
-    window.addEventListener('online', () => window.location.reload());
-    if (navigator.onLine) window.location.reload();
+    window.addEventListener('online', () => location.reload());
   </script>
 </body>
 </html>

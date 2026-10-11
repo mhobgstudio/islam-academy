@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Islamic Library — Islam Academy</title>
+<link rel="stylesheet" href="../assets/css/academy.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#065f46" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1512" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Search and download Islamic books — Quran, tafsir, hadith, fiqh, seerah and more — from archive.org's open catalog. Download PDFs, EPUBs, or a whole book as a zip.">
+<meta name="color-scheme" content="light dark">
+<script>
+/* Apply the stored theme before first paint, otherwise a dark-mode learner
+   gets a white flash on every navigation. An explicit choice always wins;
+   with no saved preference the OS setting is followed. */
+(function () {
+  var t = null;
+  try {
+    var s = JSON.parse(localStorage.getItem("islam-academy-v1") || "null");
+    if (s && s.settings && s.settings.theme) t = s.settings.theme;
+  } catch (e) {}
+  if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.dataset.theme = t;
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
+  <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
+  <nav class="nav" id="main-nav"></nav>
+</div></header>
+
+<main class="container" id="main" tabindex="-1">
+  <h1 class="page-title">📚 Islamic Library</h1>
+  <p class="page-sub">Search <strong>200,000+</strong> Islamic texts — Quran, tafsir, hadith, fiqh, seerah, aqeedah and more — from archive.org's open catalog. Download any file (PDF, EPUB, …), or grab a whole book as a zip.</p>
+
+  <div class="card" style="margin-bottom:18px">
+    <div class="reader-toolbar" style="margin-bottom:10px">
+      <div class="tb-group" style="flex:1 1 260px">
+        <label class="sr-only" for="q">Search Islamic books</label>
+        <input id="q" type="search" placeholder="e.g. tafsir ibn kathir, صحيح البخاري, fiqh…" autocomplete="off" style="width:100%;min-width:0">
+      </div>
+      <button class="btn small" id="go">Search</button>
+      <button class="btn small ghost" id="clear">Clear</button>
+    </div>
+    <div class="reader-toolbar" style="margin-bottom:0">
+      <div class="tb-group">
+        <label class="tb-label" for="sort">Sort</label>
+        <select id="sort">
+          <option value="downloads desc">Most downloaded</option>
+          <option value="titleSorter asc">Title A–Z</option>
+          <option value="addeddate desc">Recently added</option>
+        </select>
+      </div>
+      <div class="tb-group">
+        <label class="tb-label" for="rows">Per page</label>
+        <select id="rows">
+          <option>24</option><option>48</option><option>96</option>
+        </select>
+      </div>
+      <p class="sub" id="status" role="status" aria-live="polite" style="flex:1 1 100%">Browsing the whole library — type a title in Arabic or English, or press Search.</p>
+    </div>
+  </div>
+
+  <div id="results"></div>
+  <nav id="pager" class="reader-toolbar" style="justify-content:center;display:none" aria-label="Pagination"></nav>
+</main>
+
+<footer class="site-footer">Islam Academy — Islamic Library · texts sourced from archive.org</footer>
+<script>
+if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('../sw.js').catch(function () {});
+  });
+}
+</script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>
+(async function () {
+  const { el } = Academy;
+  const API = "https://archive.org";
+  const EXTS = [".pdf", ".epub", ".mobi", ".azw3", ".txt", ".djvu"];
+  const EXT_ORDER = { ".pdf": 0, ".epub": 1, ".mobi": 2, ".azw3": 3, ".txt": 4, ".djvu": 5 };
+
+  const input = document.getElementById("q");
+  const status = document.getElementById("status");
+  const results = document.getElementById("results");
+  const pager = document.getElementById("pager");
+  const sortSel = document.getElementById("sort");
+  const rowsSel = document.getElementById("rows");
+
+  const state = { q: "", page: 1, rows: 24, sort: "downloads desc", total: 0 };
+  let token = 0;
+
+  // ---- helpers ---------------------------------------------------------
+  function asText(v) {
+    if (Array.isArray(v)) return v.join(", ");
+    return v == null ? "" : String(v);
+  }
+  function fmt(n) {
+    return n == null || isNaN(n) ? "" : Number(n).toLocaleString();
+  }
+  function humanSize(bytes) {
+    let b = Number(bytes) || 0;
+    if (!b) return "";
+    const u = ["B", "KB", "MB", "GB"];
+    let i = 0;
+    while (b >= 1024 && i < u.length - 1) { b /= 1024; i++; }
+    return (b >= 10 || i === 0 ? Math.round(b) : b.toFixed(1)) + " " + u[i];
+  }
+  function extOf(name) {
+    const i = name.lastIndexOf(".");
+    return i < 0 ? "" : name.slice(i).toLowerCase();
+  }
+  async function getJSON(url) {
+    const r = await fetch(url, { headers: { Accept: "application/json" } });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }
+
+  // ---- query -----------------------------------------------------------
+  // Empty box browses the entire Islamic-text catalog; a typed query is ANDed
+  // with the same constraints so every result actually has a downloadable file.
+  function buildQuery(q) {
+    const parts = [];
+    if (q) parts.push("(" + q + ")");
+    else parts.push('(subject:(islam OR quran OR qur\'an OR hadith OR tafsir OR fiqh OR seerah OR aqeedah OR sunnah OR "islamic studies"))');
+    parts.push("mediatype:texts");
+    parts.push("NOT collection:printdisabled");
+    parts.push("format:(pdf OR epub OR mobi OR txt OR djvu)");
+    return parts.join(" AND ");
+  }
+
+  function searchURL(page) {
+    const p = new URLSearchParams();
+    p.set("q", buildQuery(state.q));
+    p.set("rows", String(state.rows));
+    p.set("page", String(page));
+    p.set("output", "json");
+    p.set("sort[]", state.sort);
+    ["identifier", "title", "creator", "year", "downloads", "language"].forEach(function (f) { p.append("fl[]", f); });
+    return API + "/advancedsearch.php?" + p.toString();
+  }
+
+  // ---- search ----------------------------------------------------------
+  async function run(page) {
+    state.page = page || 1;
+    const t = ++token;
+    pager.style.display = "none";
+    Academy.placeholder(results, "Searching the library…");
+    status.textContent = "Searching…";
+    try {
+      const data = await getJSON(searchURL(state.page));
+      if (t !== token) return;
+      const resp = data.response || {};
+      const docs = resp.docs || [];
+      state.total = resp.numFound || 0;
+      if (!docs.length) {
+        results.replaceChildren(el("div", { class: "card empty-state" },
+          el("div", { class: "ico" }, "🔍"),
+          el("h3", null, "No books found"),
+          el("p", null, "Try a shorter title, an author name, or Arabic without diacritics.")));
+        status.textContent = "Nothing matched.";
+        return;
+      }
+      results.replaceChildren(el("div", { class: "grid cols-3" }, docs.map(card)));
+      status.textContent = "Showing " + fmt(resp.start + 1) + "–" + fmt(resp.start + docs.length) +
+        " of " + fmt(state.total) + " books";
+      renderPager();
+    } catch (e) {
+      if (t !== token) return;
+      Academy.errorPanel(results, "the Islamic Library search");
+      status.textContent = "Search failed — check your connection and try again.";
+    }
+  }
+
+  function card(doc) {
+    const id = doc.identifier;
+    const meta = [asText(doc.creator), doc.year, asText(doc.language)].filter(Boolean);
+    const panel = el("div", { class: "detail-panel", style: "display:none;margin-top:10px" });
+    let loaded = false;
+    const btn = el("button", { class: "btn small", onclick: function () {
+      const open = panel.style.display === "none";
+      panel.style.display = open ? "" : "none";
+      btn.textContent = open ? "Hide files" : "Download";
+      if (open && !loaded) { loaded = true; loadFiles(id, panel); }
+    } }, "Download");
+    return el("div", { class: "card", style: "display:flex;flex-direction:column" },
+      el("h3", { style: "margin:0 0 4px;font-size:16px;line-height:1.35" }, asText(doc.title) || id),
+      meta.length ? el("div", { class: "sub", style: "font-size:12px;color:var(--ink-soft);margin-bottom:6px" }, meta.join(" · ")) : null,
+      el("div", { style: "font-size:11px;color:var(--gold-600);margin-bottom:10px" }, "⬇ " + fmt(doc.downloads) + " downloads"),
+      el("div", { style: "margin-top:auto;display:flex;gap:8px;flex-wrap:wrap" },
+        btn,
+        el("a", { class: "btn small ghost", href: API + "/details/" + encodeURIComponent(id), target: "_blank", rel: "noopener" }, "archive.org")),
+      panel);
+  }
+
+  // ---- files -----------------------------------------------------------
+  async function loadFiles(id, panel) {
+    Academy.placeholder(panel, "Loading files…");
+    try {
+      const meta = await getJSON(API + "/metadata/" + encodeURIComponent(id));
+      renderFiles(id, meta, panel);
+    } catch (e) {
+      panel.replaceChildren(
+        el("p", { class: "sub" }, "Could not list files — open the item on archive.org instead."),
+        el("a", { class: "btn small", href: API + "/details/" + encodeURIComponent(id), target: "_blank", rel: "noopener" }, "Open on archive.org"));
+    }
+  }
+
+  function renderFiles(id, meta, panel) {
+    const restricted = String((meta.metadata && meta.metadata["access-restricted-item"]) || "") === "true";
+    const all = (meta.files || []).filter(function (f) {
+      return EXTS.some(function (x) { return f.name.toLowerCase().endsWith(x); });
+    });
+    const files = all.slice().sort(function (a, b) {
+      const d = EXT_ORDER[extOf(a.name)] - EXT_ORDER[extOf(b.name)];
+      return d || (Number(b.size) || 0) - (Number(a.size) || 0);
+    });
+    if (restricted || !files.length) {
+      panel.replaceChildren(
+        el("p", { class: "sub" }, restricted
+          ? "This item is lending-restricted on archive.org — borrow or read it there."
+          : "No downloadable PDF / EPUB / TXT files for this item."),
+        el("a", { class: "btn small", href: API + "/details/" + encodeURIComponent(id), target: "_blank", rel: "noopener" }, "Open on archive.org"));
+      return;
+    }
+    const shown = files.slice(0, 60);
+    panel.replaceChildren(
+      el("div", { style: "display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px" },
+        el("strong", { style: "font-size:13px" }, files.length + " file" + (files.length === 1 ? "" : "s")),
+        el("a", { class: "btn small", href: API + "/compress/" + encodeURIComponent(id), target: "_blank", rel: "noopener" }, "⬇ Download all (.zip)"),
+        el("button", { class: "btn small ghost", onclick: function (e) { copyLinks(id, files, e.currentTarget); } }, "Copy links")),
+      el("div", { class: "deck-list", style: "max-height:320px;overflow:auto" }, shown.map(function (f) { return fileRow(id, f); })),
+      files.length > shown.length
+        ? el("p", { class: "sub", style: "margin-top:6px" }, "Showing the first " + shown.length + " of " + files.length + " files — use the .zip above for all of them.")
+        : null);
+  }
+
+  function fileRow(id, f) {
+    const ext = extOf(f.name).slice(1).toUpperCase() || "FILE";
+    return el("div", { style: "display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line-soft)" },
+      el("span", { class: "badge" }, ext),
+      el("div", { style: "flex:1;min-width:0" },
+        el("div", { style: "font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis", title: f.name }, f.name),
+        f.size ? el("div", { style: "font-size:11px;color:var(--ink-soft)" }, humanSize(f.size)) : null),
+      el("a", { class: "btn small", href: API + "/download/" + encodeURIComponent(id) + "/" + encodeURIComponent(f.name), target: "_blank", rel: "noopener" }, "Download"));
+  }
+
+  function copyLinks(id, files, btn) {
+    const text = files.map(function (f) {
+      return API + "/download/" + encodeURIComponent(id) + "/" + encodeURIComponent(f.name);
+    }).join("\n");
+    const done = function () {
+      const old = "Copy links";
+      btn.textContent = "Copied ✓";
+      setTimeout(function () { btn.textContent = old; }, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+    } else {
+      fallbackCopy(text);
+      done();
+    }
+  }
+
+  function fallbackCopy(text) {
+    const ta = el("textarea", { style: "position:fixed;left:-9999px;top:0" });
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  // ---- pager -----------------------------------------------------------
+  function renderPager() {
+    const pages = Math.ceil(state.total / state.rows);
+    if (pages <= 1) { pager.style.display = "none"; return; }
+    pager.style.display = "";
+    pager.replaceChildren(
+      el("button", { class: "btn small ghost", disabled: state.page <= 1, onclick: function () { go(state.page - 1); } }, "‹ Prev"),
+      el("span", { class: "tb-value", style: "padding:0 8px" }, "Page " + fmt(state.page) + " / " + fmt(pages)),
+      el("button", { class: "btn small ghost", disabled: state.page >= pages, onclick: function () { go(state.page + 1); } }, "Next ›"));
+  }
+
+  function go(page) {
+    run(page);
+    document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // ---- wiring ----------------------------------------------------------
+  function submit() {
+    state.q = input.value.trim();
+    run(1);
+  }
+  document.getElementById("go").addEventListener("click", submit);
+  document.getElementById("clear").addEventListener("click", function () {
+    input.value = "";
+    state.q = "";
+    run(1);
+  });
+  input.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
+  sortSel.addEventListener("change", function () { state.sort = sortSel.value; run(1); });
+  rowsSel.addEventListener("change", function () { state.rows = parseInt(rowsSel.value, 10) || 24; run(1); });
+
+  run(1);
+})();
+</script>
+</body>
+</html>

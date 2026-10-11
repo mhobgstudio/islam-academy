@@ -2,15 +2,46 @@
   "name": "Islam Academy — Learn Arabic & Quran",
   "short_name": "Islam Academy",
   "description": "Complete self-study academy: Arabic letters → fluent reading → grammar → Quran understanding",
-  "start_url": "/index.html",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#fefce8",
+  "orientation": "any",
+  "background_color": "#faf6ee",
   "theme_color": "#065f46",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "books"],
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ق</text></svg>",
+      "src": "assets/icons/icon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
+  ],
+  "shortcuts": [
+    { "name": "Quran Reader", "url": "./pages/quran-reader.html" },
+    { "name": "Vocabulary", "url": "./pages/vocabulary.html" },
+    { "name": "Lessons", "url": "./pages/grammar.html" },
+    { "name": "Hifz Planner", "url": "./pages/hifz.html" }
   ]
 }

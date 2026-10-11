@@ -1,0 +1,78 @@
+/* ISLAM ACADEMY — responsive layer
+   Loaded after components.css. Replaces a per-page <style> block that used to be
+   copy-pasted into every template and referenced classes this project never had. */
+
+@media (max-width: 900px) {
+  .container { padding: 20px 16px 64px; }
+  .header-inner { padding: 10px 16px; gap: 12px; flex-wrap: wrap; }
+  .hero { padding: 32px 24px; border-radius: 18px; }
+  .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  html, body { max-width: 100vw; overflow-x: clip; }
+  body { font-size: 15px; }
+
+  /* The nav is the only thing that needs to shrink: 9 items do not fit a phone
+     row, so it scrolls horizontally instead of wrapping into a tall block. */
+  .site-header .header-inner { flex-direction: column; align-items: stretch; gap: 8px; }
+  .nav {
+    margin-left: 0; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+    padding-bottom: 2px; scroll-snap-type: x proximity;
+  }
+  .nav a { flex: 0 0 auto; scroll-snap-align: start; padding: 9px 12px; }
+  .brand-name small { font-size: 10px; letter-spacing: 1px; }
+
+  /* Comfortable touch targets. `inline` elements are excluded because a
+     min-height on them does nothing. */
+  .btn, .grade-btn, select, input, [role="button"], .match-item, .quiz-opt, .alpha-card, .vowel-card {
+    min-height: 44px;
+  }
+  .btn.small { min-height: 36px; }
+  .nav a { min-height: 40px; display: inline-flex; align-items: center; }
+  .speaker-btn { width: 40px; height: 40px; }
+
+  /* Any data table gets a horizontal scroll container rather than pushing the
+     whole document wide. */
+  table { max-width: 100%; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Inline-styled grids used across the pages. */
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+  [style*="minmax(200px"], [style*="minmax(220px"], [style*="minmax(260px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero h1 { font-size: clamp(23px, 6.2vw, 30px); }
+  .hero p { font-size: 14.5px; }
+  .section-title { margin: 28px 0 12px; font-size: 17px; }
+  .card { padding: 16px; }
+  .stat b { font-size: 21px; }
+  .lesson-row { flex-wrap: wrap; gap: 8px; }
+  .lesson-row .grow { display: none; }
+  .page-sub { font-size: 13.5px; margin-bottom: 18px; }
+}
+
+@media (max-width: 520px) {
+  .container { padding: 16px 12px 56px; }
+  .hero { padding: 24px 18px; }
+  .hero::after { opacity: .09; }
+  .stat-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .stat { padding: 12px 10px; }
+  .stat b { font-size: 19px; }
+  .stat span { font-size: 10.5px; letter-spacing: .5px; }
+  .flashcard { padding: 18px; min-height: 200px; }
+  .flashcard .front-ar { font-size: 38px; }
+  .drill-vowel-grid { grid-template-columns: repeat(2, 1fr); }
+  .reader-toolbar > * { flex: 1 1 auto; }
+  .reader-toolbar select { min-width: 0; width: 100%; }
+}
+
+@media print {
+  .site-header, .site-footer, .nav, .btn, .reader-toolbar, .skip-link { display: none !important; }
+  body { background: #fff; color: #000; }
+  .card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  .ayah-card, .card { page-break-inside: avoid; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 10px; color: #666; }
+}

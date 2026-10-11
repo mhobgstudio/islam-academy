@@ -6,73 +6,38 @@
 <title>Hifz Planner — Islam Academy</title>
 <link rel="stylesheet" href="../assets/css/academy.css">
 <link rel="stylesheet" href="../assets/css/components.css">
-<style>
-/* === RESPONSIVE FIX (auto-injected) === */
-@media (max-width: 768px) {
-  /* Prevent horizontal overflow on body */
-  body, html { max-width: 100vw; overflow-x: hidden; }
-  
-  /* Tables scroll horizontally instead of overflowing */
-  table { max-width: 100%; overflow-x: auto; display: block; }
-  
-  /* Grain overlays — constrain to viewport */
-  .grain-overlay { width: 100vw !important; max-width: 100vw !important; left: 0 !important; right: 0 !important; }
-  
-  /* Chat pages — make responsive */
-  .chat_page, .page_body { max-width: 100vw !important; width: 100% !important; }
-  .content { max-width: 100vw !important; width: 100% !important; }
-  .history { max-width: 100% !important; }
-  .message { max-width: 100% !important; word-wrap: break-word; overflow-wrap: break-word; }
-  .body { max-width: 100% !important; }
-  .media.clearfix { max-width: 100% !important; }
-  
-  /* Nebula/glows — constrain */
-  .nebula, .glow { max-width: 100vw !important; }
-  
-  /* Orb animations — constrain */
-  .orb { max-width: 100vw !important; }
-  
-  /* Larger touch targets */
-  a, button, input, select, textarea, [role="button"], [onclick] {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Fix small text */
-  body { font-size: max(14px, inherit); }
-  
-  /* Chips/buttons wrap */
-  .chips { flex-wrap: wrap !important; overflow: hidden !important; }
-  .chip { flex-shrink: 1 !important; }
-  
-  /* Reminder bars — constrain */
-  .due-date-reminder { max-width: 100vw !important; width: 100% !important; left: 0 !important; right: 0 !important; }
-  
-  /* Timer/countdown blocks */
-  .timer, .timer-unit, .moon-countdown { max-width: 100% !important; }
-  
-  /* KPI tables, data tables */
-  .kpi-table, .cyber-table, .org-table, .bp-table, .ptrack { max-width: 100% !important; overflow-x: auto; display: block; }
-  
-  /* Notebook/book pages */
-  .page.cover, .page { max-width: 100% !important; width: 100% !important; }
-  
-  /* Tape tracks — hide overflow on mobile */
-  .tape-track { overflow: hidden !important; }
-  
-  /* Banner/topbar */
-  .topbar-right { max-width: 100% !important; flex-wrap: wrap; }
-}
-</style>
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#065f46" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1512" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Quran memorization planner using sabaq, sabqi and manzil with a juz tracker and revision log.">
+<meta name="color-scheme" content="light dark">
+<script>
+/* Apply the stored theme before first paint, otherwise a dark-mode learner
+   gets a white flash on every navigation. An explicit choice always wins;
+   with no saved preference the OS setting is followed. */
+(function () {
+  var t = null;
+  try {
+    var s = JSON.parse(localStorage.getItem("islam-academy-v1") || "null");
+    if (s && s.settings && s.settings.theme) t = s.settings.theme;
+  } catch (e) {}
+  if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.dataset.theme = t;
+})();
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="header-inner">
   <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
   <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
   <nav class="nav" id="main-nav"></nav>
 </div></header>
 
-<main class="container">
+<main class="container" id="main" tabindex="-1">
   <h1 class="page-title">🧠 Hifz Planner</h1>
   <p class="page-sub">Memorization tracker using the classic 3-tier system: new lesson (sabaq), recent revision (sabqi), older revision (manzil).</p>
 
@@ -106,27 +71,29 @@
 
   <div class="card" style="margin-bottom:18px">
     <h3>Juz map</h3>
-    <p class="sub">Click a juz to mark it memorized / un-memorized.</p>
+    <p class="sub">Click a juz to mark it memorised. Hover for its surah range and Madinah page numbers.</p>
     <div class="juz-grid" id="juz-grid"></div>
   </div>
 
   <div class="grid cols-2">
     <div class="card">
       <h3>Log today</h3>
+      <p class="sub">What you recited — the reference you will come back to.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
-        <input type="text" id="log-text" placeholder="e.g. Al-Mulk 1-10" style="flex:1;min-width:160px">
+        <label class="sr-only" for="log-text">What did you memorise today?</label>
+        <input type="text" id="log-text" placeholder="e.g. Al-Mulk 1-10" style="flex:1;min-width:160px" maxlength="120">
         <button class="btn small" id="add-log">Add</button>
       </div>
       <ul class="hifz-log" id="log-list"></ul>
     </div>
     <div class="card">
-      <h3>Morning/evening revision helper</h3>
-      <p class="sub">Open a random memorized surah and recite it cold:</p>
+      <h3>Random self-test</h3>
+      <p class="sub">Picks a surah from the juz you have marked memorised. Recite it cold, then open the reader to check.</p>
       <button class="btn gold" id="random-surah">🎲 Test me</button>
       <div id="random-listen" style="margin-top:8px;display:none">
-        <button class="btn small ghost" id="listen-surah">🔊 Listen to this surah (Alafasy)</button>
+        <button class="btn small ghost" id="listen-surah">🔊 Listen to the opening</button>
       </div>
-      <p id="random-result" style="margin-top:10px;font-weight:700"></p>
+      <p id="random-result" style="margin-top:10px;font-size:13.5px;line-height:1.6" role="status"></p>
     </div>
   </div>
 </main>
@@ -135,122 +102,201 @@
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/nav.js"></script>
 <script>
+if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('../sw.js').catch(function () {});
+  });
+}
+</script>
+<script>
 (async function () {
   const { el } = Academy;
 
-  // Wire up audio buttons FIRST (before async fetch)
+  // Wire up audio buttons FIRST (before the async fetches).
   document.getElementById("btn-basmalah").onclick = function() {
-    Academy.speakArabic("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", this);
+    Academy.speakArabic("\u0628\u0650\u0633\u0652\u0645\u0650 \u0627\u0644\u0644\u0651\u064e\u0627\u0647\u0650 \u0627\u0644\u0631\u0651\u064e\u062d\u0652\u0645\u064e\u0670\u0646\u0650 \u0627\u0644\u0631\u0651\u064e\u062d\u0650\u064a\u0645\u0650", this);
   };
   document.getElementById("btn-istiadha").onclick = function() {
-    Academy.speakArabic("أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ", this);
+    Academy.speakArabic("\u0623\u064e\u0639\u064f\u0648\u0630\u064f \u0628\u0650\u0627\u0644\u0644\u0651\u064e\u0627\u0647\u0650 \u0645\u0650\u0646\u064e \u0627\u0644\u0634\u0651\u064e\u064a\u0637\u064e\u0627\u0646\u0650 \u0627\u0644\u0631\u0651\u064e\u062c\u0650\u064a\u0645\u0650", this);
   };
 
-  let meta;
+  const grid = document.getElementById("juz-grid");
+  Academy.placeholder(grid, "Loading the juz map\u2026");
+
+  let meta = [], juzMap = [];
   try {
-    meta = await Academy.fetchJSON("../data/quran/surah_meta.json");
-  } catch(e) {
-    document.getElementById("juz-grid").innerHTML = '<div class="card"><p class="sub">Could not load surah data. Serve via HTTP not file://.</p></div>';
+    const loaded = await Promise.all([
+      Academy.fetchJSON("../data/quran/surah_meta.json"),
+      Academy.fetchJSON("../data/quran/juz_map.json").catch(function () { return []; })
+    ]);
+    meta = loaded[0] || [];
+    juzMap = loaded[1] || [];
+  } catch (e) {
+    Academy.errorPanel(grid, "the juz map");
     return;
   }
-  const grid = document.getElementById("juz-grid");
+  if (!juzMap.length) {
+    Academy.errorPanel(grid, "the juz map");
+    return;
+  }
+  const byNumber = {};
+  meta.forEach(function (m) { byNumber[m.number] = m; });
+
   const summary = document.getElementById("plan-summary");
   const bar = document.getElementById("plan-bar");
   const pctEl = document.getElementById("plan-pct");
   const hifz = Academy.state.hifz;
-  if (!hifz.done) hifz.done = [];
+  if (!Array.isArray(hifz.done)) hifz.done = [];
+  if (!Array.isArray(hifz.log)) hifz.log = [];
 
-  for (let i = 1; i <= 30; i++) {
-    document.getElementById("start-juz").append(el("option", {value:i}, "Juz " + i));
-    document.getElementById("end-juz").append(el("option", {value:i}, "Juz " + i));
+  // A surah that opens a juz is part of it even when it is shared with the
+  // previous juz, so membership is "the surah range overlaps this juz".
+  function surahsInJuz(juz) {
+    const j = juzMap[juz - 1];
+    if (!j) return [];
+    const out = [];
+    for (let n = j.start_surah; n <= j.end_surah; n++) if (byNumber[n]) out.push(byNumber[n]);
+    return out;
   }
-  document.getElementById("end-juz").value = 30;
+
+  const startSel = document.getElementById("start-juz");
+  const endSel = document.getElementById("end-juz");
+  juzMap.forEach(function (j) {
+    const label = "Juz " + j.juz + "  (p." + j.page + ")";
+    startSel.append(el("option", {value: j.juz}, label));
+    endSel.append(el("option", {value: j.juz}, label));
+  });
+  endSel.value = "30";
 
   function render() {
-    grid.innerHTML = "";
-    for (let i = 1; i <= 30; i++) {
-      const c = el("div", {class:"juz-cell" + (hifz.done.includes(i) ? " done" : ""), onclick:()=>{
-        if (hifz.done.includes(i)) hifz.done = hifz.done.filter(x=>x!==i);
-        else { hifz.done.push(i); Academy.addXP(50); }
-        Academy.save(); render();
-      }}, String(i));
-      grid.append(c);
-    }
-    const total = hifz.plan ? hifz.plan[1] - hifz.plan[0] + 1 : 30;
-    const doneInRange = hifz.done.filter(j => !hifz.plan || (j >= hifz.plan[0] && j <= hifz.plan[1])).length;
-    bar.style.width = (doneInRange/total*100) + "%";
-    pctEl.textContent = doneInRange + " / " + total + " juz (" + Math.round(doneInRange/total*100) + "%)";
-    summary.textContent = hifz.plan
-      ? "Goal: Juz " + hifz.plan[0] + " → " + hifz.plan[1] + ". At one juz per month you finish in " + (total - doneInRange) + " months."
-      : "No plan yet — set a goal below.";
-    // log list
-    const ul = document.getElementById("log-list");
-    ul.innerHTML = "";
-    hifz.log.slice(-15).reverse().forEach(entry => {
-      ul.append(el("li", null, entry.date + " — " + entry.text));
+    grid.replaceChildren();
+    juzMap.forEach(function (j) {
+      const isDone = hifz.done.includes(j.juz);
+      const cell = el("button", {
+        class: "juz-cell" + (isDone ? " done" : ""),
+        "aria-pressed": isDone ? "true" : "false",
+        "aria-label": "Juz " + j.juz + ", surahs " + j.start_surah + " to " + j.end_surah,
+        title: "Juz " + j.juz + " · surahs " + j.start_surah + "\u2013" + j.end_surah +
+               " · mushaf p." + j.page + "\u2013" + j.end_page + " · " + j.ayahs + " ayat",
+        onclick: function () {
+          if (hifz.done.includes(j.juz)) {
+            hifz.done = hifz.done.filter(function (x) { return x !== j.juz; });
+          } else {
+            hifz.done.push(j.juz);
+            // A whole juz is a milestone several lessons deep, so it is priced
+            // well above a lesson pass (~55 XP) rather than equal to 25 cards.
+            Academy.addXP(200);
+          }
+          Academy.save();
+          render();
+        }
+      }, el("span", null, String(j.juz)), el("small", null, j.end_surah - j.start_surah + 1 + "s"));
+      grid.append(cell);
     });
-  }
 
-  document.getElementById("make-plan").onclick = () => {
-    const a = parseInt(document.getElementById("start-juz").value, 10);
-    const b = parseInt(document.getElementById("end-juz").value, 10);
-    hifz.plan = [Math.min(a,b), Math.max(a,b)];
-    Academy.save(); render();
-  };
-  document.getElementById("reset-plan").onclick = () => {
-    hifz.plan = null; hifz.done = []; hifz.log = [];
-    Academy.save(); render();
-  };
-  document.getElementById("add-log").onclick = () => {
-    const t = document.getElementById("log-text").value.trim();
-    if (!t) return;
-    hifz.log.push({date: Academy.todayStr(), text: t});
-    Academy.addXP(10);
-    document.getElementById("log-text").value = "";
-    Academy.save(); render();
-  };
+    const lo = hifz.plan ? hifz.plan[0] : 1;
+    const hi = hifz.plan ? hifz.plan[1] : 30;
+    const total = hi - lo + 1;
+    const doneInRange = hifz.done.filter(function (j) { return j >= lo && j <= hi; }).length;
+    const pct = Math.round((doneInRange / total) * 100);
+    bar.style.width = pct + "%";
+    bar.setAttribute("role", "progressbar");
+    bar.setAttribute("aria-valuenow", String(pct));
+    bar.parentElement.setAttribute("aria-label", "Memorisation progress");
+    pctEl.textContent = doneInRange + " of " + total + " juz (" + pct + "%)";
+    summary.textContent = hifz.plan
+      ? "Goal: Juz " + lo + " \u2192 " + hi + ". At one juz per month you finish in " +
+        (total - doneInRange) + (total - doneInRange === 1 ? " month" : " months") + "."
+      : "No goal set \u2014 pick a juz range below, or just mark off what you have memorised.";
 
-  // Random surah with audio playback
-  let currentRandomMeta = null;
-  const surahPlayer = new Audio();
-  document.getElementById("random-surah").onclick = () => {
-    // Use memorized surahs if any, otherwise fall back to short surahs
-    const memorizedJuz = (hifz.done || []);
-    let doneSurahs;
-    if (memorizedJuz.length > 0) {
-      // Map memorized juz to surah ranges
-      doneSurahs = meta.filter(m => {
-        // Approximate: surahs in memorized juz
-        return memorizedJuz.some(j => m.number >= (j-1)*4+1 && m.number <= j*4+2);
+    const ul = document.getElementById("log-list");
+    ul.replaceChildren();
+    if (!hifz.log.length) {
+      ul.append(el("li", {class:"sub"}, "Nothing logged yet."));
+    } else {
+      hifz.log.slice(-15).reverse().forEach(function (entry) {
+        ul.append(el("li", null,
+          el("b", null, entry.date), " \u2014 " + entry.text));
       });
     }
-    if (!doneSurahs || doneSurahs.length === 0) {
-      doneSurahs = meta.filter(m => m.number >= 78);
-    }
-    const s = doneSurahs[Math.floor(Math.random()*doneSurahs.length)];
-    currentRandomMeta = s;
-    document.getElementById("random-result").innerHTML =
-      "Recite Surah <a href=\"quran-reader.html?surah=" + s.number + "\">" + s.name + "</a> (" + s.ayahs + " ayat) from memory.";
-    document.getElementById("random-listen").style.display = "";
+  }
+
+  document.getElementById("make-plan").onclick = function () {
+    const a = parseInt(startSel.value, 10);
+    const b = parseInt(endSel.value, 10);
+    hifz.plan = [Math.min(a, b), Math.max(a, b)];
+    Academy.save();
+    render();
   };
-  document.getElementById("listen-surah").onclick = function() {
-    if (!currentRandomMeta) return;
-    // Play first 3 ayat as preview
+  document.getElementById("reset-plan").onclick = function () {
+    if (!confirm("Clear the goal, the memorised juz list and the revision log?")) return;
+    hifz.plan = null; hifz.done = []; hifz.log = [];
+    Academy.save();
+    render();
+  };
+  const logInput = document.getElementById("log-text");
+  document.getElementById("add-log").onclick = function () {
+    const t = logInput.value.trim();
+    if (!t) { logInput.focus(); return; }
+    hifz.log.push({ date: Academy.todayStr(), text: t.slice(0, 120) });
+    Academy.addXP(10);
+    logInput.value = "";
+    Academy.save();
+    render();
+  };
+  logInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { e.preventDefault(); document.getElementById("add-log").click(); }
+  });
+
+  // ---- random surah from what has been memorised ------------------------
+  let currentRandom = null;
+  const surahPlayer = new Audio();
+
+  document.getElementById("random-surah").onclick = function () {
+    // Surahs that fall entirely inside a memorised juz. Surahs on a boundary
+    // are included too, so a fresh hifz plan is never silently empty.
+    const pool = [];
+    hifz.done.forEach(function (j) {
+      surahsInJuz(j).forEach(function (s) { if (pool.indexOf(s) < 0) pool.push(s); });
+    });
+    const fallback = pool.length === 0;
+    const list = fallback ? meta.filter(function (m) { return m.number >= 78; }) : pool;
+    const s = list[Math.floor(Math.random() * list.length)];
+    if (!s) return;
+    currentRandom = s;
+    document.getElementById("random-result").replaceChildren(
+      el("span", null, fallback ? "Nothing marked as memorised yet \u2014 here is a short surah. Recite " : "Recite "),
+      el("a", {href: "quran-reader.html?surah=" + s.number}, "Surah " + s.number + " \u00b7 " + s.name),
+      el("span", null, " (" + s.ayahs + " ayat) from memory.")
+    );
+    document.getElementById("random-listen").style.display = "";
+    document.getElementById("random-surah").focus();
+  };
+
+  const listenBtn = document.getElementById("listen-surah");
+  listenBtn.onclick = function () {
+    if (!currentRandom) return;
     surahPlayer.pause();
-    // Use the global ayah number calculation
     let globalStart = 1;
-    for (let i = 0; i < meta.length; i++) {
-      if (meta[i].number === currentRandomMeta.number) break;
-      globalStart += meta[i].ayahs;
-    }
-    const url = Academy.ayahAudio("ar.alafasy", globalStart);
-    surahPlayer.src = url;
-    surahPlayer.play().catch(() => {});
-    this.textContent = "⏸ Playing...";
-    surahPlayer.onended = () => { this.textContent = "🔊 Listen to this surah (Alafasy)"; };
+    for (let i = 0; i < currentRandom.number - 1; i++) globalStart += meta[i].ayahs;
+    // A three-ayah preview: enough to check yourself, short enough to wait.
+    surahPlayer.src = Academy.ayahAudio("ar.alafasy", globalStart);
+    const self = this;
+    surahPlayer.onended = function () { self.textContent = "\u{1F50A} Listen to the opening"; };
+    surahPlayer.onerror = function () {
+      self.textContent = "\u{1F50A} Listen to the opening";
+      Academy.toast("\u{1F507} Recitation needs an internet connection");
+    };
+    surahPlayer.play().then(function () {
+      self.textContent = "\u23F8\uFE0F Playing\u2026";
+    }).catch(function () {
+      self.textContent = "\u{1F50A} Listen to the opening";
+      Academy.toast("\u{1F507} Recitation needs an internet connection");
+    });
   };
 
   render();
+  Academy.touchStreak();
 })();
 </script>
 </body>

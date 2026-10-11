@@ -25,3 +25,8 @@ __pycache__/
 venv/
 node_modules/
 .DS_Store
+
+# runtime state written by start.sh
+.run/
+# headless smoke-test screenshots
+.smoke/

@@ -1308,6 +1308,16 @@
         "peace/submission"
        ]
       ]
+     },
+     {
+      "type": "root",
+      "mode": "word",
+      "count": 3
+     },
+     {
+      "type": "root",
+      "mode": "meaning",
+      "count": 2
      }
     ]
    },
@@ -1387,7 +1397,7 @@
      "• الْحَمْدُ لِلَّهِ — 'ALL praise (belongs) to Allah' (nominal sentence + idafa-like لِ)\n• رَبِّ الْعَالَمِينَ — idafa: 'Lord of the worlds'\n• نَعْبُدُ وَنَسْتَعِينُ — 'We worship and we seek help' (present verbs, نـ prefix)",
      "Open the Quran Reader → Surah 1, tap each word, hear it, see its meaning. Then return and take the quiz."
     ],
-    "link": "/pages/quran-reader.html?surah=1",
+    "link": "quran-reader.html?surah=1",
     "drills": [
      {
       "type": "mc",
@@ -1441,6 +1451,11 @@
         "the straight path"
        ]
       ]
+     },
+     {
+      "type": "root",
+      "mode": "word",
+      "count": 2
      }
     ]
    },

@@ -6,73 +6,38 @@
 <title>Tajweed — Islam Academy</title>
 <link rel="stylesheet" href="../assets/css/academy.css">
 <link rel="stylesheet" href="../assets/css/components.css">
-<style>
-/* === RESPONSIVE FIX (auto-injected) === */
-@media (max-width: 768px) {
-  /* Prevent horizontal overflow on body */
-  body, html { max-width: 100vw; overflow-x: hidden; }
-  
-  /* Tables scroll horizontally instead of overflowing */
-  table { max-width: 100%; overflow-x: auto; display: block; }
-  
-  /* Grain overlays — constrain to viewport */
-  .grain-overlay { width: 100vw !important; max-width: 100vw !important; left: 0 !important; right: 0 !important; }
-  
-  /* Chat pages — make responsive */
-  .chat_page, .page_body { max-width: 100vw !important; width: 100% !important; }
-  .content { max-width: 100vw !important; width: 100% !important; }
-  .history { max-width: 100% !important; }
-  .message { max-width: 100% !important; word-wrap: break-word; overflow-wrap: break-word; }
-  .body { max-width: 100% !important; }
-  .media.clearfix { max-width: 100% !important; }
-  
-  /* Nebula/glows — constrain */
-  .nebula, .glow { max-width: 100vw !important; }
-  
-  /* Orb animations — constrain */
-  .orb { max-width: 100vw !important; }
-  
-  /* Larger touch targets */
-  a, button, input, select, textarea, [role="button"], [onclick] {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Fix small text */
-  body { font-size: max(14px, inherit); }
-  
-  /* Chips/buttons wrap */
-  .chips { flex-wrap: wrap !important; overflow: hidden !important; }
-  .chip { flex-shrink: 1 !important; }
-  
-  /* Reminder bars — constrain */
-  .due-date-reminder { max-width: 100vw !important; width: 100% !important; left: 0 !important; right: 0 !important; }
-  
-  /* Timer/countdown blocks */
-  .timer, .timer-unit, .moon-countdown { max-width: 100% !important; }
-  
-  /* KPI tables, data tables */
-  .kpi-table, .cyber-table, .org-table, .bp-table, .ptrack { max-width: 100% !important; overflow-x: auto; display: block; }
-  
-  /* Notebook/book pages */
-  .page.cover, .page { max-width: 100% !important; width: 100% !important; }
-  
-  /* Tape tracks — hide overflow on mobile */
-  .tape-track { overflow: hidden !important; }
-  
-  /* Banner/topbar */
-  .topbar-right { max-width: 100% !important; flex-wrap: wrap; }
-}
-</style>
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#065f46" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1512" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Tajweed rules taught with colour-coded examples: noon and meem sakinah, madd, qalqalah, tafkheem.">
+<meta name="color-scheme" content="light dark">
+<script>
+/* Apply the stored theme before first paint, otherwise a dark-mode learner
+   gets a white flash on every navigation. An explicit choice always wins;
+   with no saved preference the OS setting is followed. */
+(function () {
+  var t = null;
+  try {
+    var s = JSON.parse(localStorage.getItem("islam-academy-v1") || "null");
+    if (s && s.settings && s.settings.theme) t = s.settings.theme;
+  } catch (e) {}
+  if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.dataset.theme = t;
+})();
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="header-inner">
   <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
   <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
   <nav class="nav" id="main-nav"></nav>
 </div></header>
 
-<main class="container">
+<main class="container" id="main" tabindex="-1">
   <h1 class="page-title">🎵 Tajweed Rules</h1>
   <p class="page-sub">The science of beautiful, correct recitation (Hafs an Asim). Study a rule, then hear it applied in the reader.</p>
 
@@ -102,6 +67,13 @@
 <footer class="site-footer">Islam Academy — Tajweed Track · Hafs an Asim · <button onclick="Academy.speakArabic('رَبِّ زِدْنِي عِلْمًا', this)" class="btn small ghost" style="font-size:12px;padding:2px 8px">🔊 رَبِّ زِدْنِي عِلْمًا</button></footer>
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/nav.js"></script>
+<script>
+if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('../sw.js').catch(function () {});
+  });
+}
+</script>
 <script>
 (async function () {
   const { el, speakArabic } = Academy;

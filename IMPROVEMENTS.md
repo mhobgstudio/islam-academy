@@ -1,112 +1,82 @@
-# ISLAM ACADEMY — Improvement Report
+# ISLAM ACADEMY — Review & Improvement Report
 
-**Date:** August 27, 2026  
-**Analysis Type:** Errors, Inconsistencies, Incompleteness, Missed Sections
+**Date:** September 29, 2026
+**Scope:** full repository review — correctness, robustness, accessibility, UX, and visualisation quality.
 
----
+Everything the automated suite can check passes:
 
-## 🔴 Errors Found
+```
+$ ./start.sh --check
+decks        : 8 decks, 586 words (491 with a root, 95 typed as function words)
+lexicon      : 589 roots
+word-roots   : 14142 surface forms
+levels       : 21 lessons
+mushaf       : 604 vendored page layouts
+word-freq    : 493 headword counts, 24463/79848 (30.6%) of running words reachable from the curriculum
+audio        : 591 mapped clips + 56 letter clips
 
-### 1. Missing Audio Files (Broken Audio)
-- `reading.html` references audio files like `drills/fatha.mp3`, `drills/damma.mp3`, etc. via `speakLocal()` — but `app.js` resolves these relative to `../assets/audio/`. These files **must exist** or audio will silently fail.
-- The `audioMap` in `app.js` maps `رَبِّ زِدْنِي عِلْمًا` to `drills/phrases/bismillah.mp3` (reusing bismillah audio) — this is incorrect; a proper recording should be generated.
+All data checks passed.
+checked 34 script block(s) across 14 file(s)
+All scripts parse, tags balance, links resolve, tashkeel regexes and SRS keys are consistent.
+U+0642 renders in the font; all icons have sane coverage.
+All 30 scheduling tests passed.
+All 14 pages render with no console errors or failed requests.
 
-### 2. Hifz Planner — Random Surah Bug
-- In `hifz.html`, the "Test me" random surah feature hardcodes `meta.filter(m => m.number >= 78)` — this only selects from the last 37 surahs (Juz Amma area). This excludes most of the mushaf and doesn't respect the user's hifz progress.
-
-### 3. Vocabulary SRS — Missing `speakLocal` Import
-- `vocabulary.html` calls `speakWord(w)` which tries to resolve audio via a hash-based path `../assets/audio/vocab/${deckId}/${hash}.mp3`. The hash generation logic uses a simple modulo that may collide. The function doesn't use `Academy.speakArabic()` which has the audioMap fallback — this means vocab audio will **always fail** for words not in the pre-generated cache.
-
-### 4. Progress Page Not Created
-- The nav includes `progress.html` in the navigation array but **no such file exists** in the pages directory. Users clicking "Progress" will get a 404.
-
-### 5. Quran Reader Page Missing
-- The home page links to `pages/quran-reader.html` multiple times, and `nav.js` includes it, but this file does not exist in the repository. This is a **critical missing feature**.
-
----
-
-## 🟡 Inconsistencies
-
-### 1. Theme Handling Split Across Files
-- `app.js` uses `state.settings.theme` and saves to the `islam-academy-v1` key.
-- `nav.js` reads from the same key but initializes independently.
-- Both add event listeners to toggle the theme — potential race condition on page load.
-
-### 2. CSS Files Referenced But Not Verified
-- `index.html` loads `assets/css/academy.css` and `assets/css/components.css` — the `assets/css/` directory exists but its contents weren't verified for completeness against all classes used across pages.
-
-### 3. SRS Grade Mismatch
-- Vocabulary page offers 4 grades (Again/Hard/Good/Easy) mapped to grades 0-3.
-- `app.js` `reviewCard()` expects grades 0-3 but the mapping in vocabulary is `gradeBtn("Again", "again", 0), gradeBtn("Hard", "hard", 1), gradeBtn("Good", "good", 2), gradeBtn("Easy", "easy", 3)` — this matches, but the SRS interval logic treats grade 1 (Hard) and grade 0 (Again) very similarly for first rep (0.5 vs 1 day), which may cause cards to appear too soon.
-
-### 4. XP Inconsistency
-- Vocabulary awards `2 XP` per card review.
-- Hifz planner awards `50 XP` per juz marked done and `10 XP` per log entry.
-- Reading practice awards `10 XP` per completed challenge.
-- These rates are wildly disproportionate — reviewing 25 flashcards (50 XP) equals marking one juz memorized.
+$ node tools/smoke.mjs --deep
+All 14 page checks render with no console errors or failed requests (deep: seeded
+progress, driven interactions, visualisation + layout assertions, offline Mushaf,
+coverage card, mushaf bookmarks).
+```
 
 ---
 
-## 🟠 Incompleteness
+## 🔴 Bugs found and fixed
 
-### 1. Missing Pages
-- **`progress.html`** — Referenced in nav but doesn't exist. Should show XP history, streak calendar, SRS stats, and export.
-- **`quran-reader.html`** — Core feature referenced everywhere but missing. This is the Quran Track's primary tool.
+| # | Where | Problem | Fix |
+|---|-------|---------|-----|
+| 1 | `data/curriculum/levels.json` | The Level 3 lesson link was `/pages/quran-reader.html?surah=1` — an **absolute** path. It only worked at a domain root and 404'd when the academy is served from a repository sub-path (the case `app.js`/`sw.js` explicitly support). | Changed to the relative `quran-reader.html?surah=1`. |
+| 2 | `stop.sh` | `./stop.sh --bogus` (any single unknown flag) fell through to the bare-stop branch and exited **0** instead of rejecting the option. | Explicit `""` (bare stop) vs `*` (die) cases; unknown flags now exit 1. |
+| 3 | `tools/sync_pages.py` | `src = src[:n] + re.pattern and (block) + src[n:]` relied on `and` operator precedence. It happened to produce the right string, but any edit to that expression silently truncated the page. | Factored the service-worker block into an explicit `sw_block` variable. |
+| 4 | `tools/check_js.py` | A duplicate/unreachable block (`print`, `if problems…`) sat after `return out` inside `blocks()`, referencing undefined locals. Dead, confusing, and one indentation slip from running. | Removed. |
+| 5 | `pages/progress.html` | Dead, self-contradicting line `const pct = Math.round((…) ? 0 : 0);` computed and then immediately shadowed by the real `pct` property. | Removed. |
+| 6 | `assets/js/app.js` | `pruneActivity()` was only called from `completeLesson()`, so a long vocabulary session could grow the activity map past its 400-day bound. | `addXP()` — the single write path — now prunes. |
+| 7 | `pages/vocabulary.html` | The flashcard help tooltip advertised keyboard shortcuts (`Again 0`, `Hard 1`, …) that **did not exist**. | Implemented them (see below) and routed the mouse and keyboard through one flip/grade path. |
+| 8 | `sw.js` | The offline shell precached fonts/CSS/JS but not `assets/images/hero-mosque.jpg`, so the home hero lost its background offline. | Added to the precache shell. |
+| 9 | `tools/check_data.py` | Nothing verified that the 591 `audioMap` clips (and the 56 letter clips) actually exist — a missing file is silent in the browser. | Added an audio-reference check; it now runs on every `--check`. |
+| 10 | `assets/js/app.js` | `day()` was called with no argument, so `new Date(undefined)` produced an **Invalid Date** and every session was filed under the activity key `NaN-NaN-NaN`. Real XP, cards and lessons never appeared in the Progress activity chart or streak calendar. | A missing argument now means "now"; a unit test locks it down. |
 
-### 2. No Service Worker for Offline
-- README claims "works offline once loaded" but no service worker (`sw.js`) or manifest (`manifest.json`) exists. The app cannot function offline.
+### Verification gaps closed
 
-### 3. No Keyboard Shortcuts
-- No keyboard navigation support for flashcards (e.g., Space to flip, 1-4 to grade). This is standard for SRS apps.
+The smoke test previously only asserted that pages *mount*. `tools/smoke.mjs --deep` now:
 
-### 4. No Data Backup/Restore
-- All progress is in localStorage with no export/import mechanism despite README claiming "JSON export."
-
-### 5. Missing Error States
-- Pages that fail to load JSON data show basic error messages but no retry mechanism.
-
----
-
-## 🔵 Missed Sections & Improvements
-
-### 1. Tajweed Interactive Examples
-- Tajweed rules are displayed statically. Should include **interactive tajweed coloring** — highlight the rule-applied letters in the Quran reader when a rule is selected.
-
-### 2. Grammar Lessons — No Quiz System
-- Grammar lessons (`grammar.html`) load from JSON but the quiz system is not visible in the code — needs verification that lesson quizzes actually render and score.
-
-### 3. Arabic Calligraphy/Font Fallback
-- Amiri and Noto Naskh fonts are referenced as "bundled locally" in README but loaded from Google Fonts in the HTML. The local fonts in `assets/fonts/` should be verified.
-
-### 4. Missing Accessibility
-- No ARIA labels on interactive elements (buttons, cards, progress bars).
-- No `aria-live` regions for dynamic content updates (e.g., "2 cards left").
-- No `prefers-reduced-motion` media query.
-
-### 5. Missing PWA Support
-- No `manifest.json` for installability.
-- No offline caching strategy.
-- No splash screen or app icons.
-
-### 6. Missing Analytics/Progress Charts
-- No visual progress charts (spaced repetition heatmaps, XP over time, reading streak calendar).
-
-### 7. Missing Search Functionality
-- No global search across vocabulary, lessons, or Quran text.
+- seeds realistic progress (XP history, SRS state, hifz plan) so dashboards render with data;
+- drives each page's real interactions (mode switches, card flips + grading, quiz answers, juz toggles, font/text-mode/surah controls, word popover, search in English *and* undiacritised Arabic);
+- asserts visualisations are genuinely painted: 84 activity bars (not just present), 26 heat-map week columns, active heat cells where there is activity, non-uniform word-cloud sizes, pre-sized progress fills;
+- asserts no page overflows the viewport horizontally;
+- checks the Search page's deep links land on the right word, lesson and ayah;
+- asserts the coverage card reports a non-zero percentage and a filled bar, and that a Mushaf bookmark round-trips through localStorage, the jump dropdown and a page change.
 
 ---
 
-## 📋 Priority Recommendations
+## 🟢 Improvements implemented
 
-| Priority | Issue | Impact |
-|----------|-------|--------|
-| 🔴 P0 | Create `quran-reader.html` | Core feature missing |
-| 🔴 P0 | Create `progress.html` | Nav 404 error |
-| 🔴 P0 | Add service worker for offline | Broken offline promise |
-| 🟡 P1 | Fix vocab audio to use `speakArabic()` fallback | Audio broken for most words |
-| 🟡 P1 | Add keyboard shortcuts to SRS | Major UX gap |
-| 🟡 P1 | Create `manifest.json` for PWA | Installability |
-| 🟠 P2 | Add ARIA accessibility labels | Accessibility compliance |
-| 🟠 P2 | Add progress charts/heatmap | User engagement |
-| 🔵 P3 | Balance XP rates across features | Gamification fairness |
-| 🔵 P3 | Add global search | Discoverability |
+- **Global Search** (`pages/search.html`) — one box over vocabulary (8 decks / 586 words), all 21 lessons, 114 surah names and all 6,236 ayat, in Arabic (diacritics optional — `رحمه` finds `رَحْمَة`) or English. Scope filter (All / Vocabulary / Lessons / Quran), debounced live results, keyboard-first (`Enter` jumps to the first hit, `Esc` clears), `role="status"` progress. The Quran corpus (~2.4 MB) loads lazily on the first real query, so normal visits stay light.
+- **Deep links** — search results open the exact target: `vocabulary.html?deck=…&q=…` (Browse filtered to the word), `grammar.html?level=…&lesson=…` (opens the lesson), `quran-reader.html?surah=…&ayah=…` (scrolls to and flashes the ayah).
+- **Vocabulary keyboard shortcuts** — `Space`/`Enter` reveal, `0–3` grade, `S` replays audio; works alongside the mouse and is announced in the on-page help.
+- **XP rebalance** — a memorised juz was worth 50 XP, the same as 25 flashcards. A juz is now 200 XP and a reading challenge 5 XP, so effort is priced coherently (lesson pass ≈ 55 XP, flashcard 2 XP).
+- **Offline Mushaf** — all 604 Madinah page layouts are vendored into `data/quran/mushaf-pages.json` (1.6 MB, compacted to the `page`/`type`/`text`/`surah` fields the renderer uses) by `tools/fetch_mushaf.py`. The reader no longer touches a third-party CDN, the bundle is precached, and the page header now names the surah instead of showing `001`.
+- **Unit tests for the scheduling core** — `tools/test_srs.mjs`, 30 dependency-free tests (loaded through `node:vm`, no test framework) covering SM-2 intervals/ease/floor, `dueCards`/`srsStats`, `cardKey`, lesson XP, streaks, the 400-day activity bound, weak roots, vocab flags and the Quran coverage maths. Wired into `./start.sh --check`.
+- **Quran word coverage** (`pages/progress.html`) — a "you now know X% of the Quran's running words" card. `tools/build_word_freq.py` counts how often every curriculum headword occurs in the bundled Uthmani text (output `data/quran/word-freq.json`, 18 KB), because tokenising 1.4 MB in the browser on every visit would be wasteful. `Academy.quranCoverage()` de-duplicates headwords by normalised form — so two spellings of one word are not counted twice — and the card reports studied coverage, mature-only coverage, forms covered and the ceiling the full curriculum could reach (30.6%). The counts are recomputed from the text by `tools/check_data.py` on every `--check`, and a unit test loads the real decks + counts so a generator change cannot silently shift the learner-facing number.
+- **Mushaf page bookmarks and resume** — the offline Mushaf view now stores page-accurate bookmarks (`quran-mushaf-bookmarks-v1`), toggled by a toolbar button or **B**, listed in a jump dropdown labelled with the page's surah and juz, and it remembers the page you were last on so returning to the Mushaf resumes there. A surah-level "last read" pointer cannot express a mid-juz page, which is exactly where a reader stops, so the resume banner now offers "📖 Mushaf p.N" alongside the surah.
+- **Dead assets removed** — the seven unreferenced images (~1.4 MB) are gone; only `assets/images/hero-mosque.jpg` remains and it is precached.
+- **Offline completeness** — hero image precached; new Search page registered in the service worker and nav.
+- **Reliability** — the audio-reference check, the deep audit mode, the scheduling unit tests, and the `stop.sh` option handling above.
+- **Nav cleanup** — removed an unused third element from the nav table and added Search.
+
+---
+
+## 🟡 Remaining suggestions (not implemented)
+
+1. **`$HOME/` directory.** A copy of a home directory (OmniRoute session state incl. a session key) still sits on disk next to the project. It is gitignored and untracked, but it should be removed and the key rotated; removing it does not scrub it from earlier history.
+2. **A real Mushaf layout instead of the vendored line dump.** The page layout is exact, but it still renders as justified text lines rather than typeset mushaf pages with verse markers and a real page-facing layout. A dedicated renderer (per-line width fitting, surah ornaments per page) would be the last mile for the offline Mushaf.
+3. **Spaced repetition for the grammar drills.** The Roots drill reports every attempt (which feeds `weakRoots()`), but only vocabulary is scheduled. Scheduling the lessons' drills with the same SM-2 engine would make "review what you keep getting wrong" cover the whole curriculum.

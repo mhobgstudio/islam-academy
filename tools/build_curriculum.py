@@ -162,6 +162,11 @@ def mc(q, options, answer_idx, hint=""):
 def match(pairs):
     return {"type":"match","pairs":pairs}
 
+def root_drill(mode, count):
+    # Generated at render time from data/curriculum/decks.json + root-lexicon.json,
+    # so the questions stay in sync with the curated root data.
+    return {"type":"root","mode":mode,"count":count}
+
 lessons_l0 = [
  {"id":"L0.1","title":"The Arabic Alphabet","level":0,"minutes":15,
   "explain":[
@@ -395,6 +400,8 @@ lessons_l3 = [
    mc("مَكْتَبَة most likely means:",["writer","library","letter","pen"],1),
    mc("The root of إِسْلَام is:",["س ل م","ل م س","س م ل","إ س ل"],0),
    match([["ك-ت-ب","writing"],["ع-ل-م","knowing"],["س-ل-م","peace/submission"]]),
+   root_drill("word",3),
+   root_drill("meaning",2),
   ]},
  {"id":"L3.2","title":"Case Endings: I'rab in Miniature","level":3,"minutes":35,
   "explain":[
@@ -420,6 +427,7 @@ lessons_l3 = [
    mc("نَسْتَعِينُ breaks down as:",["we-seek-help","he-helped","help!","helper"],0),
    mc("اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ means:",["Guide us to the straight path","The path is straight","We found the path","Straighten our road"],0),
    match([["نَعْبُدُ","we worship"],["الْعَالَمِينَ","the worlds"],["الصِّرَاطَ الْمُسْتَقِيمَ","the straight path"]]),
+   root_drill("word",2),
   ]},
  {"id":"L3.4","title":"Quranic Connectors & Phrases","level":3,"minutes":30,
   "explain":[
@@ -470,9 +478,93 @@ TAJWEED_RULES = [
 ]
 
 # ---------------------------------------------------------------- WRITE FILES
+# decks.json carries curated data that this script cannot know about: per-word
+# frequency, root/pattern/type annotations, and whole decks defined nowhere in
+# DECKS (quran-freq-200, divine-names, quran-prepositions, quran-pronouns).
+# Regenerating must MERGE with what is on disk instead of replacing it, so that
+# running this script can never wipe hand-curated content.
+ANNOTATION_KEYS = ("freq", "root", "pattern", "type")
+
+
+def read_existing(fname):
+    path = os.path.join(OUT, fname)
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def merge_decks(generated, existing):
+    """This script owns titles, base glosses and the set of words.
+
+    The file on disk keeps two things the source lists cannot express: per-word
+    annotations (frequency, root, pattern, type) and curated word ORDER — the
+    Quran decks are kept in frequency order, which DECKS does not encode.
+
+    So: on-disk order is preserved, annotations are layered onto the generated
+    entry (so gloss/transliteration edits still take effect), words the source
+    stopped listing are kept, and decks that exist only on disk are untouched.
+    """
+    existing = existing or {}
+    merged_decks = {}
+    preserved_words, preserved_decks = [], []
+
+    for deck_id, deck in generated.items():
+        old_words = (existing.get(deck_id) or {}).get("words", [])
+        source_entries = list(deck["words"])
+        claimed = [False] * len(source_entries)
+
+        def take(disk_word):
+            # Match an exact (ar, tl) pair before falling back to Arabic alone, so
+            # repeated surface forms with different senses don't cross over
+            # (علم = "knowledge" vs علم = "knew"). Each entry is claimed once.
+            for keys in (("ar", "tl"), ("ar",)):
+                for i, src in enumerate(source_entries):
+                    if claimed[i]:
+                        continue
+                    if all(src.get(k) == disk_word.get(k) for k in keys):
+                        claimed[i] = True
+                        return src
+            return None
+
+        words = []
+        for w in old_words:
+            base = take(w)
+            if base is None:
+                words.append(w)  # curated word the source list no longer mentions
+                preserved_words.append(f"{deck_id}::{w['ar']}")
+                continue
+            word = dict(base)
+            for key in ANNOTATION_KEYS:
+                if key in w:
+                    word[key] = w[key]
+            words.append(word)
+
+        # words the source defines but that are not on disk yet (fresh installs)
+        for i, src in enumerate(source_entries):
+            if not claimed[i]:
+                words.append(dict(src))
+
+        merged_decks[deck_id] = {"title": deck["title"], "desc": deck["desc"], "words": words}
+
+    # decks that exist only as curated data
+    for deck_id, deck in existing.items():
+        if deck_id not in generated:
+            merged_decks[deck_id] = deck
+            preserved_decks.append(deck_id)
+
+    return merged_decks, preserved_words, preserved_decks
+
+
+merged_decks, preserved_words, preserved_decks = merge_decks(DECKS, read_existing("decks.json"))
+if preserved_decks:
+    print(f"preserved curated decks not in source: {', '.join(preserved_decks)}")
+if preserved_words:
+    print(f"preserved curated words not in source: {', '.join(preserved_words)}")
+
 files = {
     "alphabet.json": alphabet,
-    "decks.json": DECKS,
+    "decks.json": merged_decks,
     "levels.json": {
         "0": {"title": "Foundations", "subtitle": "Script & sounds", "lessons": lessons_l0},
         "1": {"title": "Reading", "subtitle": "Harakat to fluency", "lessons": lessons_l1},
@@ -487,4 +579,4 @@ for fname, data in files.items():
     print(f"wrote {fname}")
 
 total_drills = sum(len(l.get("drills",[])) for ls in files["levels.json"].values() for l in ls["lessons"])
-print(f"curriculum: {sum(len(ls['lessons']) for ls in files['levels.json'].values())} lessons, {total_drills} drills, {sum(len(d['words']) for d in DECKS.values())} vocab words")
+print(f"curriculum: {sum(len(ls['lessons']) for ls in files['levels.json'].values())} lessons, {total_drills} drills, {sum(len(d['words']) for d in merged_decks.values())} vocab words")

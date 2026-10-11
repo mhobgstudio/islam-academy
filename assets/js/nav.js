@@ -1,7 +1,9 @@
 /* shared nav + theme */
 (function () {
   const pages = [
-    ["index.html", "Home", "../index.html"],
+    ["index.html", "Home"],
+    ["search.html", "Search"],
+    ["books.html", "Books"],
     ["alphabet.html", "Alphabet"],
     ["reading.html", "Reading"],
     ["grammar.html", "Lessons"],

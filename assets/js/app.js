@@ -3,36 +3,85 @@
   "use strict";
   const KEY = "islam-academy-v1";
 
+  // The academy is served from a domain root *and* from a repository sub-path
+  // (GitHub Pages), and its pages live at two different depths. Every internal
+  // URL is resolved against this so nothing depends on a hardcoded "../".
+  function detectBase() {
+    // app.js always lives at <base>/assets/js/app.js, so its own src is the
+    // one URL that is depth-independent. currentScript can be null in exotic
+    // cases, hence the path fallback below.
+    let here = document.currentScript && document.currentScript.src;
+    if (!here) {
+      const m = location.pathname.match(/^(.*?)(?:assets\/js\/app\.js|index\.html|[^/]+\.html)$/);
+      here = m ? m[1] + "app.js" : location.origin + "/";
+    }
+    return new URL("../../", here).href;
+  }
+  const BASE = detectBase();
+  const asset = function (rel) { return BASE + "assets/" + rel; };
+  const data  = function (rel) { return BASE + "data/" + rel; };
+
   const DEFAULTS = {
     xp: 0,
     streak: { count: 0, last: null },
     lessonsDone: {},          // lessonId -> {score, date}
     srs: {},                  // cardKey -> {ease, interval, due, reps, lapses}
+    rootStats: {},            // root -> {right, wrong, ts} — from the Grammar Roots drill
     vocabEval: {},            // cardKey -> {grade, ts} — latest evaluation per word
     vocabFlags: {},           // cardKey -> {ts} — user-flagged words (wrong translation, etc.)
-    hifz: { plan: null, log: [] },
-    settings: { reciter: "ar.alafasy", translit: true, theme: "light" },
+    hifz: { plan: null, done: [], log: [] },
+    settings: { reciter: "ar.alafasy", translit: true, theme: "light", quranFontSize: 22 },
+    // Per-day activity log, so the Progress page can draw a real heat map
+    // instead of guessing which days were study days.
+    activity: {},             // "YYYY-MM-DD" -> {xp, lessons, cards}
   };
 
+  function mergeDefaults(target, defaults) {
+    Object.keys(defaults).forEach(function (k) {
+      const d = defaults[k];
+      if (target[k] == null) { target[k] = structuredClone(d); return; }
+      // Nested objects get merged so a save written by an older build (which
+      // had no `activity` or `hifz.done`) still loads with a full shape.
+      if (d && typeof d === "object" && !Array.isArray(d) &&
+          target[k] && typeof target[k] === "object" && !Array.isArray(target[k])) {
+        mergeDefaults(target[k], d);
+      }
+    });
+    return target;
+  }
+
   function load() {
-    try {
-      const raw = localStorage.getItem(KEY);
-      if (!raw) return structuredClone(DEFAULTS);
-      return Object.assign(structuredClone(DEFAULTS), JSON.parse(raw));
-    } catch (e) {
-      return structuredClone(DEFAULTS);
-    }
+    const fresh = structuredClone(DEFAULTS);
+    let raw = null;
+    try { raw = localStorage.getItem(KEY); } catch (e) { return fresh; }
+    if (!raw) return fresh;
+    let parsed;
+    try { parsed = JSON.parse(raw); } catch (e) { return fresh; }
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return fresh;
+    return mergeDefaults(parsed, DEFAULTS);
   }
   let state = load();
 
   function save() {
-    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    try { localStorage.setItem(KEY, JSON.stringify(state)); }
+    catch (e) { /* private mode / quota — the session still works in memory */ }
   }
 
-  // ---------- streak / xp ----------
+  // ---------- streak / xp / activity ----------
   function todayStr(d) {
     d = d || new Date();
-    return d.toISOString().slice(0, 10);
+    // Local calendar date, not UTC — a learner in UTC-5 who studies at 22:00
+    // would otherwise have every session filed under tomorrow.
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function day(ms) {
+    // No argument means "today": `new Date(undefined)` is an Invalid Date, and
+    // filing every session under the key "NaN-NaN-NaN" silently blanked the
+    // Progress activity chart and streak calendar.
+    const k = todayStr(ms == null ? new Date() : new Date(ms));
+    let e = state.activity[k];
+    if (!e) e = state.activity[k] = { xp: 0, lessons: 0, cards: 0 };
+    return e;
   }
   function touchStreak() {
     const t = todayStr();
@@ -44,8 +93,20 @@
   }
   function addXP(n) {
     state.xp += n;
+    day().xp += n;
     touchStreak();
+    // addXP() is the single write path, so the bound is enforced here rather
+    // than only on lesson completion — otherwise a long vocab session could
+    // still grow the activity map without limit.
+    pruneActivity();
     save();
+  }
+  // Trim the activity log so it cannot grow without bound in localStorage.
+  function pruneActivity() {
+    const keys = Object.keys(state.activity);
+    if (keys.length <= 400) return;
+    keys.sort();
+    keys.slice(0, keys.length - 400).forEach(function (k) { delete state.activity[k]; });
   }
 
   // ---------- SRS (SM-2 lite) ----------
@@ -66,10 +127,14 @@
       if (c.reps === 1) c.interval = grade === 1 ? 0.5 : 1;
       else if (c.reps === 2) c.interval = grade === 1 ? 2 : 3;
       else c.interval = Math.round(c.interval * c.ease * (grade === 1 ? 0.7 : grade === 3 ? 1.2 : 1));
-      c.due = now + c.interval * 86400000;
+      // A "hard" first or second rep lands inside the same day, so it is due
+      // again in minutes rather than days — otherwise it would be invisible
+      // until tomorrow.
+      c.due = now + (grade === 1 ? Math.min(c.interval, 0.15) * 86400000 : c.interval * 86400000);
     }
     state.srs[cardKey] = c;
     state.vocabEval[cardKey] = { grade: ["Again", "Hard", "Good", "Easy"][grade] || "Good", ts: Date.now() };
+    day().cards++;
     save();
     return c;
   }
@@ -88,27 +153,133 @@
     save();
     return !!state.vocabFlags[cardKey];
   }
+  // ---------- root mastery ----------
+  // The Grammar "Roots" drill reports every attempt here, so the vocabulary SRS
+  // can pull forward the word families a learner keeps getting wrong.
+  function recordRootAttempt(root, correct) {
+    if (!root) return null;
+    const r = state.rootStats[root] || { right: 0, wrong: 0, ts: 0 };
+    if (correct) r.right++; else r.wrong++;
+    r.ts = Date.now();
+    state.rootStats[root] = r;
+    save();
+    return r;
+  }
+  function rootStats() {
+    return state.rootStats || {};
+  }
+  // A root is weak while it has been missed at least once and the misses are
+  // not yet outweighed by correct answers. Weakest first, newest miss breaking ties.
+  function weakRoots() {
+    return Object.entries(state.rootStats || {})
+      .filter(([, r]) => r.wrong > 0 && r.wrong >= r.right)
+      .sort((a, b) => (b[1].wrong - b[1].right) - (a[1].wrong - a[1].right) || b[1].ts - a[1].ts)
+      .map(([root]) => root);
+  }
   function dueCards(keys) {
     const now = Date.now();
     return keys.filter((k) => !state.srs[k] || state.srs[k].due <= now);
   }
+
+  // ---------- SRS keys ----------
+  // The single definition of a card's identity. Pages used to build this
+  // string themselves and disagreed: the Vocabulary page used the deck *id*
+  // while the Progress page used the deck *title*, so every card looked unseen
+  // to one of them and "due" never reconciled between the two.
+  function cardKey(deckId, word) {
+    return deckId + "::" + (typeof word === "string" ? word : word.ar);
+  }
+  function deckKeys(deckId, deck) {
+    return (deck.words || []).map((w) => cardKey(deckId, w));
+  }
+  function allDeckKeys(decks) {
+    return Object.entries(decks).flatMap(([id, d]) => deckKeys(id, d));
+  }
   function srsStats(keys) {
     const now = Date.now();
     let due = 0, learning = 0, young = 0, mature = 0;
+    let easeSum = 0, easeN = 0, horizon = 0;
     keys.forEach((k) => {
       const c = state.srs[k];
-      if (!c) { due++; return; }
+      if (!c) { due++; return; }        // never seen → counts as due
       if (c.due <= now) due++;
       if (c.interval < 21) young++; else mature++;
+      if (c.interval >= 1) { learning++; }
+      if (c.due > now) horizon += c.due - now;
+      if (typeof c.ease === "number") { easeSum += c.ease; easeN++; }
     });
-    return { total: keys.length, due, young, mature };
+    return {
+      total: keys.length,
+      due: due,
+      learning: learning,
+      young: young,
+      mature: mature,
+      unseen: keys.length - easeN,
+      avgEase: easeN ? Math.round((easeSum / easeN) * 100) / 100 : 0,
+      // Average time until the current backlog is next due.
+      dueInDays: due ? Math.round(horizon / due / 86400000) : 0,
+    };
+  }
+
+  // ---------- Quran word coverage ----------
+  // How much of the Quran's running text the learner's vocabulary already
+  // covers. The occurrence counts come from data/quran/word-freq.json (built by
+  // tools/build_word_freq.py) rather than being counted here: tokenising 1.4 MB
+  // of Uthmani text on every Progress visit would be wasteful, and only the
+  // curriculum headwords are ever needed.
+  //
+  // Headwords are de-duplicated by normalised form, so two spellings of the
+  // same word (علم and عَلِمَ) are not counted twice. `isKnown` decides what
+  // counts as known, so the same maths serves "studied" and "mature" coverage.
+  function quranCoverage(decks, freq, isKnown) {
+    const counts = (freq && freq.counts) || {};
+    const total = (freq && freq.totalWords) || 0;
+    const formCounts = {};   // normalised form -> occurrences in the Quran
+    const knownForms = {};   // normalised form -> one of its headwords is known
+    let deckWords = 0, mapped = 0, knownWords = 0;
+    Object.keys(decks || {}).forEach(function (id) {
+      (decks[id].words || []).forEach(function (w) {
+        const ar = typeof w === "string" ? w : w.ar;
+        if (!ar) return;
+        deckWords++;
+        const f = counts[ar];
+        if (!f) return;             // this headword does not occur in the Quran
+        mapped++;
+        if (formCounts[f.n] == null) formCounts[f.n] = f.c;
+        if (isKnown(cardKey(id, w))) { knownForms[f.n] = true; knownWords++; }
+      });
+    });
+    const sum = function (obj) {
+      return Object.keys(obj).reduce(function (s, n) { return s + (formCounts[n] || 0); }, 0);
+    };
+    const pct = function (n) { return total ? Math.round((n / total) * 1000) / 10 : 0; };
+    const potentialWords = sum(formCounts);
+    const knownTokens = sum(knownForms);
+    return {
+      totalWords: total,
+      deckWords: deckWords,
+      mapped: mapped,
+      forms: Object.keys(formCounts).length,
+      potentialWords: potentialWords,
+      potentialPct: pct(potentialWords),
+      knownWords: knownWords,
+      knownForms: Object.keys(knownForms).length,
+      knownTokens: knownTokens,
+      knownPct: pct(knownTokens),
+    };
   }
 
   // ---------- lessons ----------
   function completeLesson(id, scorePct) {
     const prev = state.lessonsDone[id];
-    state.lessonsDone[id] = { score: Math.max(scorePct, prev ? prev.score : 0), date: Date.now() };
-    addXP(Math.round(20 + scorePct * 0.5));
+    const score = Math.max(0, Math.min(100, scorePct || 0));
+    state.lessonsDone[id] = { score: Math.max(score, prev ? prev.score : 0), date: Date.now() };
+    day().lessons++;
+    pruneActivity();
+    // XP is only granted the first time a lesson is passed, so replaying a
+    // lesson for practice cannot inflate the scoreboard.
+    if (score >= 70 && (!prev || prev.score < 70)) addXP(Math.round(20 + score * 0.5));
+    else addXP(2);
   }
   function lessonScore(id) {
     return state.lessonsDone[id] ? state.lessonsDone[id].score : null;
@@ -116,19 +287,30 @@
 
   // ---------- audio ----------
   const player = new Audio();
+  player.preload = "auto";
   let currentBtn = null;
+  function clearSpeaking() {
+    if (currentBtn) currentBtn.classList.remove("speaking");
+    currentBtn = null;
+  }
   function speak(src, btn) {
     player.pause();
+    player.onerror = function () {
+      // A missing clip must not leave a button stuck in its "speaking" state.
+      clearSpeaking();
+      if (btn) flashUnavailable(btn);
+    };
     player.src = src;
-    player.play().catch(() => {});
-    if (currentBtn) currentBtn.classList.remove("speaking");
-    currentBtn = btn || null;
-    if (btn) btn.classList.add("speaking");
-    player.onended = () => { if (currentBtn) currentBtn.classList.remove("speaking"); currentBtn = null; };
+    const p = player.play();
+    if (p && p.catch) p.catch(function () { clearSpeaking(); });
+    clearSpeaking();
+    if (btn) { btn.classList.add("speaking"); currentBtn = btn; }
+    player.onended = clearSpeaking;
+    player.onpause = clearSpeaking;
   }
   function speakLocal(relPath, btn) {
-    // resolve relative to this page -> assets/audio/
-    speak("../assets/audio/" + relPath, btn);
+    if (!relPath) return;
+    speak(asset("audio/" + relPath), btn);
   }
   function ayahAudio(reciter, globalAyahNumber) {
     return `https://cdn.islamic.network/quran/audio/128/${reciter}/${globalAyahNumber}.mp3`;
@@ -279,6 +461,9 @@
     "الناس": "vocab/quran-core/7958946236.mp3",
     "ثواب": "vocab/quran-core/8040110822.mp3",
     "علم": "vocab/quran-core/8109934200.mp3",
+    // The verb was given its own vocalisation by tools/fix_decks.py, so it needs
+    // its own clip — otherwise it strip-matches the noun's recording.
+    "عَلِمَ": "vocab/quran-core/1026805885.mp3",
     "أمر": "vocab/quran-core/8414548236.mp3",
     "نبيّ": "vocab/quran-core/8490748911.mp3",
     "جهاد": "vocab/quran-core/8588890648.mp3",
@@ -591,6 +776,7 @@
     "القادر": "vocab/divine-names/1832925220.mp3",
     "الحكيم": "vocab/divine-names/1833020447.mp3",
     "ذو الجلال": "vocab/divine-names/2016689384.mp3",
+    "ذُو الْجَلَالِ": "vocab/divine-names/4627724295.mp3",
     "المنتقم": "vocab/divine-names/2054816118.mp3",
     "الودود": "vocab/divine-names/2109335093.mp3",
     "الحقّ": "vocab/divine-names/2294965899.mp3",
@@ -684,6 +870,8 @@
     "كِ": "vocab/quran-pronouns/6912748182.mp3",
     "أنتَ": "vocab/quran-pronouns/6935749244.mp3",
     "هم": "vocab/quran-pronouns/7578255073.mp3",
+    // The enclitic -hum is a different word from the independent pronoun.
+    "هُم": "vocab/quran-pronouns/8013510375.mp3",
     "هو": "vocab/quran-pronouns/7877255009.mp3",
     "كم": "vocab/quran-pronouns/7929878697.mp3",
     "كن": "vocab/quran-pronouns/8114307604.mp3",
@@ -768,17 +956,59 @@
   };
 
   // Strip diacritics for fuzzy matching
-  function stripDiac(s) { return s.replace(/[\u064B-\u065F\u0670]/g, "").replace(/\s+/g, " ").trim(); }
+  function stripDiac(s) { return s.replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7-\u06E8\u06EA-\u06ED]/g, "").replace(/\s+/g, " ").trim(); }
+
+  // Normalised surface form -> mp3, built once from audioMap. The old linear
+  // scan re-tested ~600 keys on every tap.
+  let strippedIndex = null;
+  function buildStrippedIndex() {
+    if (strippedIndex) return strippedIndex;
+    strippedIndex = new Map();
+    for (const key of Object.keys(audioMap)) {
+      const s = stripDiac(key);
+      // Keep the first (most literal) mapping for a given normalised form.
+      if (!strippedIndex.has(s)) strippedIndex.set(s, audioMap[key]);
+    }
+    return strippedIndex;
+  }
 
   function findLocalAudio(text) {
+    if (!text) return null;
     // Exact match
-    if (audioMap[text]) return "../assets/audio/" + audioMap[text];
+    if (audioMap[text]) return asset("audio/" + audioMap[text]);
     // Strip diacritics and try again
-    const stripped = stripDiac(text);
-    for (const [key, val] of Object.entries(audioMap)) {
-      if (stripDiac(key) === stripped) return "../assets/audio/" + val;
+    const hit = buildStrippedIndex().get(stripDiac(text));
+    return hit ? asset("audio/" + hit) : null;
+  }
+
+  // Visible "no audio available" feedback. With no button to paint, a transient
+  // toast is used so the tap is never silently swallowed.
+  let toastEl = null, toastTimer = null;
+  function toast(msg) {
+    if (!toastEl) {
+      toastEl = el("div", {
+        role: "status", "aria-live": "polite",
+        style: "position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:999;" +
+               "background:var(--emerald-950);color:#f3efe3;padding:10px 18px;border-radius:99px;" +
+               "font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.4);pointer-events:none;" +
+               "opacity:0;transition:opacity .2s"
+      });
+      document.body.append(toastEl);
     }
-    return null;
+    toastEl.textContent = msg;
+    toastEl.style.opacity = "1";
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { if (toastEl) toastEl.style.opacity = "0"; }, 2400);
+  }
+  function flashUnavailable(btn) {
+    if (btn) {
+      btn.classList.remove("speaking");
+      btn.style.background = "var(--danger)";
+      btn.style.color = "#fff";
+      setTimeout(function () { btn.style.background = ""; btn.style.color = ""; }, 800);
+    } else {
+      toast("🔇 No audio clip for this one yet");
+    }
   }
 
   function speakArabic(text, btn) {
@@ -807,13 +1037,9 @@
       // Voices not loaded yet — retry
       setTimeout(() => speakArabic(text, btn), 300);
     } else {
-      // 3) No audio available — flash red
-      if (btn) {
-        btn.classList.remove("speaking");
-        btn.style.background = "var(--danger)";
-        btn.style.color = "#fff";
-        setTimeout(() => { btn.style.background = ""; btn.style.color = ""; }, 800);
-      }
+      // 3) No audio available at all — say so instead of doing nothing
+      if (btn) btn.classList.remove("speaking");
+      flashUnavailable(btn);
     }
   }
 
@@ -830,14 +1056,19 @@
   function el(tag, attrs, ...children) {
     const e = document.createElement(tag);
     if (attrs) Object.entries(attrs).forEach(([k, v]) => {
+      if (v == null || v === false) return;
       if (k === "class") e.className = v;
-      else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
-      else e.setAttribute(k, v);
+      else if (k === "style" && typeof v === "object") Object.assign(e.style, v);
+      else if (k === "text") e.textContent = v;
+      else if (k === "html") e.innerHTML = v;                 // caller takes responsibility
+      else if (k === "dataset") Object.assign(e.dataset, v);
+      else if (k.startsWith("on") && typeof v === "function") e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v === true ? "" : v);
     });
-    children.flat().forEach((c) => {
-      if (c == null) return;
-      if (typeof c === "string" || typeof c === "number") e.appendChild(document.createTextNode(c));
-      else e.appendChild(c);
+    children.flat(Infinity).forEach((c) => {
+      if (c == null || c === false) return;
+      if (Array.isArray(c)) { c.forEach(x => x != null && e.append(x.nodeType ? x : document.createTextNode(x))); return; }
+      e.appendChild(c.nodeType ? c : document.createTextNode(String(c)));
     });
     return e;
   }
@@ -849,20 +1080,57 @@
     }
     return a;
   }
+  const jsonCache = new Map();
   async function fetchJSON(path) {
-    const r = await fetch(path);
-    if (!r.ok) throw new Error(path + ": " + r.status);
-    return r.json();
+    const url = new URL(path, BASE).href;
+    if (jsonCache.has(url)) return jsonCache.get(url);
+    let r;
+    try {
+      r = await fetch(url, { cache: "default" });
+    } catch (e) {
+      throw new Error("Network unavailable while loading " + path);
+    }
+    if (!r.ok) throw new Error(path + ": HTTP " + r.status);
+    const j = await r.json();
+    jsonCache.set(url, j);
+    return j;
+  }
+  function clearJSONCache() { jsonCache.clear(); }
+
+  // Replace a container with a consistent "could not load" panel. Used by every
+  // page so a failed fetch never leaves a blank screen.
+  function errorPanel(mount, what) {
+    if (!mount) return;
+    mount.replaceChildren(el("div", {class: "card empty-state"},
+      el("div", {class: "ico"}, "⚠️"),
+      el("h3", null, "Could not load " + what),
+      el("p", null, navigator.onLine === false
+        ? "You appear to be offline and this content has not been cached yet. Reconnect once to make the academy available offline."
+        : "The site must be served over HTTP — opening the file directly (file://) blocks data loading."),
+      el("p", null, el("code", null, "./start.sh"), " then open ", el("code", null, BASE))
+    ));
+  }
+
+  // Shared empty/failure state for panels filled asynchronously.
+  function placeholder(mount, msg) {
+    if (mount) mount.replaceChildren(el("div", {class: "card empty-state"},
+      el("div", {class: "ico"}, "⏳"),
+      el("h3", null, msg || "Loading…")
+    ));
   }
 
   window.Academy = {
+    BASE: BASE,
     get state() { return state; },
-    save, addXP, touchStreak,
-    reviewCard, dueCards, srsStats,
+    save, addXP, touchStreak, markActivity: day,
+    reviewCard, dueCards, srsStats, cardKey, deckKeys, allDeckKeys, quranCoverage,
+    recordRootAttempt, rootStats, weakRoots,
     gradedVocab, vocabFlags, toggleVocabFlag,
     completeLesson, lessonScore,
-    speak, speakLocal, ayahAudio, wbwAudio,
-    speakArabic, speakerBtn,
-    el, shuffle, fetchJSON, todayStr,
+    speak, speakLocal, ayahAudio, wbwAudio, stopAudio: function () { player.pause(); clearSpeaking(); },
+    speakArabic, speakerBtn, toast, hasLocalAudio: function (t) { return !!findLocalAudio(t); },
+    el, shuffle, fetchJSON, clearJSONCache, todayStr,
+    dataURL: data, assetURL: asset, errorPanel, placeholder,
   };
 })();
+

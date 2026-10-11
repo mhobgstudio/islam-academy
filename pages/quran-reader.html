@@ -6,106 +6,87 @@
 <title>Quran Reader — Islam Academy</title>
 <link rel="stylesheet" href="../assets/css/academy.css">
 <link rel="stylesheet" href="../assets/css/components.css">
-<style>
-/* === RESPONSIVE FIX (auto-injected) === */
-@media (max-width: 768px) {
-  /* Prevent horizontal overflow on body */
-  body, html { max-width: 100vw; overflow-x: hidden; }
-  
-  /* Tables scroll horizontally instead of overflowing */
-  table { max-width: 100%; overflow-x: auto; display: block; }
-  
-  /* Grain overlays — constrain to viewport */
-  .grain-overlay { width: 100vw !important; max-width: 100vw !important; left: 0 !important; right: 0 !important; }
-  
-  /* Chat pages — make responsive */
-  .chat_page, .page_body { max-width: 100vw !important; width: 100% !important; }
-  .content { max-width: 100vw !important; width: 100% !important; }
-  .history { max-width: 100% !important; }
-  .message { max-width: 100% !important; word-wrap: break-word; overflow-wrap: break-word; }
-  .body { max-width: 100% !important; }
-  .media.clearfix { max-width: 100% !important; }
-  
-  /* Nebula/glows — constrain */
-  .nebula, .glow { max-width: 100vw !important; }
-  
-  /* Orb animations — constrain */
-  .orb { max-width: 100vw !important; }
-  
-  /* Larger touch targets */
-  a, button, input, select, textarea, [role="button"], [onclick] {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Fix small text */
-  body { font-size: max(14px, inherit); }
-  
-  /* Chips/buttons wrap */
-  .chips { flex-wrap: wrap !important; overflow: hidden !important; }
-  .chip { flex-shrink: 1 !important; }
-  
-  /* Reminder bars — constrain */
-  .due-date-reminder { max-width: 100vw !important; width: 100% !important; left: 0 !important; right: 0 !important; }
-  
-  /* Timer/countdown blocks */
-  .timer, .timer-unit, .moon-countdown { max-width: 100% !important; }
-  
-  /* KPI tables, data tables */
-  .kpi-table, .cyber-table, .org-table, .bp-table, .ptrack { max-width: 100% !important; overflow-x: auto; display: block; }
-  
-  /* Notebook/book pages */
-  .page.cover, .page { max-width: 100% !important; width: 100% !important; }
-  
-  /* Tape tracks — hide overflow on mobile */
-  .tape-track { overflow: hidden !important; }
-  
-  /* Banner/topbar */
-  .topbar-right { max-width: 100% !important; flex-wrap: wrap; }
-}
-</style>
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#065f46" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1512" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Read all 6,236 ayat in Uthmani script with Saheeh International translation and tap-any-word meaning.">
+<meta name="color-scheme" content="light dark">
+<script>
+/* Apply the stored theme before first paint, otherwise a dark-mode learner
+   gets a white flash on every navigation. An explicit choice always wins;
+   with no saved preference the OS setting is followed. */
+(function () {
+  var t = null;
+  try {
+    var s = JSON.parse(localStorage.getItem("islam-academy-v1") || "null");
+    if (s && s.settings && s.settings.theme) t = s.settings.theme;
+  } catch (e) {}
+  if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.dataset.theme = t;
+})();
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="header-inner">
   <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
   <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
   <nav class="nav" id="main-nav"></nav>
 </div></header>
 
-<main class="container">
+<main class="container" id="main" tabindex="-1">
   <h1 class="page-title">📖 Quran Reader</h1>
   <p class="page-sub">Read the Noble Quran in Uthmani script with Saheeh International translation. Tap any word for meaning and audio.</p>
 
-  <div id="resume-banner" class="card" style="display:none;margin-bottom:16px;padding:12px 16px;background:color-mix(in srgb, var(--emerald-500) 8%, var(--paper));border-left:3px solid var(--emerald-500);align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"></div>
+  <div id="resume-banner" class="card resume-banner" style="display:none"></div>
 
-  <div class="reader-toolbar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
-    <button class="btn small" id="surah-prev" title="Previous surah">\u276E</button>
-    <select id="surah-select" style="padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-family:inherit;background:var(--paper);min-width:180px"></select>
-    <button class="btn small" id="surah-next" title="Next surah">\u276F</button>
-    <select id="reciter-select" style="padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-family:inherit;background:var(--paper)">
-      <option value="ar.alafasy">Mishary Alafasy</option>
-      <option value="ar.abdulbasit">Abdul Basit (Murattal)</option>
-      <option value="ar.husary">Mahmoud Khalil Husary</option>
-      <option value="ar.minshawi">Mohamed Siddiq El-Minshawi</option>
-    </select>
-    <div style="display:flex;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden" id="text-mode-toggle">
-      <button class="btn small" data-mode="uthmani" style="border-radius:0;border:none;border-right:1px solid var(--line);background:var(--gold);color:#fff">Uthmani</button>
-      <button class="btn small ghost" data-mode="clean" style="border-radius:0;border:none;border-right:1px solid var(--line)">Clean</button>
-      <button class="btn small ghost" data-mode="standard" style="border-radius:0;border:none">Standard</button>
+  <div class="reader-toolbar">
+    <div class="tb-group" id="surah-nav">
+      <button class="btn small" id="surah-prev" title="Previous surah" aria-label="Previous surah">&#x276E;</button>
+      <label class="sr-only" for="surah-select">Choose a surah</label>
+      <select id="surah-select"></select>
+      <button class="btn small" id="surah-next" title="Next surah" aria-label="Next surah">&#x276F;</button>
     </div>
-    <div style="display:flex;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden" id="view-mode-toggle">
-      <button class="btn small" data-view="ayah" style="border-radius:0;border:none;border-right:1px solid var(--line);background:var(--gold);color:#fff">Ayat View</button>
-      <button class="btn small ghost" data-view="mushaf" style="border-radius:0;border:none">\u{FDFD} Mushaf</button>
+
+    <div class="tb-group" id="text-mode-toggle" role="group" aria-label="Arabic script style">
+      <button class="btn small" data-mode="uthmani" aria-pressed="true">Uthmani</button>
+      <button class="btn small ghost" data-mode="clean" aria-pressed="false">Clean</button>
+      <button class="btn small ghost" data-mode="standard" aria-pressed="false">Standard</button>
     </div>
-    <div style="display:flex;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden">
-      <button class="btn small ghost" id="font-down" style="border-radius:0;border:none;border-right:1px solid var(--line)" title="Decrease font size">A-</button>
-      <button class="btn small ghost" id="font-up" style="border-radius:0;border:none" title="Increase font size">A+</button>
+
+    <div class="tb-group" id="view-mode-toggle" role="group" aria-label="Layout">
+      <button class="btn small" data-view="ayah" aria-pressed="true">Ayat View</button>
+      <button class="btn small ghost" data-view="mushaf" aria-pressed="false">&#xFDFD; Mushaf</button>
     </div>
-    <div style="display:flex;gap:4px;align-items:center">
-      <span style="font-size:11px;color:var(--ink-soft)" title="Jump to ayah">\u23cf</span>
-      <input id="ayajump-input" type="number" min="1" placeholder="#" style="width:48px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;font-family:inherit;text-align:center;font-size:13px;background:var(--paper)" title="Jump to ayah">
+
+    <div class="tb-group">
+      <label class="sr-only" for="reciter-select">Reciter</label>
+      <select id="reciter-select" title="Reciter">
+        <option value="ar.alafasy">Mishary Alafasy</option>
+        <option value="ar.abdulbasit">Abdul Basit (Murattal)</option>
+        <option value="ar.husary">Mahmoud Khalil Husary</option>
+        <option value="ar.minshawi">Mohamed Siddiq El-Minshawi</option>
+      </select>
     </div>
-    <button class="btn small" id="play-surah-btn">🔊 Play Surah</button>
+
+    <div class="tb-group" id="font-controls" role="group" aria-label="Text size">
+      <button class="btn small ghost" id="font-down" title="Decrease text size" aria-label="Decrease text size">A&minus;</button>
+      <span class="tb-value" id="font-value" aria-live="polite">22px</span>
+      <button class="btn small ghost" id="font-up" title="Increase text size" aria-label="Increase text size">A+</button>
+    </div>
+
+    <div class="tb-group">
+      <label class="sr-only" for="ayajump-input">Jump to ayah number</label>
+      <span class="tb-label" title="Jump to ayah">&#x23CF;</span>
+      <input id="ayajump-input" type="number" min="1" inputmode="numeric" placeholder="#" title="Jump to ayah">
+    </div>
+
+    <div class="tb-group">
+      <button class="btn small" id="play-surah-btn" aria-label="Play the whole surah">&#x1F50A; Play Surah</button>
+    </div>
   </div>
 
   <div class="card" id="surah-info" style="margin-bottom:16px;display:none">
@@ -113,15 +94,38 @@
     <p class="sub" id="surah-meta"></p>
   </div>
 
-  <div id="mushaf-nav" style="display:none;margin-bottom:16px;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap">
-    <button class="btn small" id="mushaf-prev">❯</button>
-    <span style="font-size:13px;color:var(--ink-soft)">Page</span>
-    <input id="mushaf-page-input" type="number" min="1" max="604" value="1" style="width:60px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;font-family:inherit;text-align:center;font-size:14px;background:var(--paper)">
-    <span style="font-size:13px;color:var(--ink-soft)">of 604</span>
-    <button class="btn small" id="mushaf-next">❮</button>
-    <select id="mushaf-juz-select" style="padding:6px 8px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:13px;background:var(--paper)">
-      <option value="">Juz…</option>
-    </select>
+  <div id="mushaf-nav" class="reader-toolbar" style="display:none;margin-bottom:16px">
+    <div class="tb-group">
+      <button class="btn small" id="mushaf-prev" aria-label="Previous page" title="Previous page">&#x276F;</button>
+    </div>
+    <div class="tb-group">
+      <span class="tb-label">Page</span>
+      <label class="sr-only" for="mushaf-page-input">Mushaf page number</label>
+      <input id="mushaf-page-input" type="number" min="1" max="604" value="1" inputmode="numeric" style="width:70px">
+      <span class="tb-label">of 604</span>
+    </div>
+    <div class="tb-group">
+      <button class="btn small" id="mushaf-next" aria-label="Next page" title="Next page">&#x276E;</button>
+    </div>
+    <div class="tb-group">
+      <label class="sr-only" for="mushaf-juz-select">Jump to juz</label>
+      <select id="mushaf-juz-select">
+        <option value="">Jump to Juz…</option>
+      </select>
+    </div>
+    <div class="tb-group">
+      <button class="btn small ghost" id="mushaf-bookmark" aria-pressed="false"
+              title="Bookmark this mushaf page">☆ Bookmark</button>
+    </div>
+    <div class="tb-group">
+      <label class="sr-only" for="mushaf-bookmarks">Jump to a bookmarked page</label>
+      <select id="mushaf-bookmarks" disabled>
+        <option value="">No bookmarks yet</option>
+      </select>
+    </div>
+    <p class="tb-hint" style="flex:1 1 100%;margin:0;font-size:12px;color:var(--ink-soft)">
+      RTL mushaf: use the left/right arrow keys or swipe to turn pages. Bookmark a page (or press B) to resume at it later.
+    </p>
   </div>
 
   <div id="ayah-container"></div>
@@ -129,9 +133,9 @@
 
 <footer class="site-footer">Islam Academy — Quran Reader</footer>
 <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('../sw.js').catch(() => {});
+if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('../sw.js').catch(function () {});
   });
 }
 </script>
@@ -141,7 +145,10 @@ if ('serviceWorker' in navigator) {
 (async function () {
   const { el, speakArabic, ayahAudio } = Academy;
 
-  const CACHE_KEY = 'quran-data-v2';
+  const CACHE_KEY = 'quran-data-v3';
+  const ayahContainer = document.getElementById("ayah-container");
+  Academy.placeholder(ayahContainer, "Loading the Noble Quran…");
+
   let quranText, quranTrans, surahMeta;
   try {
     const cached = localStorage.getItem(CACHE_KEY);
@@ -150,6 +157,9 @@ if ('serviceWorker' in navigator) {
       quranText = parsed.uthmani;
       quranTrans = parsed.translation;
       surahMeta = parsed.meta;
+      // A partial write (quota cut off mid-string) would otherwise throw on
+      // `surahMeta.forEach` much later with no useful message.
+      if (!surahMeta || surahMeta.length !== 114) throw new Error("stale cache");
     } else {
       [quranText, quranTrans, surahMeta] = await Promise.all([
         Academy.fetchJSON("../data/quran/uthmani.json"),
@@ -161,9 +171,26 @@ if ('serviceWorker' in navigator) {
       } catch(e) { /* quota exceeded — fine, will refetch next time */ }
     }
   } catch(e) {
-    document.getElementById("ayah-container").innerHTML = '<div class="card"><p class="sub">Could not load Quran data. Serve via HTTP not file://.</p></div>';
+    Academy.errorPanel(ayahContainer, "the Quran text");
     return;
   }
+
+  // Word-by-word glosses + the curated root lexicon, for the tap-a-word popover.
+  // All three are optional: if a fetch fails the popover still shows the word.
+  //
+  // word-roots.json comes from the Quranic Arabic Corpus morphology (see
+  // tools/fetch_roots.py). It is keyed by surface form and only carries an
+  // entry where the corpus actually tags a root, so particles, pronouns and
+  // demonstratives are absent by construction rather than by a guess.
+  let wbwData = {}, wordRoots = {}, rootLexicon = {};
+  try {
+    const extra = await Promise.all([
+      Academy.fetchJSON("../data/quran/words.json").catch(function() { return {}; }),
+      Academy.fetchJSON("../data/quran/word-roots.json").catch(function() { return {}; }),
+      Academy.fetchJSON("../data/curriculum/root-lexicon.json").catch(function() { return {}; })
+    ]);
+    wbwData = extra[0] || {}; wordRoots = extra[1] || {}; rootLexicon = extra[2] || {};
+  } catch(e) { /* popover still works without these */ }
 
   // Populate surah select
   const sel = document.getElementById("surah-select");
@@ -171,21 +198,26 @@ if ('serviceWorker' in navigator) {
     sel.append(el("option", {value: s.number}, s.number + ". " + s.name + " — " + s.ayahs + " ayat"));
   });
 
-  // Parse URL params
+  // Parse URL params. A hand-edited or stale ?surah= is clamped rather than
+  // trusted, otherwise the page renders an undefined surah.
   const params = new URLSearchParams(location.search);
-  if (params.get("surah")) sel.value = params.get("surah");
+  const wanted = parseInt(params.get("surah"), 10);
+  if (wanted >= 1 && wanted <= 114) sel.value = String(wanted);
 
-  let currentSurah = parseInt(sel.value) || 1;
+  let currentSurah = parseInt(sel.value, 10) || 1;
   let audioPlayer = new Audio();
   let currentPlaying = null;
   let surahQueue = null; // [ayahNum, ...] for sequential playback
   let textMode = 'uthmani'; // 'uthmani' | 'clean' | 'standard'
 
   // --- Text transformation functions ---
-  // Strip all Arabic diacritics/tashkeel (U+0610-U+065F, U+0670, U+06D6-U+06DC, U+06DF-U+06E4, U+06E7-U+06E8, U+06EA-U+06ED, U+0610-U+061A, U+064B-U+065F, U+0670, U+06D6-U+06DC, U+06DF-U+06E4, U+06E7-U+06E8, U+06EA-U+06ED)
+  // Tashkeel only: harakat, tanween, shadda, sukoon, dagger alif, Quranic
+  // annotation marks and small letters. U+0640 (tatweel) is deliberately kept —
+  // it is a real joining letter, not a mark, and the Divine Names rely on it.
   function stripDiacritics(text) {
-    return text.replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7-\u06E8\u06EA-\u06ED\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]/g, '');
+    return text.replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7-\u06E8\u06EA-\u06ED]/g, '');
   }
+
   // Clean: strip diacritics only
   function toClean(text) {
     return stripDiacritics(text);
@@ -215,13 +247,16 @@ if ('serviceWorker' in navigator) {
     document.querySelectorAll('#text-mode-toggle button').forEach(btn => {
       const isActive = btn.dataset.mode === textMode;
       btn.className = isActive ? 'btn small' : 'btn small ghost';
-      if (isActive) {
-        btn.style.background = 'var(--gold)';
-        btn.style.color = '#fff';
-      } else {
-        btn.style.background = '';
-        btn.style.color = '';
-      }
+      // aria-pressed is what the a11y tree and CSS both key off, so the active
+      // state survives the class swap instead of living in an inline style.
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+  function renderViewModeButtons() {
+    document.querySelectorAll('#view-mode-toggle button').forEach(btn => {
+      const isActive = btn.dataset.view === viewMode;
+      btn.className = isActive ? 'btn small' : 'btn small ghost';
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
   }
   document.getElementById('text-mode-toggle').addEventListener('click', function(e) {
@@ -229,27 +264,30 @@ if ('serviceWorker' in navigator) {
     if (!btn) return;
     textMode = btn.dataset.mode;
     renderTextModeButtons();
-    renderSurah(currentSurah);
+    if (viewMode === 'ayah') renderSurah(currentSurah);
   });
 
   function highlightCard(card, playing) {
     if (currentPlaying && currentPlaying !== card) {
-      currentPlaying.style.borderColor = "";
-      currentPlaying.style.background = "";
+      currentPlaying.classList.remove("is-playing");
+      currentPlaying.removeAttribute("data-playing");
     }
     currentPlaying = playing ? card : null;
+    if (card && playing) {
+      card.classList.add("is-playing");
+      card.setAttribute("data-playing", "1");
+    }
   }
 
   function playAyah(ayahNum, card) {
     audioPlayer.pause();
     surahQueue = null; // single ayah stops sequential playback
     audioPlayer.src = ayahAudio(document.getElementById("reciter-select").value, ayahNum);
-    audioPlayer.play().catch(() => {});
-    if (card) {
-      highlightCard(card, true);
-      card.style.borderColor = "var(--gold)";
-      card.style.background = "color-mix(in srgb, var(--gold) 5%, transparent)";
-    }
+    audioPlayer.play().catch(function() {
+      Academy.toast("🔇 Recitation needs an internet connection");
+      highlightCard(null, false);
+    });
+    highlightCard(card, true);
   }
 
   function playNextInQueue(reciter) {
@@ -259,13 +297,12 @@ if ('serviceWorker' in navigator) {
     }
     const ayahNum = surahQueue.shift();
     audioPlayer.src = ayahAudio(reciter, ayahNum);
-    audioPlayer.play().catch(() => {});
-    const card = document.querySelector(`[data-ayah="${ayahNum}"]`);
-    if (card) {
-      highlightCard(card, true);
-      card.style.borderColor = "var(--gold)";
-      card.style.background = "color-mix(in srgb, var(--gold) 5%, transparent)";
-    }
+    audioPlayer.play().catch(function() {
+      Academy.toast("🔇 Recitation needs an internet connection");
+      surahQueue = null;
+      highlightCard(null, false);
+    });
+    highlightCard(document.querySelector('[data-ayah="' + ayahNum + '"]'), true);
   }
 
   function playSurah() {
@@ -278,20 +315,155 @@ if ('serviceWorker' in navigator) {
     playNextInQueue(reciter);
   }
 
+  // --- Tap-a-word popover -----------------------------------------------------
+  // Uses the .word-popover / .root-decomp styles that were defined in
+  // components.css but never previously wired up to any JS.
+  const ROOT_PILL_COLORS = ["#dc2626", "#2563eb", "#16a34a"];
+  const wordAudioPlayer = new Audio();
+
+  // Normalise a surface form the same way word-roots.json keys are built
+  // (tools/fetch_roots.py mirrors this function exactly)
+  function keyWord(t) {
+    return toStandard(t)
+      .replace(/\u0649/g, "\u064A")
+      .replace(/\u0624/g, "\u0648")
+      .replace(/\u0626/g, "\u064A")
+      .trim();
+  }
+
+  // word-roots.json is already keyed by this normalised surface form, so it
+  // can be used for lookup directly.
+  const rootByWord = wordRoots;
+
+  const popover = el("div", {class:"word-popover", style:"display:none;position:fixed;z-index:60"});
+  popover.addEventListener("click", function(e) { e.stopPropagation(); });
+  document.body.append(popover);
+  let popoverChip = null;
+
+  function hideWordPopover() {
+    popover.style.display = "none";
+    if (popoverChip) { popoverChip.classList.remove("active"); popoverChip = null; }
+  }
+  document.addEventListener("click", hideWordPopover);
+  document.addEventListener("keydown", function(e) { if (e.key === "Escape") hideWordPopover(); });
+  window.addEventListener("scroll", hideWordPopover, true);
+  window.addEventListener("resize", hideWordPopover);
+
+  // word-by-word glosses for one ayah, keyed by normalised word
+  function ayahGlosses(surahNum, ayahNum) {
+    const out = {};
+    ((wbwData[surahNum] || {})[ayahNum] || []).forEach(function(x) {
+      const k = keyWord(x.u);
+      if (!out[k]) out[k] = { tl: x.tl, tr: x.tr, au: x.au };
+    });
+    return out;
+  }
+
+  function showWordPopover(token, chip, gloss) {
+    const key = keyWord(token);
+    const g = gloss[key] || null;
+    // A root is shown whenever the corpus attributes one; the curated lexicon
+    // only supplies the gloss, which a handful of rare roots lack.
+    const root = rootByWord[key];
+    const rootMeaning = root ? rootLexicon[root] : null;
+    hideWordPopover();
+    popover.innerHTML = "";
+    popover.append(el("div", {class:"w-ar"}, token));
+    if (g && (g.tl || g.tr)) {
+      if (g.tl) popover.append(el("div", {class:"w-tl"}, g.tl));
+      if (g.tr) popover.append(el("div", {}, g.tr));
+    }
+    popover.append(el("button", {class:"btn small ghost", style:"margin-top:8px;font-size:12px;padding:2px 8px",
+      onclick: function(e) {
+        e.stopPropagation();
+        if (g && g.au) {
+          wordAudioPlayer.src = Academy.wbwAudio(g.au);
+          wordAudioPlayer.play().catch(function() { speakArabic(token, e.currentTarget); });
+        } else {
+          speakArabic(token, e.currentTarget);
+        }
+      }}, "🔊"));
+    if (root) {
+      const decomp = el("div", {class:"root-decomp", style:"margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.22)"},
+        el("div", {class:"root-label"}, "Root (جذر)"),
+        el("div", {style:"display:flex;flex-direction:row-reverse;justify-content:center;gap:3px;margin-top:5px"},
+          ...root.split(".").map(function(r, i) {
+            return el("span", {style:"display:inline-block;min-width:26px;height:26px;line-height:26px;border-radius:50%;font-size:15px;font-weight:700;color:#fff;background:" + ROOT_PILL_COLORS[i % ROOT_PILL_COLORS.length]}, r);
+          })));
+      if (rootMeaning) {
+        decomp.append(el("div", {class:"root-meaning", style:"margin-top:6px"},
+          el("b", {style:"color:var(--gold-300)"}, root.replace(/\./g, " ")),
+          " \u27F6 " + rootMeaning));
+      }
+      popover.append(decomp);
+    } else {
+      popover.append(el("div", {class:"root-meaning", style:"margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.22);opacity:.7;font-size:12px"},
+        "No triliteral root — particles, pronouns and proper nouns have none"));
+    }
+    popover.style.display = "block";
+    const cr = chip.getBoundingClientRect();
+    const pw = popover.offsetWidth, ph = popover.offsetHeight;
+    let left = cr.left + cr.width / 2 - pw / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - pw - 8));
+    let top = cr.top - ph - 8;
+    if (top < 8) top = cr.bottom + 8;
+    popover.style.left = left + "px";
+    popover.style.top = top + "px";
+    popoverChip = chip;
+    chip.classList.add("active");
+  }
+
   let viewMode = 'ayah'; // 'ayah' | 'mushaf'
+  let flashTimer = null;
+
+  // Copy the *untransformed* Uthmani text, so what lands on the clipboard is
+  // the real mushaf text rather than whatever text mode is on screen.
+  function copyAyah(btn, text) {
+    function done(ok) {
+      if (!btn) return;
+      btn.textContent = ok ? '✓' : '✕';
+      btn.classList.add(ok ? 'is-ok' : 'is-fail');
+      setTimeout(function () {
+        btn.textContent = '⏎';
+        btn.classList.remove('is-ok', 'is-fail');
+      }, 1400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      return;
+    }
+    // Fallback for insecure origins (plain http on a LAN IP).
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:-1000px;opacity:0';
+      document.body.append(ta);
+      ta.select();
+      done(document.execCommand('copy'));
+      ta.remove();
+    } catch (e) { done(false); }
+  }
 
   function renderSurah(num) {
     currentSurah = num;
     surahQueue = null;
+    highlightCard(null, false);
+    clearTimeout(flashTimer);
     const info = surahMeta[num - 1];
-    const container = document.getElementById("ayah-container");
+    const container = ayahContainer;
     container.innerHTML = "";
+    container.style.setProperty('--ayah-font', fontSize + 'px');
+    container.style.setProperty('--trans-font', Math.max(11, Math.round(fontSize * 0.62)) + 'px');
 
     // Surah info
     const infoCard = document.getElementById("surah-info");
     infoCard.style.display = "";
     document.getElementById("surah-name").textContent = info.name + " — Surah " + info.number;
-    document.getElementById("surah-meta").textContent = info.revelation.charAt(0).toUpperCase() + info.revelation.slice(1) + " • " + info.ayahs + " ayat";
+    document.getElementById("surah-meta").textContent =
+      info.revelation.charAt(0).toUpperCase() + info.revelation.slice(1) + " • " + info.ayahs + " ayat • " +
+      (num === 1 ? "Opening surah" : "Surah " + num);
+    syncAyaJumpMax();
 
     // Calculate global ayah start
     let globalStart = 1;
@@ -300,6 +472,11 @@ if ('serviceWorker' in navigator) {
     // Parse ayat and translations FIRST (before bismillah section uses them)
     const ayat = (quranText[num] || []).map(a => typeof a === 'object' ? a.t : a);
     const trans = (quranTrans[num] || []).map(a => typeof a === 'object' ? a.t : a);
+
+    if (!ayat.length) {
+      Academy.errorPanel(container, "Surah " + num);
+      return;
+    }
 
     if (viewMode === 'mushaf') {
       renderMushafView(num, info, ayat, trans, globalStart, container);
@@ -319,11 +496,11 @@ if ('serviceWorker' in navigator) {
     } else if (num === 9) {
       // At-Tawbah: no bismillah — show reason only
       const hadithCard = el("div", {class:"card", style:"text-align:center;margin-bottom:12px;padding:20px;border-left:3px solid var(--gold)"},
-        el("div", {style:"font-size:15px;color:var(--gold);font-weight:700;margin-bottom:6px"}, "\u{FDFD}"),
+        el("div", {style:"font-size:15px;color:var(--gold);font-weight:700;margin-bottom:6px"}, "﷽"),
         el("div", {style:"font-size:14px;color:var(--ink-soft);line-height:1.8;max-width:560px;margin-left:auto;margin-right:auto"},
           el("strong", {style:"color:var(--ink)"}, "Why is there no Basmalah here?"),
-          el("p", {style:"margin:8px 0 0"}, "At-Tawbah is the only surah that does not begin with the Basmalah. According to the earliest authorities, this surah was originally connected to Surah Al-Anfal (8) as one continuous revelation. The early reciter Qatadah (d. 735 CE) explained that it was separated because of the severity of its content \u2014 a stern warning against the hypocrites who betrayed the believers."),
-          el("p", {style:"margin:8px 0 0;font-style:italic;color:var(--ink)"}, 'Ibn Abbas reported: \"The Prophet (\u{FDF2}) used to recite Surah Al-Anfal and Surah Bara\u2019ah together.\" \u2014 Sahih al-Bukhari 4969')
+          el("p", {style:"margin:8px 0 0"}, "At-Tawbah is the only surah that does not begin with the Basmalah. According to the earliest authorities, this surah was originally connected to Surah Al-Anfal (8) as one continuous revelation. The early reciter Qatadah (d. 735 CE) explained that it was separated because of the severity of its content — a stern warning against the hypocrites who betrayed the believers."),
+          el("p", {style:"margin:8px 0 0;font-style:italic;color:var(--ink)"}, "Ibn Abbas reported: “The Prophet ﷺ used to recite Surah Al-Anfal and Surah Bara’ah together.” — Sahih al-Bukhari 4969")
         )
       );
       container.append(hadithCard);
@@ -342,28 +519,49 @@ if ('serviceWorker' in navigator) {
     ayat.forEach((text, i) => {
       const ayahNum = globalStart + i;
       const card = el("div", {
-        class: "card",
-        style: "margin-bottom:10px;padding:16px;cursor:pointer",
+        class: "card ayah-card",
         "data-ayah": ayahNum,
+        role: "group",
+        "aria-label": "Ayah " + (i + 1) + " of " + info.name,
       });
 
       const playBtn = el("button", {
-        class: "btn small",
-        style: "flex-shrink:0",
-        onclick: function(e) {
-          e.stopPropagation();
-          playAyah(ayahNum, card);
-        }
+        class: "btn small", title: "Play ayah " + (i + 1), "aria-label": "Play ayah " + (i + 1),
+        onclick: function(e) { e.stopPropagation(); playAyah(ayahNum, card); }
       }, "🔊");
 
+      const copyBtn = el("button", {
+        class: "btn small ghost", title: "Copy this ayah", "aria-label": "Copy ayah " + (i + 1),
+        "data-copy": text,
+        onclick: function(e) { e.stopPropagation(); copyAyah(this, text); }
+      }, "⏎");
+
+      // Each word is its own chip so tapping it opens the word popover
+      const gloss = ayahGlosses(num, i + 1);
+      const textDiv = el("div", {class:"quran-text ayah-text", lang:"ar"});
+      let firstWord = true;
+      transformText(text).split(/\s+/).forEach(function(tok) {
+        if (!tok) return;
+        if (!firstWord) textDiv.append(document.createTextNode(" "));
+        firstWord = false;
+        textDiv.append(el("span", {
+          class: "word-chip", title: "Tap for meaning & root", role: "button", tabindex: "0",
+          onclick: function(e) { e.stopPropagation(); showWordPopover(tok, e.currentTarget, gloss); },
+          onkeydown: function(e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); showWordPopover(tok, e.currentTarget, gloss); }
+          }
+        }, tok));
+      });
+
       card.appendChild(el("div", {style:"display:flex;justify-content:space-between;align-items:flex-start;gap:12px"},
-        el("div", {class:"quran-text", style:"font-size:22px;flex:1;line-height:1.8", lang:"ar"}, transformText(text)),
-        el("div", {style:"display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0"},
-          el("span", {style:"font-size:11px;color:var(--gold);background:var(--cream);padding:2px 8px;border-radius:12px;white-space:nowrap"}, String(i + 1)),
-          playBtn
+        textDiv,
+        el("div", {class:"ayah-side"},
+          el("span", {class:"ayah-counter", title: "Ayah " + (i + 1)}, String(i + 1)),
+          playBtn,
+          copyBtn
         )
       ));
-      card.appendChild(el("div", {style:"font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.6"}, trans[i] || ""));
+      card.appendChild(el("div", {class:"ayah-translation"}, trans[i] || ""));
       card.addEventListener("click", function() { playAyah(ayahNum, card); });
       container.append(card);
     });
@@ -380,79 +578,202 @@ if ('serviceWorker' in navigator) {
     };
   }
 
-  // === Mushaf View: exact page-by-page rendering from Madinah mushaf data ===
-  var MUSHAF_CACHE = 'mushaf-pages-v1';
-  var MUSHAF_BASE = 'https://raw.githubusercontent.com/zonetecde/mushaf-layout/refs/heads/main/mushaf/';
+  // === Mushaf View: exact page-by-page rendering from the vendored layout ===
+  // All 604 Madinah page layouts live locally in data/quran/mushaf-pages.json
+  // (see tools/fetch_mushaf.py), so this view needs no network. The bundle is
+  // fetched once, the first time the Mushaf view is opened, then served from
+  // memory. A failure still degrades into renderMushafFallback(), never a
+  // spinner that never resolves.
+  var MUSHAF_TOTAL_PAGES = 604;
   var currentPage = 1;
-  var pageCache = {};
-  try { pageCache = JSON.parse(localStorage.getItem(MUSHAF_CACHE) || '{}'); } catch(e) {}
+  var mushafToken = 0;          // guards against out-of-order async renders
+  var mushafBundle = null;
+  var mushafPromise = null;
 
-  // Juz -> first page mapping
+  // Juz -> first page of the Madinah mushaf.
   var juzPages = [1,22,42,62,82,102,122,142,162,182,202,222,242,262,282,302,322,342,362,382,402,422,442,462,482,502,522,542,562,582];
   var juzSel = document.getElementById('mushaf-juz-select');
   for (var j = 0; j < 30; j++) {
     juzSel.append(el('option', {value: juzPages[j]}, 'Juz ' + (j + 1) + ' (p.' + juzPages[j] + ')'));
   }
+  // Which juz a page belongs to, for the label under the page number.
+  function juzForPage(n) {
+    for (var k = juzPages.length - 1; k >= 0; k--) if (n >= juzPages[k]) return k + 1;
+    return 1;
+  }
 
-  function mushafPageUrl(n) {
-    return MUSHAF_BASE + 'page-' + String(n).padStart(3, '0') + '.json';
+  // "001" -> "1. Al-Fatihah", so the header names the surah instead of showing
+  // the upstream's zero-padded number.
+  function surahLabel(raw) {
+    var num = parseInt(raw, 10);
+    var info = surahMeta[num - 1];
+    return info ? (num + '. ' + info.name) : String(raw);
+  }
+
+  // === Mushaf bookmarks ====================================================
+  // Page-accurate bookmarks, kept separate from the surah-level "last read"
+  // pointer: a reader who stopped mid-juz wants that exact physical page back,
+  // which a surah number cannot express. Stored as { pages: {"<n>": ts}, last }
+  // under its own key so it survives independently of the reader's text cache.
+  var MUSHAF_BOOKMARK_KEY = 'quran-mushaf-bookmarks-v1';
+  var mushafBookmarks = loadMushafBookmarks();
+  var pageSurahMap = null;      // page number -> surah number, from the bundle
+
+  function loadMushafBookmarks() {
+    var d = { pages: {}, last: 1 };
+    try {
+      var raw = JSON.parse(localStorage.getItem(MUSHAF_BOOKMARK_KEY) || 'null');
+      if (raw && typeof raw === 'object') {
+        if (raw.pages && typeof raw.pages === 'object' && !Array.isArray(raw.pages)) d.pages = raw.pages;
+        var l = parseInt(raw.last, 10);
+        if (l >= 1 && l <= MUSHAF_TOTAL_PAGES) d.last = l;
+      }
+    } catch (e) {}
+    return d;
+  }
+  function saveMushafBookmarks() {
+    try { localStorage.setItem(MUSHAF_BOOKMARK_KEY, JSON.stringify(mushafBookmarks)); } catch (e) {}
+  }
+
+  // Which surah a page starts in — pages that begin mid-surah inherit the last
+  // header seen. Read straight off the vendored bundle once it is loaded.
+  function buildPageSurahMap(bundle) {
+    var map = new Array(MUSHAF_TOTAL_PAGES + 1);
+    var cur = null;
+    (bundle.pages || []).forEach(function (pg, i) {
+      (pg.lines || []).forEach(function (l) {
+        if (l.type === 'surah-header' && l.surah) cur = l.surah;
+      });
+      map[i + 1] = cur;
+    });
+    return map;
+  }
+  function pageSurah(n) {
+    if (!pageSurahMap || !pageSurahMap[n]) return '';
+    return surahLabel(String(pageSurahMap[n]).padStart(3, '0'));
+  }
+  function bookmarkPages() {
+    return Object.keys(mushafBookmarks.pages)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (n) { return n >= 1 && n <= MUSHAF_TOTAL_PAGES; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  var bookmarkBtn = document.getElementById('mushaf-bookmark');
+  var bookmarkSel = document.getElementById('mushaf-bookmarks');
+
+  function renderMushafBookmarkUI() {
+    var marked = !!mushafBookmarks.pages[currentPage];
+    bookmarkBtn.setAttribute('aria-pressed', marked ? 'true' : 'false');
+    bookmarkBtn.textContent = marked ? '★ Bookmarked' : '☆ Bookmark';
+    bookmarkBtn.title = (marked ? 'Remove the bookmark on page ' : 'Bookmark page ') + currentPage + ' (B)';
+    var pages = bookmarkPages();
+    bookmarkSel.disabled = !pages.length;
+    bookmarkSel.replaceChildren(el('option', {value: ''},
+      pages.length ? 'Bookmarks (' + pages.length + ')…' : 'No bookmarks yet'));
+    pages.forEach(function (n) {
+      var surah = pageSurah(n);
+      bookmarkSel.append(el('option', {value: n},
+        'p.' + n + (surah ? ' · ' + surah : '') + ' · Juz ' + juzForPage(n)));
+    });
+    // Keep the dropdown pointing at the page on screen when it is bookmarked.
+    bookmarkSel.value = marked ? String(currentPage) : '';
+  }
+
+  function toggleMushafBookmark() {
+    var k = String(currentPage);
+    if (mushafBookmarks.pages[k]) {
+      delete mushafBookmarks.pages[k];
+      Academy.toast('Removed the bookmark on page ' + currentPage);
+    } else {
+      mushafBookmarks.pages[k] = Date.now();
+      Academy.toast('Bookmarked page ' + currentPage);
+    }
+    saveMushafBookmarks();
+    renderMushafBookmarkUI();
+  }
+  bookmarkBtn.addEventListener('click', toggleMushafBookmark);
+  bookmarkSel.addEventListener('change', function () {
+    if (this.value) loadMushafPage(this.value);
+  });
+
+  // Resume at the page the reader was last on, not at page 1.
+  currentPage = mushafBookmarks.last;
+  renderMushafBookmarkUI();
+
+  function loadMushafBundle() {
+    if (!mushafPromise) {
+      mushafPromise = Academy.fetchJSON('../data/quran/mushaf-pages.json')
+        .then(function (b) { mushafBundle = b; return b; })
+        // Clear the cached rejection so "Try again" actually retries.
+        .catch(function (e) { mushafPromise = null; throw e; });
+    }
+    return mushafPromise;
+  }
+
+  function fetchMushafPage(n) {
+    return loadMushafBundle().then(function (b) {
+      var page = b && b.pages && b.pages[n - 1];
+      if (!page || !Array.isArray(page.lines)) return { __error: 'missing' };
+      return page;
+    }).catch(function () { return { __error: 'missing' }; });
   }
 
   function updateMushafNav() {
     document.getElementById('mushaf-page-input').value = currentPage;
+    document.getElementById('mushaf-page-input').max = MUSHAF_TOTAL_PAGES;
     document.getElementById('mushaf-prev').disabled = currentPage <= 1;
-    document.getElementById('mushaf-next').disabled = currentPage >= 604;
+    document.getElementById('mushaf-next').disabled = currentPage >= MUSHAF_TOTAL_PAGES;
   }
 
-  async function fetchMushafPage(n) {
-    if (pageCache[n]) return pageCache[n];
-    try {
-      var resp = await fetch(mushafPageUrl(n));
-      if (!resp.ok) throw new Error(resp.status);
-      var data = await resp.json();
-      pageCache[n] = data;
-      // Persist cache (limit to 50 pages to avoid quota issues)
-      try {
-        var keys = Object.keys(pageCache).map(Number).sort(function(a,b){return a-b;});
-        while (keys.length > 50) { delete pageCache[keys.shift()]; }
-        localStorage.setItem(MUSHAF_CACHE, JSON.stringify(pageCache));
-      } catch(e) {}
-      return data;
-    } catch(e) {
-      return null;
-    }
+  function renderMushafFallback(container, page, reason) {
+    container.replaceChildren(el('div', { class: 'card empty-state' },
+      el('div', { class: 'ico' }, '📄'),
+      el('h3', null, 'Mushaf page ' + page + ' is not available'),
+      el('p', null, reason === 'timeout'
+        ? 'The page layout request timed out. Check your connection and try again.'
+        : 'This page is missing from the local mushaf bundle. Re-run tools/fetch_mushaf.py to regenerate data/quran/mushaf-pages.json.'),
+      el('div', { style: 'display:flex;gap:8px;justify-content:center;flex-wrap:wrap' },
+        el('button', { class: 'btn', onclick: function () { loadMushafPage(currentPage); } }, '🔄 Try again'),
+        el('button', { class: 'btn ghost', onclick: function () { setViewMode('ayah'); } }, '← Back to Ayat view')
+      )
+    ));
   }
 
   function renderMushafPage(container, data) {
     container.innerHTML = '';
-    if (!data) {
-      container.append(el('div', {class:'card', style:'text-align:center;padding:40px'}, 'Loading page...'));
+    if (!data || !Array.isArray(data.lines)) {
+      renderMushafFallback(container, currentPage, 'network');
       return;
     }
+    // First real page render means the bundle is in memory, so the page ->
+    // surah labels for the bookmark list can be derived once.
+    if (!pageSurahMap && mushafBundle) pageSurahMap = buildPageSurahMap(mushafBundle);
 
-    // Wrapper with left/right turn zones
-    var wrapper = el('div', {style:'display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto;max-width:720px;position:relative;direction:ltr'});
+    // Wrapper with turn zones. An Arabic mushaf is read right-to-left, so the
+    // *next* page is what you see on the left. This matches the arrow-key and
+    // swipe handlers below.
+    var wrapper = el('div', {class:'mushaf-spread'});
 
-    // Left side: previous page (RTL book — going back is to the right, but visually left for LTR page turn feel)
-    var prevZone = el('div', {style:'flex:0 0 60px;display:flex;align-items:center;justify-content:center;height:520px;cursor:pointer;border-radius:8px 0 0 8px;transition:background .2s;color:var(--gold);font-size:28px;opacity:.35;user-select:none'}, '\u276E');
-    prevZone.addEventListener('mouseenter', function(){ this.style.opacity='1'; this.style.background='rgba(184,134,11,.08)'; });
-    prevZone.addEventListener('mouseleave', function(){ this.style.opacity='.35'; this.style.background=''; });
-    prevZone.addEventListener('click', function(){ if (currentPage > 1) loadMushafPage(currentPage - 1); });
+    var nextZone = el('button', {
+      class: 'mushaf-zone mushaf-zone-prev', 'aria-label': 'Previous page', title: 'Previous page (→)',
+      onclick: function(){ if (currentPage > 1) loadMushafPage(currentPage - 1); }
+    }, '❯');
 
-    // Right side: next page
-    var nextZone = el('div', {style:'flex:0 0 60px;display:flex;align-items:center;justify-content:center;height:520px;cursor:pointer;border-radius:0 8px 8px 0;transition:background .2s;color:var(--gold);font-size:28px;opacity:.35;user-select:none'}, '\u276F');
-    nextZone.addEventListener('mouseenter', function(){ this.style.opacity='1'; this.style.background='rgba(184,134,11,.08)'; });
-    nextZone.addEventListener('mouseleave', function(){ this.style.opacity='.35'; this.style.background=''; });
-    nextZone.addEventListener('click', function(){ if (currentPage < 604) loadMushafPage(currentPage + 1); });
+    var prevZone = el('button', {
+      class: 'mushaf-zone mushaf-zone-next', 'aria-label': 'Next page', title: 'Next page (←)',
+      onclick: function(){ if (currentPage < MUSHAF_TOTAL_PAGES) loadMushafPage(currentPage + 1); }
+    }, '❮');
 
     // Physical mushaf proportions: ~15cm x 20cm = 3:4 ratio
-    var page = el('div', {style:'flex:1;max-width:520px;margin:0 auto 20px;background:var(--paper);border:3px solid #b8860b;border-radius:4px;padding:20px 16px 16px;box-shadow:0 4px 20px rgba(0,0,0,.12);position:relative;overflow:hidden'});
+    var page = el('div', {class:'mushaf-page'});
 
     // Top decorative border
-    page.append(el('div', {style:'position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#b8860b,#daa520,#b8860b)'}));
+    page.append(el('div', {class:'mushaf-rule'}));
 
     // Page number at top
-    page.append(el('div', {style:'text-align:center;font-size:11px;color:#b8860b;margin-bottom:8px;font-weight:600'}, '\uFD3F ' + data.page + ' \uFD3E'));
+    page.append(el('div', {class:'mushaf-pageno'}, '﷿ ' + data.page + ' ﷾'));
+    page.append(el('div', {class:'mushaf-juz', style:'margin-bottom:10px'}, 'Juz ' + juzForPage(data.page)));
 
     // Render each line
     var lines = data.lines || [];
@@ -460,36 +781,46 @@ if ('serviceWorker' in navigator) {
       var lineData = lines[li];
       if (lineData.type === 'surah-header') {
         // Surah header: ornamental box with surah name
-        var headerBox = el('div', {style:'text-align:center;margin:12px 0 8px;padding:14px 10px;border:2px solid #b8860b;border-radius:4px;background:linear-gradient(180deg,rgba(218,165,32,.08),rgba(218,165,32,.02))'});
-        headerBox.append(el('div', {class:'quran-text', style:'font-size:20px;color:#b8860b;font-weight:700;line-height:1.6', lang:'ar'}, lineData.text));
-        headerBox.append(el('div', {style:'font-size:10px;color:#b8860b;margin-top:2px;letter-spacing:1px'}, '\u2500\u2500\u2500 ' + (lineData.surah || '') + ' \u2500\u2500\u2500'));
+        var headerBox = el('div', {class:'mushaf-header'});
+        headerBox.append(el('div', {class:'quran-text', style:'font-size:20px;font-weight:700;line-height:1.6', lang:'ar'}, lineData.text || ''));
+        headerBox.append(el('div', {class:'mushaf-header-sub'}, '─── ' + surahLabel(lineData.surah || '') + ' ───'));
         page.append(headerBox);
       } else if (lineData.type === 'basmala') {
         // Basmala line
-        page.append(el('div', {class:'quran-text', style:'text-align:center;font-size:22px;color:#b8860b;margin:8px 0;line-height:1.8', lang:'ar'}, '\uFDFD'));
+        page.append(el('div', {class:'quran-text mushaf-basmala', lang:'ar'}, '﷽'));
       } else {
         // Text line: justified Arabic text with proper spacing
-        var lineDiv = el('div', {class:'quran-text', style:'font-size:18px;line-height:2;text-align:justify;text-align-last:center;direction:rtl;word-spacing:2px;margin:2px 0', lang:'ar'}, lineData.text || '');
-        page.append(lineDiv);
+        page.append(el('div', {class:'quran-text mushaf-line', lang:'ar'}, lineData.text || ''));
       }
     }
 
     // Bottom decorative border
-    page.append(el('div', {style:'position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#b8860b,#daa520,#b8860b)'}));
+    page.append(el('div', {class:'mushaf-rule', style:'top:auto;bottom:0'}));
     // Bottom page number
-    page.append(el('div', {style:'text-align:center;font-size:11px;color:#b8860b;margin-top:8px;font-weight:600'}, '\uFD3F ' + data.page + ' \uFD3E'));
+    page.append(el('div', {class:'mushaf-pageno', style:'margin-top:10px'}, '﷿ ' + data.page + ' ﷾'));
 
     wrapper.append(prevZone, page, nextZone);
     container.append(wrapper);
+    renderMushafBookmarkUI();
   }
 
   async function loadMushafPage(num) {
-    currentPage = Math.max(1, Math.min(604, num));
+    currentPage = Math.max(1, Math.min(MUSHAF_TOTAL_PAGES, parseInt(num, 10) || 1));
+    var myToken = ++mushafToken;
     updateMushafNav();
-    var container = document.getElementById('ayah-container');
-    container.innerHTML = '';
-    container.append(el('div', {class:'card', style:'text-align:center;padding:20px;color:var(--ink-soft)'}, 'Loading page ' + currentPage + '...'));
+    renderMushafBookmarkUI();
+    mushafBookmarks.last = currentPage;
+    saveMushafBookmarks();
+    var container = ayahContainer;
+    container.replaceChildren(el('div', {class:'card', style:'text-align:center;padding:28px;color:var(--ink-soft)'},
+      el('div', {class:'skeleton', style:'height:20px;width:60%;margin:0 auto 12px'}),
+      'Fetching mushaf page ' + currentPage + '…'
+    ));
     var data = await fetchMushafPage(currentPage);
+    // A slower earlier request must not overwrite a newer page.
+    if (myToken !== mushafToken || viewMode !== 'mushaf') return;
+    if (!data) { renderMushafFallback(container, currentPage, 'network'); return; }
+    if (data.__error) { renderMushafFallback(container, currentPage, data.__error); return; }
     renderMushafPage(container, data);
   }
 
@@ -498,19 +829,24 @@ if ('serviceWorker' in navigator) {
     if (currentPage > 1) loadMushafPage(currentPage - 1);
   });
   document.getElementById('mushaf-next').addEventListener('click', function() {
-    if (currentPage < 604) loadMushafPage(currentPage + 1);
+    if (currentPage < MUSHAF_TOTAL_PAGES) loadMushafPage(currentPage + 1);
   });
 
   // Keyboard arrow navigation for mushaf
   document.addEventListener('keydown', function(e) {
     if (viewMode !== 'mushaf') return;
+    var t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'SELECT' || t.tagName === 'TEXTAREA')) return;
     // RTL book: left arrow = next page, right arrow = prev page
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      if (currentPage < 604) loadMushafPage(currentPage + 1);
+      if (currentPage < MUSHAF_TOTAL_PAGES) loadMushafPage(currentPage + 1);
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
       if (currentPage > 1) loadMushafPage(currentPage - 1);
+    } else if (e.key === 'b' || e.key === 'B') {
+      e.preventDefault();
+      toggleMushafBookmark();
     }
   });
 
@@ -518,7 +854,7 @@ if ('serviceWorker' in navigator) {
   (function() {
     var touchStartX = 0;
     var touchStartY = 0;
-    var container = document.getElementById('ayah-container');
+    var container = ayahContainer;
     container.addEventListener('touchstart', function(e) {
       if (viewMode !== 'mushaf') return;
       touchStartX = e.changedTouches[0].screenX;
@@ -530,117 +866,116 @@ if ('serviceWorker' in navigator) {
       var dy = e.changedTouches[0].screenY - touchStartY;
       if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
         // RTL: swipe left = next, swipe right = prev
-        if (dx < 0 && currentPage < 604) loadMushafPage(currentPage + 1);
+        if (dx < 0 && currentPage < MUSHAF_TOTAL_PAGES) loadMushafPage(currentPage + 1);
         else if (dx > 0 && currentPage > 1) loadMushafPage(currentPage - 1);
       }
     }, {passive: true});
   })();
   document.getElementById('mushaf-page-input').addEventListener('change', function() {
-    loadMushafPage(parseInt(this.value) || 1);
+    loadMushafPage(this.value);
   });
   document.getElementById('mushaf-juz-select').addEventListener('change', function() {
-    if (this.value) loadMushafPage(parseInt(this.value));
+    if (this.value) loadMushafPage(this.value);
   });
 
   // View mode toggle handler
-  document.getElementById('view-mode-toggle').addEventListener('click', function(e) {
-    var btn = e.target.closest('button[data-view]');
-    if (!btn) return;
-    viewMode = btn.dataset.view;
-    document.querySelectorAll('#view-mode-toggle button').forEach(function(b) {
-      var isActive = b.dataset.view === viewMode;
-      b.className = isActive ? 'btn small' : 'btn small ghost';
-      if (isActive) { b.style.background = 'var(--gold)'; b.style.color = '#fff'; }
-      else { b.style.background = ''; b.style.color = ''; }
-    });
+  function setViewMode(mode) {
+    if (mode !== 'ayah' && mode !== 'mushaf') return;
+    viewMode = mode;
+    renderViewModeButtons();
     var nav = document.getElementById('mushaf-nav');
     var info = document.getElementById('surah-info');
+    var surahSel = document.getElementById('surah-select');
+    var ayahJumpBox = document.getElementById('ayajump-input').parentElement;
     if (viewMode === 'mushaf') {
       nav.style.display = 'flex';
       info.style.display = 'none';
+      surahSel.parentElement.style.display = 'none';
+      ayahJumpBox.style.display = 'none';
+      hideWordPopover();
       loadMushafPage(currentPage);
     } else {
+      mushafToken++;                       // cancel any in-flight mushaf fetch
       nav.style.display = 'none';
+      surahSel.parentElement.style.display = '';
+      ayahJumpBox.style.display = '';
       renderSurah(currentSurah);
     }
-  });
-
-  // Find page for current surah
-  function findPageForSurah(num) {
-    // Approximate: use page mapping. Surah 1 starts at page 1.
-    // For accuracy, we fetch page 1 and check verse ranges.
-    // Simple heuristic: pages 1-604, each ~10.3 ayat on average
-    return 1; // Will be improved by user navigation
   }
+  document.getElementById('view-mode-toggle').addEventListener('click', function(e) {
+    var btn = e.target.closest('button[data-view]');
+    if (!btn) return;
+    setViewMode(btn.dataset.view);
+  });
 
-  // === Surah prev/next navigation ===
-  document.getElementById('surah-prev').addEventListener('click', function() {
-    var target = parseInt(sel.value) - 1;
-    if (target >= 1) {
-      sel.value = target;
-      sel.dispatchEvent(new Event('change'));
+  // === Surah navigation ===
+  // One change handler drives everything: the dropdown, the prev/next arrows
+  // and the "Resume" banner all mutate `sel` and dispatch `change`, so the
+  // re-render has to live here or none of them do anything.
+  function goToSurah(n) {
+    n = Math.max(1, Math.min(114, parseInt(n, 10) || 1));
+    if (sel.value !== String(n)) sel.value = String(n);
+    if (viewMode === 'ayah') renderSurah(n);
+    else {
+      // Keep the mushaf in sync so switching back does not jump to a stale surah.
+      currentSurah = n;
     }
-  });
-  document.getElementById('surah-next').addEventListener('click', function() {
-    var target = parseInt(sel.value) + 1;
-    if (target <= 114) {
-      sel.value = target;
-      sel.dispatchEvent(new Event('change'));
+    updateSurahNavBtns();
+    if (viewMode === 'ayah') {
+      ayahContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  });
+  }
+  document.getElementById('surah-prev').addEventListener('click', function() { goToSurah(parseInt(sel.value, 10) - 1); });
+  document.getElementById('surah-next').addEventListener('click', function() { goToSurah(parseInt(sel.value, 10) + 1); });
   function updateSurahNavBtns() {
-    var n = parseInt(sel.value) || 1;
+    var n = parseInt(sel.value, 10) || 1;
     document.getElementById('surah-prev').disabled = n <= 1;
     document.getElementById('surah-next').disabled = n >= 114;
   }
-  sel.addEventListener('change', updateSurahNavBtns);
+  sel.addEventListener('change', function() { goToSurah(sel.value); });
 
   // === Font size controls ===
-  var fontSize = 22;
+  // Persisted in the shared academy state, and applied through a class-driven
+  // scale so the mushaf and the ayah view stay independent.
+  var FONT_MIN = 16, FONT_MAX = 44;
+  var fontSize = Math.max(FONT_MIN, Math.min(FONT_MAX, parseInt(Academy.state.settings.quranFontSize, 10) || 22));
   function applyFontSize() {
-    document.querySelectorAll('#ayah-container .quran-text[lang="ar"]').forEach(function(e) {
-      if (!e.closest('[style*="max-width:520px"]')) {
-        e.style.fontSize = fontSize + 'px';
-      }
-    });
-    document.querySelectorAll('#ayah-container [style*="font-size:13px;color:var(--ink-soft)"]').forEach(function(e) {
-      e.style.fontSize = Math.max(11, fontSize - 9) + 'px';
-    });
+    ayahContainer.style.setProperty('--ayah-font', fontSize + 'px');
+    ayahContainer.style.setProperty('--trans-font', Math.max(11, Math.round(fontSize * 0.62)) + 'px');
+    var fv = document.getElementById('font-value');
+    if (fv) fv.textContent = fontSize + 'px';
+    Academy.state.settings.quranFontSize = fontSize;
+    Academy.save();
   }
-  document.getElementById('font-down').addEventListener('click', function() {
-    fontSize = Math.max(14, fontSize - 2);
+  function bumpFont(delta) {
+    fontSize = Math.max(FONT_MIN, Math.min(FONT_MAX, fontSize + delta));
     applyFontSize();
-  });
-  document.getElementById('font-up').addEventListener('click', function() {
-    fontSize = Math.min(40, fontSize + 2);
-    applyFontSize();
-  });
+    Academy.toast('Text size: ' + fontSize + 'px');
+  }
+  document.getElementById('font-down').addEventListener('click', function() { bumpFont(-2); });
+  document.getElementById('font-up').addEventListener('click', function() { bumpFont(2); });
 
   // === Go-to-ayah input ===
   var ayaJump = document.getElementById('ayajump-input');
-  ayaJump.max = surahMeta[currentSurah - 1] ? surahMeta[currentSurah - 1].ayahs : 286;
+  function syncAyaJumpMax() {
+    var info = surahMeta[currentSurah - 1];
+    ayaJump.max = info ? info.ayahs : 286;
+    ayaJump.placeholder = info ? "/" + info.ayahs : "#";
+  }
+  syncAyaJumpMax();
   ayaJump.addEventListener('change', function() {
-    var n = parseInt(this.value);
+    var n = parseInt(this.value, 10);
+    this.value = '';
     if (!n || n < 1) return;
     var maxAya = surahMeta[currentSurah - 1].ayahs;
-    if (n > maxAya) n = maxAya;
+    if (n > maxAya) { Academy.toast('This surah has ' + maxAya + ' ayat'); n = maxAya; }
     var globalStart = 1;
     for (var i = 0; i < currentSurah - 1; i++) globalStart += surahMeta[i].ayahs;
-    var target = globalStart + n - 1;
-    var card = document.querySelector('[data-ayah="' + target + '"]');
-    if (card) {
-      card.scrollIntoView({behavior:'smooth', block:'center'});
-      card.style.borderColor = 'var(--gold)';
-      card.style.background = 'color-mix(in srgb, var(--gold) 8%, transparent)';
-      setTimeout(function() {
-        card.style.borderColor = '';
-        card.style.background = '';
-      }, 2000);
-    }
-    this.value = '';
-  });
-  sel.addEventListener('change', function() {
-    ayaJump.max = surahMeta[currentSurah - 1] ? surahMeta[currentSurah - 1].ayahs : 286;
+    var card = document.querySelector('[data-ayah="' + (globalStart + n - 1) + '"]');
+    if (!card) return;
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    card.classList.add('is-flash');
+    setTimeout(function() { card.classList.remove('is-flash'); }, 2200);
   });
 
   // === Auto-scroll during playback ===
@@ -649,7 +984,7 @@ if ('serviceWorker' in navigator) {
     origHighlight(card, playing);
     if (playing && card) {
       var rect = card.getBoundingClientRect();
-      if (rect.top < 0 || rect.bottom > window.innerHeight) {
+      if (rect.top < 80 || rect.bottom > window.innerHeight) {
         card.scrollIntoView({behavior:'smooth', block:'center'});
       }
     }
@@ -659,84 +994,73 @@ if ('serviceWorker' in navigator) {
   var BOOKMARK_KEY = 'quran-last-read';
   function saveBookmark() {
     try {
+      var info = surahMeta[currentSurah - 1];
+      if (!info) return;
       localStorage.setItem(BOOKMARK_KEY, JSON.stringify({
         surah: currentSurah,
-        name: surahMeta[currentSurah - 1].name,
+        name: info.name,
         time: Date.now()
       }));
     } catch(e) {}
   }
-  sel.addEventListener('change', function() {
-    if (viewMode === 'ayah') saveBookmark();
-  });
   setInterval(function() {
     if (viewMode === 'ayah' && document.visibilityState === 'visible') saveBookmark();
   }, 30000);
 
   function showResumeBanner() {
-    try {
-      var saved = JSON.parse(localStorage.getItem(BOOKMARK_KEY) || 'null');
-      if (!saved || !saved.surah) return;
-      var banner = document.getElementById('resume-banner');
-      banner.style.display = 'flex';
-      banner.innerHTML = '';
-      banner.append(
-        el('div', {style:'font-size:14px'},
-          el('span', {style:'font-weight:600;color:var(--ink)'}, '\u23fa Last read: '),
-          el('span', {style:'color:var(--emerald-500)'}, saved.name + ' (Surah ' + saved.surah + ')')
-        ),
-        el('div', {style:'display:flex;gap:6px'},
-          el('button', {class:'btn small', style:'background:var(--emerald-500);color:#fff', onclick: function() {
-            sel.value = saved.surah;
-            sel.dispatchEvent(new Event('change'));
-            banner.style.display = 'none';
-          }}, 'Resume'),
-          el('button', {class:'btn small ghost', onclick: function() {
-            banner.style.display = 'none';
-          }}, 'Dismiss')
-        )
-      );
-    } catch(e) {}
+    var saved = null;
+    try { saved = JSON.parse(localStorage.getItem(BOOKMARK_KEY) || 'null'); } catch (e) {}
+    var n = saved && saved.surah ? parseInt(saved.surah, 10) : 0;
+    if (!(n >= 1 && n <= 114)) n = 0;
+    // A saved mushaf page stands on its own: it is more precise than the surah
+    // pointer, and the surah may be the one already on screen.
+    var mPage = mushafBookmarks.last > 1 ? mushafBookmarks.last : 0;
+    if (!n && !mPage) return;
+    var sameSurah = n === currentSurah;
+    if (sameSurah && !mPage) return;
+    var info = n ? surahMeta[n - 1] : null;
+    var banner = document.getElementById('resume-banner');
+
+    var label;
+    if (n && !sameSurah) label = (info ? info.name : 'Surah ' + n) + ' (Surah ' + n + ')';
+    else if (mPage) label = 'Mushaf page ' + mPage + (pageSurah(mPage) ? ' · ' + pageSurah(mPage) : '');
+    else label = info ? info.name : 'Surah ' + n;
+
+    var actions = el('div', {style:'display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap'});
+    if (n && !sameSurah) {
+      actions.append(el('button', {class:'btn small', onclick: function() {
+        banner.style.display = 'none';
+        if (viewMode !== 'ayah') setViewMode('ayah');
+        goToSurah(n);
+      }}, 'Resume'));
+    }
+    if (mPage) {
+      actions.append(el('button', {class:'btn small' + (n && !sameSurah ? ' ghost' : ''), onclick: function() {
+        banner.style.display = 'none';
+        setViewMode('mushaf');
+      }}, '📖 Mushaf p.' + mPage));
+    }
+    actions.append(el('button', {class:'btn small ghost', 'aria-label':'Dismiss', onclick: function() {
+      banner.style.display = 'none';
+    }}, '✕'));
+
+    banner.style.display = 'flex';
+    banner.replaceChildren(
+      el('div', {style:'font-size:14px;min-width:0'},
+        el('span', {style:'font-weight:600;color:var(--ink)'}, '⏺ Last read: '),
+        el('span', {style:'color:var(--emerald-500);font-weight:600'}, label)
+      ),
+      actions
+    );
   }
   showResumeBanner();
 
-  // === Copy ayah button (delegated) ===
-  document.getElementById('ayah-container').addEventListener('click', function(e) {
-    var copyBtn = e.target.closest('[data-copy]');
-    if (!copyBtn) return;
-    e.stopPropagation();
-    var text = copyBtn.dataset.copy;
-    navigator.clipboard.writeText(text).then(function() {
-      copyBtn.textContent = '\u2713';
-      copyBtn.style.color = 'var(--emerald-500)';
-      setTimeout(function() {
-        copyBtn.textContent = '\u2398';
-        copyBtn.style.color = '';
-      }, 1500);
-    }).catch(function() {});
-  });
-  var copyObserver = new MutationObserver(function() {
-    document.querySelectorAll('#ayah-container .card[data-ayah]:not([data-copy-added])').forEach(function(card) {
-      card.setAttribute('data-copy-added', '1');
-      var quranText = card.querySelector('.quran-text[lang="ar"]');
-      if (!quranText) return;
-      var copyBtn = el('button', {
-        class: 'btn small ghost',
-        style: 'font-size:11px;padding:2px 6px;min-height:auto',
-        title: 'Copy Arabic text',
-        'data-copy': quranText.textContent
-      }, '\u2398');
-      var playBtn = card.querySelector('.btn.small:not([data-copy])');
-      if (playBtn && playBtn.parentElement) {
-        playBtn.parentElement.append(copyBtn);
-      }
-    });
-  });
-  copyObserver.observe(document.getElementById('ayah-container'), {childList: true, subtree: true});
 
   // === Keyboard shortcuts ===
   document.addEventListener('keydown', function(e) {
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+    var t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'SELECT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (viewMode === 'mushaf') return;
     if (e.code === 'Space') {
       e.preventDefault();
@@ -744,15 +1068,31 @@ if ('serviceWorker' in navigator) {
         audioPlayer.pause();
         surahQueue = null;
         highlightCard(null, false);
+        document.getElementById('play-surah-btn').textContent = '🔊 Play Surah';
       } else {
         playSurah();
+        document.getElementById('play-surah-btn').textContent = '⏸ Stop';
       }
     }
   });
 
   updateSurahNavBtns();
+  renderTextModeButtons();
+  renderViewModeButtons();
+  applyFontSize();
   renderSurah(currentSurah);
+  saveBookmark();
+
+  // Deep link from Search: ?surah=N&ayah=K scrolls straight to that ayah,
+  // reusing the go-to-ayah control so the flash and scroll behave identically.
+  var wantAyah = parseInt(params.get("ayah"), 10);
+  if (wantAyah >= 1) {
+    ayaJump.value = String(wantAyah);
+    ayaJump.dispatchEvent(new Event("change"));
+  }
+  Academy.touchStreak();
 })();
+
 </script>
 </body>
 </html>

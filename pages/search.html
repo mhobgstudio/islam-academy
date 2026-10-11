@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search — Islam Academy</title>
+<link rel="stylesheet" href="../assets/css/academy.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#065f46" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1512" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Search the whole academy: vocabulary, lessons, surah names and the Quran — in Arabic or English.">
+<meta name="color-scheme" content="light dark">
+<script>
+/* Apply the stored theme before first paint, otherwise a dark-mode learner
+   gets a white flash on every navigation. An explicit choice always wins;
+   with no saved preference the OS setting is followed. */
+(function () {
+  var t = null;
+  try {
+    var s = JSON.parse(localStorage.getItem("islam-academy-v1") || "null");
+    if (s && s.settings && s.settings.theme) t = s.settings.theme;
+  } catch (e) {}
+  if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.dataset.theme = t;
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="../index.html"><div class="brand-mark">ق</div>
+  <div class="brand-name">Islam Academy<small>Arabic · Quran · Tajweed</small></div></a>
+  <nav class="nav" id="main-nav"></nav>
+</div></header>
+
+<main class="container" id="main" tabindex="-1">
+  <h1 class="page-title">🔎 Search</h1>
+  <p class="page-sub">Search the whole academy — vocabulary, lessons, surah names, and every ayah — in Arabic or English.</p>
+
+  <div class="card" style="margin-bottom:18px">
+    <div class="reader-toolbar" style="margin-bottom:10px">
+      <div class="tb-group" style="flex:1 1 260px">
+        <label class="sr-only" for="q">Search the academy</label>
+        <input id="q" type="search" placeholder="e.g. mercy, كتاب, patience, Al-Kahf…" autocomplete="off" style="width:100%;min-width:0">
+      </div>
+      <button class="btn small" id="go">Search</button>
+      <button class="btn small ghost" id="clear">Clear</button>
+    </div>
+    <div class="reader-toolbar" id="scopes" role="group" aria-label="Search scope" style="margin-bottom:0">
+      <button class="btn small" data-scope="all">All</button>
+      <button class="btn small ghost" data-scope="word">Vocabulary</button>
+      <button class="btn small ghost" data-scope="lesson">Lessons</button>
+      <button class="btn small ghost" data-scope="quran">Quran</button>
+    </div>
+    <p class="sub" id="status" role="status" aria-live="polite" style="margin:10px 0 0">Type at least two characters — Arabic needs no diacritics.</p>
+  </div>
+
+  <div id="results"></div>
+</main>
+
+<footer class="site-footer">Islam Academy — Search</footer>
+<script>
+if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('../sw.js').catch(function () {});
+  });
+}
+</script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>
+(async function () {
+  const { el } = Academy;
+
+  const input = document.getElementById("q");
+  const status = document.getElementById("status");
+  const results = document.getElementById("results");
+  const scopes = document.getElementById("scopes");
+
+  // ---- normalisation ---------------------------------------------------
+  // Diacritics are stripped and the hamza/alef/ya/ta-marbuta variants folded,
+  // so "رحمه" finds "رَحْمَة" and a learner can type Arabic as they read it.
+  const TASHKEEL = /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7-\u06E8\u06EA-\u06ED]/g;
+  function normAr(s) {
+    return String(s || "").replace(TASHKEEL, "")
+      .replace(/[\u0622\u0623\u0625\u0671]/g, "\u0627")
+      .replace(/\u0649/g, "\u064A")
+      .replace(/\u0626/g, "\u064A")
+      .replace(/\u0624/g, "\u0648")
+      .replace(/\u0629/g, "\u0647")
+      .replace(/\u0640/g, "")
+      .trim();
+  }
+  const normEn = (s) => String(s || "").toLowerCase().trim();
+  const hasArabic = (s) => /[\u0600-\u06FF]/.test(s);
+
+  // ---- index -----------------------------------------------------------
+  let vocab = [], lessons = [], surahs = [];
+  const metaByNum = {};
+
+  try {
+    const [decks, levels, meta] = await Promise.all([
+      Academy.fetchJSON("../data/curriculum/decks.json"),
+      Academy.fetchJSON("../data/curriculum/levels.json"),
+      Academy.fetchJSON("../data/quran/surah_meta.json"),
+    ]);
+    Object.entries(decks).forEach(([id, deck]) => {
+      (deck.words || []).forEach((w) => vocab.push({
+        ar: w.ar, en: w.en, tl: w.tl, freq: w.freq || 0,
+        deckId: id, deckTitle: deck.title,
+      }));
+    });
+    Object.entries(levels).forEach(([num, lv]) => {
+      (lv.lessons || []).forEach((L) => lessons.push({
+        id: L.id, title: L.title, level: num, levelTitle: lv.title,
+        text: (L.explain || []).join(" ") + " " + (L.drills || []).map((d) => d.q || "").join(" "),
+      }));
+    });
+    (meta || []).forEach((s) => { surahs.push(s); metaByNum[s.number] = s; });
+  } catch (e) {
+    Academy.errorPanel(results, "the search index");
+    return;
+  }
+
+  // Quran text is ~2.4 MB, so it is fetched only on the first real search and
+  // cached by the page afterwards instead of slowing every visit down.
+  let quranData = null, quranPromise = null;
+  function loadQuran() {
+    if (quranPromise) return quranPromise;
+    quranPromise = Promise.all([
+      Academy.fetchJSON("../data/quran/translation_en.json").catch(() => ({})),
+      Academy.fetchJSON("../data/quran/uthmani.json").catch(() => ({})),
+    ]).then(function (both) {
+      quranData = { trans: both[0] || {}, text: both[1] || {} };
+      return quranData;
+    });
+    return quranPromise;
+  }
+
+  // ---- search ----------------------------------------------------------
+  let scope = "all";
+  let searchToken = 0;
+
+  function score(field, needle) {
+    if (!field) return -1;
+    const i = field.indexOf(needle);
+    if (i < 0) return -1;
+    return i === 0 ? 2 : 1; // prefix beats a mid-string hit
+  }
+
+  function matchWord(w, ql, qa) {
+    const s = Math.max(score(normEn(w.en), ql), score(normEn(w.tl), ql), score(normAr(w.ar), qa));
+    return s < 0 ? -1 : s * 1000 + Math.min(w.freq, 999);
+  }
+  function matchLesson(L, ql, qa) {
+    const s = Math.max(score(normEn(L.title), ql), score(normEn(L.text), ql), score(normAr(L.title), qa));
+    return s < 0 ? -1 : s;
+  }
+  function matchSurah(s, ql, qa) {
+    const hit = Math.max(score(normEn(s.name), ql), score(normAr(s.name), qa)) >= 0 ||
+      String(s.number) === ql;
+    return hit ? 1 : -1;
+  }
+
+  const LIMIT = { word: 40, lesson: 25, surah: 20, ayah: 60 };
+
+  async function run() {
+    const q = input.value.trim();
+    const token = ++searchToken;
+    results.replaceChildren();
+    if (q.length < 2) {
+      status.textContent = q
+        ? "Keep typing — at least two characters."
+        : "Type at least two characters — Arabic needs no diacritics.";
+      return;
+    }
+    const ql = normEn(q), qa = normAr(q);
+    status.textContent = "Searching…";
+
+    const includeWord = scope === "all" || scope === "word";
+    const includeLesson = scope === "all" || scope === "lesson";
+    const includeQuran = scope === "all" || scope === "quran";
+
+    let words = [], less = [], suras = [], ayat = [];
+    if (includeWord) {
+      words = vocab.map((w) => ({ w: w, s: matchWord(w, ql, qa) })).filter((x) => x.s >= 0)
+        .sort((a, b) => b.s - a.s).slice(0, LIMIT.word).map((x) => x.w);
+    }
+    if (includeLesson) {
+      less = lessons.map((L) => ({ L: L, s: matchLesson(L, ql, qa) })).filter((x) => x.s >= 0)
+        .sort((a, b) => b.s - a.s || a.L.id.localeCompare(b.L.id)).slice(0, LIMIT.lesson).map((x) => x.L);
+    }
+    if (includeQuran) {
+      suras = surahs.filter((s) => matchSurah(s, ql, qa) >= 0).slice(0, LIMIT.surah);
+
+      await loadQuran();
+      if (token !== searchToken) return; // a newer keystroke won
+      const { trans, text } = quranData || { trans: {}, text: {} };
+      const arabicQuery = hasArabic(q);
+      for (const n of Object.keys(trans)) {
+        if (ayat.length >= LIMIT.ayah) break;
+        const verses = trans[n] || [];
+        for (let i = 0; i < verses.length; i++) {
+          if (ayat.length >= LIMIT.ayah) break;
+          const v = verses[i];
+          const en = (v && v.t) || "";
+          const arRaw = (((text[n] || [])[i]) || {}).t || "";
+          const hitEn = ql.length >= 2 && normEn(en).indexOf(ql) >= 0;
+          const hitAr = arabicQuery && normAr(arRaw).indexOf(qa) >= 0;
+          if (hitEn || hitAr) {
+            ayat.push({ surah: Number(n), ayah: (v && v.v) || i + 1, en: en, ar: arRaw });
+          }
+        }
+      }
+    }
+
+    if (token !== searchToken) return;
+
+    const total = words.length + less.length + suras.length + ayat.length;
+    status.textContent = total
+      ? total + " result" + (total === 1 ? "" : "s") + " for “" + q + "”"
+        + (includeQuran && ayat.length >= LIMIT.ayah ? " (showing the first " + LIMIT.ayah + " ayat)" : "")
+      : "Nothing matched “" + q + "”. Try a shorter word.";
+
+    if (!total) return;
+
+    const frag = [];
+    if (words.length) frag.push(section("Vocabulary", words.length, words.map(wordCard)));
+    if (less.length) frag.push(section("Lessons", less.length, less.map(lessonCard)));
+    if (suras.length) frag.push(section("Surahs", suras.length, suras.map(surahCard)));
+    if (ayat.length) frag.push(section("Quran", ayat.length, ayat.map(ayahCard)));
+    results.replaceChildren(...frag);
+  }
+
+  function section(title, count, cards) {
+    return el("section", {style: "margin-bottom:22px"},
+      el("h2", {class: "section-title", style: "margin-top:0"}, title + " ", el("span", {style: "color:var(--ink-soft);font-weight:500;font-size:14px"}, "(" + count + ")")),
+      el("div", {style: "display:grid;gap:8px"}, ...cards)
+    );
+  }
+
+  function wordCard(w) {
+    const ar = el("div", {class: "ar", style: "font-size:22px;font-weight:600;line-height:1.4"}, w.ar);
+    return el("a", {class: "card", style: "display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;padding:12px 14px",
+      href: "vocabulary.html?deck=" + encodeURIComponent(w.deckId) + "&q=" + encodeURIComponent(w.ar)},
+      ar,
+      el("div", {style: "flex:1;min-width:0"},
+        el("div", {style: "font-weight:700"}, w.en || ""),
+        el("div", {style: "font-size:12px;color:var(--ink-soft)"}, (w.tl || "") + " · " + w.deckTitle)),
+      w.freq ? el("span", {class: "badge"}, "×" + w.freq) : null
+    );
+  }
+
+  function lessonCard(L) {
+    return el("a", {class: "card", style: "display:block;text-decoration:none;color:inherit;padding:12px 14px",
+      href: "grammar.html?level=" + encodeURIComponent(L.level) + "&lesson=" + encodeURIComponent(L.id)},
+      el("div", {style: "font-weight:700"}, L.id + " — " + L.title),
+      el("div", {style: "font-size:12px;color:var(--ink-soft)"}, L.levelTitle)
+    );
+  }
+
+  function surahCard(s) {
+    return el("a", {class: "card", style: "display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;padding:12px 14px",
+      href: "quran-reader.html?surah=" + s.number},
+      el("span", {class: "badge"}, String(s.number)),
+      el("div", {style: "flex:1;min-width:0"},
+        el("div", {style: "font-weight:700"}, "Surah " + s.name),
+        el("div", {style: "font-size:12px;color:var(--ink-soft)"}, s.ayahs + " ayat · " + s.revelation))
+    );
+  }
+
+  function ayahCard(a) {
+    const info = metaByNum[a.surah];
+    const name = info ? info.name : "Surah " + a.surah;
+    const snippet = a.en.length > 220 ? a.en.slice(0, 217) + "…" : a.en;
+    return el("a", {class: "card", style: "display:block;text-decoration:none;color:inherit;padding:12px 14px",
+      href: "quran-reader.html?surah=" + a.surah + "&ayah=" + a.ayah},
+      el("div", {style: "display:flex;justify-content:space-between;gap:10px;align-items:baseline"},
+        el("div", {style: "font-weight:700"}, name + " · " + a.ayah),
+        el("div", {style: "font-size:11px;color:var(--gold-600);white-space:nowrap"}, a.surah + ":" + a.ayah)),
+      a.ar ? el("div", {class: "quran-text", style: "font-size:20px;text-align:right;margin:6px 0;direction:rtl"}, a.ar) : null,
+      el("div", {style: "font-size:13px;color:var(--ink-soft)"}, snippet)
+    );
+  }
+
+  // ---- wiring ----------------------------------------------------------
+  function setScope(s) {
+    scope = s;
+    scopes.querySelectorAll("button").forEach((b) => {
+      const on = b.dataset.scope === scope;
+      b.className = on ? "btn small" : "btn small ghost";
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+  scopes.querySelectorAll("button").forEach((b) => {
+    b.addEventListener("click", () => { setScope(b.dataset.scope); run(); });
+  });
+
+  let debounce = null;
+  input.addEventListener("input", function () {
+    clearTimeout(debounce);
+    debounce = setTimeout(run, 180);
+  });
+  input.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      clearTimeout(debounce);
+      run().then(function () {
+        const first = results.querySelector("a.card");
+        if (first) first.focus();
+      });
+    } else if (e.key === "Escape") {
+      input.value = "";
+      run();
+    }
+  });
+  document.getElementById("go").addEventListener("click", () => { clearTimeout(debounce); run(); });
+  document.getElementById("clear").addEventListener("click", function () {
+    input.value = "";
+    input.focus();
+    run();
+  });
+
+  setScope("all");
+
+  // ?q= deep link, e.g. from a word's page.
+  const prefill = new URLSearchParams(location.search).get("q");
+  if (prefill) { input.value = prefill; run(); } else { input.focus(); }
+})();
+</script>
+</body>
+</html>

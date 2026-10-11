@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Islam Academy">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b3d2e"/>
+      <stop offset="0.55" stop-color="#14532d"/>
+      <stop offset="1" stop-color="#1d6b3f"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6c860"/>
+      <stop offset="1" stop-color="#c9a227"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="104" fill="url(#bg)"/>
+  <rect x="18" y="18" width="476" height="476" rx="90" fill="none" stroke="url(#gold)" stroke-width="4" opacity="0.55"/>
+  <g fill="none" stroke="url(#gold)" stroke-width="3" opacity="0.22">
+    <path d="M256 74l38 66 74 11-53 52 12 73-71-37-71 37 12-73-53-52 74-11z"/>
+    <circle cx="256" cy="256" r="196"/>
+  </g>
+  <text x="256" y="352" font-family="Amiri Quran, Amiri, Noto Naskh Arabic, serif"
+        font-size="268" fill="url(#gold)" text-anchor="middle">ق</text>
+</svg>

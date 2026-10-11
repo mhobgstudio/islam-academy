@@ -7,7 +7,8 @@
     "ar": "الله",
     "tl": "Allah",
     "en": "Allah",
-    "freq": 2699
+    "freq": 2699,
+    "root": "أ.ل.ه"
    },
    {
     "ar": "قال",
@@ -29,7 +30,8 @@
     "ar": "الذين",
     "tl": "alladhina",
     "en": "those who",
-    "freq": 1672
+    "freq": 1672,
+    "type": "relative"
    },
    {
     "ar": "ربّ",
@@ -69,7 +71,7 @@
     "en": "the people/mankind",
     "freq": 244,
     "root": "ن.و.س",
-    "pattern": "أَفْعَال"
+    "pattern": "فَعَل"
    },
    {
     "ar": "الكتاب",
@@ -91,27 +93,33 @@
     "ar": "حياة",
     "tl": "hayaat",
     "en": "life",
-    "freq": 183
+    "freq": 183,
+    "root": "ح.ي.ي",
+    "pattern": "فَعَالَة"
    },
    {
     "ar": "كافر",
     "tl": "kaafir",
     "en": "disbeliever",
-    "freq": 166
+    "freq": 166,
+    "root": "ك.ف.ر",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "رأى",
     "tl": "ra'a",
     "en": "saw",
     "freq": 163,
-    "root": "ر.ء.ي",
+    "root": "ر.أ.ي",
     "pattern": "فَعَلَ"
    },
    {
     "ar": "خلق",
     "tl": "khalq",
     "en": "creation",
-    "freq": 156
+    "freq": 156,
+    "root": "خ.ل.ق",
+    "pattern": "فَعْل"
    },
    {
     "ar": "موسى",
@@ -135,7 +143,7 @@
     "en": "the sky/heaven",
     "freq": 117,
     "root": "س.م.و",
-    "pattern": "إِفْعَالَة"
+    "pattern": "فَعَال"
    },
    {
     "ar": "عذاب",
@@ -158,7 +166,7 @@
     "tl": "aakhira",
     "en": "hereafter",
     "freq": 115,
-    "root": "ء.خ.ر",
+    "root": "أ.خ.ر",
     "pattern": "فَعْلة"
    },
    {
@@ -210,12 +218,12 @@
     "pattern": "فَعْل"
    },
    {
-    "ar": "علم",
+    "ar": "عَلِمَ",
     "tl": "alima",
-    "en": "knew",
+    "en": "he knew / to know",
     "freq": 81,
     "root": "ع.ل.م",
-    "pattern": "فَعْل"
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "رحمة",
@@ -278,7 +286,7 @@
     "tl": "maa'",
     "en": "water",
     "freq": 65,
-    "root": "م.ء.ي",
+    "root": "م.و.ه",
     "pattern": "فَعْل"
    },
    {
@@ -301,7 +309,9 @@
     "ar": "بني",
     "tl": "banee",
     "en": "sons/children of",
-    "freq": 53
+    "freq": 53,
+    "root": "ب.ن.ي",
+    "pattern": "فُعُل"
    },
    {
     "ar": "رسول",
@@ -332,8 +342,8 @@
     "tl": "saa'a",
     "en": "hour",
     "freq": 48,
-    "root": "س.ء.و",
-    "pattern": "فَعْلة"
+    "root": "س.و.ع",
+    "pattern": "فَعْلَة"
    },
    {
     "ar": "نوح",
@@ -341,7 +351,7 @@
     "en": "Noah",
     "freq": 43,
     "root": "ن.و.ح",
-    "pattern": "فَعُول"
+    "pattern": "فُعْل"
    },
    {
     "ar": "سبيل",
@@ -372,7 +382,7 @@
     "tl": "shay'",
     "en": "thing",
     "freq": 36,
-    "root": "ش.ء.ي",
+    "root": "ش.ي.أ",
     "pattern": "فَعْل"
    },
    {
@@ -403,7 +413,9 @@
     "ar": "جنّ",
     "tl": "jinn",
     "en": "jinn",
-    "freq": 29
+    "freq": 29,
+    "root": "ج.ن.ن",
+    "pattern": "فَعْل"
    },
    {
     "ar": "جبال",
@@ -425,43 +437,57 @@
     "ar": "جازاء",
     "tl": "jazaa'",
     "en": "recompense",
-    "freq": 23
+    "freq": 23,
+    "root": "ج.ز.ي",
+    "pattern": "فَعَال"
    },
    {
     "ar": "كذب",
     "tl": "kadhib",
     "en": "lying",
-    "freq": 22
+    "freq": 22,
+    "root": "ك.ذ.ب",
+    "pattern": "فَعِل"
    },
    {
     "ar": "كلام",
     "tl": "kalam",
     "en": "speech/words",
-    "freq": 21
+    "freq": 21,
+    "root": "ك.ل.م",
+    "pattern": "فَعَال"
    },
    {
     "ar": "حساب",
     "tl": "hisaab",
     "en": "account",
-    "freq": 21
+    "freq": 21,
+    "root": "ح.س.ب",
+    "pattern": "فَعَال"
    },
    {
     "ar": "طريق",
     "tl": "tareeq",
     "en": "road",
-    "freq": 20
+    "freq": 20,
+    "root": "ط.ر.ق",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "ظلم",
     "tl": "zulm",
     "en": "injustice/oppression",
-    "freq": 20
+    "freq": 20,
+    "root": "ظ.ل.م",
+    "pattern": "فَعْل"
    },
    {
     "ar": "نبيّ",
     "tl": "nabiyy",
     "en": "prophet",
-    "freq": 19
+    "freq": 19,
+    "root": "ن.ب.أ",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "موت",
@@ -491,19 +517,25 @@
     "ar": "قلب",
     "tl": "qalb",
     "en": "heart",
-    "freq": 13
+    "freq": 13,
+    "root": "ق.ل.ب",
+    "pattern": "فَعْل"
    },
    {
     "ar": "أكل",
     "tl": "akala",
     "en": "ate",
-    "freq": 13
+    "freq": 13,
+    "root": "أ.ك.ل",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "عقاب",
     "tl": "uqooba",
     "en": "recompense/punishment",
-    "freq": 13
+    "freq": 13,
+    "root": "ع.ق.ب",
+    "pattern": "فَعَال"
    },
    {
     "ar": "ليل",
@@ -517,187 +549,249 @@
     "ar": "دنيا",
     "tl": "dunya",
     "en": "world (this life)",
-    "freq": 11
+    "freq": 11,
+    "root": "د.ن.و",
+    "pattern": "فُعْلَى"
    },
    {
     "ar": "مشى",
     "tl": "mashaa",
     "en": "walked",
-    "freq": 11
+    "freq": 11,
+    "root": "م.ش.ي",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "صبر",
     "tl": "sabr",
     "en": "patience",
-    "freq": 10
+    "freq": 10,
+    "root": "ص.ب.ر",
+    "pattern": "فَعْل"
    },
    {
     "ar": "مؤمن",
     "tl": "mu'min",
     "en": "believer",
-    "freq": 8
+    "freq": 8,
+    "root": "أ.م.ن",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "باب",
     "tl": "baab",
     "en": "door",
-    "freq": 7
+    "freq": 7,
+    "root": "ب.و.ب",
+    "pattern": "فَعْل"
    },
    {
     "ar": "حجّ",
     "tl": "hajj",
     "en": "pilgrimage",
-    "freq": 7
+    "freq": 7,
+    "root": "ح.ج.ج",
+    "pattern": "فَعْل"
    },
    {
     "ar": "نجوم",
     "tl": "nujoom",
     "en": "stars",
-    "freq": 7
+    "freq": 7,
+    "root": "ن.ج.م",
+    "pattern": "فُعُول"
    },
    {
     "ar": "أمّة",
     "tl": "umma",
     "en": "nation/community",
-    "freq": 6
+    "freq": 6,
+    "root": "أ.م.م",
+    "pattern": "فَعْلَة"
    },
    {
     "ar": "أنعام",
     "tl": "an'aam",
     "en": "cattle",
-    "freq": 6
+    "freq": 6,
+    "root": "ن.ع.م",
+    "pattern": "أَفْعَال"
    },
    {
     "ar": "جلس",
     "tl": "jalasa",
     "en": "sat",
-    "freq": 5
+    "freq": 5,
+    "root": "ج.ل.س",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "صلاة",
     "tl": "salaah",
     "en": "prayer",
-    "freq": 5
+    "freq": 5,
+    "root": "ص.ل.و",
+    "pattern": "فَعَالَة"
    },
    {
     "ar": "إيمان",
     "tl": "eemaan",
     "en": "faith",
-    "freq": 5
+    "freq": 5,
+    "root": "أ.م.ن",
+    "pattern": "إِفْعَال"
    },
    {
     "ar": "نفاق",
     "tl": "nifaaq",
     "en": "hypocrisy",
-    "freq": 5
+    "freq": 5,
+    "root": "ن.ف.ق",
+    "pattern": "فِعَال"
    },
    {
     "ar": "صدق",
     "tl": "sidq",
     "en": "truthfulness",
-    "freq": 5
+    "freq": 5,
+    "root": "ص.د.ق",
+    "pattern": "فَعْل"
    },
    {
     "ar": "ثواب",
     "tl": "thawaab",
     "en": "reward",
-    "freq": 5
+    "freq": 5,
+    "root": "ث.و.ب",
+    "pattern": "فَعَال"
    },
    {
     "ar": "وقت",
     "tl": "waqt",
     "en": "time",
-    "freq": 5
+    "freq": 5,
+    "root": "و.ق.ت",
+    "pattern": "فَعْل"
    },
    {
     "ar": "نهار",
     "tl": "nahaar",
     "en": "day(time)",
-    "freq": 5
+    "freq": 5,
+    "root": "ن.ه.ر",
+    "pattern": "فَعَال"
    },
    {
     "ar": "نبات",
     "tl": "nabaat",
     "en": "plant",
-    "freq": 4
+    "freq": 4,
+    "root": "ن.ب.ت",
+    "pattern": "فَعَال"
    },
    {
     "ar": "محمد",
     "tl": "Muhammad",
     "en": "Muhammad ﷺ",
-    "freq": 4
+    "freq": 4,
+    "root": "ح.م.د",
+    "pattern": "مُفَعَّل"
    },
    {
     "ar": "مسلم",
     "tl": "muslim",
     "en": "muslim (one who submits)",
-    "freq": 4
+    "freq": 4,
+    "root": "س.ل.م",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "جهاد",
     "tl": "jihaad",
     "en": "striving",
-    "freq": 4
+    "freq": 4,
+    "root": "ج.ه.د",
+    "pattern": "فِعَال"
    },
    {
     "ar": "شمس",
     "tl": "shams",
     "en": "sun",
-    "freq": 4
+    "freq": 4,
+    "root": "ش.م.س",
+    "pattern": "فَعْل"
    },
    {
     "ar": "بحر",
     "tl": "bahr",
     "en": "sea",
-    "freq": 4
+    "freq": 4,
+    "root": "ب.ح.ر",
+    "pattern": "فَعْل"
    },
    {
     "ar": "أشجار",
     "tl": "ashjaar",
     "en": "trees",
-    "freq": 4
+    "freq": 4,
+    "root": "ش.ج.ر",
+    "pattern": "أَفْعَال"
    },
    {
     "ar": "شفاعة",
     "tl": "shafaa'a",
     "en": "intercession",
-    "freq": 3
+    "freq": 3,
+    "root": "ش.ف.ع",
+    "pattern": "فَعَالَة"
    },
    {
     "ar": "عدل",
     "tl": "adl",
     "en": "justice",
-    "freq": 3
+    "freq": 3,
+    "root": "ع.د.ل",
+    "pattern": "فَعْل"
    },
    {
     "ar": "قمر",
     "tl": "qamar",
     "en": "moon",
-    "freq": 3
+    "freq": 3,
+    "root": "ق.م.ر",
+    "pattern": "فَعَل"
    },
    {
     "ar": "شرب",
     "tl": "shariba",
     "en": "drank",
-    "freq": 2
+    "freq": 2,
+    "root": "ش.ر.ب",
+    "pattern": "فَعِلَ"
    },
    {
     "ar": "وقف",
     "tl": "waqafa",
     "en": "stood",
-    "freq": 1
+    "freq": 1,
+    "root": "و.ق.ف",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "صوم",
     "tl": "sawm",
     "en": "fasting",
-    "freq": 1
+    "freq": 1,
+    "root": "ص.و.م",
+    "pattern": "فَعْل"
    },
    {
     "ar": "غفران",
     "tl": "maghfira",
     "en": "forgiveness",
-    "freq": 1
+    "freq": 1,
+    "root": "غ.ف.ر",
+    "pattern": "فُعْلَان"
    }
   ]
  },
@@ -708,242 +802,338 @@
    {
     "ar": "ولد",
     "tl": "walad",
-    "en": "boy"
+    "en": "boy",
+    "root": "و.ل.د",
+    "pattern": "فَعَل"
    },
    {
     "ar": "بنت",
     "tl": "bint",
-    "en": "girl"
+    "en": "girl",
+    "root": "ب.ن.ت",
+    "pattern": "فِعْل"
    },
    {
     "ar": "رجل",
     "tl": "rajul",
-    "en": "man"
+    "en": "man",
+    "root": "ر.ج.ل",
+    "pattern": "فَعُل"
    },
    {
     "ar": "امرأة",
     "tl": "imra'a",
-    "en": "woman"
+    "en": "woman",
+    "root": "م.ر.أ",
+    "pattern": "فَعْلَأَة"
    },
    {
     "ar": "أب",
     "tl": "ab",
-    "en": "father"
+    "en": "father",
+    "root": "أ.ب.و",
+    "pattern": "فَعْل"
    },
    {
     "ar": "أم",
     "tl": "umm",
-    "en": "mother"
+    "en": "mother",
+    "root": "أ.م.م",
+    "pattern": "فَعْل"
    },
    {
     "ar": "أخ",
     "tl": "akh",
-    "en": "brother"
+    "en": "brother",
+    "root": "أ.خ.و",
+    "pattern": "فَعْل"
    },
    {
     "ar": "أخت",
     "tl": "ukht",
-    "en": "sister"
+    "en": "sister",
+    "root": "أ.خ.و",
+    "pattern": "فَعْلَة"
    },
    {
     "ar": "طالب",
     "tl": "talib",
-    "en": "student"
+    "en": "student",
+    "root": "ط.ل.ب",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "معلم",
     "tl": "mu'allim",
-    "en": "teacher"
+    "en": "teacher",
+    "root": "ع.ل.م",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "طبيب",
     "tl": "tabeeb",
-    "en": "doctor"
+    "en": "doctor",
+    "root": "ط.ب.ب",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "تاجر",
     "tl": "tajir",
-    "en": "merchant"
+    "en": "merchant",
+    "root": "ت.ج.ر",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "مدرسة",
     "tl": "madrasa",
-    "en": "school"
+    "en": "school",
+    "root": "د.ر.س",
+    "pattern": "مَفْعَلَة"
    },
    {
     "ar": "جامعة",
     "tl": "jaami'a",
-    "en": "university"
+    "en": "university",
+    "root": "ج.م.ع",
+    "pattern": "فَاعِلَة"
    },
    {
     "ar": "مسجد",
     "tl": "masjid",
-    "en": "mosque"
+    "en": "mosque",
+    "root": "س.ج.د",
+    "pattern": "مَفْعِل"
    },
    {
     "ar": "سوق",
     "tl": "sooq",
-    "en": "market"
+    "en": "market",
+    "root": "س.و.ق",
+    "pattern": "فَعْل"
    },
    {
     "ar": "سيارة",
     "tl": "sayyaara",
-    "en": "car"
+    "en": "car",
+    "root": "س.ي.ر",
+    "pattern": "فَعَّالَة"
    },
    {
     "ar": "قطار",
     "tl": "qitaar",
-    "en": "train"
+    "en": "train",
+    "root": "ق.ط.ر",
+    "pattern": "فِعَال"
    },
    {
     "ar": "طائرة",
     "tl": "taa'ira",
-    "en": "airplane"
+    "en": "airplane",
+    "root": "ط.ي.ر",
+    "pattern": "فَاعِلَة"
    },
    {
     "ar": "سفينة",
     "tl": "safeena",
-    "en": "ship"
+    "en": "ship",
+    "root": "س.ف.ن",
+    "pattern": "فَعِيلَة"
    },
    {
     "ar": "كبير",
     "tl": "kabeer",
-    "en": "big"
+    "en": "big",
+    "root": "ك.ب.ر",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "صغير",
     "tl": "sagheer",
-    "en": "small"
+    "en": "small",
+    "root": "ص.غ.ر",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "جميل",
     "tl": "jameel",
-    "en": "beautiful"
+    "en": "beautiful",
+    "root": "ج.م.ل",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "طويل",
     "tl": "taweel",
-    "en": "tall/long"
+    "en": "tall/long",
+    "root": "ط.و.ل",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "قصير",
     "tl": "qaseer",
-    "en": "short"
+    "en": "short",
+    "root": "ق.ص.ر",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "جديد",
     "tl": "jadeed",
-    "en": "new"
+    "en": "new",
+    "root": "ج.د.د",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "قديم",
     "tl": "qadeem",
-    "en": "old"
+    "en": "old",
+    "root": "ق.د.م",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "سهل",
     "tl": "sahl",
-    "en": "easy"
+    "en": "easy",
+    "root": "س.ه.ل",
+    "pattern": "فَعْل"
    },
    {
     "ar": "صعب",
     "tl": "sa'b",
-    "en": "difficult"
+    "en": "difficult",
+    "root": "ص.ع.ب",
+    "pattern": "فَعْل"
    },
    {
     "ar": "حلو",
     "tl": "hulw",
-    "en": "sweet/nice"
+    "en": "sweet/nice",
+    "root": "ح.ل.و",
+    "pattern": "فَعْل"
    },
    {
     "ar": "مرّ",
     "tl": "murr",
-    "en": "bitter"
+    "en": "bitter",
+    "root": "م.ر.ر",
+    "pattern": "فَعْل"
    },
    {
     "ar": "ساخن",
     "tl": "saakhin",
-    "en": "hot"
+    "en": "hot",
+    "root": "س.خ.ن",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "بارد",
     "tl": "baarid",
-    "en": "cold"
+    "en": "cold",
+    "root": "ب.ر.د",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "نظيف",
     "tl": "nadheef",
-    "en": "clean"
+    "en": "clean",
+    "root": "ن.ظ.ف",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "وسخ",
     "tl": "wasikh",
-    "en": "dirty"
+    "en": "dirty",
+    "root": "و.س.خ",
+    "pattern": "فَعِل"
    },
    {
     "ar": "غني",
     "tl": "ghanee",
-    "en": "rich"
+    "en": "rich",
+    "root": "غ.ن.ي",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "فقير",
     "tl": "faqeer",
-    "en": "poor"
+    "en": "poor",
+    "root": "ف.ق.ر",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "قوي",
     "tl": "qawiyy",
-    "en": "strong"
+    "en": "strong",
+    "root": "ق.و.ي",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "ضعيف",
     "tl": "da'eef",
-    "en": "weak"
+    "en": "weak",
+    "root": "ض.ع.ف",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "سعيد",
     "tl": "sa'eed",
-    "en": "happy"
+    "en": "happy",
+    "root": "س.ع.د",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "حزين",
     "tl": "hazeen",
-    "en": "sad"
+    "en": "sad",
+    "root": "ح.ز.ن",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "ذكي",
     "tl": "dhakee",
-    "en": "intelligent"
+    "en": "intelligent",
+    "root": "ذ.ك.ي",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "غبي",
     "tl": "ghabee",
-    "en": "foolish"
+    "en": "foolish",
+    "root": "غ.ب.ي",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "شجاع",
     "tl": "shujaa'",
-    "en": "brave"
+    "en": "brave",
+    "root": "ش.ج.ع",
+    "pattern": "فَعَال"
    },
    {
     "ar": "خائف",
     "tl": "khaa'if",
-    "en": "afraid"
+    "en": "afraid",
+    "root": "خ.و.ف",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "جوعان",
     "tl": "joo'aan",
-    "en": "hungry"
+    "en": "hungry",
+    "root": "ج.و.ع",
+    "pattern": "فَعْلَان"
    },
    {
     "ar": "عطشان",
     "tl": "'atshaan",
-    "en": "thirsty"
+    "en": "thirsty",
+    "root": "ع.ط.ش",
+    "pattern": "فَعْلَان"
    },
    {
     "ar": "متعب",
     "tl": "mut'ab",
-    "en": "tired"
+    "en": "tired",
+    "root": "ت.ع.ب",
+    "pattern": "مُفْعَل"
    }
   ]
  },
@@ -961,7 +1151,9 @@
    {
     "ar": "قالوا",
     "tl": "qaaloo",
-    "en": "they said"
+    "en": "they said",
+    "root": "ق.و.ل",
+    "pattern": "فَعَلُوا"
    },
    {
     "ar": "كان",
@@ -973,12 +1165,16 @@
    {
     "ar": "كانوا",
     "tl": "kaanoo",
-    "en": "they were"
+    "en": "they were",
+    "root": "ك.و.ن",
+    "pattern": "فَعَلُوا"
    },
    {
     "ar": "فعل",
     "tl": "fa'ala",
-    "en": "did"
+    "en": "did",
+    "root": "ف.ع.ل",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "عمل",
@@ -991,7 +1187,7 @@
     "ar": "جاء",
     "tl": "jaa'a",
     "en": "came",
-    "root": "ج.ي.ء",
+    "root": "ج.ي.أ",
     "pattern": "فَعَلَ"
    },
    {
@@ -1004,29 +1200,37 @@
    {
     "ar": "ذهب",
     "tl": "dhahaba",
-    "en": "went"
+    "en": "went",
+    "root": "ذ.ه.ب",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "خرج",
     "tl": "kharaja",
-    "en": "exited/left"
+    "en": "exited/left",
+    "root": "خ.ر.ج",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "دخل",
     "tl": "dakhala",
-    "en": "entered"
+    "en": "entered",
+    "root": "د.خ.ل",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "رأى",
     "tl": "ra'aa",
     "en": "saw",
-    "root": "ر.ء.ي",
+    "root": "ر.أ.ي",
     "pattern": "فَعَلَ"
    },
    {
     "ar": "نظر",
     "tl": "nazara",
-    "en": "looked"
+    "en": "looked",
+    "root": "ن.ظ.ر",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "سمع",
@@ -1038,7 +1242,9 @@
    {
     "ar": "عرف",
     "tl": "arafa",
-    "en": "knew"
+    "en": "knew",
+    "root": "ع.ر.ف",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "علم",
@@ -1050,7 +1256,9 @@
    {
     "ar": "فهم",
     "tl": "fahima",
-    "en": "understood"
+    "en": "understood",
+    "root": "ف.ه.م",
+    "pattern": "فَعِلَ"
    },
    {
     "ar": "ذكر",
@@ -1062,177 +1270,247 @@
    {
     "ar": "نسى",
     "tl": "nasiya",
-    "en": "forgot"
+    "en": "forgot",
+    "root": "ن.س.ي",
+    "pattern": "فَعِلَ"
    },
    {
     "ar": "أخذ",
     "tl": "akhadha",
-    "en": "took"
+    "en": "took",
+    "root": "أ.خ.ذ",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "أعطى",
     "tl": "a'taa",
-    "en": "gave"
+    "en": "gave",
+    "root": "ع.ط.و",
+    "pattern": "أَفْعَلَ"
    },
    {
     "ar": "وضع",
     "tl": "wada'a",
-    "en": "placed"
+    "en": "placed",
+    "root": "و.ض.ع",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "حمل",
     "tl": "hamala",
-    "en": "carried"
+    "en": "carried",
+    "root": "ح.م.ل",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "أكل",
     "tl": "akala",
-    "en": "ate"
+    "en": "ate",
+    "root": "أ.ك.ل",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "شرب",
     "tl": "shariba",
-    "en": "drank"
+    "en": "drank",
+    "root": "ش.ر.ب",
+    "pattern": "فَعِلَ"
    },
    {
     "ar": "لبس",
     "tl": "labisa",
-    "en": "wore"
+    "en": "wore",
+    "root": "ل.ب.س",
+    "pattern": "فَعِلَ"
    },
    {
     "ar": "نام",
     "tl": "naama",
-    "en": "slept"
+    "en": "slept",
+    "root": "ن.و.م",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "قام",
     "tl": "qaama",
-    "en": "stood"
+    "en": "stood",
+    "root": "ق.و.م",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "جلس",
     "tl": "jalasa",
-    "en": "sat"
+    "en": "sat",
+    "root": "ج.ل.س",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "مشى",
     "tl": "mashaa",
-    "en": "walked"
+    "en": "walked",
+    "root": "م.ش.ي",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "ركب",
     "tl": "rakiba",
-    "en": "rode"
+    "en": "rode",
+    "root": "ر.ك.ب",
+    "pattern": "فَعِلَ"
    },
    {
     "ar": "كتب",
     "tl": "kataba",
-    "en": "wrote"
+    "en": "wrote",
+    "root": "ك.ت.ب",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "قرأ",
     "tl": "qara'a",
-    "en": "read"
+    "en": "read",
+    "root": "ق.ر.أ",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "درس",
     "tl": "darasa",
-    "en": "studied"
+    "en": "studied",
+    "root": "د.ر.س",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "تعلم",
     "tl": "ta'allama",
-    "en": "learned"
+    "en": "learned",
+    "root": "ع.ل.م",
+    "pattern": "تَفَعَّلَ"
    },
    {
     "ar": "علّم",
     "tl": "allama",
-    "en": "taught"
+    "en": "taught",
+    "root": "ع.ل.م",
+    "pattern": "فَعَّلَ"
    },
    {
     "ar": "سأل",
     "tl": "sa'ala",
-    "en": "asked"
+    "en": "asked",
+    "root": "س.أ.ل",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "أجاب",
     "tl": "ajaaba",
-    "en": "answered"
+    "en": "answered",
+    "root": "ج.و.ب",
+    "pattern": "أَفْعَلَ"
    },
    {
     "ar": "فتح",
     "tl": "fataha",
-    "en": "opened"
+    "en": "opened",
+    "root": "ف.ت.ح",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "أغلق",
     "tl": "aghlaqa",
-    "en": "closed"
+    "en": "closed",
+    "root": "غ.ل.ق",
+    "pattern": "أَفْعَلَ"
    },
    {
     "ar": "بنى",
     "tl": "banaa",
-    "en": "built"
+    "en": "built",
+    "root": "ب.ن.ي",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "صنع",
     "tl": "sana'a",
-    "en": "made"
+    "en": "made",
+    "root": "ص.ن.ع",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "وجد",
     "tl": "wajada",
-    "en": "found"
+    "en": "found",
+    "root": "و.ج.د",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "بحث",
     "tl": "bahatha",
-    "en": "searched"
+    "en": "searched",
+    "root": "ب.ح.ث",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "انتظر",
     "tl": "intaZara",
-    "en": "waited"
+    "en": "waited",
+    "root": "ن.ظ.ر",
+    "pattern": "اِفْتَعَلَ"
    },
    {
     "ar": "سافر",
     "tl": "saafara",
-    "en": "traveled"
+    "en": "traveled",
+    "root": "س.ف.ر",
+    "pattern": "فَاعَلَ"
    },
    {
     "ar": "عاد",
     "tl": "aada",
-    "en": "returned"
+    "en": "returned",
+    "root": "ع.و.د",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "دعا",
     "tl": "da'aa",
-    "en": "called/supplicated"
+    "en": "called/supplicated",
+    "root": "د.ع.و",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "استمع",
     "tl": "istami'a",
-    "en": "listened"
+    "en": "listened",
+    "root": "س.م.ع",
+    "pattern": "اِفْتَعَلَ"
    },
    {
     "ar": "أمن",
     "tl": "amina",
-    "en": "felt safe"
+    "en": "felt safe",
+    "root": "أ.م.ن",
+    "pattern": "فَعِلَ"
    },
    {
     "ar": "خاف",
     "tl": "khaafa",
-    "en": "feared"
+    "en": "feared",
+    "root": "خ.و.ف",
+    "pattern": "فَعِلَ"
    },
    {
     "ar": "حبّ",
     "tl": "ahabba",
-    "en": "loved"
+    "en": "loved",
+    "root": "ح.ب.ب",
+    "pattern": "أَفْعَلَ"
    },
    {
     "ar": "كره",
     "tl": "kariha",
-    "en": "hated"
+    "en": "hated",
+    "root": "ك.ر.ه",
+    "pattern": "فَعِلَ"
    }
   ]
  },
@@ -1243,192 +1521,250 @@
    {
     "ar": "بِسْمِ",
     "tl": "bismi",
-    "en": "in the name of"
+    "en": "in the name of",
+    "root": "س.م.و",
+    "pattern": "بِاسْمٍ"
    },
    {
     "ar": "الْحَمْدُ",
     "tl": "al-hamd",
-    "en": "all praise"
+    "en": "all praise",
+    "root": "ح.م.د",
+    "pattern": "فَعْل"
    },
    {
     "ar": "لِلَّهِ",
     "tl": "lillahi",
-    "en": "is for Allah"
+    "en": "is for Allah",
+    "root": "أ.ل.ه",
+    "pattern": "لِلّٰهِ"
    },
    {
     "ar": "رَبِّ",
     "tl": "rabbi",
-    "en": "Lord of"
-   },
-   {
-    "ar": "الْعَالَمِينَ",
-    "tl": "al-'aalameen",
-    "en": "the worlds"
+    "en": "Lord of",
+    "root": "ر.ب.ب",
+    "pattern": "فَعْل"
    },
    {
     "ar": "الرَّحْمَٰنِ",
     "tl": "ar-Rahmaan",
-    "en": "the Most Merciful"
+    "en": "the Most Merciful",
+    "root": "ر.ح.م",
+    "pattern": "فَعْلَان"
    },
    {
     "ar": "الرَّحِيمِ",
     "tl": "ar-Raheem",
-    "en": "the Most Compassionate"
+    "en": "the Most Compassionate",
+    "root": "ر.ح.م",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "مَالِكِ",
     "tl": "maaliki",
-    "en": "Master/Owner of"
+    "en": "Master/Owner of",
+    "root": "م.ل.ك",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "يَوْمِ",
     "tl": "yawmi",
-    "en": "Day of"
+    "en": "Day of",
+    "root": "ي.و.م",
+    "pattern": "فَعْل"
    },
    {
     "ar": "الدِّينِ",
     "tl": "ad-deen",
-    "en": "Judgment/Religion"
+    "en": "Judgment/Religion",
+    "root": "د.ي.ن",
+    "pattern": "فِعْل"
    },
    {
     "ar": "نَعْبُدُ",
     "tl": "na'budu",
-    "en": "we worship"
+    "en": "we worship",
+    "root": "ع.ب.د",
+    "pattern": "نَفْعُلُ"
    },
    {
     "ar": "نَسْتَعِينُ",
     "tl": "nasta'eenu",
-    "en": "we seek help"
+    "en": "we seek help",
+    "root": "ع.و.ن",
+    "pattern": "نَسْتَفْعِلُ"
    },
    {
     "ar": "اهْدِنَا",
     "tl": "ihdinaa",
-    "en": "guide us"
+    "en": "guide us",
+    "root": "ه.د.ي",
+    "pattern": "اِفْعِلْ"
    },
    {
     "ar": "الصِّرَاطَ",
     "tl": "as-siraat",
-    "en": "the path"
+    "en": "the path",
+    "root": "ص.ر.ط",
+    "pattern": "فِعَال"
    },
    {
     "ar": "الْمُسْتَقِيمَ",
     "tl": "al-mustaqeem",
-    "en": "the straight"
+    "en": "the straight",
+    "root": "ق.و.م",
+    "pattern": "مُسْتَفْعِل"
    },
    {
     "ar": "قُلْ",
     "tl": "qul",
-    "en": "say"
+    "en": "say",
+    "root": "ق.و.ل",
+    "pattern": "فُعْل"
    },
    {
     "ar": "هُوَ",
     "tl": "huwa",
-    "en": "He"
+    "en": "He",
+    "type": "pronoun"
    },
    {
     "ar": "أَحَدٌ",
     "tl": "ahad",
-    "en": "One"
+    "en": "One",
+    "root": "أ.ح.د",
+    "pattern": "فَعَل"
    },
    {
     "ar": "الصَّمَدُ",
     "tl": "as-samad",
-    "en": "Eternal/Absolute"
+    "en": "Eternal/Absolute",
+    "root": "ص.م.د",
+    "pattern": "فَعَل"
    },
    {
     "ar": "كُنْتُمْ",
     "tl": "kuntum",
-    "en": "you were"
+    "en": "you were",
+    "root": "ك.و.ن",
+    "pattern": "فُعْلْتُمْ"
    },
    {
     "ar": "أَعُوذُ",
     "tl": "a'oodhu",
-    "en": "I seek refuge"
+    "en": "I seek refuge",
+    "root": "ع.و.ذ",
+    "pattern": "أَفْعُلُ"
    },
    {
     "ar": "الْفَلَقِ",
     "tl": "al-falaq",
-    "en": "the daybreak"
+    "en": "the daybreak",
+    "root": "ف.ل.ق",
+    "pattern": "فَعَل"
    },
    {
     "ar": "النَّاسِ",
     "tl": "an-naas",
-    "en": "mankind"
+    "en": "mankind",
+    "root": "ن.و.س",
+    "pattern": "فَعَل"
    },
    {
     "ar": "الْوَسْوَاسِ",
     "tl": "al-waswaas",
-    "en": "the whisperer"
+    "en": "the whisperer",
+    "root": "و.س.و.س",
+    "pattern": "فَعْلَال"
    },
    {
     "ar": "الْخَنَّاسِ",
     "tl": "al-khannaas",
-    "en": "who withdraws"
+    "en": "who withdraws",
+    "root": "خ.ن.س",
+    "pattern": "فَعَّال"
    },
    {
     "ar": "الْعَالَمِينَ",
     "tl": "al-'aalameen",
-    "en": "of the worlds"
+    "en": "the worlds / of the worlds",
+    "root": "ع.ل.م",
+    "pattern": "فَاعِلِين"
    },
    {
     "ar": "شَرِّ",
     "tl": "sharri",
-    "en": "evil of"
+    "en": "evil of",
+    "root": "ش.ر.ر",
+    "pattern": "فَعْل"
    },
    {
     "ar": "مَا",
     "tl": "maa",
-    "en": "what/not"
+    "en": "what/not",
+    "type": "particle"
    },
    {
     "ar": "خَلَقَ",
     "tl": "khalaqa",
-    "en": "created"
+    "en": "created",
+    "root": "خ.ل.ق",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "أَنَا",
     "tl": "anaa",
-    "en": "I"
+    "en": "I",
+    "type": "pronoun"
    },
    {
     "ar": "أَنتُمْ",
     "tl": "antum",
-    "en": "you (pl.)"
+    "en": "you (pl.)",
+    "type": "pronoun"
    },
    {
     "ar": "نَحْنُ",
     "tl": "nahnu",
-    "en": "we"
+    "en": "we",
+    "type": "pronoun"
    },
    {
     "ar": "هُمْ",
     "tl": "hum",
-    "en": "they"
+    "en": "they",
+    "type": "pronoun"
    },
    {
     "ar": "هِيَ",
     "tl": "hiya",
-    "en": "she/it"
+    "en": "she/it",
+    "type": "pronoun"
    },
    {
     "ar": "هَذَا",
     "tl": "haadhaa",
-    "en": "this"
+    "en": "this",
+    "type": "demonstrative"
    },
    {
     "ar": "تِلْكَ",
     "tl": "tilka",
-    "en": "that (f.)"
+    "en": "that (f.)",
+    "type": "demonstrative"
    },
    {
     "ar": "الَّذِي",
     "tl": "alladhee",
-    "en": "who/which (m.)"
+    "en": "who/which (m.)",
+    "type": "relative"
    },
    {
     "ar": "الَّتِي",
     "tl": "allatee",
-    "en": "who/which (f.)"
+    "en": "who/which (f.)",
+    "type": "relative"
    }
   ]
  },
@@ -1440,13 +1776,15 @@
     "ar": "الله",
     "tl": "Allaah",
     "en": "God (The One God)",
-    "freq": 2699
+    "freq": 2699,
+    "root": "أ.ل.ه"
    },
    {
     "ar": "لا",
     "tl": "laa",
     "en": "no / not",
-    "freq": 1728
+    "freq": 1728,
+    "type": "particle"
    },
    {
     "ar": "قال",
@@ -1468,25 +1806,29 @@
     "ar": "الّذين",
     "tl": "alladheena",
     "en": "those who",
-    "freq": 1672
+    "freq": 1672,
+    "type": "relative"
    },
    {
     "ar": "إنّ",
     "tl": "inna",
     "en": "indeed / surely",
-    "freq": 1090
+    "freq": 1090,
+    "type": "particle"
    },
    {
     "ar": "من",
     "tl": "min",
     "en": "from / who / which",
-    "freq": 1063
+    "freq": 1063,
+    "type": "particle"
    },
    {
     "ar": "ما",
     "tl": "maa",
     "en": "what / not (negation)",
-    "freq": 978
+    "freq": 978,
+    "type": "particle"
    },
    {
     "ar": "ربّ",
@@ -1500,31 +1842,36 @@
     "ar": "في",
     "tl": "fee",
     "en": "in / into",
-    "freq": 898
+    "freq": 898,
+    "type": "particle"
    },
    {
     "ar": "هذا",
     "tl": "haadhaa",
     "en": "this",
-    "freq": 812
+    "freq": 812,
+    "type": "demonstrative"
    },
    {
     "ar": "إلى",
     "tl": "ilaa",
     "en": "to / unto",
-    "freq": 704
+    "freq": 704,
+    "type": "particle"
    },
    {
     "ar": "على",
     "tl": "'alaa",
     "en": "upon / over",
-    "freq": 616
+    "freq": 616,
+    "type": "particle"
    },
    {
     "ar": "لم",
     "tl": "lam",
     "en": "did not (negation)",
-    "freq": 486
+    "freq": 486,
+    "type": "particle"
    },
    {
     "ar": "الأرض",
@@ -1554,7 +1901,8 @@
     "ar": "إنّما",
     "tl": "innamaa",
     "en": "only / nothing but",
-    "freq": 367
+    "freq": 367,
+    "type": "particle"
    },
    {
     "ar": "كلّ",
@@ -1568,20 +1916,22 @@
     "ar": "هُمْ",
     "tl": "hum",
     "en": "they",
-    "freq": 318
+    "freq": 318,
+    "type": "pronoun"
    },
    {
     "ar": "ثمّ",
     "tl": "thumma",
     "en": "then / after that",
-    "freq": 289
+    "freq": 289,
+    "type": "particle"
    },
    {
     "ar": "شيء",
     "tl": "shay'",
     "en": "thing",
     "freq": 278,
-    "root": "ش.ء.ي",
+    "root": "ش.ي.أ",
     "pattern": "فَعْل"
    },
    {
@@ -1596,13 +1946,17 @@
     "ar": "قُلْ",
     "tl": "qul",
     "en": "Say (O Muhammad)",
-    "freq": 271
+    "freq": 271,
+    "root": "ق.و.ل",
+    "pattern": "فُعْل"
    },
    {
     "ar": "قَالُوا",
     "tl": "qaaloo",
     "en": "they said",
-    "freq": 264
+    "freq": 264,
+    "root": "ق.و.ل",
+    "pattern": "فَعَلُوا"
    },
    {
     "ar": "الناس",
@@ -1610,7 +1964,7 @@
     "en": "the people / mankind",
     "freq": 244,
     "root": "ن.و.س",
-    "pattern": "أَفْعَال"
+    "pattern": "فَعَل"
    },
    {
     "ar": "الكتاب",
@@ -1624,13 +1978,15 @@
     "ar": "إذا",
     "tl": "idhaa",
     "en": "when / if",
-    "freq": 202
+    "freq": 202,
+    "type": "particle"
    },
    {
     "ar": "قَدْ",
     "tl": "qad",
     "en": "indeed / already",
-    "freq": 194
+    "freq": 194,
+    "type": "particle"
    },
    {
     "ar": "حقّ",
@@ -1644,7 +2000,9 @@
     "ar": "يقول",
     "tl": "yaqoolu",
     "en": "he says",
-    "freq": 178
+    "freq": 178,
+    "root": "ق.و.ل",
+    "pattern": "يَفْعُلُ"
    },
    {
     "ar": "كفّار",
@@ -1659,14 +2017,15 @@
     "tl": "ra'a",
     "en": "he saw",
     "freq": 163,
-    "root": "ر.ء.ي",
+    "root": "ر.أ.ي",
     "pattern": "فَعَلَ"
    },
    {
     "ar": "بِ",
     "tl": "bi",
     "en": "in / with / by",
-    "freq": 160
+    "freq": 160,
+    "type": "particle"
    },
    {
     "ar": "أتى",
@@ -1680,20 +2039,22 @@
     "ar": "أي",
     "tl": "aw",
     "en": "or",
-    "freq": 150
+    "freq": 150,
+    "type": "particle"
    },
    {
     "ar": "لَهُمْ",
     "tl": "lahum",
     "en": "for them",
-    "freq": 150
+    "freq": 150,
+    "type": "pronoun"
    },
    {
     "ar": "جاء",
     "tl": "jaa'a",
     "en": "he came",
     "freq": 146,
-    "root": "ج.ي.ء",
+    "root": "ج.ي.أ",
     "pattern": "فَعَلَ"
    },
    {
@@ -1734,7 +2095,7 @@
     "en": "the sky / heaven",
     "freq": 117,
     "root": "س.م.و",
-    "pattern": "إِفْعَالَة"
+    "pattern": "فَعَال"
    },
    {
     "ar": "عذاب",
@@ -1757,7 +2118,7 @@
     "tl": "aakhira",
     "en": "hereafter / afterlife",
     "freq": 115,
-    "root": "ء.خ.ر",
+    "root": "أ.خ.ر",
     "pattern": "فَعْلة"
    },
    {
@@ -1780,7 +2141,8 @@
     "ar": "بَلْ",
     "tl": "bal",
     "en": "rather / but",
-    "freq": 108
+    "freq": 108,
+    "type": "particle"
    },
    {
     "ar": "عمل",
@@ -1794,19 +2156,23 @@
     "ar": "أجمعين",
     "tl": "ajma'een",
     "en": "altogether / all of them",
-    "freq": 96
+    "freq": 96,
+    "root": "ج.م.ع",
+    "pattern": "أَفْعَلِين"
    },
    {
     "ar": "ذَلِكَ",
     "tl": "dhaalika",
     "en": "that (m.)",
-    "freq": 95
+    "freq": 95,
+    "type": "demonstrative"
    },
    {
     "ar": "أَنْ",
     "tl": "an",
     "en": "that / to",
-    "freq": 90
+    "freq": 90,
+    "type": "particle"
    },
    {
     "ar": "ملائكة",
@@ -1844,7 +2210,8 @@
     "ar": "وَلا",
     "tl": "walaa",
     "en": "and not / nor",
-    "freq": 80
+    "freq": 80,
+    "type": "particle"
    },
    {
     "ar": "قيامة",
@@ -1891,7 +2258,7 @@
     "tl": "qur'aan",
     "en": "Quran",
     "freq": 70,
-    "root": "ق.ر.ء",
+    "root": "ق.ر.أ",
     "pattern": "فُعْلَان"
    },
    {
@@ -1923,14 +2290,16 @@
     "tl": "maa'",
     "en": "water",
     "freq": 65,
-    "root": "م.ء.ي",
+    "root": "م.و.ه",
     "pattern": "فَعْل"
    },
    {
     "ar": "حَديث",
     "tl": "hadeeth",
     "en": "speech / narration",
-    "freq": 62
+    "freq": 62,
+    "root": "ح.د.ث",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "يَوْمَئِذٍ",
@@ -1960,13 +2329,16 @@
     "ar": "بَيْنَ",
     "tl": "bayna",
     "en": "between / among",
-    "freq": 52
+    "freq": 52,
+    "root": "ب.ي.ن",
+    "pattern": "فَعْل"
    },
    {
     "ar": "حَتَّى",
     "tl": "hattaa",
     "en": "until / so that",
-    "freq": 52
+    "freq": 52,
+    "type": "particle"
    },
    {
     "ar": "رسل",
@@ -1997,7 +2369,7 @@
     "tl": "saa'a",
     "en": "the Hour / end of time",
     "freq": 48,
-    "root": "س.ء.و",
+    "root": "س.و.ع",
     "pattern": "فَعْلة"
    },
    {
@@ -2017,16 +2389,11 @@
     "pattern": "فَاعِلِين"
    },
    {
-    "ar": "إِ",
-    "tl": "idh",
-    "en": "when (temporal)",
-    "freq": 44
-   },
-   {
     "ar": "إِذْ",
     "tl": "idh",
     "en": "when (temporal)",
-    "freq": 44
+    "freq": 44,
+    "type": "particle"
    },
    {
     "ar": "نوح",
@@ -2034,13 +2401,15 @@
     "en": "Noah (prophet)",
     "freq": 43,
     "root": "ن.و.ح",
-    "pattern": "فَعُول"
+    "pattern": "فُعْل"
    },
    {
     "ar": "لِلَّهِ",
     "tl": "lillahi",
     "en": "for Allah / to Allah",
-    "freq": 43
+    "freq": 43,
+    "root": "أ.ل.ه",
+    "pattern": "لِلّٰهِ"
    },
    {
     "ar": "سبيل",
@@ -2062,7 +2431,8 @@
     "ar": "أُولَئِكَ",
     "tl": "ulaa'ika",
     "en": "those (people)",
-    "freq": 38
+    "freq": 38,
+    "type": "demonstrative"
    },
    {
     "ar": "فرعون",
@@ -2093,14 +2463,15 @@
     "tl": "ayyaam",
     "en": "days",
     "freq": 34,
-    "root": "ع.ي.م",
+    "root": "ي.و.م",
     "pattern": "فُعَال"
    },
    {
     "ar": "تِلْكَ",
     "tl": "tilka",
     "en": "that (f.)",
-    "freq": 32
+    "freq": 32,
+    "type": "demonstrative"
    },
    {
     "ar": "ملك",
@@ -2122,7 +2493,9 @@
     "ar": "جَعَلَ",
     "tl": "ja'ala",
     "en": "He made / placed",
-    "freq": 30
+    "freq": 30,
+    "root": "ج.ع.ل",
+    "pattern": "فَعَلَ"
    },
    {
     "ar": "أبصار",
@@ -2152,13 +2525,16 @@
     "ar": "كَانُوا",
     "tl": "kaanoo",
     "en": "they were",
-    "freq": 27
+    "freq": 27,
+    "root": "ك.و.ن",
+    "pattern": "فَعَلُوا"
    },
    {
     "ar": "أَلَمْ",
     "tl": "alam",
     "en": "Did not...? (rhetorical)",
-    "freq": 26
+    "freq": 26,
+    "type": "particle"
    },
    {
     "ar": "عيسى",
@@ -2172,7 +2548,9 @@
     "ar": "جازاء",
     "tl": "jazaa'",
     "en": "recompense",
-    "freq": 23
+    "freq": 23,
+    "root": "ج.ز.ي",
+    "pattern": "فَعَال"
    },
    {
     "ar": "رَبَّنَا",
@@ -2186,55 +2564,71 @@
     "ar": "مِنْكُمْ",
     "tl": "minkum",
     "en": "from you (pl.)",
-    "freq": 23
+    "freq": 23,
+    "type": "pronoun"
    },
    {
     "ar": "كَمَا",
     "tl": "kamaa",
     "en": "just as / like",
-    "freq": 23
+    "freq": 23,
+    "type": "particle"
    },
    {
     "ar": "كذب",
     "tl": "kadhib",
     "en": "lying",
-    "freq": 22
+    "freq": 22,
+    "root": "ك.ذ.ب",
+    "pattern": "فَعِل"
    },
    {
     "ar": "كلام",
     "tl": "kalam",
     "en": "speech / words",
-    "freq": 21
+    "freq": 21,
+    "root": "ك.ل.م",
+    "pattern": "فَعَال"
    },
    {
     "ar": "حساب",
     "tl": "hisaab",
     "en": "account",
-    "freq": 21
+    "freq": 21,
+    "root": "ح.س.ب",
+    "pattern": "فَعَال"
    },
    {
     "ar": "بِسْ",
     "tl": "bis-mi",
     "en": "in the name of",
-    "freq": 21
+    "freq": 21,
+    "root": "س.م.و",
+    "pattern": "بِاسْمٍ"
    },
    {
     "ar": "طريق",
     "tl": "tareeq",
     "en": "road / way",
-    "freq": 20
+    "freq": 20,
+    "root": "ط.ر.ق",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "ظلم",
     "tl": "zulm",
     "en": "injustice / oppression",
-    "freq": 20
+    "freq": 20,
+    "root": "ظ.ل.م",
+    "pattern": "فَعْل"
    },
    {
     "ar": "بَعْضُ",
     "tl": "ba'dhu",
     "en": "some / a part of",
-    "freq": 20
+    "freq": 20,
+    "root": "ب.ع.ض",
+    "pattern": "فَعْل"
    },
    {
     "ar": "يَعْلَمُ",
@@ -2248,25 +2642,33 @@
     "ar": "نبيّ",
     "tl": "nabiyy",
     "en": "prophet",
-    "freq": 19
+    "freq": 19,
+    "root": "ن.ب.أ",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "عَالَمِينَ",
     "tl": "'aalameen",
     "en": "of the worlds",
-    "freq": 19
+    "freq": 19,
+    "root": "ع.ل.م",
+    "pattern": "فَاعِلِين"
    },
    {
     "ar": "الْعَالَمِينَ",
     "tl": "al-'aalameen",
     "en": "of the worlds (variant)",
-    "freq": 19
+    "freq": 19,
+    "root": "ع.ل.م",
+    "pattern": "فَاعِلِين"
    },
    {
     "ar": "عِنْدَ",
     "tl": "'inda",
     "en": "with / at / in the presence of",
-    "freq": 18
+    "freq": 18,
+    "root": "ع.ن.د",
+    "pattern": "فَعْل"
    },
    {
     "ar": "مَثَلٌ",
@@ -2280,13 +2682,15 @@
     "ar": "وَاللَّهُ",
     "tl": "wallaahu",
     "en": "and Allah",
-    "freq": 18
+    "freq": 18,
+    "root": "أ.ل.ه"
    },
    {
     "ar": "وَمَا",
     "tl": "wamaa",
     "en": "and what / and (not)",
-    "freq": 18
+    "freq": 18,
+    "type": "particle"
    },
    {
     "ar": "عَلِيمٌ",
@@ -2301,7 +2705,7 @@
     "tl": "natheer",
     "en": "warner",
     "freq": 18,
-    "root": "ذ.و.ر",
+    "root": "ن.ذ.ر",
     "pattern": "فَعِيل"
    },
    {
@@ -2324,13 +2728,15 @@
     "ar": "فَمَا",
     "tl": "famaa",
     "en": "so what / then (not)",
-    "freq": 16
+    "freq": 16,
+    "type": "particle"
    },
    {
     "ar": "مع",
     "tl": "ma'a",
     "en": "with / together",
-    "freq": 15
+    "freq": 15,
+    "type": "particle"
    },
    {
     "ar": "شجر",
@@ -2346,13 +2752,14 @@
     "en": "portion / share",
     "freq": 15,
     "root": "ن.ص.ب",
-    "pattern": "فَعِيب"
+    "pattern": "فَعِيل"
    },
    {
     "ar": "بِمَا",
     "tl": "bimaa",
     "en": "because of what",
-    "freq": 15
+    "freq": 15,
+    "type": "particle"
    },
    {
     "ar": "صِرَاطَ",
@@ -2366,7 +2773,9 @@
     "ar": "قلب",
     "tl": "qalb",
     "en": "heart",
-    "freq": 13
+    "freq": 13,
+    "root": "ق.ل.ب",
+    "pattern": "فَعْل"
    },
    {
     "ar": "ليل",
@@ -2388,7 +2797,9 @@
     "ar": "عِنْدِهِ",
     "tl": "'indih",
     "en": "with him / in his possession",
-    "freq": 13
+    "freq": 13,
+    "root": "ع.ن.د",
+    "pattern": "فَعْلِهِ"
    },
    {
     "ar": "يَدٌ",
@@ -2397,12 +2808,6 @@
     "freq": 13,
     "root": "ي.د.ي",
     "pattern": "فَعْل"
-   },
-   {
-    "ar": "ایک",
-    "tl": "ayka",
-    "en": "this very / the same",
-    "freq": 12
    },
    {
     "ar": "دَرَجَات",
@@ -2424,26 +2829,31 @@
     "ar": "لَهَا",
     "tl": "lahaa",
     "en": "for her / to her",
-    "freq": 12
+    "freq": 12,
+    "type": "pronoun"
    },
    {
     "ar": "دنيا",
     "tl": "dunya",
     "en": "world (this life)",
-    "freq": 11
+    "freq": 11,
+    "root": "د.ن.و",
+    "pattern": "فُعْلَى"
    },
    {
     "ar": "رَسُولِهِ",
     "tl": "rasoolihi",
     "en": "His Messenger",
-    "freq": 11
+    "freq": 11,
+    "root": "ر.س.ل",
+    "pattern": "فَعُولِهِ"
    },
    {
     "ar": "سَيِّئَات",
     "tl": "sayyi'aat",
     "en": "evil deeds / sins",
     "freq": 11,
-    "root": "س.ء.ي",
+    "root": "س.و.أ",
     "pattern": "فَعِيلَات"
    },
    {
@@ -2458,55 +2868,68 @@
     "ar": "صبر",
     "tl": "sabr",
     "en": "patience",
-    "freq": 10
+    "freq": 10,
+    "root": "ص.ب.ر",
+    "pattern": "فَعْل"
    },
    {
     "ar": "آبائكم",
     "tl": "aabaa'ikum",
     "en": "your forefathers",
-    "freq": 10
+    "freq": 10,
+    "root": "أ.ب.و",
+    "pattern": "أَفْعَالُكُمْ"
    },
    {
     "ar": "بِاللَّهِ",
     "tl": "billahi",
     "en": "in Allah",
-    "freq": 10
+    "freq": 10,
+    "root": "أ.ل.ه"
    },
    {
     "ar": "جَمِيعاً",
     "tl": "jamee'an",
     "en": "altogether",
-    "freq": 10
+    "freq": 10,
+    "root": "ج.م.ع",
+    "pattern": "فَعِيلًا"
    },
    {
     "ar": "ذَلِكُمْ",
     "tl": "dhaalikum",
     "en": "that (of yours)",
-    "freq": 10
+    "freq": 10,
+    "type": "demonstrative"
    },
    {
     "ar": "وَقَدْ",
     "tl": "waqad",
     "en": "and indeed / and already",
-    "freq": 10
+    "freq": 10,
+    "type": "particle"
    },
    {
     "ar": "وَكَانَ",
     "tl": "wakaana",
     "en": "and was",
-    "freq": 10
+    "freq": 10,
+    "root": "ك.و.ن",
+    "pattern": "وَفَعَلَ"
    },
    {
     "ar": "سَوْفَ",
     "tl": "sawfa",
     "en": "will / shall (future)",
-    "freq": 10
+    "freq": 10,
+    "type": "particle"
    },
    {
     "ar": "هُنَالِكَ",
     "tl": "hunaalika",
     "en": "there / at that place",
-    "freq": 10
+    "freq": 10,
+    "type": "demonstrative"
    },
    {
     "ar": "تَعْلَمُ",
@@ -2560,13 +2983,16 @@
     "ar": "إِلَيْكُمْ",
     "tl": "ilaykum",
     "en": "to you (pl.)",
-    "freq": 8
+    "freq": 8,
+    "type": "particle"
    },
    {
     "ar": "أَنْفُسَكُمْ",
     "tl": "anfusakum",
     "en": "yourselves",
-    "freq": 8
+    "freq": 8,
+    "root": "ن.ف.س",
+    "pattern": "أَفْعُلَكُمْ"
    },
    {
     "ar": "كَرِيمٌ",
@@ -2580,13 +3006,16 @@
     "ar": "مَعَهُمْ",
     "tl": "ma'ahum",
     "en": "with them",
-    "freq": 7
+    "freq": 7,
+    "type": "pronoun"
    },
    {
     "ar": "قُرْآنًا",
     "tl": "qur'aanan",
     "en": "Quran (accusative)",
-    "freq": 7
+    "freq": 7,
+    "root": "ق.ر.أ",
+    "pattern": "فُعْلَانًا"
    },
    {
     "ar": "طَيِّبَات",
@@ -2600,19 +3029,25 @@
     "ar": "صَاحِبَهُ",
     "tl": "saahibahu",
     "en": "his companion",
-    "freq": 5
+    "freq": 5,
+    "root": "ص.ح.ب",
+    "pattern": "فَاعِلَهُ"
    },
    {
     "ar": "صَلَوَات",
     "tl": "salaawaat",
     "en": "prayers / blessings",
-    "freq": 5
+    "freq": 5,
+    "root": "ص.ل.و",
+    "pattern": "فَعَلَات"
    },
    {
     "ar": "نَفْسِهِ",
     "tl": "nafsihi",
     "en": "his own self",
-    "freq": 5
+    "freq": 5,
+    "root": "ن.ف.س",
+    "pattern": "فَعْلِهِ"
    },
    {
     "ar": "خَلْقٌ",
@@ -2634,19 +3069,24 @@
     "ar": "وَأَمَّا",
     "tl": "wa-ammaa",
     "en": "and as for",
-    "freq": 5
+    "freq": 5,
+    "type": "particle"
    },
    {
     "ar": "لِكُلِّ",
     "tl": "likulli",
     "en": "for every",
-    "freq": 5
+    "freq": 5,
+    "root": "ك.ل.ل",
+    "pattern": "لِفَعْلٍ"
    },
    {
     "ar": "رَبِّي",
     "tl": "rabbee",
     "en": "my Lord",
-    "freq": 5
+    "freq": 5,
+    "root": "ر.ب.ب",
+    "pattern": "فَعْلِي"
    },
    {
     "ar": "طَاهِرِينَ",
@@ -2668,7 +3108,9 @@
     "ar": "لَحْمٌ",
     "tl": "lahm",
     "en": "flesh / meat",
-    "freq": 4
+    "freq": 4,
+    "root": "ل.ح.م",
+    "pattern": "فَعْل"
    },
    {
     "ar": "حِكْمَةٌ",
@@ -2682,7 +3124,9 @@
     "ar": "سَمِيعًا",
     "tl": "samee'an",
     "en": "All-Hearing",
-    "freq": 4
+    "freq": 4,
+    "root": "س.م.ع",
+    "pattern": "فَعِيلًا"
    },
    {
     "ar": "مُحَمَّدٌ",
@@ -2745,7 +3189,7 @@
     "tl": "su'aalan",
     "en": "a question / asking",
     "freq": 3,
-    "root": "س.ء.ل",
+    "root": "س.أ.ل",
     "pattern": "فُعَال"
    },
    {
@@ -2784,39 +3228,49 @@
     "ar": "كَرَمًا",
     "tl": "karaman",
     "en": "generously / nobly",
-    "freq": 2
+    "freq": 2,
+    "root": "ك.ر.م",
+    "pattern": "فَعَلًا"
    },
    {
     "ar": "رَؤُوفًا",
     "tl": "ra'oofan",
     "en": "Kind / Compassionate",
     "freq": 2,
-    "root": "ر.ء.ف",
+    "root": "ر.أ.ف",
     "pattern": "فَعُول"
    },
    {
     "ar": "حُورٌ",
     "tl": "hoor",
     "en": "houris (paradise companions)",
-    "freq": 1
+    "freq": 1,
+    "root": "ح.و.ر",
+    "pattern": "فُعْل"
    },
    {
     "ar": "سُبْحَانَهُ",
     "tl": "subhaanahu",
     "en": "Glory be to Him",
-    "freq": 1
+    "freq": 1,
+    "root": "س.ب.ح",
+    "pattern": "فُعْلَانَهُ"
    },
    {
     "ar": "كُرْسِيِّهِ",
     "tl": "kursiyyih",
     "en": "His Throne/Seat",
-    "freq": 1
+    "freq": 1,
+    "root": "ك.ر.س",
+    "pattern": "فُعْلِيِّهِ"
    },
    {
     "ar": "حَسْبُنَا",
     "tl": "hasbuna",
     "en": "Sufficient for us",
-    "freq": 1
+    "freq": 1,
+    "root": "ح.س.ب",
+    "pattern": "فَعْلُنَا"
    },
    {
     "ar": "أَنْعَمْتَ",
@@ -2824,7 +3278,7 @@
     "en": "You have favored",
     "freq": 1,
     "root": "ن.ع.م",
-    "pattern": "أَنْعَلْتَ"
+    "pattern": "أَفْعَلْتَ"
    },
    {
     "ar": "سَنَفْرِغُ",
@@ -2838,19 +3292,24 @@
     "ar": "وَاجِبٌ",
     "tl": "waajib",
     "en": "obligatory",
-    "freq": 0
+    "freq": 0,
+    "root": "و.ج.ب",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "نَحْنُ",
     "tl": "nahnu",
     "en": "we",
-    "freq": 0
+    "freq": 0,
+    "type": "pronoun"
    },
    {
     "ar": "يَوْمَهُمْ",
     "tl": "yawmahum",
     "en": "their Day",
-    "freq": 0
+    "freq": 0,
+    "root": "ي.و.م",
+    "pattern": "فَعْلَهُمْ"
    }
   ]
  },
@@ -2861,122 +3320,138 @@
    {
     "ar": "في",
     "tl": "fee",
-    "en": "in / into",
-    "freq": 898
+    "en": "in / into / by means of",
+    "freq": 1054,
+    "type": "particle"
    },
    {
     "ar": "من",
     "tl": "min",
     "en": "from / of",
-    "freq": 1063
+    "freq": 1063,
+    "type": "particle"
    },
    {
     "ar": "إلى",
     "tl": "ilaa",
     "en": "to / unto / towards",
-    "freq": 704
+    "freq": 704,
+    "type": "particle"
    },
    {
     "ar": "على",
     "tl": "'alaa",
     "en": "upon / over / about",
-    "freq": 616
+    "freq": 616,
+    "type": "particle"
    },
    {
     "ar": "عن",
     "tl": "'an",
     "en": "from / about / concerning",
-    "freq": 202
-   },
-   {
-    "ar": "في",
-    "tl": "fii",
-    "en": "in (variant spelling)",
-    "freq": 156
+    "freq": 202,
+    "type": "particle"
    },
    {
     "ar": "حتّى",
     "tl": "hattaa",
     "en": "until / so that",
-    "freq": 52
+    "freq": 52,
+    "type": "particle"
    },
    {
     "ar": "منذ",
     "tl": "mundhu",
     "en": "since / from (time)",
-    "freq": 3
+    "freq": 3,
+    "type": "particle"
    },
    {
     "ar": "خلال",
     "tl": "khilaal",
     "en": "during / within",
-    "freq": 1
+    "freq": 1,
+    "root": "خ.ل.ل",
+    "pattern": "فِعَال"
    },
    {
     "ar": "بين",
     "tl": "bayna",
     "en": "between / among",
-    "freq": 52
+    "freq": 52,
+    "root": "ب.ي.ن",
+    "pattern": "فَعْل"
    },
    {
     "ar": "خلف",
     "tl": "khalf",
     "en": "behind / back",
-    "freq": 6
+    "freq": 6,
+    "root": "خ.ل.ف",
+    "pattern": "فَعْل"
    },
    {
     "ar": "أمام",
     "tl": "amaam",
-    "en": "in front of",
-    "freq": 1
+    "en": "in front of / before",
+    "freq": 2,
+    "root": "أ.م.م",
+    "pattern": "فَعَال"
    },
    {
     "ar": "تحت",
     "tl": "tahta",
     "en": "under / beneath",
-    "freq": 5
+    "freq": 5,
+    "root": "ت.ح.ت",
+    "pattern": "فَعْل"
    },
    {
     "ar": "فوق",
     "tl": "fawq",
     "en": "above / over",
-    "freq": 10
+    "freq": 10,
+    "root": "ف.و.ق",
+    "pattern": "فَعْل"
    },
    {
     "ar": "بجانب",
     "tl": "bi-jaanib",
     "en": "beside / next to",
-    "freq": 0
+    "freq": 0,
+    "root": "ج.ن.ب",
+    "pattern": "بِفَاعِل"
    },
    {
     "ar": "حول",
     "tl": "hawla",
     "en": "around / about",
-    "freq": 274
+    "freq": 274,
+    "root": "ح.و.ل",
+    "pattern": "فَعْل"
    },
    {
     "ar": "مع",
     "tl": "ma'a",
     "en": "with / together",
-    "freq": 15
+    "freq": 15,
+    "type": "particle"
    },
    {
     "ar": "بدون",
     "tl": "bidoon",
     "en": "without",
-    "freq": 3
-   },
-   {
-    "ar": "أمام",
-    "tl": "amaami",
-    "en": "before / in front",
-    "freq": 1
+    "freq": 3,
+    "root": "د.و.ن",
+    "pattern": "بِفَعْل"
    },
    {
     "ar": "وراء",
     "tl": "waraa'a",
     "en": "behind / after",
-    "freq": 2
+    "freq": 2,
+    "root": "و.ر.ي",
+    "pattern": "فَعَال"
    }
   ]
  },
@@ -2987,7 +3462,8 @@
    {
     "ar": "الله",
     "tl": "Allaah",
-    "en": "The One True God"
+    "en": "The One True God",
+    "root": "أ.ل.ه"
    },
    {
     "ar": "الرحمن",
@@ -3006,487 +3482,681 @@
    {
     "ar": "الملك",
     "tl": "al-Malik",
-    "en": "The Sovereign King"
+    "en": "The Sovereign King",
+    "root": "م.ل.ك",
+    "pattern": "فَعِل"
    },
    {
     "ar": "القدّوس",
     "tl": "al-Quddoos",
-    "en": "The Most Holy"
+    "en": "The Most Holy",
+    "root": "ق.د.س",
+    "pattern": "فَعُّول"
    },
    {
     "ar": "السلام",
     "tl": "as-Salaam",
-    "en": "The Source of Peace"
+    "en": "The Source of Peace",
+    "root": "س.ل.م",
+    "pattern": "فَعَال"
    },
    {
     "ar": "المؤمن",
     "tl": "al-Mu'min",
-    "en": "The Granter of Security"
+    "en": "The Granter of Security",
+    "root": "أ.م.ن",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "المهيمن",
     "tl": "al-Muhaymin",
-    "en": "The Guardian / Overseer"
+    "en": "The Guardian / Overseer",
+    "root": "ه.م.ن",
+    "pattern": "مُفَيْعِل"
    },
    {
     "ar": "العزيز",
     "tl": "al-'Azeez",
-    "en": "The Almighty"
+    "en": "The Almighty",
+    "root": "ع.ز.ز",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الجبار",
     "tl": "al-Jabbaar",
-    "en": "The Compeller"
+    "en": "The Compeller",
+    "root": "ج.ب.ر",
+    "pattern": "فَعَّال"
    },
    {
     "ar": "المتكبّر",
     "tl": "al-Mutakabbir",
-    "en": "The Supreme / Majestic"
+    "en": "The Supreme / Majestic",
+    "root": "ك.ب.ر",
+    "pattern": "مُتَفَعِّل"
    },
    {
     "ar": "الخالق",
     "tl": "al-Khaaliq",
-    "en": "The Creator"
+    "en": "The Creator",
+    "root": "خ.ل.ق",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "البارئ",
     "tl": "al-Baari'",
-    "en": "The Evolver / Maker"
+    "en": "The Evolver / Maker",
+    "root": "ب.ر.أ",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "المصوّر",
     "tl": "al-Musawwir",
-    "en": "The Fashioner"
+    "en": "The Fashioner",
+    "root": "ص.و.ر",
+    "pattern": "مُفَعِّل"
    },
    {
     "ar": "الغفّار",
     "tl": "al-Ghaffaar",
-    "en": "The Repeatedly Forgiving"
+    "en": "The Repeatedly Forgiving",
+    "root": "غ.ف.ر",
+    "pattern": "فَعَّال"
    },
    {
     "ar": "القهّار",
     "tl": "al-Qahhaar",
-    "en": "The Subduer"
+    "en": "The Subduer",
+    "root": "ق.ه.ر",
+    "pattern": "فَعَّال"
    },
    {
     "ar": "الوهّاب",
     "tl": "al-Wahhaab",
-    "en": "The Bestower"
+    "en": "The Bestower",
+    "root": "و.ه.ب",
+    "pattern": "فَعَّال"
    },
    {
     "ar": "الرزّاق",
     "tl": "ar-Razzaaq",
-    "en": "The Provider"
+    "en": "The Provider",
+    "root": "ر.ز.ق",
+    "pattern": "فَعَّال"
    },
    {
     "ar": "الفتّاح",
     "tl": "al-Fattaah",
-    "en": "The Opener / Knower"
+    "en": "The Opener / Knower",
+    "root": "ف.ت.ح",
+    "pattern": "فَعَّال"
    },
    {
     "ar": "العليم",
     "tl": "al-'Aleem",
-    "en": "The All-Knowing"
+    "en": "The All-Knowing",
+    "root": "ع.ل.م",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "القابض",
     "tl": "al-Qaabid",
-    "en": "The Restrainer"
+    "en": "The Restrainer",
+    "root": "ق.ب.ض",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الباسط",
     "tl": "al-Baasit",
-    "en": "The Extender / Bestower"
+    "en": "The Extender / Bestower",
+    "root": "ب.س.ط",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الخافض",
     "tl": "al-Khaafid",
-    "en": "The Abaser"
+    "en": "The Abaser",
+    "root": "خ.ف.ض",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الرافع",
     "tl": "ar-Raafi'",
-    "en": "The Exalter"
+    "en": "The Exalter",
+    "root": "ر.ف.ع",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "المعزّ",
     "tl": "al-Mu'izz",
-    "en": "The Bestower of Honour"
+    "en": "The Bestower of Honour",
+    "root": "ع.ز.ز",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "المذلّ",
     "tl": "al-Mudhill",
-    "en": "The Humiliator"
+    "en": "The Humiliator",
+    "root": "ذ.ل.ل",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "السميع",
     "tl": "as-Samee'",
-    "en": "The All-Hearing"
+    "en": "The All-Hearing",
+    "root": "س.م.ع",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "البصير",
     "tl": "al-Baseer",
-    "en": "The All-Seeing"
+    "en": "The All-Seeing",
+    "root": "ب.ص.ر",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الحكم",
     "tl": "al-Hakam",
-    "en": "The Judge / Arbitrator"
+    "en": "The Judge / Arbitrator",
+    "root": "ح.ك.م",
+    "pattern": "فَعِل"
    },
    {
     "ar": "العدل",
     "tl": "al-'Adl",
-    "en": "The Absolute Justice"
+    "en": "The Absolute Justice",
+    "root": "ع.د.ل",
+    "pattern": "فَعْل"
    },
    {
     "ar": "اللطيف",
     "tl": "al-Lateef",
-    "en": "The Subtle / Gentle"
+    "en": "The Subtle / Gentle",
+    "root": "ل.ط.ف",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الخبير",
     "tl": "al-Khabeer",
-    "en": "The All-Aware"
+    "en": "The All-Aware",
+    "root": "خ.ب.ر",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الحليم",
     "tl": "al-Haleem",
-    "en": "The Forbearing"
+    "en": "The Forbearing",
+    "root": "ح.ل.م",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "العظيم",
     "tl": "al-'Azeem",
-    "en": "The Magnificent / Great"
+    "en": "The Magnificent / Great",
+    "root": "ع.ظ.م",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الغفور",
     "tl": "al-Ghafoor",
-    "en": "The Forgiving"
+    "en": "The Forgiving",
+    "root": "غ.ف.ر",
+    "pattern": "فَعُول"
    },
    {
     "ar": "الشكور",
     "tl": "ash-Shakoor",
-    "en": "The Appreciative"
+    "en": "The Appreciative",
+    "root": "ش.ك.ر",
+    "pattern": "فَعُول"
    },
    {
     "ar": "العليّ",
     "tl": "al-'Aliyy",
-    "en": "The Most High"
+    "en": "The Most High",
+    "root": "ع.ل.و",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الكبير",
     "tl": "al-Kabeer",
-    "en": "The Greatest"
+    "en": "The Greatest",
+    "root": "ك.ب.ر",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الحفيظ",
     "tl": "al-Hafeedh",
-    "en": "The Protector / Preserver"
+    "en": "The Protector / Preserver",
+    "root": "ح.ف.ظ",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "المقيت",
     "tl": "al-Muqeet",
-    "en": "The Sustainer"
+    "en": "The Sustainer",
+    "root": "ق.و.ت",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الحسيب",
     "tl": "al-Haseeb",
-    "en": "The Reckoner"
+    "en": "The Reckoner",
+    "root": "ح.س.ب",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الجليل",
     "tl": "al-Jaleel",
-    "en": "The Majestic"
+    "en": "The Majestic",
+    "root": "ج.ل.ل",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الكريم",
     "tl": "al-Kareem",
-    "en": "The Generous / Noble"
+    "en": "The Generous / Noble",
+    "root": "ك.ر.م",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الرقيب",
     "tl": "ar-Raqeeb",
-    "en": "The Watchful"
+    "en": "The Watchful",
+    "root": "ر.ق.ب",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "المجيب",
     "tl": "al-Mujeeb",
-    "en": "The Responder"
+    "en": "The Responder",
+    "root": "ج.و.ب",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "الواسع",
     "tl": "al-Waasi'",
-    "en": "The All-Encompassing"
+    "en": "The All-Encompassing",
+    "root": "و.س.ع",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الحكيم",
     "tl": "al-Hakeem",
-    "en": "The All-Wise"
+    "en": "The All-Wise",
+    "root": "ح.ك.م",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الودود",
     "tl": "al-Wadood",
-    "en": "The Loving / Affectionate"
+    "en": "The Loving / Affectionate",
+    "root": "و.د.د",
+    "pattern": "فَعُول"
    },
    {
     "ar": "المجيد",
     "tl": "al-Majeed",
-    "en": "The Glorious / Illustrious"
+    "en": "The Glorious / Illustrious",
+    "root": "م.ج.د",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الباعث",
     "tl": "al-Baa'ith",
-    "en": "The Resurrector"
+    "en": "The Resurrector",
+    "root": "ب.ع.ث",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الشهيد",
     "tl": "ash-Shaheed",
-    "en": "The Witness"
+    "en": "The Witness",
+    "root": "ش.ه.د",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الحقّ",
     "tl": "al-Haqq",
-    "en": "The Absolute Truth"
+    "en": "The Absolute Truth",
+    "root": "ح.ق.ق",
+    "pattern": "فَعْل"
    },
    {
     "ar": "الوكيل",
     "tl": "al-Wakeel",
-    "en": "The Trustee / Disposer"
+    "en": "The Trustee / Disposer",
+    "root": "و.ك.ل",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "القويّ",
     "tl": "al-Qawiyy",
-    "en": "The All-Powerful"
+    "en": "The All-Powerful",
+    "root": "ق.و.ي",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "المتين",
     "tl": "al-Mateen",
-    "en": "The Firm / Steadfast"
+    "en": "The Firm / Steadfast",
+    "root": "م.ت.ن",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الوليّ",
     "tl": "al-Waliyy",
-    "en": "The Friend / Protector"
+    "en": "The Friend / Protector",
+    "root": "و.ل.ي",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الحميد",
     "tl": "al-Hameed",
-    "en": "The Praiseworthy"
+    "en": "The Praiseworthy",
+    "root": "ح.م.د",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "المحصي",
     "tl": "al-Muhsi",
-    "en": "The Counter / Reckoner"
+    "en": "The Counter / Reckoner",
+    "root": "ح.ص.ي",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "المبدئ",
     "tl": "al-Mubdi'",
-    "en": "The Originator"
+    "en": "The Originator",
+    "root": "ب.د.أ",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "المعيد",
     "tl": "al-Mu'eed",
-    "en": "The Restorer / Reviver"
+    "en": "The Restorer / Reviver",
+    "root": "ع.و.د",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "المحيي",
     "tl": "al-Muhyee",
-    "en": "The Giver of Life"
+    "en": "The Giver of Life",
+    "root": "ح.ي.ي",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "المميت",
     "tl": "al-Mumeet",
-    "en": "The Bringer of Death"
+    "en": "The Bringer of Death",
+    "root": "م.و.ت",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "الحيّ",
     "tl": "al-Hayy",
-    "en": "The Ever-Living"
+    "en": "The Ever-Living",
+    "root": "ح.ي.ي",
+    "pattern": "فَعْل"
    },
    {
     "ar": "القيّوم",
     "tl": "al-Qayyoom",
-    "en": "The Self-Sustaining"
+    "en": "The Self-Sustaining",
+    "root": "ق.و.م",
+    "pattern": "فَيْعُول"
    },
    {
     "ar": "الواجد",
     "tl": "al-Waajid",
-    "en": "The Finder / Rich"
+    "en": "The Finder / Rich",
+    "root": "و.ج.د",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الماجد",
     "tl": "al-Maajid",
-    "en": "The Noble / Glorious"
+    "en": "The Noble / Glorious",
+    "root": "م.ج.د",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الواحد",
     "tl": "al-Waahid",
-    "en": "The One / Unique"
+    "en": "The One / Unique",
+    "root": "و.ح.د",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الصمد",
     "tl": "as-Samad",
-    "en": "The Eternal / Absolute"
+    "en": "The Eternal / Absolute",
+    "root": "ص.م.د",
+    "pattern": "فَعَل"
    },
    {
     "ar": "القادر",
     "tl": "al-Qaadir",
-    "en": "The Capable / Omnipotent"
+    "en": "The Capable / Omnipotent",
+    "root": "ق.د.ر",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "المقتدر",
     "tl": "al-Muqtadir",
-    "en": "The All-Powerful"
+    "en": "The All-Powerful",
+    "root": "ق.د.ر",
+    "pattern": "مُفْتَعِل"
    },
    {
     "ar": "المقدّم",
     "tl": "al-Muqaddim",
-    "en": "The Advancer / Presenter"
+    "en": "The Advancer / Presenter",
+    "root": "ق.د.م",
+    "pattern": "مُفَعِّل"
    },
    {
     "ar": "المؤخّر",
     "tl": "al-Mu'akhkhir",
-    "en": "The Delayer"
+    "en": "The Delayer",
+    "root": "أ.خ.ر",
+    "pattern": "مُفَعِّل"
    },
    {
     "ar": "الأوّل",
     "tl": "al-Awwal",
-    "en": "The First"
+    "en": "The First",
+    "root": "أ.و.ل",
+    "pattern": "أَفْعَل"
    },
    {
     "ar": "الآخر",
     "tl": "al-Aakhir",
-    "en": "The Last"
+    "en": "The Last",
+    "root": "أ.خ.ر",
+    "pattern": "أَفْعَل"
    },
    {
     "ar": "الظاهر",
     "tl": "adh-Dhaahir",
-    "en": "The Manifest / Outer"
+    "en": "The Manifest / Outer",
+    "root": "ظ.ه.ر",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الباطن",
     "tl": "al-Baatin",
-    "en": "The Hidden / Inner"
+    "en": "The Hidden / Inner",
+    "root": "ب.ط.ن",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الوالي",
     "tl": "al-Waali",
-    "en": "The Governor"
+    "en": "The Governor",
+    "root": "و.ل.ي",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "المتعالي",
     "tl": "al-Muta'aalii",
-    "en": "The Exalted / Self-Exalted"
+    "en": "The Exalted / Self-Exalted",
+    "root": "ع.ل.و",
+    "pattern": "مُتَفَاعِل"
    },
    {
     "ar": "البرّ",
     "tl": "al-Barr",
-    "en": "The Source of All Goodness"
+    "en": "The Source of All Goodness",
+    "root": "ب.ر.ر",
+    "pattern": "فَعْل"
    },
    {
     "ar": "التوّاب",
     "tl": "at-Tawwaab",
-    "en": "The Acceptor of Repentance"
+    "en": "The Acceptor of Repentance",
+    "root": "ت.و.ب",
+    "pattern": "فَعَّال"
    },
    {
     "ar": "المنتقم",
     "tl": "al-Muntaqim",
-    "en": "The Avenger"
+    "en": "The Avenger",
+    "root": "ن.ق.م",
+    "pattern": "مُفْتَعِل"
    },
    {
     "ar": "العفوّ",
     "tl": "al-'Afuww",
-    "en": "The Pardoner / Overlooker"
+    "en": "The Pardoner / Overlooker",
+    "root": "ع.ف.و",
+    "pattern": "فَعُول"
    },
    {
     "ar": "الرءوف",
     "tl": "ar-Ra'oof",
-    "en": "The Kind / Compassionate"
+    "en": "The Kind / Compassionate",
+    "root": "ر.أ.ف",
+    "pattern": "فَعُول"
    },
    {
     "ar": "مالك",
     "tl": "Maalik",
-    "en": "Master / Owner"
+    "en": "Master / Owner",
+    "root": "م.ل.ك",
+    "pattern": "فَاعِل"
    },
    {
-    "ar": "ذو الجلال",
+    "ar": "ذُو الْجَلَالِ",
     "tl": "Dhul-Jalaali",
-    "en": "Lord of Majesty"
+    "en": "Lord of Majesty",
+    "root": "ج.ل.ل",
+    "pattern": "ذُو الْفَعَال"
    },
    {
     "ar": "الإكرام",
     "tl": "al-Ikraam",
-    "en": "The Bestower of Honour"
+    "en": "The Bestower of Honour",
+    "root": "ك.ر.م",
+    "pattern": "إِفْعَال"
    },
    {
     "ar": "الحساب",
     "tl": "al-Hisaab",
-    "en": "The Reckoner / Accountant"
+    "en": "The Reckoner / Accountant",
+    "root": "ح.س.ب",
+    "pattern": "فَعَال"
    },
    {
     "ar": "الجاميّ",
     "tl": "al-Jaami'",
-    "en": "The Gatherer"
+    "en": "The Gatherer",
+    "root": "ج.م.ع",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الغنيّ",
     "tl": "al-Ghaniyy",
-    "en": "The Self-Sufficient"
+    "en": "The Self-Sufficient",
+    "root": "غ.ن.ي",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "المغني",
     "tl": "al-Mughni",
-    "en": "The Enricher"
+    "en": "The Enricher",
+    "root": "غ.ن.ي",
+    "pattern": "مُفْعِل"
    },
    {
     "ar": "المانع",
     "tl": "al-Maani'",
-    "en": "The Preventer"
+    "en": "The Preventer",
+    "root": "م.ن.ع",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الضارّ",
     "tl": "ad-Daar",
-    "en": "The Harmer"
+    "en": "The Harmer",
+    "root": "ض.ر.ر",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "النافع",
     "tl": "an-Naafi'",
-    "en": "The Benefiter"
+    "en": "The Benefiter",
+    "root": "ن.ف.ع",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "النور",
     "tl": "an-Noor",
-    "en": "The Light"
+    "en": "The Light",
+    "root": "ن.و.ر",
+    "pattern": "فَعْل"
    },
    {
     "ar": "الهادي",
     "tl": "al-Haadi",
-    "en": "The Guide"
+    "en": "The Guide",
+    "root": "ه.د.ي",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الصّابر",
     "tl": "as-Saabir",
-    "en": "The Patient / Enduring"
+    "en": "The Patient / Enduring",
+    "root": "ص.ب.ر",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الدائم",
     "tl": "ad-Daa'im",
-    "en": "The Ever-Lasting / Eternal"
+    "en": "The Ever-Lasting / Eternal",
+    "root": "د.و.م",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الوارث",
     "tl": "al-Waarith",
-    "en": "The Inheritor / Heir"
+    "en": "The Inheritor / Heir",
+    "root": "و.ر.ث",
+    "pattern": "فَاعِل"
    },
    {
     "ar": "الرشيد",
     "tl": "ar-Rasheed",
-    "en": "The Rightly Guided"
+    "en": "The Rightly Guided",
+    "root": "ر.ش.د",
+    "pattern": "فَعِيل"
    },
    {
     "ar": "الصبور",
     "tl": "as-Saboor",
-    "en": "The Most Patient"
+    "en": "The Most Patient",
+    "root": "ص.ب.ر",
+    "pattern": "فَعُول"
    }
   ]
  },
@@ -3497,167 +4167,200 @@
    {
     "ar": "أنا",
     "tl": "anaa",
-    "en": "I / me"
+    "en": "I / me",
+    "type": "pronoun"
    },
    {
     "ar": "نحن",
     "tl": "nahnu",
-    "en": "we / us"
+    "en": "we / us",
+    "type": "pronoun"
    },
    {
     "ar": "أنتَ",
     "tl": "anta",
-    "en": "you (m. sg.)"
+    "en": "you (m. sg.)",
+    "type": "pronoun"
    },
    {
     "ar": "أنتِ",
     "tl": "anti",
-    "en": "you (f. sg.)"
+    "en": "you (f. sg.)",
+    "type": "pronoun"
    },
    {
     "ar": "أنتم",
     "tl": "antum",
-    "en": "you (m. pl.)"
+    "en": "you (m. pl.)",
+    "type": "pronoun"
    },
    {
     "ar": "أنتنّ",
     "tl": "antunna",
-    "en": "you (f. pl.)"
+    "en": "you (f. pl.)",
+    "type": "pronoun"
    },
    {
     "ar": "هو",
     "tl": "huwa",
-    "en": "he / it"
+    "en": "he / it",
+    "type": "pronoun"
    },
    {
     "ar": "هي",
     "tl": "hiya",
-    "en": "she / it"
+    "en": "she / it",
+    "type": "pronoun"
    },
    {
     "ar": "هم",
     "tl": "hum",
-    "en": "they (m.)"
+    "en": "they (m.)",
+    "type": "pronoun"
    },
    {
     "ar": "هنّ",
     "tl": "hunna",
-    "en": "they (f.)"
+    "en": "they (f.)",
+    "type": "pronoun"
    },
    {
     "ar": "هُما",
     "tl": "humaa",
-    "en": "they two (m.)"
+    "en": "they two (m.)",
+    "type": "pronoun"
    },
    {
     "ar": "كما",
     "tl": "kumaa",
-    "en": "you two"
+    "en": "you two",
+    "type": "pronoun"
    },
    {
     "ar": "نا",
     "tl": "-naa",
-    "en": "our (suffix)"
+    "en": "our (suffix)",
+    "type": "pronoun"
    },
    {
     "ar": "كم",
     "tl": "-kum",
-    "en": "your (m. pl. suffix)"
+    "en": "your (m. pl. suffix)",
+    "type": "pronoun"
    },
    {
     "ar": "كن",
     "tl": "-kunna",
-    "en": "your (f. pl. suffix)"
+    "en": "your (f. pl. suffix)",
+    "type": "pronoun"
    },
    {
-    "ar": "هم",
-    "tl": "-hum",
-    "en": "their (m. suffix)"
+    "ar": "هُم",
+    "tl": "hum (suffix)",
+    "en": "them / their (attached -hum)",
+    "type": "pronoun"
    },
    {
     "ar": "هن",
     "tl": "-hunna",
-    "en": "their (f. suffix)"
+    "en": "their (f. suffix)",
+    "type": "pronoun"
    },
    {
     "ar": "ه",
     "tl": "-hu",
-    "en": "him/it (suffix)"
+    "en": "him/it (suffix)",
+    "type": "pronoun"
    },
    {
     "ar": "ها",
     "tl": "-haa",
-    "en": "her/it (suffix)"
+    "en": "her/it (suffix)",
+    "type": "pronoun"
    },
    {
     "ar": "ك",
     "tl": "-ka",
-    "en": "you (m. sg. suffix)"
+    "en": "you (m. sg. suffix)",
+    "type": "pronoun"
    },
    {
     "ar": "كِ",
     "tl": "-ki",
-    "en": "you (f. sg. suffix)"
+    "en": "you (f. sg. suffix)",
+    "type": "pronoun"
    },
    {
     "ar": "ما",
     "tl": "maa",
-    "en": "what / that which"
+    "en": "what / that which",
+    "type": "relative"
    },
    {
     "ar": "من",
     "tl": "man",
-    "en": "who / whom"
+    "en": "who / whom",
+    "type": "relative"
    },
    {
     "ar": "هذا",
     "tl": "haadhaa",
-    "en": "this (m.)"
+    "en": "this (m.)",
+    "type": "demonstrative"
    },
    {
     "ar": "هذه",
     "tl": "haadhihi",
-    "en": "this (f.)"
+    "en": "this (f.)",
+    "type": "demonstrative"
    },
    {
     "ar": "هؤلاء",
     "tl": "haa'ulaa'i",
-    "en": "these"
+    "en": "these",
+    "type": "demonstrative"
    },
    {
     "ar": "ذلك",
     "tl": "dhaalika",
-    "en": "that (m.)"
+    "en": "that (m.)",
+    "type": "demonstrative"
    },
    {
     "ar": "تلك",
     "tl": "tilka",
-    "en": "that (f.)"
+    "en": "that (f.)",
+    "type": "demonstrative"
    },
    {
     "ar": "أولئك",
     "tl": "ulaa'ika",
-    "en": "those"
+    "en": "those",
+    "type": "demonstrative"
    },
    {
     "ar": "الذين",
     "tl": "alladheena",
-    "en": "those who (m.)"
+    "en": "those who (m.)",
+    "type": "relative"
    },
    {
     "ar": "اللّاتي",
     "tl": "allaaatee",
-    "en": "those who / which (f.)"
+    "en": "those who / which (f.)",
+    "type": "relative"
    },
    {
     "ar": "اللّذين",
     "tl": "alladhaani",
-    "en": "those two (m.)"
+    "en": "those two (m.)",
+    "type": "relative"
    },
    {
     "ar": "اللّتان",
     "tl": "allataani",
-    "en": "those two (f.)"
+    "en": "those two (f.)",
+    "type": "relative"
    }
   ]
  }
