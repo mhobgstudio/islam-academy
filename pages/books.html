@@ -144,7 +144,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   // marker — so Islamic comparative books ("The Bible, the Qur'an & Science")
   // still pass, while mis-tagged Christian/Jewish/etc. items do not.
   const NON_ISLAMIC = /\b(bible|christian|christ|gospel|torah|jewish|judaism|hindu|buddhist|atheist|agnostic|mormon|jehovah|scofield|nazi|national socialist|satanic|freemason|zionist|new testament|old testament|sikh|jain)\b/i;
-  const ISLAMIC = /\b(islam|muslim|quran|qur['’]?an|koran|hadith|tafsir|fiqh|seerah|sirah|aqeedah|sunnah|arabic|prophet|muhammad|sahih|bukhari|masjid|mosque|ramadan|hajj|zakat|salah|dua|sharia|fatwa|madrasah|madina|mecca|ummah|halal)\b/i;
+  const ISLAMIC = /\b(islam|muslim|quran|qur['’]?an|koran|hadith|tafsir|fiqh|seerah|sirah|aqeedah|sunnah|arabic|arabiyya|prophet|muhammad|sahih|bukhari|masjid|mosque|ramadan|hajj|zakat|salah|dua|sharia|fatwa|madrasah|madina|madinah|mecca|ummah|halal|durus|duruus|lugha)\b/i;
   function isClearlyNonIslamic(doc) {
     const text = asText(doc.title) + " " + asText(doc.creator);
     return NON_ISLAMIC.test(text) && !ISLAMIC.test(text);
@@ -178,7 +178,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     if (q) parts.push("(" + q + ")");
     // Always scope to Islamic texts so a free-text query cannot surface
     // non-halal material (fiction, other religions, etc.).
-    parts.push('(subject:(islam OR quran OR qur\'an OR hadith OR tafsir OR fiqh OR seerah OR aqeedah OR sunnah OR "islamic studies"))');
+    parts.push('(subject:(islam OR quran OR qur\'an OR hadith OR tafsir OR fiqh OR seerah OR aqeedah OR sunnah OR "islamic studies" OR arabic OR "arabic language" OR "arabic grammar" OR "arabic course" OR "arabic reader" OR madina OR madinah OR "language learning" OR "learning arabic" OR "durus al-lugha" OR "duruus al-lughah"))');
     parts.push('NOT subject:(christianity OR judaism OR hinduism OR buddhism OR atheism OR agnosticism OR mormonism OR sikhism OR jainism OR zoroastrianism OR "new testament" OR "old testament" OR "national socialism")');
     parts.push("mediatype:texts");
     parts.push("NOT collection:printdisabled");

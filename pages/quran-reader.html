@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="../assets/css/responsive.css">
 <style>
 #main:fullscreen{max-width:100%}
+#main:fullscreen .mushaf-spread{max-width:100%}
+#main:fullscreen .mushaf-page{max-width:100%}
+#main:fullscreen .mushaf-image-page{max-width:100%!important}
+#main:fullscreen .mushaf-image{width:auto!important;max-width:100%;max-height:calc(100vh - 150px);margin:0 auto}
 </style>
 <link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
@@ -847,9 +851,12 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     var img = el('img', {
       class: 'mushaf-image', src: cfg.url(page),
       alt: 'Quran page ' + page + ' — ' + cfg.label,
-      loading: 'lazy',
-      style: 'width:100%;height:auto;display:block;border-radius:8px;box-shadow:var(--shadow);background:#fff'
+      decoding: 'async',
+      style: 'width:100%;height:auto;display:block;border-radius:8px;box-shadow:var(--shadow);background:#fff;opacity:0;transition:opacity .18s ease'
     });
+    // Reveal only once the whole page has decoded, so a swipe never shows a
+    // half-painted image.
+    img.addEventListener('load', function () { img.style.opacity = '1'; });
     img.onerror = function () {
       img.replaceWith(el('div', { class: 'card empty-state' },
         el('div', { class: 'ico' }, '🖼'),
@@ -859,13 +866,33 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
           el('button', { class: 'btn', onclick: function () { loadMushafPage(currentPage); } }, '🔄 Try again'),
           el('button', { class: 'btn ghost', onclick: function () { setViewMode('ayah'); } }, '← Back to Ayat view'))));
     };
-    var pageEl = el('div', { style: 'flex:1;min-width:0;max-width:520px;margin:0 auto' },
+    var pageEl = el('div', { class: 'mushaf-image-page', style: 'flex:1;min-width:0;max-width:520px;margin:0 auto;min-height:60vh' },
       el('div', { class: 'mushaf-pageno', style: 'text-align:center;margin-bottom:8px' }, '﷿ ' + page + ' ﷾'),
       img,
       el('div', { class: 'mushaf-pageno', style: 'text-align:center;margin-top:8px' }, '﷿ ' + page + ' ﷾'));
     wrapper.append(prevZone, pageEl, nextZone);
     container.append(wrapper);
     renderMushafBookmarkUI();
+    preloadImagePages(cfg, page);
+    // Bring the top of the new page into view so a full page is shown, not a
+    // mid-scroll slice of it (offset clears the sticky header).
+    try {
+      var y = container.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+    } catch (e) {}
+  }
+
+  // Warm the browser cache for the neighbouring pages so a swipe shows the
+  // next page in full immediately instead of streaming it in.
+  function preloadImagePages(cfg, page) {
+    [1, -1, 2, -2].forEach(function (d) {
+      var n = page + d;
+      if (n >= 1 && n <= MUSHAF_TOTAL_PAGES) {
+        var im = new Image();
+        im.decoding = 'async';
+        im.src = cfg.url(n);
+      }
+    });
   }
 
   async function loadMushafPage(num) {
@@ -924,12 +951,12 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     var touchStartY = 0;
     var container = ayahContainer;
     container.addEventListener('touchstart', function(e) {
-      if (viewMode !== 'mushaf') return;
+      if (viewMode !== 'mushaf' && viewMode !== 'image') return;
       touchStartX = e.changedTouches[0].screenX;
       touchStartY = e.changedTouches[0].screenY;
     }, {passive: true});
     container.addEventListener('touchend', function(e) {
-      if (viewMode !== 'mushaf') return;
+      if (viewMode !== 'mushaf' && viewMode !== 'image') return;
       var dx = e.changedTouches[0].screenX - touchStartX;
       var dy = e.changedTouches[0].screenY - touchStartY;
       if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
