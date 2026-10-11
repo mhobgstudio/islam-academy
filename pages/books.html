@@ -14,6 +14,10 @@
 .file-modal-list{overflow:auto;padding:8px 16px;flex:1}
 .file-modal-list label{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line-soft);font-size:13px;cursor:pointer}
 .file-modal-list input{flex:0 0 auto}
+.file-modal-cover{width:44px;height:60px;object-fit:cover;border-radius:6px;box-shadow:var(--shadow);flex:0 0 auto}
+.file-modal-preview{border-top:1px solid var(--line);padding:10px 16px}
+.file-modal-preview-cap{font-size:12px;color:var(--ink-soft);margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-modal-preview iframe{width:100%;height:220px;border:1px solid var(--line);border-radius:8px;background:#fff}
 .file-modal-foot{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line)}
 </style>
 <link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
@@ -84,10 +88,15 @@
   <div id="fileModal" class="file-modal" role="dialog" aria-modal="true" aria-labelledby="fileModalTitle">
     <div class="file-modal-panel">
       <div class="file-modal-head">
-        <strong id="fileModalTitle">Select files to download</strong>
+        <img id="fileModalCover" class="file-modal-cover" alt="Book cover">
+        <strong id="fileModalTitle" style="flex:1;min-width:0">Select files to download</strong>
         <button class="btn small ghost" id="fileModalClose" aria-label="Close">✕</button>
       </div>
       <div class="file-modal-list" id="fileModalList"></div>
+      <div class="file-modal-preview" id="fileModalPreview" style="display:none">
+        <div class="file-modal-preview-cap" id="fileModalPreviewCap"></div>
+        <iframe id="fileModalFrame" title="File preview"></iframe>
+      </div>
       <div class="file-modal-foot">
         <button class="btn small" id="fileModalSelected">Download selected (0)</button>
         <a class="btn small" id="fileModalZip" target="_blank" rel="noopener">⬇ Download all (.zip)</a>
@@ -268,7 +277,9 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
       list];
     if (files.length > FILES_PREVIEW) {
       const more = el("button", { class: "btn small", style: "margin-top:10px" }, "Show all " + files.length + " files");
-      more.addEventListener("click", function () { openFileModal(id, files); });
+      more.addEventListener("click", function () {
+        openFileModal(id, files, (meta.metadata && meta.metadata.title) || id);
+      });
       nodes.push(more);
     }
     panel.replaceChildren.apply(panel, nodes);
@@ -328,9 +339,11 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
 
   // ---- file-selection modal -------------------------------------------
   let modalCtx = null;
-  function openFileModal(id, files) {
+  function openFileModal(id, files, title) {
     modalCtx = { id: id, files: files };
     document.getElementById("fileModalZip").href = API + "/compress/" + encodeURIComponent(id);
+    document.getElementById("fileModalCover").src = "https://archive.org/services/img/" + encodeURIComponent(id);
+    document.getElementById("fileModalTitle").textContent = title || "Select files to download";
     const listEl = document.getElementById("fileModalList");
     listEl.replaceChildren.apply(listEl, files.map(function (f, i) {
       return el("label", null,
@@ -353,6 +366,22 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   }
   function updateModalCount() {
     document.getElementById("fileModalSelected").textContent = "Download selected (" + selectedFiles().length + ")";
+    updatePreview();
+  }
+  function updatePreview() {
+    const sel = selectedFiles();
+    const preview = document.getElementById("fileModalPreview");
+    const cap = document.getElementById("fileModalPreviewCap");
+    const frame = document.getElementById("fileModalFrame");
+    if (!sel.length || !modalCtx) {
+      preview.style.display = "none";
+      frame.removeAttribute("src");
+      return;
+    }
+    const f = sel[0];
+    preview.style.display = "";
+    cap.textContent = "Previewing: " + f.name + (sel.length > 1 ? " (+" + (sel.length - 1) + " more selected)" : "") + " — PDFs render inline; other formats open/download.";
+    frame.src = API + "/download/" + encodeURIComponent(modalCtx.id) + "/" + encodeURIComponent(f.name);
   }
   function downloadSelected() {
     if (!modalCtx) return;

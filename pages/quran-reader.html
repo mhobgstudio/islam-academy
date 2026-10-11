@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="../assets/css/academy.css">
 <link rel="stylesheet" href="../assets/css/components.css">
 <link rel="stylesheet" href="../assets/css/responsive.css">
+<style>
+#main:fullscreen{max-width:100%}
+</style>
 <link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
 <link rel="manifest" href="../manifest.json">
@@ -87,6 +90,9 @@
 
     <div class="tb-group">
       <button class="btn small" id="play-surah-btn" aria-label="Play the whole surah">&#x1F50A; Play Surah</button>
+    </div>
+    <div class="tb-group">
+      <button class="btn small ghost" id="fullscreen-btn" title="Toggle fullscreen" aria-label="Toggle fullscreen">&#x26F6; Fullscreen</button>
     </div>
   </div>
 
@@ -894,7 +900,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
 
   // Keyboard arrow navigation for mushaf
   document.addEventListener('keydown', function(e) {
-    if (viewMode !== 'mushaf') return;
+    if (viewMode !== 'mushaf' && viewMode !== 'image') return;
     var t = e.target;
     if (t && (t.tagName === 'INPUT' || t.tagName === 'SELECT' || t.tagName === 'TEXTAREA')) return;
     // RTL book: left arrow = next page, right arrow = prev page
@@ -940,6 +946,23 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   document.getElementById('image-set-select').addEventListener('change', function() {
     if (viewMode === 'image') loadMushafPage(currentPage);
   });
+
+  // Fullscreen toggle for the reader
+  var fsBtn = document.getElementById('fullscreen-btn');
+  function toggleFullscreen() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(function () {});
+    } else {
+      var target = document.getElementById('main') || document.documentElement;
+      if (target.requestFullscreen) target.requestFullscreen().catch(function () {});
+    }
+  }
+  if (fsBtn) {
+    fsBtn.addEventListener('click', toggleFullscreen);
+    document.addEventListener('fullscreenchange', function () {
+      fsBtn.textContent = document.fullscreenElement ? '✕ Exit fullscreen' : '⛶ Fullscreen';
+    });
+  }
 
   // View mode toggle handler
   function setViewMode(mode) {

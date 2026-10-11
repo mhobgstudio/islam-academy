@@ -12,7 +12,7 @@
  * - Recitation/WBW audio is deliberately NOT cached. Those are megabytes of
  *   third-party media; the player already degrades to silence offline.
  */
-const VERSION = 'v11';
+const VERSION = 'v13';
 const CACHE = `islam-academy-${VERSION}`;
 const BASE = new URL('./', self.location.href).href;
 
