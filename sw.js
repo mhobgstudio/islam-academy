@@ -12,7 +12,7 @@
  * - Recitation/WBW audio is deliberately NOT cached. Those are megabytes of
  *   third-party media; the player already degrades to silence offline.
  */
-const VERSION = 'v7';
+const VERSION = 'v9';
 const CACHE = `islam-academy-${VERSION}`;
 const BASE = new URL('./', self.location.href).href;
 
@@ -113,6 +113,18 @@ function offlineResponse(request) {
   return Response.error();
 }
 
+// Navigation missed the cache while offline. Redirect to the offline page so
+// its relative asset paths (assets/css, assets/js, nav links) resolve against
+// its own directory instead of the deep requested URL. Guards against a loop
+// when the offline page itself is not cached.
+function offlineFallback(request) {
+  const offlineUrl = new URL('offline.html', BASE).href;
+  let reqUrl = request.url;
+  try { reqUrl = new URL(request.url).href; } catch (e) {}
+  if (reqUrl !== offlineUrl) return Response.redirect(offlineUrl, 302);
+  return offlineResponse(request);
+}
+
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
@@ -141,7 +153,7 @@ self.addEventListener('fetch', (event) => {
             return res;
           })
           .catch(() => null);
-        return cached || network.then((res) => res || offlineResponse(req));
+        return cached || network.then((res) => res || offlineFallback(req));
       })
     );
     return;

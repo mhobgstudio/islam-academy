@@ -16,7 +16,10 @@
   const nav = document.getElementById("main-nav");
   if (!nav) return;
   const here = location.pathname.split("/").pop() || "index.html";
-  const inPages = here !== "index.html";
+  // Whether the current document sits inside /pages/. Derived from the path,
+  // not the filename: offline.html also lives at the root and must link to
+  // "pages/x.html" like index.html, while pages/x.html links to its siblings.
+  const inPages = /\/pages\//.test(location.pathname);
   pages.forEach(([file, label]) => {
     const href = inPages ? (file === "index.html" ? "../index.html" : file) : (file === "index.html" ? "index.html" : "pages/" + file);
     const a = document.createElement("a");

@@ -87,8 +87,9 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
 (async function () {
   const { el } = Academy;
   const API = "https://archive.org";
-  const EXTS = [".pdf", ".epub", ".mobi", ".azw3", ".txt", ".djvu"];
-  const EXT_ORDER = { ".pdf": 0, ".epub": 1, ".mobi": 2, ".azw3": 3, ".txt": 4, ".djvu": 5 };
+  const EXTS = [".pdf", ".epub", ".mobi", ".azw3", ".txt", ".djvu", ".zip"];
+  const EXT_ORDER = { ".pdf": 0, ".epub": 1, ".mobi": 2, ".azw3": 3, ".txt": 4, ".djvu": 5, ".zip": 6 };
+  const FILES_PREVIEW = 60;
 
   const input = document.getElementById("q");
   const status = document.getElementById("status");
@@ -233,16 +234,23 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
         el("a", { class: "btn small", href: API + "/details/" + encodeURIComponent(id), target: "_blank", rel: "noopener" }, "Open on archive.org"));
       return;
     }
-    const shown = files.slice(0, 60);
-    panel.replaceChildren(
+    const list = el("div", { class: "deck-list", style: "max-height:420px;overflow:auto" });
+    function fillList(arr) {
+      list.replaceChildren.apply(list, arr.map(function (f) { return fileRow(id, f); }));
+    }
+    fillList(files.slice(0, FILES_PREVIEW));
+    const nodes = [
       el("div", { style: "display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px" },
         el("strong", { style: "font-size:13px" }, files.length + " file" + (files.length === 1 ? "" : "s")),
         el("a", { class: "btn small", href: API + "/compress/" + encodeURIComponent(id), target: "_blank", rel: "noopener" }, "⬇ Download all (.zip)"),
         el("button", { class: "btn small ghost", onclick: function (e) { copyLinks(id, files, e.currentTarget); } }, "Copy links")),
-      el("div", { class: "deck-list", style: "max-height:320px;overflow:auto" }, shown.map(function (f) { return fileRow(id, f); })),
-      files.length > shown.length
-        ? el("p", { class: "sub", style: "margin-top:6px" }, "Showing the first " + shown.length + " of " + files.length + " files — use the .zip above for all of them.")
-        : null);
+      list];
+    if (files.length > FILES_PREVIEW) {
+      const more = el("button", { class: "btn small", style: "margin-top:10px" }, "Show all " + files.length + " files");
+      more.addEventListener("click", function () { fillList(files); more.remove(); });
+      nodes.push(more);
+    }
+    panel.replaceChildren.apply(panel, nodes);
   }
 
   function fileRow(id, f) {
