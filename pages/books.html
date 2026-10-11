@@ -139,6 +139,16 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     if (Array.isArray(v)) return v.join(", ");
     return v == null ? "" : String(v);
   }
+  // Hard halal filter: an item is dropped when its title/creator carries a
+  // clearly non-Islamic marker (bible, christian, nazi, …) and no Islamic
+  // marker — so Islamic comparative books ("The Bible, the Qur'an & Science")
+  // still pass, while mis-tagged Christian/Jewish/etc. items do not.
+  const NON_ISLAMIC = /\b(bible|christian|christ|gospel|torah|jewish|judaism|hindu|buddhist|atheist|agnostic|mormon|jehovah|scofield|nazi|national socialist|satanic|freemason|zionist|new testament|old testament|sikh|jain)\b/i;
+  const ISLAMIC = /\b(islam|muslim|quran|qur['’]?an|koran|hadith|tafsir|fiqh|seerah|sirah|aqeedah|sunnah|arabic|prophet|muhammad|sahih|bukhari|masjid|mosque|ramadan|hajj|zakat|salah|dua|sharia|fatwa|madrasah|madina|mecca|ummah|halal)\b/i;
+  function isClearlyNonIslamic(doc) {
+    const text = asText(doc.title) + " " + asText(doc.creator);
+    return NON_ISLAMIC.test(text) && !ISLAMIC.test(text);
+  }
   function fmt(n) {
     return n == null || isNaN(n) ? "" : Number(n).toLocaleString();
   }
@@ -169,6 +179,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     // Always scope to Islamic texts so a free-text query cannot surface
     // non-halal material (fiction, other religions, etc.).
     parts.push('(subject:(islam OR quran OR qur\'an OR hadith OR tafsir OR fiqh OR seerah OR aqeedah OR sunnah OR "islamic studies"))');
+    parts.push('NOT subject:(christianity OR judaism OR hinduism OR buddhism OR atheism OR agnosticism OR mormonism OR sikhism OR jainism OR zoroastrianism OR "new testament" OR "old testament" OR "national socialism")');
     parts.push("mediatype:texts");
     parts.push("NOT collection:printdisabled");
     parts.push("format:(pdf OR epub OR mobi OR txt OR djvu)");
@@ -197,7 +208,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
       const data = await getJSON(searchURL(state.page));
       if (t !== token) return;
       const resp = data.response || {};
-      const docs = resp.docs || [];
+      const docs = (resp.docs || []).filter(function (d) { return !isClearlyNonIslamic(d); });
       state.total = resp.numFound || 0;
       if (!docs.length) {
         results.replaceChildren(el("div", { class: "card empty-state" },

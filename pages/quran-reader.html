@@ -127,7 +127,7 @@
         <option value="hafs">Hafs (KFGQPC)</option>
         <option value="warsh">Warsh</option>
         <option value="tajweed-offline">Tajweed (offline)</option>
-        <option value="hafs-offline">Hafs (offline)</option>
+        <option value="hafs-offline" selected>Hafs (offline)</option>
       </select>
     </div>
     <div class="tb-group">
@@ -430,7 +430,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     chip.classList.add("active");
   }
 
-  let viewMode = 'ayah'; // 'ayah' | 'mushaf'
+  let viewMode = 'image'; // 'ayah' | 'mushaf' | 'image'
   let flashTimer = null;
 
   // Copy the *untransformed* Uthmani text, so what lands on the clipboard is
@@ -612,7 +612,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     'tajweed-offline': { label: 'Tajweed (offline)', url: function (n) { return '../assets/images/mushaf/tajweed/' + n + '.png'; } },
     'hafs-offline': { label: 'Hafs (offline)', url: function (n) { return '../assets/images/mushaf/hafs/' + n + '.png'; } }
   };
-  var currentPage = 1;
+  var currentPage = 562; // default landing: Surah Al-Mulk
   var mushafToken = 0;          // guards against out-of-order async renders
   var mushafBundle = null;
   var mushafPromise = null;
@@ -724,8 +724,8 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     if (this.value) loadMushafPage(this.value);
   });
 
-  // Resume at the page the reader was last on, not at page 1.
-  currentPage = mushafBookmarks.last;
+  // Default landing is Surah Al-Mulk (page 562); the resume banner still
+  // offers the last-read page manually.
   renderMushafBookmarkUI();
 
   function loadMushafBundle() {
@@ -1128,7 +1128,8 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     if (mPage) {
       actions.append(el('button', {class:'btn small' + (n && !sameSurah ? ' ghost' : ''), onclick: function() {
         banner.style.display = 'none';
-        setViewMode('mushaf');
+        setViewMode('image');
+        loadMushafPage(mPage);
       }}, '📖 Mushaf p.' + mPage));
     }
     actions.append(el('button', {class:'btn small ghost', 'aria-label':'Dismiss', onclick: function() {
@@ -1171,15 +1172,20 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   renderTextModeButtons();
   renderViewModeButtons();
   applyFontSize();
-  renderSurah(currentSurah);
   saveBookmark();
 
-  // Deep link from Search: ?surah=N&ayah=K scrolls straight to that ayah,
-  // reusing the go-to-ayah control so the flash and scroll behave identically.
+  // Deep link from Search (?surah=N&ayah=K) opens the Ayat view at that ayah;
+  // otherwise the default landing is the Hafs image mushaf at Surah Al-Mulk.
   var wantAyah = parseInt(params.get("ayah"), 10);
-  if (wantAyah >= 1) {
-    ayaJump.value = String(wantAyah);
-    ayaJump.dispatchEvent(new Event("change"));
+  if (wanted >= 1 || wantAyah >= 1) {
+    setViewMode('ayah');
+    renderSurah(currentSurah);
+    if (wantAyah >= 1) {
+      ayaJump.value = String(wantAyah);
+      ayaJump.dispatchEvent(new Event("change"));
+    }
+  } else {
+    setViewMode('image');
   }
   Academy.touchStreak();
 })();
