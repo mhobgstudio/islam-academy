@@ -1,0 +1,19 @@
+# generated web copy (regenerate with ./sync-web.sh)
+www/
+# deps
+node_modules/
+# android build output
+android/.gradle/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/
+android/.idea/
+android/local.properties
+# signing secrets — never commit
+*.keystore
+*.jks
+keystore.properties
+android/keystore.properties
+# build artifacts
+*.aab
+*.apk
