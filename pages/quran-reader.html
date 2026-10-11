@@ -60,6 +60,7 @@
     <div class="tb-group" id="view-mode-toggle" role="group" aria-label="Layout">
       <button class="btn small" data-view="ayah" aria-pressed="true">Ayat View</button>
       <button class="btn small ghost" data-view="mushaf" aria-pressed="false">&#xFDFD; Mushaf</button>
+      <button class="btn small ghost" data-view="image" aria-pressed="false">&#x1F5BC; Image</button>
     </div>
 
     <div class="tb-group">
@@ -111,6 +112,15 @@
       <label class="sr-only" for="mushaf-juz-select">Jump to juz</label>
       <select id="mushaf-juz-select">
         <option value="">Jump to Juz…</option>
+      </select>
+    </div>
+    <div class="tb-group" id="image-set-group" style="display:none">
+      <label class="sr-only" for="image-set-select">Image mushaf set</label>
+      <select id="image-set-select" title="Image mushaf set">
+        <option value="tajweed">Tajweed (colour-coded)</option>
+        <option value="hafs">Hafs (KFGQPC)</option>
+        <option value="warsh">Warsh</option>
+        <option value="tajweed-offline">Tajweed (offline)</option>
       </select>
     </div>
     <div class="tb-group">
@@ -585,6 +595,15 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   // memory. A failure still degrades into renderMushafFallback(), never a
   // spinner that never resolves.
   var MUSHAF_TOTAL_PAGES = 604;
+
+  // Image mushaf sets. CDN sets stream from QuranHub/quran-pages-images
+  // (public domain) via jsDelivr; the offline set is vendored locally.
+  var IMAGE_SETS = {
+    'tajweed': { label: 'Tajweed (colour-coded)', url: function (n) { return 'https://cdn.jsdelivr.net/gh/QuranHub/quran-pages-images@main/ayat/tajweed/' + n + '.png'; } },
+    'hafs': { label: 'Hafs (KFGQPC)', url: function (n) { return 'https://cdn.jsdelivr.net/gh/QuranHub/quran-pages-images@main/kfgqpc/hafs-wasat/' + n + '.jpg'; } },
+    'warsh': { label: 'Warsh', url: function (n) { return 'https://cdn.jsdelivr.net/gh/QuranHub/quran-pages-images@main/ayat/warsh/' + n + '.png'; } },
+    'tajweed-offline': { label: 'Tajweed (offline)', url: function (n) { return '../assets/images/mushaf/tajweed/' + n + '.png'; } }
+  };
   var currentPage = 1;
   var mushafToken = 0;          // guards against out-of-order async renders
   var mushafBundle = null;
@@ -804,6 +823,43 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     renderMushafBookmarkUI();
   }
 
+  function renderImageMushafPage(container, page) {
+    container.innerHTML = '';
+    var set = document.getElementById('image-set-select').value;
+    var cfg = IMAGE_SETS[set] || IMAGE_SETS['tajweed'];
+    var wrapper = el('div', {class:'mushaf-spread'});
+    var nextZone = el('button', {
+      class: 'mushaf-zone mushaf-zone-prev', 'aria-label': 'Previous page', title: 'Previous page (→)',
+      onclick: function(){ if (currentPage > 1) loadMushafPage(currentPage - 1); }
+    }, '❯');
+    var prevZone = el('button', {
+      class: 'mushaf-zone mushaf-zone-next', 'aria-label': 'Next page', title: 'Next page (←)',
+      onclick: function(){ if (currentPage < MUSHAF_TOTAL_PAGES) loadMushafPage(currentPage + 1); }
+    }, '❮');
+    var img = el('img', {
+      class: 'mushaf-image', src: cfg.url(page),
+      alt: 'Quran page ' + page + ' — ' + cfg.label,
+      loading: 'lazy',
+      style: 'width:100%;height:auto;display:block;border-radius:8px;box-shadow:var(--shadow);background:#fff'
+    });
+    img.onerror = function () {
+      img.replaceWith(el('div', { class: 'card empty-state' },
+        el('div', { class: 'ico' }, '🖼'),
+        el('h3', null, 'Image page ' + page + ' is not available'),
+        el('p', null, 'The ' + cfg.label + ' set could not be loaded. Check your connection, or switch to the offline set.'),
+        el('div', { style: 'display:flex;gap:8px;justify-content:center;flex-wrap:wrap' },
+          el('button', { class: 'btn', onclick: function () { loadMushafPage(currentPage); } }, '🔄 Try again'),
+          el('button', { class: 'btn ghost', onclick: function () { setViewMode('ayah'); } }, '← Back to Ayat view'))));
+    };
+    var pageEl = el('div', { style: 'flex:1;min-width:0;max-width:520px;margin:0 auto' },
+      el('div', { class: 'mushaf-pageno', style: 'text-align:center;margin-bottom:8px' }, '﷿ ' + page + ' ﷾'),
+      img,
+      el('div', { class: 'mushaf-pageno', style: 'text-align:center;margin-top:8px' }, '﷿ ' + page + ' ﷾'));
+    wrapper.append(prevZone, pageEl, nextZone);
+    container.append(wrapper);
+    renderMushafBookmarkUI();
+  }
+
   async function loadMushafPage(num) {
     currentPage = Math.max(1, Math.min(MUSHAF_TOTAL_PAGES, parseInt(num, 10) || 1));
     var myToken = ++mushafToken;
@@ -812,6 +868,10 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     mushafBookmarks.last = currentPage;
     saveMushafBookmarks();
     var container = ayahContainer;
+    if (viewMode === 'image') {
+      renderImageMushafPage(container, currentPage);
+      return;
+    }
     container.replaceChildren(el('div', {class:'card', style:'text-align:center;padding:28px;color:var(--ink-soft)'},
       el('div', {class:'skeleton', style:'height:20px;width:60%;margin:0 auto 12px'}),
       'Fetching mushaf page ' + currentPage + '…'
@@ -877,18 +937,23 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   document.getElementById('mushaf-juz-select').addEventListener('change', function() {
     if (this.value) loadMushafPage(this.value);
   });
+  document.getElementById('image-set-select').addEventListener('change', function() {
+    if (viewMode === 'image') loadMushafPage(currentPage);
+  });
 
   // View mode toggle handler
   function setViewMode(mode) {
-    if (mode !== 'ayah' && mode !== 'mushaf') return;
+    if (mode !== 'ayah' && mode !== 'mushaf' && mode !== 'image') return;
     viewMode = mode;
     renderViewModeButtons();
     var nav = document.getElementById('mushaf-nav');
+    var imgGroup = document.getElementById('image-set-group');
     var info = document.getElementById('surah-info');
     var surahSel = document.getElementById('surah-select');
     var ayahJumpBox = document.getElementById('ayajump-input').parentElement;
-    if (viewMode === 'mushaf') {
+    if (viewMode === 'mushaf' || viewMode === 'image') {
       nav.style.display = 'flex';
+      imgGroup.style.display = viewMode === 'image' ? '' : 'none';
       info.style.display = 'none';
       surahSel.parentElement.style.display = 'none';
       ayahJumpBox.style.display = 'none';
@@ -897,6 +962,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     } else {
       mushafToken++;                       // cancel any in-flight mushaf fetch
       nav.style.display = 'none';
+      imgGroup.style.display = 'none';
       surahSel.parentElement.style.display = '';
       ayahJumpBox.style.display = '';
       renderSurah(currentSurah);

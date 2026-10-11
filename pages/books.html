@@ -7,6 +7,15 @@
 <link rel="stylesheet" href="../assets/css/academy.css">
 <link rel="stylesheet" href="../assets/css/components.css">
 <link rel="stylesheet" href="../assets/css/responsive.css">
+<style>
+.file-modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:120;display:none;align-items:center;justify-content:center;padding:16px}
+.file-modal-panel{background:var(--paper);border-radius:14px;max-width:680px;width:100%;max-height:82vh;display:flex;flex-direction:column;box-shadow:var(--shadow-lg)}
+.file-modal-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.file-modal-list{overflow:auto;padding:8px 16px;flex:1}
+.file-modal-list label{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line-soft);font-size:13px;cursor:pointer}
+.file-modal-list input{flex:0 0 auto}
+.file-modal-foot{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line)}
+</style>
 <link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icons/icon-192.png">
 <link rel="manifest" href="../manifest.json">
@@ -71,6 +80,21 @@
 
   <div id="results"></div>
   <nav id="pager" class="reader-toolbar" style="justify-content:center;display:none" aria-label="Pagination"></nav>
+
+  <div id="fileModal" class="file-modal" role="dialog" aria-modal="true" aria-labelledby="fileModalTitle">
+    <div class="file-modal-panel">
+      <div class="file-modal-head">
+        <strong id="fileModalTitle">Select files to download</strong>
+        <button class="btn small ghost" id="fileModalClose" aria-label="Close">✕</button>
+      </div>
+      <div class="file-modal-list" id="fileModalList"></div>
+      <div class="file-modal-foot">
+        <button class="btn small" id="fileModalSelected">Download selected (0)</button>
+        <a class="btn small" id="fileModalZip" target="_blank" rel="noopener">⬇ Download all (.zip)</a>
+        <button class="btn small ghost" id="fileModalCopy">Copy links</button>
+      </div>
+    </div>
+  </div>
 </main>
 
 <footer class="site-footer">Islam Academy — Islamic Library · texts sourced from archive.org</footer>
@@ -235,10 +259,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
       return;
     }
     const list = el("div", { class: "deck-list", style: "max-height:420px;overflow:auto" });
-    function fillList(arr) {
-      list.replaceChildren.apply(list, arr.map(function (f) { return fileRow(id, f); }));
-    }
-    fillList(files.slice(0, FILES_PREVIEW));
+    list.replaceChildren.apply(list, files.slice(0, FILES_PREVIEW).map(function (f) { return fileRow(id, f); }));
     const nodes = [
       el("div", { style: "display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px" },
         el("strong", { style: "font-size:13px" }, files.length + " file" + (files.length === 1 ? "" : "s")),
@@ -247,7 +268,7 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
       list];
     if (files.length > FILES_PREVIEW) {
       const more = el("button", { class: "btn small", style: "margin-top:10px" }, "Show all " + files.length + " files");
-      more.addEventListener("click", function () { fillList(files); more.remove(); });
+      more.addEventListener("click", function () { openFileModal(id, files); });
       nodes.push(more);
     }
     panel.replaceChildren.apply(panel, nodes);
@@ -289,6 +310,66 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     document.body.removeChild(ta);
   }
 
+  function copyText(text, btn) {
+    const done = function () {
+      if (btn) {
+        const old = btn.textContent;
+        btn.textContent = "Copied ✓";
+        setTimeout(function () { btn.textContent = old; }, 1500);
+      }
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+    } else {
+      fallbackCopy(text);
+      done();
+    }
+  }
+
+  // ---- file-selection modal -------------------------------------------
+  let modalCtx = null;
+  function openFileModal(id, files) {
+    modalCtx = { id: id, files: files };
+    document.getElementById("fileModalZip").href = API + "/compress/" + encodeURIComponent(id);
+    const listEl = document.getElementById("fileModalList");
+    listEl.replaceChildren.apply(listEl, files.map(function (f, i) {
+      return el("label", null,
+        el("input", { type: "checkbox", dataset: { i: i } }),
+        el("span", { class: "badge" }, (extOf(f.name).slice(1) || "FILE").toUpperCase()),
+        el("span", { style: "flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap", title: f.name }, f.name),
+        f.size ? el("span", { style: "font-size:11px;color:var(--ink-soft);white-space:nowrap" }, humanSize(f.size)) : null);
+    }));
+    updateModalCount();
+    document.getElementById("fileModal").style.display = "flex";
+  }
+  function selectedFiles() {
+    if (!modalCtx) return [];
+    const out = [];
+    document.getElementById("fileModalList").querySelectorAll("input:checked").forEach(function (cb) {
+      const f = modalCtx.files[Number(cb.dataset.i)];
+      if (f) out.push(f);
+    });
+    return out;
+  }
+  function updateModalCount() {
+    document.getElementById("fileModalSelected").textContent = "Download selected (" + selectedFiles().length + ")";
+  }
+  function downloadSelected() {
+    if (!modalCtx) return;
+    const sel = selectedFiles();
+    (sel.length ? sel : modalCtx.files).forEach(function (f) {
+      window.open(API + "/download/" + encodeURIComponent(modalCtx.id) + "/" + encodeURIComponent(f.name), "_blank", "noopener");
+    });
+  }
+  function copyModalLinks(btn) {
+    if (!modalCtx) return;
+    const sel = selectedFiles();
+    const text = (sel.length ? sel : modalCtx.files).map(function (f) {
+      return API + "/download/" + encodeURIComponent(modalCtx.id) + "/" + encodeURIComponent(f.name);
+    }).join("\n");
+    copyText(text, btn);
+  }
+
   // ---- pager -----------------------------------------------------------
   function renderPager() {
     const pages = Math.ceil(state.total / state.rows);
@@ -319,6 +400,16 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
   input.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
   sortSel.addEventListener("change", function () { state.sort = sortSel.value; run(1); });
   rowsSel.addEventListener("change", function () { state.rows = parseInt(rowsSel.value, 10) || 24; run(1); });
+
+  document.getElementById("fileModalClose").addEventListener("click", function () {
+    document.getElementById("fileModal").style.display = "none";
+  });
+  document.getElementById("fileModal").addEventListener("click", function (e) {
+    if (e.target === this) this.style.display = "none";
+  });
+  document.getElementById("fileModalList").addEventListener("change", updateModalCount);
+  document.getElementById("fileModalSelected").addEventListener("click", downloadSelected);
+  document.getElementById("fileModalCopy").addEventListener("click", function (e) { copyModalLinks(e.currentTarget); });
 
   run(1);
 })();
