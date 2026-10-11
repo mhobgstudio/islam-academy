@@ -49,6 +49,7 @@
   <p class="page-sub">Read the Noble Quran in Uthmani script with Saheeh International translation. Tap any word for meaning and audio.</p>
 
   <div id="resume-banner" class="card resume-banner" style="display:none"></div>
+  <div id="recommend-banner" class="card resume-banner" style="display:none"></div>
 
   <div class="reader-toolbar">
     <div class="tb-group" id="surah-nav">
@@ -150,6 +151,38 @@
   </div>
 
   <div id="ayah-container"></div>
+
+  <details class="card" id="schedule" style="margin-top:26px">
+    <summary style="cursor:pointer;font-weight:700;font-size:15px">📅 Daily Qur'an recitation schedule — sunnah times</summary>
+    <p class="sub" style="margin:10px 0 12px">Reciting each surah at its reported time. The reader opens on the one that matches the current time.</p>
+    <div style="overflow:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead>
+          <tr style="text-align:left;border-bottom:2px solid var(--line)">
+            <th style="padding:6px 8px">Time / day</th>
+            <th style="padding:6px 8px">Qur'an section</th>
+            <th style="padding:6px 8px">Hadith-based practice</th>
+            <th style="padding:6px 8px">Strength <span class="ar">ﷺ</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:6px 8px">After every obligatory prayer</td><td style="padding:6px 8px">Ayat al-Kursi — al-Baqarah 2:255</td><td style="padding:6px 8px">The Prophet ﷺ taught reciting it after each prescribed prayer.</td><td style="padding:6px 8px">Sahih</td></tr>
+          <tr><td style="padding:6px 8px">Before sleep</td><td style="padding:6px 8px">Last two verses of al-Baqarah — 2:285–286</td><td style="padding:6px 8px">"Whoever recites the last two verses of Surat al-Baqarah at night, they will suffice him."</td><td style="padding:6px 8px">Bukhari &amp; Muslim</td></tr>
+          <tr><td style="padding:6px 8px">Before sleep</td><td style="padding:6px 8px">Ayat al-Kursi — 2:255</td><td style="padding:6px 8px">A protector from Allah remains with the reciter and Satan does not come near until morning.</td><td style="padding:6px 8px">Bukhari</td></tr>
+          <tr><td style="padding:6px 8px">Before sleep</td><td style="padding:6px 8px">The three Quls — al-Ikhlas (112), al-Falaq (113), an-Nas (114)</td><td style="padding:6px 8px">Recite them, blow into the hands and wipe over the body; recite three times morning and evening.</td><td style="padding:6px 8px">Sahih</td></tr>
+          <tr><td style="padding:6px 8px">Before sleep</td><td style="padding:6px 8px">Surah al-Mulk (67)</td><td style="padding:6px 8px">Reported as a nightly practice of the Prophet ﷺ.</td><td style="padding:6px 8px">Hasan; commonly practiced</td></tr>
+          <tr><td style="padding:6px 8px">Morning &amp; evening</td><td style="padding:6px 8px">The three Quls — 112, 113, 114 (three times each)</td><td style="padding:6px 8px">"Recite them three times in the morning and evening and they will suffice you for everything."</td><td style="padding:6px 8px">Tirmidhi / Abu Dawud</td></tr>
+          <tr><td style="padding:6px 8px">Morning &amp; evening</td><td style="padding:6px 8px">Ayat al-Kursi — 2:255, and Surah Ghafir 40:1–3</td><td style="padding:6px 8px">Protection for the reciter until evening, or until morning if recited in the evening.</td><td style="padding:6px 8px">Tirmidhi</td></tr>
+          <tr><td style="padding:6px 8px">Every Friday</td><td style="padding:6px 8px">Surah al-Kahf (18)</td><td style="padding:6px 8px">"Whoever recites Surat al-Kahf on Friday, a light will shine for him between this Friday and the next."</td><td style="padding:6px 8px">Hasan</td></tr>
+          <tr><td style="padding:6px 8px">Friday Fajr prayer</td><td style="padding:6px 8px">Surah as-Sajdah (32) and al-Insan (76)</td><td style="padding:6px 8px">The Prophet ﷺ used to recite these in the Friday Fajr prayer.</td><td style="padding:6px 8px">Bukhari &amp; Muslim</td></tr>
+          <tr><td style="padding:6px 8px">Friday Jumu'ah prayer</td><td style="padding:6px 8px">Surah al-Jumu'ah (62) and al-Munafiqun (63)</td><td style="padding:6px 8px">Reported as the Prophet's ﷺ recitation in the Friday prayer.</td><td style="padding:6px 8px">Muslim</td></tr>
+          <tr><td style="padding:6px 8px">Upon waking</td><td style="padding:6px 8px">End of Al 'Imran — 3:190–200</td><td style="padding:6px 8px">The Prophet ﷺ recited from "Indeed, in the creation of the heavens…" after waking.</td><td style="padding:6px 8px">Bukhari</td></tr>
+          <tr><td style="padding:6px 8px">General daily routine</td><td style="padding:6px 8px">One juz' per day — complete the Qur'an in ~30 days</td><td style="padding:6px 8px">Complete the Qur'an monthly — a balanced Sunnah-based routine.</td><td style="padding:6px 8px">Bukhari</td></tr>
+          <tr><td style="padding:6px 8px">In the home</td><td style="padding:6px 8px">Surah al-Baqarah (2)</td><td style="padding:6px 8px">Satan does not enter a house in which it is recited.</td><td style="padding:6px 8px">Muslim</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
 </main>
 
 <footer class="site-footer">Islam Academy — Quran Reader</footer>
@@ -1125,6 +1158,29 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
     if (viewMode === 'ayah' && document.visibilityState === 'visible') saveBookmark();
   }, 30000);
 
+  // Time-appropriate default landing — the sunnah recitation for the current
+  // time/day, so the reader opens on something timely instead of a fixed page.
+  function recommendedNow() {
+    var now = new Date();
+    var day = now.getDay();   // 0 Sun … 5 Fri
+    var h = now.getHours();
+    if (day === 5) return { name: 'Surah al-Kahf', surah: 18, page: 293, why: 'Friday recitation' };
+    if (h >= 21 || h < 5) return { name: 'Surah al-Mulk', surah: 67, page: 562, why: 'night / before sleep' };
+    if (h >= 5 && h < 12) return { name: 'the three Quls', surah: 112, page: 604, why: 'morning remembrance' };
+    if (h >= 12 && h < 17) return { name: 'Surah al-Baqarah', surah: 2, page: 2, why: 'reciting in the home' };
+    return { name: 'the three Quls', surah: 112, page: 604, why: 'evening remembrance' };
+  }
+  function showRecommendBanner(rec) {
+    var banner = document.getElementById('recommend-banner');
+    banner.style.display = 'flex';
+    banner.replaceChildren(
+      el('div', {style:'font-size:14px;min-width:0'},
+        el('span', {style:'font-weight:600;color:var(--ink)'}, '📖 Recommended now: '),
+        el('span', {style:'color:var(--emerald-500);font-weight:600'}, rec.name + ' (page ' + rec.page + ')'),
+        el('span', {style:'color:var(--ink-soft)'}, ' — ' + rec.why)),
+      el('button', {class:'btn small ghost', onclick:function(){ document.getElementById('schedule').scrollIntoView({behavior:'smooth'}); }}, '📅 Schedule'));
+  }
+
   function showResumeBanner() {
     var saved = null;
     try { saved = JSON.parse(localStorage.getItem(BOOKMARK_KEY) || 'null'); } catch (e) {}
@@ -1212,7 +1268,10 @@ if ('serviceWorker' in navigator && !/[?&]nosw=1/.test(location.search)) {
       ayaJump.dispatchEvent(new Event("change"));
     }
   } else {
+    var rec = recommendedNow();
+    currentPage = rec.page;
     setViewMode('image');
+    showRecommendBanner(rec);
   }
   Academy.touchStreak();
 })();
