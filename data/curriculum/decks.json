@@ -2594,6 +2594,327 @@
    }
   ]
  },
+ "salah-vocab": {
+  "title": "Common Salah Words",
+  "desc": "What you say and do in salah — the positions, actions and recitations of the prayer.",
+  "words": [
+   {
+    "ar": "صَلَاة",
+    "tl": "salaah",
+    "en": "prayer",
+    "root": "ص.ل.و",
+    "pattern": "فَعْلَة"
+   },
+   {
+    "ar": "تَكْبِير",
+    "tl": "takbeer",
+    "en": "saying “Allahu akbar” to begin",
+    "root": "ك.ب.ر",
+    "pattern": "تَفْعِيل"
+   },
+   {
+    "ar": "قِيَام",
+    "tl": "qiyaam",
+    "en": "standing in prayer",
+    "root": "ق.و.م",
+    "pattern": "فِعَال"
+   },
+   {
+    "ar": "رُكُوع",
+    "tl": "rukoo'",
+    "en": "bowing",
+    "root": "ر.ك.ع",
+    "pattern": "فُعُول"
+   },
+   {
+    "ar": "سُجُود",
+    "tl": "sujood",
+    "en": "prostration",
+    "root": "س.ج.د",
+    "pattern": "فُعُول"
+   },
+   {
+    "ar": "جُلُوس",
+    "tl": "juloos",
+    "en": "sitting (for tashahhud)",
+    "root": "ج.ل.س",
+    "pattern": "فُعُول"
+   },
+   {
+    "ar": "تَشَهُّد",
+    "tl": "tashahhud",
+    "en": "testimony recited while sitting",
+    "root": "ش.ه.د",
+    "pattern": "تَفَعُّل"
+   },
+   {
+    "ar": "تَسْلِيم",
+    "tl": "tasleem",
+    "en": "closing salām to the right and left",
+    "root": "س.ل.م",
+    "pattern": "تَفْعِيل"
+   },
+   {
+    "ar": "رَكْعَة",
+    "tl": "rak'ah",
+    "en": "one unit of prayer",
+    "root": "ر.ك.ع",
+    "pattern": "فَعْلَة"
+   },
+   {
+    "ar": "سَجْدَة",
+    "tl": "sajdah",
+    "en": "one prostration",
+    "root": "س.ج.د",
+    "pattern": "فَعْلَة"
+   },
+   {
+    "ar": "إِمَام",
+    "tl": "imaam",
+    "en": "leader of the prayer",
+    "root": "أ.م.م",
+    "pattern": "فِعَال"
+   },
+   {
+    "ar": "مَأْمُوم",
+    "tl": "ma'moom",
+    "en": "one following the imam",
+    "root": "أ.م.م",
+    "pattern": "مَفْعُول"
+   },
+   {
+    "ar": "جَمَاعَة",
+    "tl": "jamaa'ah",
+    "en": "congregation",
+    "root": "ج.م.ع",
+    "pattern": "فَعَالَة"
+   },
+   {
+    "ar": "قِبْلَة",
+    "tl": "qiblah",
+    "en": "direction faced in prayer",
+    "root": "ق.ب.ل",
+    "pattern": "فِعْلَة"
+   },
+   {
+    "ar": "وُضُوء",
+    "tl": "wudoo'",
+    "en": "ablution before prayer",
+    "root": "و.ض.أ",
+    "pattern": "فُعُول"
+   },
+   {
+    "ar": "أَذَان",
+    "tl": "adhaan",
+    "en": "call to prayer",
+    "root": "أ.ذ.ن",
+    "pattern": "فَعَال"
+   },
+   {
+    "ar": "إِقَامَة",
+    "tl": "iqaamah",
+    "en": "call made just before the prayer starts",
+    "root": "ق.و.م",
+    "pattern": "إِفَالَة"
+   },
+   {
+    "ar": "نِيَّة",
+    "tl": "niyyah",
+    "en": "intention",
+    "root": "ن.و.ي",
+    "pattern": "فِعْلَة"
+   },
+   {
+    "ar": "فَرْض",
+    "tl": "fard",
+    "en": "obligatory prayer",
+    "root": "ف.ر.ض",
+    "pattern": "فَعْل"
+   },
+   {
+    "ar": "سُنَّة",
+    "tl": "sunnah",
+    "en": "Prophetic practice; voluntary prayer",
+    "root": "س.ن.ن",
+    "pattern": "فُعْلَة"
+   },
+   {
+    "ar": "نَافِلَة",
+    "tl": "naafilah",
+    "en": "supererogatory prayer",
+    "root": "ن.ف.ل",
+    "pattern": "فَاعِلَة"
+   },
+   {
+    "ar": "وِتْر",
+    "tl": "witr",
+    "en": "odd-numbered night prayer",
+    "root": "و.ت.ر",
+    "pattern": "فِعْل"
+   },
+   {
+    "ar": "قُنُوت",
+    "tl": "qunoot",
+    "en": "supplication made in witr",
+    "root": "ق.ن.ت",
+    "pattern": "فُعُول"
+   },
+   {
+    "ar": "سُبْحَانَ",
+    "tl": "subhaana",
+    "en": "glory be (to Allah)",
+    "root": "س.ب.ح",
+    "pattern": "سُبْحَان"
+   },
+   {
+    "ar": "تَسْبِيح",
+    "tl": "tasbeeh",
+    "en": "glorification said in bowing and prostration",
+    "root": "س.ب.ح",
+    "pattern": "تَفْعِيل"
+   },
+   {
+    "ar": "تَحِيَّات",
+    "tl": "tahiyyaat",
+    "en": "“greetings…” — opening of the tashahhud",
+    "root": "ح.ي.ي",
+    "pattern": "تَحِيَّات"
+   },
+   {
+    "ar": "صَلَوَات",
+    "tl": "salawaat",
+    "en": "blessings (in the tashahhud)",
+    "root": "ص.ل.و",
+    "pattern": "صَلَوَات"
+   },
+   {
+    "ar": "طَيِّبَات",
+    "tl": "tayyibaat",
+    "en": "good and pure things",
+    "root": "ط.ي.ب",
+    "pattern": "طَيِّبَات"
+   },
+   {
+    "ar": "شَهَادَة",
+    "tl": "shahaadah",
+    "en": "testimony of faith",
+    "root": "ش.ه.د",
+    "pattern": "فَعَالَة"
+   },
+   {
+    "ar": "دُعَاء",
+    "tl": "du'aa'",
+    "en": "supplication",
+    "root": "د.ع.و",
+    "pattern": "فُعَال"
+   },
+   {
+    "ar": "ذِكْر",
+    "tl": "dhikr",
+    "en": "remembrance of Allah",
+    "root": "ذ.ك.ر",
+    "pattern": "فِعْل"
+   },
+   {
+    "ar": "خُشُوع",
+    "tl": "khushoo'",
+    "en": "humble focus in prayer",
+    "root": "خ.ش.ع",
+    "pattern": "فُعُول"
+   },
+   {
+    "ar": "إِخْلَاص",
+    "tl": "ikhlaas",
+    "en": "sincerity",
+    "root": "خ.ل.ص",
+    "pattern": "إِفْعَال"
+   },
+   {
+    "ar": "عِبَادَة",
+    "tl": "'ibaadah",
+    "en": "worship",
+    "root": "ع.ب.د",
+    "pattern": "فِعَالَة"
+   },
+   {
+    "ar": "رَحْمَة",
+    "tl": "rahmah",
+    "en": "mercy",
+    "root": "ر.ح.م",
+    "pattern": "فَعْلَة"
+   },
+   {
+    "ar": "بَرَكَة",
+    "tl": "barakah",
+    "en": "blessing",
+    "root": "ب.ر.ك",
+    "pattern": "فَعْلَة"
+   },
+   {
+    "ar": "سَلَام",
+    "tl": "salaam",
+    "en": "peace",
+    "root": "س.ل.م",
+    "pattern": "فَعَال"
+   },
+   {
+    "ar": "مَسْجِد",
+    "tl": "masjid",
+    "en": "mosque",
+    "root": "س.ج.د",
+    "pattern": "مَفْعِل"
+   },
+   {
+    "ar": "جُمُعَة",
+    "tl": "jumu'ah",
+    "en": "Friday; the Friday prayer",
+    "root": "ج.م.ع",
+    "pattern": "فُعُلَة"
+   },
+   {
+    "ar": "تَرَاوِيح",
+    "tl": "taraaweeh",
+    "en": "Ramadan night prayers",
+    "root": "ر.و.ح",
+    "pattern": "تَفَاعِيل"
+   },
+   {
+    "ar": "شُكْر",
+    "tl": "shukr",
+    "en": "gratitude",
+    "root": "ش.ك.ر",
+    "pattern": "فُعْل"
+   },
+   {
+    "ar": "تَوْبَة",
+    "tl": "tawbah",
+    "en": "repentance",
+    "root": "ت.و.ب",
+    "pattern": "فَعْلَة"
+   },
+   {
+    "ar": "سُتْرَة",
+    "tl": "sutrah",
+    "en": "barrier placed in front of one praying",
+    "root": "س.ت.ر",
+    "pattern": "فُعْلَة"
+   },
+   {
+    "ar": "مُصَلَّى",
+    "tl": "musallaa",
+    "en": "place of prayer",
+    "root": "ص.ل.و",
+    "pattern": "مُفَعَّل"
+   },
+   {
+    "ar": "عِيد",
+    "tl": "'eed",
+    "en": "festival; the Eid prayer",
+    "root": "ع.و.د",
+    "pattern": "فِعْل"
+   }
+  ]
+ },
  "quran-prepositions": {
   "title": "Prepositions & Particles",
   "desc": "Essential Arabic prepositions and grammatical particles found throughout the Quran.",

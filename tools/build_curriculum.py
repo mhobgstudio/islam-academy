@@ -148,11 +148,62 @@ DECK_SURAH_WORDS = [
     ("تِلْكَ","tilka","that (f.)"),("الَّذِي","alladhee","who/which (m.)"),("الَّتِي","allatee","who/which (f.)"),
 ]
 
+# Salah words: what a praying person says and does. Roots/patterns are carried
+# in the source so a fresh regeneration keeps them.
+DECK_SALAH = [
+    ("صَلَاة","salaah","prayer","ص.ل.و","فَعْلَة"),
+    ("تَكْبِير","takbeer","saying “Allahu akbar” to begin","ك.ب.ر","تَفْعِيل"),
+    ("قِيَام","qiyaam","standing in prayer","ق.و.م","فِعَال"),
+    ("رُكُوع","rukoo'","bowing","ر.ك.ع","فُعُول"),
+    ("سُجُود","sujood","prostration","س.ج.د","فُعُول"),
+    ("جُلُوس","juloos","sitting (for tashahhud)","ج.ل.س","فُعُول"),
+    ("تَشَهُّد","tashahhud","testimony recited while sitting","ش.ه.د","تَفَعُّل"),
+    ("تَسْلِيم","tasleem","closing salām to the right and left","س.ل.م","تَفْعِيل"),
+    ("رَكْعَة","rak'ah","one unit of prayer","ر.ك.ع","فَعْلَة"),
+    ("سَجْدَة","sajdah","one prostration","س.ج.د","فَعْلَة"),
+    ("إِمَام","imaam","leader of the prayer","أ.م.م","فِعَال"),
+    ("مَأْمُوم","ma'moom","one following the imam","أ.م.م","مَفْعُول"),
+    ("جَمَاعَة","jamaa'ah","congregation","ج.م.ع","فَعَالَة"),
+    ("قِبْلَة","qiblah","direction faced in prayer","ق.ب.ل","فِعْلَة"),
+    ("وُضُوء","wudoo'","ablution before prayer","و.ض.أ","فُعُول"),
+    ("أَذَان","adhaan","call to prayer","أ.ذ.ن","فَعَال"),
+    ("إِقَامَة","iqaamah","call made just before the prayer starts","ق.و.م","إِفَالَة"),
+    ("نِيَّة","niyyah","intention","ن.و.ي","فِعْلَة"),
+    ("فَرْض","fard","obligatory prayer","ف.ر.ض","فَعْل"),
+    ("سُنَّة","sunnah","Prophetic practice; voluntary prayer","س.ن.ن","فُعْلَة"),
+    ("نَافِلَة","naafilah","supererogatory prayer","ن.ف.ل","فَاعِلَة"),
+    ("وِتْر","witr","odd-numbered night prayer","و.ت.ر","فِعْل"),
+    ("قُنُوت","qunoot","supplication made in witr","ق.ن.ت","فُعُول"),
+    ("سُبْحَانَ","subhaana","glory be (to Allah)","س.ب.ح","سُبْحَان"),
+    ("تَسْبِيح","tasbeeh","glorification said in bowing and prostration","س.ب.ح","تَفْعِيل"),
+    ("تَحِيَّات","tahiyyaat","“greetings…” — opening of the tashahhud","ح.ي.ي","تَحِيَّات"),
+    ("صَلَوَات","salawaat","blessings (in the tashahhud)","ص.ل.و","صَلَوَات"),
+    ("طَيِّبَات","tayyibaat","good and pure things","ط.ي.ب","طَيِّبَات"),
+    ("شَهَادَة","shahaadah","testimony of faith","ش.ه.د","فَعَالَة"),
+    ("دُعَاء","du'aa'","supplication","د.ع.و","فُعَال"),
+    ("ذِكْر","dhikr","remembrance of Allah","ذ.ك.ر","فِعْل"),
+    ("خُشُوع","khushoo'","humble focus in prayer","خ.ش.ع","فُعُول"),
+    ("إِخْلَاص","ikhlaas","sincerity","خ.ل.ص","إِفْعَال"),
+    ("عِبَادَة","'ibaadah","worship","ع.ب.د","فِعَالَة"),
+    ("رَحْمَة","rahmah","mercy","ر.ح.م","فَعْلَة"),
+    ("بَرَكَة","barakah","blessing","ب.ر.ك","فَعْلَة"),
+    ("سَلَام","salaam","peace","س.ل.م","فَعَال"),
+    ("مَسْجِد","masjid","mosque","س.ج.د","مَفْعِل"),
+    ("جُمُعَة","jumu'ah","Friday; the Friday prayer","ج.م.ع","فُعُلَة"),
+    ("تَرَاوِيح","taraaweeh","Ramadan night prayers","ر.و.ح","تَفَاعِيل"),
+    ("شُكْر","shukr","gratitude","ش.ك.ر","فُعْل"),
+    ("تَوْبَة","tawbah","repentance","ت.و.ب","فَعْلَة"),
+    ("سُتْرَة","sutrah","barrier placed in front of one praying","س.ت.ر","فُعْلَة"),
+    ("مُصَلَّى","musallaa","place of prayer","ص.ل.و","مُفَعَّل"),
+    ("عِيد","'eed","festival; the Eid prayer","ع.و.د","فِعْل"),
+]
+
 DECKS = {
     "quran-core": {"title": "Quran Core 100", "desc": "The most frequent words in the Quran — master these and you recognize ~50% of every page.", "words": [{"ar": a, "tl": t, "en": e} for a,t,e in DECK_QURAN_100]},
     "everyday": {"title": "Everyday Arabic", "desc": "People, places, adjectives — Madinah Book 1 vocabulary.", "words": [{"ar": a, "tl": t, "en": e} for a,t,e in DECK_EVERYDAY]},
     "verbs-50": {"title": "Top 50 Verbs", "desc": "Past-tense verbs that carry most Quranic narrative.", "words": [{"ar": a, "tl": t, "en": e} for a,t,e in DECK_VERBS]},
     "surah-vocab": {"title": "Surah Vocabulary", "desc": "Word-by-word keys for Al-Fatihah and the short surahs.", "words": [{"ar": a, "tl": t, "en": e} for a,t,e in DECK_SURAH_WORDS]},
+    "salah-vocab": {"title": "Common Salah Words", "desc": "What you say and do in salah — the positions, actions and recitations of the prayer.", "words": [{"ar": a, "tl": t, "en": e, "root": r, "pattern": p} for a,t,e,r,p in DECK_SALAH]},
 }
 
 # ---------------------------------------------------------------- LESSONS
@@ -565,7 +616,7 @@ if preserved_words:
 # Display order. Every page builds its deck list from decks.json key order
 # (Object.entries(decks)), so this is what puts the Quran-comprehension decks
 # first and the general "Everyday Arabic" deck last.
-DECK_ORDER = ["quran-core", "quran-freq-200", "surah-vocab", "quran-prepositions",
+DECK_ORDER = ["quran-core", "quran-freq-200", "surah-vocab", "salah-vocab", "quran-prepositions",
               "quran-pronouns", "verbs-50", "divine-names", "everyday"]
 merged_decks = {k: merged_decks[k] for k in DECK_ORDER if k in merged_decks} | {
     k: v for k, v in merged_decks.items() if k not in DECK_ORDER}
