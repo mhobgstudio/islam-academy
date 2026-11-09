@@ -795,979 +795,6 @@
    }
   ]
  },
- "everyday": {
-  "title": "Everyday Arabic",
-  "desc": "People, places, adjectives — Madinah Book 1 vocabulary.",
-  "words": [
-   {
-    "ar": "ولد",
-    "tl": "walad",
-    "en": "boy",
-    "root": "و.ل.د",
-    "pattern": "فَعَل"
-   },
-   {
-    "ar": "بنت",
-    "tl": "bint",
-    "en": "girl",
-    "root": "ب.ن.ت",
-    "pattern": "فِعْل"
-   },
-   {
-    "ar": "رجل",
-    "tl": "rajul",
-    "en": "man",
-    "root": "ر.ج.ل",
-    "pattern": "فَعُل"
-   },
-   {
-    "ar": "امرأة",
-    "tl": "imra'a",
-    "en": "woman",
-    "root": "م.ر.أ",
-    "pattern": "فَعْلَأَة"
-   },
-   {
-    "ar": "أب",
-    "tl": "ab",
-    "en": "father",
-    "root": "أ.ب.و",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "أم",
-    "tl": "umm",
-    "en": "mother",
-    "root": "أ.م.م",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "أخ",
-    "tl": "akh",
-    "en": "brother",
-    "root": "أ.خ.و",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "أخت",
-    "tl": "ukht",
-    "en": "sister",
-    "root": "أ.خ.و",
-    "pattern": "فَعْلَة"
-   },
-   {
-    "ar": "طالب",
-    "tl": "talib",
-    "en": "student",
-    "root": "ط.ل.ب",
-    "pattern": "فَاعِل"
-   },
-   {
-    "ar": "معلم",
-    "tl": "mu'allim",
-    "en": "teacher",
-    "root": "ع.ل.م",
-    "pattern": "مُفْعِل"
-   },
-   {
-    "ar": "طبيب",
-    "tl": "tabeeb",
-    "en": "doctor",
-    "root": "ط.ب.ب",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "تاجر",
-    "tl": "tajir",
-    "en": "merchant",
-    "root": "ت.ج.ر",
-    "pattern": "فَاعِل"
-   },
-   {
-    "ar": "مدرسة",
-    "tl": "madrasa",
-    "en": "school",
-    "root": "د.ر.س",
-    "pattern": "مَفْعَلَة"
-   },
-   {
-    "ar": "جامعة",
-    "tl": "jaami'a",
-    "en": "university",
-    "root": "ج.م.ع",
-    "pattern": "فَاعِلَة"
-   },
-   {
-    "ar": "مسجد",
-    "tl": "masjid",
-    "en": "mosque",
-    "root": "س.ج.د",
-    "pattern": "مَفْعِل"
-   },
-   {
-    "ar": "سوق",
-    "tl": "sooq",
-    "en": "market",
-    "root": "س.و.ق",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "سيارة",
-    "tl": "sayyaara",
-    "en": "car",
-    "root": "س.ي.ر",
-    "pattern": "فَعَّالَة"
-   },
-   {
-    "ar": "قطار",
-    "tl": "qitaar",
-    "en": "train",
-    "root": "ق.ط.ر",
-    "pattern": "فِعَال"
-   },
-   {
-    "ar": "طائرة",
-    "tl": "taa'ira",
-    "en": "airplane",
-    "root": "ط.ي.ر",
-    "pattern": "فَاعِلَة"
-   },
-   {
-    "ar": "سفينة",
-    "tl": "safeena",
-    "en": "ship",
-    "root": "س.ف.ن",
-    "pattern": "فَعِيلَة"
-   },
-   {
-    "ar": "كبير",
-    "tl": "kabeer",
-    "en": "big",
-    "root": "ك.ب.ر",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "صغير",
-    "tl": "sagheer",
-    "en": "small",
-    "root": "ص.غ.ر",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "جميل",
-    "tl": "jameel",
-    "en": "beautiful",
-    "root": "ج.م.ل",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "طويل",
-    "tl": "taweel",
-    "en": "tall/long",
-    "root": "ط.و.ل",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "قصير",
-    "tl": "qaseer",
-    "en": "short",
-    "root": "ق.ص.ر",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "جديد",
-    "tl": "jadeed",
-    "en": "new",
-    "root": "ج.د.د",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "قديم",
-    "tl": "qadeem",
-    "en": "old",
-    "root": "ق.د.م",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "سهل",
-    "tl": "sahl",
-    "en": "easy",
-    "root": "س.ه.ل",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "صعب",
-    "tl": "sa'b",
-    "en": "difficult",
-    "root": "ص.ع.ب",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "حلو",
-    "tl": "hulw",
-    "en": "sweet/nice",
-    "root": "ح.ل.و",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "مرّ",
-    "tl": "murr",
-    "en": "bitter",
-    "root": "م.ر.ر",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "ساخن",
-    "tl": "saakhin",
-    "en": "hot",
-    "root": "س.خ.ن",
-    "pattern": "فَاعِل"
-   },
-   {
-    "ar": "بارد",
-    "tl": "baarid",
-    "en": "cold",
-    "root": "ب.ر.د",
-    "pattern": "فَاعِل"
-   },
-   {
-    "ar": "نظيف",
-    "tl": "nadheef",
-    "en": "clean",
-    "root": "ن.ظ.ف",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "وسخ",
-    "tl": "wasikh",
-    "en": "dirty",
-    "root": "و.س.خ",
-    "pattern": "فَعِل"
-   },
-   {
-    "ar": "غني",
-    "tl": "ghanee",
-    "en": "rich",
-    "root": "غ.ن.ي",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "فقير",
-    "tl": "faqeer",
-    "en": "poor",
-    "root": "ف.ق.ر",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "قوي",
-    "tl": "qawiyy",
-    "en": "strong",
-    "root": "ق.و.ي",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "ضعيف",
-    "tl": "da'eef",
-    "en": "weak",
-    "root": "ض.ع.ف",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "سعيد",
-    "tl": "sa'eed",
-    "en": "happy",
-    "root": "س.ع.د",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "حزين",
-    "tl": "hazeen",
-    "en": "sad",
-    "root": "ح.ز.ن",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "ذكي",
-    "tl": "dhakee",
-    "en": "intelligent",
-    "root": "ذ.ك.ي",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "غبي",
-    "tl": "ghabee",
-    "en": "foolish",
-    "root": "غ.ب.ي",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "شجاع",
-    "tl": "shujaa'",
-    "en": "brave",
-    "root": "ش.ج.ع",
-    "pattern": "فَعَال"
-   },
-   {
-    "ar": "خائف",
-    "tl": "khaa'if",
-    "en": "afraid",
-    "root": "خ.و.ف",
-    "pattern": "فَاعِل"
-   },
-   {
-    "ar": "جوعان",
-    "tl": "joo'aan",
-    "en": "hungry",
-    "root": "ج.و.ع",
-    "pattern": "فَعْلَان"
-   },
-   {
-    "ar": "عطشان",
-    "tl": "'atshaan",
-    "en": "thirsty",
-    "root": "ع.ط.ش",
-    "pattern": "فَعْلَان"
-   },
-   {
-    "ar": "متعب",
-    "tl": "mut'ab",
-    "en": "tired",
-    "root": "ت.ع.ب",
-    "pattern": "مُفْعَل"
-   }
-  ]
- },
- "verbs-50": {
-  "title": "Top 50 Verbs",
-  "desc": "Past-tense verbs that carry most Quranic narrative.",
-  "words": [
-   {
-    "ar": "قال",
-    "tl": "qaala",
-    "en": "said",
-    "root": "ق.و.ل",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "قالوا",
-    "tl": "qaaloo",
-    "en": "they said",
-    "root": "ق.و.ل",
-    "pattern": "فَعَلُوا"
-   },
-   {
-    "ar": "كان",
-    "tl": "kaana",
-    "en": "was",
-    "root": "ك.و.ن",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "كانوا",
-    "tl": "kaanoo",
-    "en": "they were",
-    "root": "ك.و.ن",
-    "pattern": "فَعَلُوا"
-   },
-   {
-    "ar": "فعل",
-    "tl": "fa'ala",
-    "en": "did",
-    "root": "ف.ع.ل",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "عمل",
-    "tl": "amila",
-    "en": "worked/did",
-    "root": "ع.م.ل",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "جاء",
-    "tl": "jaa'a",
-    "en": "came",
-    "root": "ج.ي.أ",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "أتى",
-    "tl": "ataa",
-    "en": "came/brought",
-    "root": "أ.ت.ي",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "ذهب",
-    "tl": "dhahaba",
-    "en": "went",
-    "root": "ذ.ه.ب",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "خرج",
-    "tl": "kharaja",
-    "en": "exited/left",
-    "root": "خ.ر.ج",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "دخل",
-    "tl": "dakhala",
-    "en": "entered",
-    "root": "د.خ.ل",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "رأى",
-    "tl": "ra'aa",
-    "en": "saw",
-    "root": "ر.أ.ي",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "نظر",
-    "tl": "nazara",
-    "en": "looked",
-    "root": "ن.ظ.ر",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "سمع",
-    "tl": "sami'a",
-    "en": "heard",
-    "root": "س.م.ع",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "عرف",
-    "tl": "arafa",
-    "en": "knew",
-    "root": "ع.ر.ف",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "علم",
-    "tl": "alima",
-    "en": "knew",
-    "root": "ع.ل.م",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "فهم",
-    "tl": "fahima",
-    "en": "understood",
-    "root": "ف.ه.م",
-    "pattern": "فَعِلَ"
-   },
-   {
-    "ar": "ذكر",
-    "tl": "dhakara",
-    "en": "remembered/mentioned",
-    "root": "ذ.ك.ر",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "نسى",
-    "tl": "nasiya",
-    "en": "forgot",
-    "root": "ن.س.ي",
-    "pattern": "فَعِلَ"
-   },
-   {
-    "ar": "أخذ",
-    "tl": "akhadha",
-    "en": "took",
-    "root": "أ.خ.ذ",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "أعطى",
-    "tl": "a'taa",
-    "en": "gave",
-    "root": "ع.ط.و",
-    "pattern": "أَفْعَلَ"
-   },
-   {
-    "ar": "وضع",
-    "tl": "wada'a",
-    "en": "placed",
-    "root": "و.ض.ع",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "حمل",
-    "tl": "hamala",
-    "en": "carried",
-    "root": "ح.م.ل",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "أكل",
-    "tl": "akala",
-    "en": "ate",
-    "root": "أ.ك.ل",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "شرب",
-    "tl": "shariba",
-    "en": "drank",
-    "root": "ش.ر.ب",
-    "pattern": "فَعِلَ"
-   },
-   {
-    "ar": "لبس",
-    "tl": "labisa",
-    "en": "wore",
-    "root": "ل.ب.س",
-    "pattern": "فَعِلَ"
-   },
-   {
-    "ar": "نام",
-    "tl": "naama",
-    "en": "slept",
-    "root": "ن.و.م",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "قام",
-    "tl": "qaama",
-    "en": "stood",
-    "root": "ق.و.م",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "جلس",
-    "tl": "jalasa",
-    "en": "sat",
-    "root": "ج.ل.س",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "مشى",
-    "tl": "mashaa",
-    "en": "walked",
-    "root": "م.ش.ي",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "ركب",
-    "tl": "rakiba",
-    "en": "rode",
-    "root": "ر.ك.ب",
-    "pattern": "فَعِلَ"
-   },
-   {
-    "ar": "كتب",
-    "tl": "kataba",
-    "en": "wrote",
-    "root": "ك.ت.ب",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "قرأ",
-    "tl": "qara'a",
-    "en": "read",
-    "root": "ق.ر.أ",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "درس",
-    "tl": "darasa",
-    "en": "studied",
-    "root": "د.ر.س",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "تعلم",
-    "tl": "ta'allama",
-    "en": "learned",
-    "root": "ع.ل.م",
-    "pattern": "تَفَعَّلَ"
-   },
-   {
-    "ar": "علّم",
-    "tl": "allama",
-    "en": "taught",
-    "root": "ع.ل.م",
-    "pattern": "فَعَّلَ"
-   },
-   {
-    "ar": "سأل",
-    "tl": "sa'ala",
-    "en": "asked",
-    "root": "س.أ.ل",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "أجاب",
-    "tl": "ajaaba",
-    "en": "answered",
-    "root": "ج.و.ب",
-    "pattern": "أَفْعَلَ"
-   },
-   {
-    "ar": "فتح",
-    "tl": "fataha",
-    "en": "opened",
-    "root": "ف.ت.ح",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "أغلق",
-    "tl": "aghlaqa",
-    "en": "closed",
-    "root": "غ.ل.ق",
-    "pattern": "أَفْعَلَ"
-   },
-   {
-    "ar": "بنى",
-    "tl": "banaa",
-    "en": "built",
-    "root": "ب.ن.ي",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "صنع",
-    "tl": "sana'a",
-    "en": "made",
-    "root": "ص.ن.ع",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "وجد",
-    "tl": "wajada",
-    "en": "found",
-    "root": "و.ج.د",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "بحث",
-    "tl": "bahatha",
-    "en": "searched",
-    "root": "ب.ح.ث",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "انتظر",
-    "tl": "intaZara",
-    "en": "waited",
-    "root": "ن.ظ.ر",
-    "pattern": "اِفْتَعَلَ"
-   },
-   {
-    "ar": "سافر",
-    "tl": "saafara",
-    "en": "traveled",
-    "root": "س.ف.ر",
-    "pattern": "فَاعَلَ"
-   },
-   {
-    "ar": "عاد",
-    "tl": "aada",
-    "en": "returned",
-    "root": "ع.و.د",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "دعا",
-    "tl": "da'aa",
-    "en": "called/supplicated",
-    "root": "د.ع.و",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "استمع",
-    "tl": "istami'a",
-    "en": "listened",
-    "root": "س.م.ع",
-    "pattern": "اِفْتَعَلَ"
-   },
-   {
-    "ar": "أمن",
-    "tl": "amina",
-    "en": "felt safe",
-    "root": "أ.م.ن",
-    "pattern": "فَعِلَ"
-   },
-   {
-    "ar": "خاف",
-    "tl": "khaafa",
-    "en": "feared",
-    "root": "خ.و.ف",
-    "pattern": "فَعِلَ"
-   },
-   {
-    "ar": "حبّ",
-    "tl": "ahabba",
-    "en": "loved",
-    "root": "ح.ب.ب",
-    "pattern": "أَفْعَلَ"
-   },
-   {
-    "ar": "كره",
-    "tl": "kariha",
-    "en": "hated",
-    "root": "ك.ر.ه",
-    "pattern": "فَعِلَ"
-   }
-  ]
- },
- "surah-vocab": {
-  "title": "Surah Vocabulary",
-  "desc": "Word-by-word keys for Al-Fatihah and the short surahs.",
-  "words": [
-   {
-    "ar": "بِسْمِ",
-    "tl": "bismi",
-    "en": "in the name of",
-    "root": "س.م.و",
-    "pattern": "بِاسْمٍ"
-   },
-   {
-    "ar": "الْحَمْدُ",
-    "tl": "al-hamd",
-    "en": "all praise",
-    "root": "ح.م.د",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "لِلَّهِ",
-    "tl": "lillahi",
-    "en": "is for Allah",
-    "root": "أ.ل.ه",
-    "pattern": "لِلّٰهِ"
-   },
-   {
-    "ar": "رَبِّ",
-    "tl": "rabbi",
-    "en": "Lord of",
-    "root": "ر.ب.ب",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "الرَّحْمَٰنِ",
-    "tl": "ar-Rahmaan",
-    "en": "the Most Merciful",
-    "root": "ر.ح.م",
-    "pattern": "فَعْلَان"
-   },
-   {
-    "ar": "الرَّحِيمِ",
-    "tl": "ar-Raheem",
-    "en": "the Most Compassionate",
-    "root": "ر.ح.م",
-    "pattern": "فَعِيل"
-   },
-   {
-    "ar": "مَالِكِ",
-    "tl": "maaliki",
-    "en": "Master/Owner of",
-    "root": "م.ل.ك",
-    "pattern": "فَاعِل"
-   },
-   {
-    "ar": "يَوْمِ",
-    "tl": "yawmi",
-    "en": "Day of",
-    "root": "ي.و.م",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "الدِّينِ",
-    "tl": "ad-deen",
-    "en": "Judgment/Religion",
-    "root": "د.ي.ن",
-    "pattern": "فِعْل"
-   },
-   {
-    "ar": "نَعْبُدُ",
-    "tl": "na'budu",
-    "en": "we worship",
-    "root": "ع.ب.د",
-    "pattern": "نَفْعُلُ"
-   },
-   {
-    "ar": "نَسْتَعِينُ",
-    "tl": "nasta'eenu",
-    "en": "we seek help",
-    "root": "ع.و.ن",
-    "pattern": "نَسْتَفْعِلُ"
-   },
-   {
-    "ar": "اهْدِنَا",
-    "tl": "ihdinaa",
-    "en": "guide us",
-    "root": "ه.د.ي",
-    "pattern": "اِفْعِلْ"
-   },
-   {
-    "ar": "الصِّرَاطَ",
-    "tl": "as-siraat",
-    "en": "the path",
-    "root": "ص.ر.ط",
-    "pattern": "فِعَال"
-   },
-   {
-    "ar": "الْمُسْتَقِيمَ",
-    "tl": "al-mustaqeem",
-    "en": "the straight",
-    "root": "ق.و.م",
-    "pattern": "مُسْتَفْعِل"
-   },
-   {
-    "ar": "قُلْ",
-    "tl": "qul",
-    "en": "say",
-    "root": "ق.و.ل",
-    "pattern": "فُعْل"
-   },
-   {
-    "ar": "هُوَ",
-    "tl": "huwa",
-    "en": "He",
-    "type": "pronoun"
-   },
-   {
-    "ar": "أَحَدٌ",
-    "tl": "ahad",
-    "en": "One",
-    "root": "أ.ح.د",
-    "pattern": "فَعَل"
-   },
-   {
-    "ar": "الصَّمَدُ",
-    "tl": "as-samad",
-    "en": "Eternal/Absolute",
-    "root": "ص.م.د",
-    "pattern": "فَعَل"
-   },
-   {
-    "ar": "كُنْتُمْ",
-    "tl": "kuntum",
-    "en": "you were",
-    "root": "ك.و.ن",
-    "pattern": "فُعْلْتُمْ"
-   },
-   {
-    "ar": "أَعُوذُ",
-    "tl": "a'oodhu",
-    "en": "I seek refuge",
-    "root": "ع.و.ذ",
-    "pattern": "أَفْعُلُ"
-   },
-   {
-    "ar": "الْفَلَقِ",
-    "tl": "al-falaq",
-    "en": "the daybreak",
-    "root": "ف.ل.ق",
-    "pattern": "فَعَل"
-   },
-   {
-    "ar": "النَّاسِ",
-    "tl": "an-naas",
-    "en": "mankind",
-    "root": "ن.و.س",
-    "pattern": "فَعَل"
-   },
-   {
-    "ar": "الْوَسْوَاسِ",
-    "tl": "al-waswaas",
-    "en": "the whisperer",
-    "root": "و.س.و.س",
-    "pattern": "فَعْلَال"
-   },
-   {
-    "ar": "الْخَنَّاسِ",
-    "tl": "al-khannaas",
-    "en": "who withdraws",
-    "root": "خ.ن.س",
-    "pattern": "فَعَّال"
-   },
-   {
-    "ar": "الْعَالَمِينَ",
-    "tl": "al-'aalameen",
-    "en": "the worlds / of the worlds",
-    "root": "ع.ل.م",
-    "pattern": "فَاعِلِين"
-   },
-   {
-    "ar": "شَرِّ",
-    "tl": "sharri",
-    "en": "evil of",
-    "root": "ش.ر.ر",
-    "pattern": "فَعْل"
-   },
-   {
-    "ar": "مَا",
-    "tl": "maa",
-    "en": "what/not",
-    "type": "particle"
-   },
-   {
-    "ar": "خَلَقَ",
-    "tl": "khalaqa",
-    "en": "created",
-    "root": "خ.ل.ق",
-    "pattern": "فَعَلَ"
-   },
-   {
-    "ar": "أَنَا",
-    "tl": "anaa",
-    "en": "I",
-    "type": "pronoun"
-   },
-   {
-    "ar": "أَنتُمْ",
-    "tl": "antum",
-    "en": "you (pl.)",
-    "type": "pronoun"
-   },
-   {
-    "ar": "نَحْنُ",
-    "tl": "nahnu",
-    "en": "we",
-    "type": "pronoun"
-   },
-   {
-    "ar": "هُمْ",
-    "tl": "hum",
-    "en": "they",
-    "type": "pronoun"
-   },
-   {
-    "ar": "هِيَ",
-    "tl": "hiya",
-    "en": "she/it",
-    "type": "pronoun"
-   },
-   {
-    "ar": "هَذَا",
-    "tl": "haadhaa",
-    "en": "this",
-    "type": "demonstrative"
-   },
-   {
-    "ar": "تِلْكَ",
-    "tl": "tilka",
-    "en": "that (f.)",
-    "type": "demonstrative"
-   },
-   {
-    "ar": "الَّذِي",
-    "tl": "alladhee",
-    "en": "who/which (m.)",
-    "type": "relative"
-   },
-   {
-    "ar": "الَّتِي",
-    "tl": "allatee",
-    "en": "who/which (f.)",
-    "type": "relative"
-   }
-  ]
- },
  "quran-freq-200": {
   "title": "Quran Top 200 Words",
   "desc": "The 200 most frequently occurring words in the Quran -- mastering these unlocks ~70% of Quran text. Sorted by frequency.",
@@ -3313,6 +2340,260 @@
    }
   ]
  },
+ "surah-vocab": {
+  "title": "Surah Vocabulary",
+  "desc": "Word-by-word keys for Al-Fatihah and the short surahs.",
+  "words": [
+   {
+    "ar": "بِسْمِ",
+    "tl": "bismi",
+    "en": "in the name of",
+    "root": "س.م.و",
+    "pattern": "بِاسْمٍ"
+   },
+   {
+    "ar": "الْحَمْدُ",
+    "tl": "al-hamd",
+    "en": "all praise",
+    "root": "ح.م.د",
+    "pattern": "فَعْل"
+   },
+   {
+    "ar": "لِلَّهِ",
+    "tl": "lillahi",
+    "en": "is for Allah",
+    "root": "أ.ل.ه",
+    "pattern": "لِلّٰهِ"
+   },
+   {
+    "ar": "رَبِّ",
+    "tl": "rabbi",
+    "en": "Lord of",
+    "root": "ر.ب.ب",
+    "pattern": "فَعْل"
+   },
+   {
+    "ar": "الرَّحْمَٰنِ",
+    "tl": "ar-Rahmaan",
+    "en": "the Most Merciful",
+    "root": "ر.ح.م",
+    "pattern": "فَعْلَان"
+   },
+   {
+    "ar": "الرَّحِيمِ",
+    "tl": "ar-Raheem",
+    "en": "the Most Compassionate",
+    "root": "ر.ح.م",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "مَالِكِ",
+    "tl": "maaliki",
+    "en": "Master/Owner of",
+    "root": "م.ل.ك",
+    "pattern": "فَاعِل"
+   },
+   {
+    "ar": "يَوْمِ",
+    "tl": "yawmi",
+    "en": "Day of",
+    "root": "ي.و.م",
+    "pattern": "فَعْل"
+   },
+   {
+    "ar": "الدِّينِ",
+    "tl": "ad-deen",
+    "en": "Judgment/Religion",
+    "root": "د.ي.ن",
+    "pattern": "فِعْل"
+   },
+   {
+    "ar": "نَعْبُدُ",
+    "tl": "na'budu",
+    "en": "we worship",
+    "root": "ع.ب.د",
+    "pattern": "نَفْعُلُ"
+   },
+   {
+    "ar": "نَسْتَعِينُ",
+    "tl": "nasta'eenu",
+    "en": "we seek help",
+    "root": "ع.و.ن",
+    "pattern": "نَسْتَفْعِلُ"
+   },
+   {
+    "ar": "اهْدِنَا",
+    "tl": "ihdinaa",
+    "en": "guide us",
+    "root": "ه.د.ي",
+    "pattern": "اِفْعِلْ"
+   },
+   {
+    "ar": "الصِّرَاطَ",
+    "tl": "as-siraat",
+    "en": "the path",
+    "root": "ص.ر.ط",
+    "pattern": "فِعَال"
+   },
+   {
+    "ar": "الْمُسْتَقِيمَ",
+    "tl": "al-mustaqeem",
+    "en": "the straight",
+    "root": "ق.و.م",
+    "pattern": "مُسْتَفْعِل"
+   },
+   {
+    "ar": "قُلْ",
+    "tl": "qul",
+    "en": "say",
+    "root": "ق.و.ل",
+    "pattern": "فُعْل"
+   },
+   {
+    "ar": "هُوَ",
+    "tl": "huwa",
+    "en": "He",
+    "type": "pronoun"
+   },
+   {
+    "ar": "أَحَدٌ",
+    "tl": "ahad",
+    "en": "One",
+    "root": "أ.ح.د",
+    "pattern": "فَعَل"
+   },
+   {
+    "ar": "الصَّمَدُ",
+    "tl": "as-samad",
+    "en": "Eternal/Absolute",
+    "root": "ص.م.د",
+    "pattern": "فَعَل"
+   },
+   {
+    "ar": "كُنْتُمْ",
+    "tl": "kuntum",
+    "en": "you were",
+    "root": "ك.و.ن",
+    "pattern": "فُعْلْتُمْ"
+   },
+   {
+    "ar": "أَعُوذُ",
+    "tl": "a'oodhu",
+    "en": "I seek refuge",
+    "root": "ع.و.ذ",
+    "pattern": "أَفْعُلُ"
+   },
+   {
+    "ar": "الْفَلَقِ",
+    "tl": "al-falaq",
+    "en": "the daybreak",
+    "root": "ف.ل.ق",
+    "pattern": "فَعَل"
+   },
+   {
+    "ar": "النَّاسِ",
+    "tl": "an-naas",
+    "en": "mankind",
+    "root": "ن.و.س",
+    "pattern": "فَعَل"
+   },
+   {
+    "ar": "الْوَسْوَاسِ",
+    "tl": "al-waswaas",
+    "en": "the whisperer",
+    "root": "و.س.و.س",
+    "pattern": "فَعْلَال"
+   },
+   {
+    "ar": "الْخَنَّاسِ",
+    "tl": "al-khannaas",
+    "en": "who withdraws",
+    "root": "خ.ن.س",
+    "pattern": "فَعَّال"
+   },
+   {
+    "ar": "الْعَالَمِينَ",
+    "tl": "al-'aalameen",
+    "en": "the worlds / of the worlds",
+    "root": "ع.ل.م",
+    "pattern": "فَاعِلِين"
+   },
+   {
+    "ar": "شَرِّ",
+    "tl": "sharri",
+    "en": "evil of",
+    "root": "ش.ر.ر",
+    "pattern": "فَعْل"
+   },
+   {
+    "ar": "مَا",
+    "tl": "maa",
+    "en": "what/not",
+    "type": "particle"
+   },
+   {
+    "ar": "خَلَقَ",
+    "tl": "khalaqa",
+    "en": "created",
+    "root": "خ.ل.ق",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "أَنَا",
+    "tl": "anaa",
+    "en": "I",
+    "type": "pronoun"
+   },
+   {
+    "ar": "أَنتُمْ",
+    "tl": "antum",
+    "en": "you (pl.)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "نَحْنُ",
+    "tl": "nahnu",
+    "en": "we",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هُمْ",
+    "tl": "hum",
+    "en": "they",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هِيَ",
+    "tl": "hiya",
+    "en": "she/it",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هَذَا",
+    "tl": "haadhaa",
+    "en": "this",
+    "type": "demonstrative"
+   },
+   {
+    "ar": "تِلْكَ",
+    "tl": "tilka",
+    "en": "that (f.)",
+    "type": "demonstrative"
+   },
+   {
+    "ar": "الَّذِي",
+    "tl": "alladhee",
+    "en": "who/which (m.)",
+    "type": "relative"
+   },
+   {
+    "ar": "الَّتِي",
+    "tl": "allatee",
+    "en": "who/which (f.)",
+    "type": "relative"
+   }
+  ]
+ },
  "quran-prepositions": {
   "title": "Prepositions & Particles",
   "desc": "Essential Arabic prepositions and grammatical particles found throughout the Quran.",
@@ -3452,6 +2733,587 @@
     "freq": 2,
     "root": "و.ر.ي",
     "pattern": "فَعَال"
+   }
+  ]
+ },
+ "quran-pronouns": {
+  "title": "Pronouns & Demonstratives",
+  "desc": "Personal, demonstrative, and relative pronouns — essential building blocks of every Arabic sentence.",
+  "words": [
+   {
+    "ar": "أنا",
+    "tl": "anaa",
+    "en": "I / me",
+    "type": "pronoun"
+   },
+   {
+    "ar": "نحن",
+    "tl": "nahnu",
+    "en": "we / us",
+    "type": "pronoun"
+   },
+   {
+    "ar": "أنتَ",
+    "tl": "anta",
+    "en": "you (m. sg.)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "أنتِ",
+    "tl": "anti",
+    "en": "you (f. sg.)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "أنتم",
+    "tl": "antum",
+    "en": "you (m. pl.)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "أنتنّ",
+    "tl": "antunna",
+    "en": "you (f. pl.)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هو",
+    "tl": "huwa",
+    "en": "he / it",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هي",
+    "tl": "hiya",
+    "en": "she / it",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هم",
+    "tl": "hum",
+    "en": "they (m.)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هنّ",
+    "tl": "hunna",
+    "en": "they (f.)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هُما",
+    "tl": "humaa",
+    "en": "they two (m.)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "كما",
+    "tl": "kumaa",
+    "en": "you two",
+    "type": "pronoun"
+   },
+   {
+    "ar": "نا",
+    "tl": "-naa",
+    "en": "our (suffix)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "كم",
+    "tl": "-kum",
+    "en": "your (m. pl. suffix)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "كن",
+    "tl": "-kunna",
+    "en": "your (f. pl. suffix)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هُم",
+    "tl": "hum (suffix)",
+    "en": "them / their (attached -hum)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "هن",
+    "tl": "-hunna",
+    "en": "their (f. suffix)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "ه",
+    "tl": "-hu",
+    "en": "him/it (suffix)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "ها",
+    "tl": "-haa",
+    "en": "her/it (suffix)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "ك",
+    "tl": "-ka",
+    "en": "you (m. sg. suffix)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "كِ",
+    "tl": "-ki",
+    "en": "you (f. sg. suffix)",
+    "type": "pronoun"
+   },
+   {
+    "ar": "ما",
+    "tl": "maa",
+    "en": "what / that which",
+    "type": "relative"
+   },
+   {
+    "ar": "من",
+    "tl": "man",
+    "en": "who / whom",
+    "type": "relative"
+   },
+   {
+    "ar": "هذا",
+    "tl": "haadhaa",
+    "en": "this (m.)",
+    "type": "demonstrative"
+   },
+   {
+    "ar": "هذه",
+    "tl": "haadhihi",
+    "en": "this (f.)",
+    "type": "demonstrative"
+   },
+   {
+    "ar": "هؤلاء",
+    "tl": "haa'ulaa'i",
+    "en": "these",
+    "type": "demonstrative"
+   },
+   {
+    "ar": "ذلك",
+    "tl": "dhaalika",
+    "en": "that (m.)",
+    "type": "demonstrative"
+   },
+   {
+    "ar": "تلك",
+    "tl": "tilka",
+    "en": "that (f.)",
+    "type": "demonstrative"
+   },
+   {
+    "ar": "أولئك",
+    "tl": "ulaa'ika",
+    "en": "those",
+    "type": "demonstrative"
+   },
+   {
+    "ar": "الذين",
+    "tl": "alladheena",
+    "en": "those who (m.)",
+    "type": "relative"
+   },
+   {
+    "ar": "اللّاتي",
+    "tl": "allaaatee",
+    "en": "those who / which (f.)",
+    "type": "relative"
+   },
+   {
+    "ar": "اللّذين",
+    "tl": "alladhaani",
+    "en": "those two (m.)",
+    "type": "relative"
+   },
+   {
+    "ar": "اللّتان",
+    "tl": "allataani",
+    "en": "those two (f.)",
+    "type": "relative"
+   }
+  ]
+ },
+ "verbs-50": {
+  "title": "Top 50 Verbs",
+  "desc": "Past-tense verbs that carry most Quranic narrative.",
+  "words": [
+   {
+    "ar": "قال",
+    "tl": "qaala",
+    "en": "said",
+    "root": "ق.و.ل",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "قالوا",
+    "tl": "qaaloo",
+    "en": "they said",
+    "root": "ق.و.ل",
+    "pattern": "فَعَلُوا"
+   },
+   {
+    "ar": "كان",
+    "tl": "kaana",
+    "en": "was",
+    "root": "ك.و.ن",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "كانوا",
+    "tl": "kaanoo",
+    "en": "they were",
+    "root": "ك.و.ن",
+    "pattern": "فَعَلُوا"
+   },
+   {
+    "ar": "فعل",
+    "tl": "fa'ala",
+    "en": "did",
+    "root": "ف.ع.ل",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "عمل",
+    "tl": "amila",
+    "en": "worked/did",
+    "root": "ع.م.ل",
+    "pattern": "فَعْل"
+   },
+   {
+    "ar": "جاء",
+    "tl": "jaa'a",
+    "en": "came",
+    "root": "ج.ي.أ",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "أتى",
+    "tl": "ataa",
+    "en": "came/brought",
+    "root": "أ.ت.ي",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "ذهب",
+    "tl": "dhahaba",
+    "en": "went",
+    "root": "ذ.ه.ب",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "خرج",
+    "tl": "kharaja",
+    "en": "exited/left",
+    "root": "خ.ر.ج",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "دخل",
+    "tl": "dakhala",
+    "en": "entered",
+    "root": "د.خ.ل",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "رأى",
+    "tl": "ra'aa",
+    "en": "saw",
+    "root": "ر.أ.ي",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "نظر",
+    "tl": "nazara",
+    "en": "looked",
+    "root": "ن.ظ.ر",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "سمع",
+    "tl": "sami'a",
+    "en": "heard",
+    "root": "س.م.ع",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "عرف",
+    "tl": "arafa",
+    "en": "knew",
+    "root": "ع.ر.ف",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "علم",
+    "tl": "alima",
+    "en": "knew",
+    "root": "ع.ل.م",
+    "pattern": "فَعْل"
+   },
+   {
+    "ar": "فهم",
+    "tl": "fahima",
+    "en": "understood",
+    "root": "ف.ه.م",
+    "pattern": "فَعِلَ"
+   },
+   {
+    "ar": "ذكر",
+    "tl": "dhakara",
+    "en": "remembered/mentioned",
+    "root": "ذ.ك.ر",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "نسى",
+    "tl": "nasiya",
+    "en": "forgot",
+    "root": "ن.س.ي",
+    "pattern": "فَعِلَ"
+   },
+   {
+    "ar": "أخذ",
+    "tl": "akhadha",
+    "en": "took",
+    "root": "أ.خ.ذ",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "أعطى",
+    "tl": "a'taa",
+    "en": "gave",
+    "root": "ع.ط.و",
+    "pattern": "أَفْعَلَ"
+   },
+   {
+    "ar": "وضع",
+    "tl": "wada'a",
+    "en": "placed",
+    "root": "و.ض.ع",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "حمل",
+    "tl": "hamala",
+    "en": "carried",
+    "root": "ح.م.ل",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "أكل",
+    "tl": "akala",
+    "en": "ate",
+    "root": "أ.ك.ل",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "شرب",
+    "tl": "shariba",
+    "en": "drank",
+    "root": "ش.ر.ب",
+    "pattern": "فَعِلَ"
+   },
+   {
+    "ar": "لبس",
+    "tl": "labisa",
+    "en": "wore",
+    "root": "ل.ب.س",
+    "pattern": "فَعِلَ"
+   },
+   {
+    "ar": "نام",
+    "tl": "naama",
+    "en": "slept",
+    "root": "ن.و.م",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "قام",
+    "tl": "qaama",
+    "en": "stood",
+    "root": "ق.و.م",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "جلس",
+    "tl": "jalasa",
+    "en": "sat",
+    "root": "ج.ل.س",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "مشى",
+    "tl": "mashaa",
+    "en": "walked",
+    "root": "م.ش.ي",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "ركب",
+    "tl": "rakiba",
+    "en": "rode",
+    "root": "ر.ك.ب",
+    "pattern": "فَعِلَ"
+   },
+   {
+    "ar": "كتب",
+    "tl": "kataba",
+    "en": "wrote",
+    "root": "ك.ت.ب",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "قرأ",
+    "tl": "qara'a",
+    "en": "read",
+    "root": "ق.ر.أ",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "درس",
+    "tl": "darasa",
+    "en": "studied",
+    "root": "د.ر.س",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "تعلم",
+    "tl": "ta'allama",
+    "en": "learned",
+    "root": "ع.ل.م",
+    "pattern": "تَفَعَّلَ"
+   },
+   {
+    "ar": "علّم",
+    "tl": "allama",
+    "en": "taught",
+    "root": "ع.ل.م",
+    "pattern": "فَعَّلَ"
+   },
+   {
+    "ar": "سأل",
+    "tl": "sa'ala",
+    "en": "asked",
+    "root": "س.أ.ل",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "أجاب",
+    "tl": "ajaaba",
+    "en": "answered",
+    "root": "ج.و.ب",
+    "pattern": "أَفْعَلَ"
+   },
+   {
+    "ar": "فتح",
+    "tl": "fataha",
+    "en": "opened",
+    "root": "ف.ت.ح",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "أغلق",
+    "tl": "aghlaqa",
+    "en": "closed",
+    "root": "غ.ل.ق",
+    "pattern": "أَفْعَلَ"
+   },
+   {
+    "ar": "بنى",
+    "tl": "banaa",
+    "en": "built",
+    "root": "ب.ن.ي",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "صنع",
+    "tl": "sana'a",
+    "en": "made",
+    "root": "ص.ن.ع",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "وجد",
+    "tl": "wajada",
+    "en": "found",
+    "root": "و.ج.د",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "بحث",
+    "tl": "bahatha",
+    "en": "searched",
+    "root": "ب.ح.ث",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "انتظر",
+    "tl": "intaZara",
+    "en": "waited",
+    "root": "ن.ظ.ر",
+    "pattern": "اِفْتَعَلَ"
+   },
+   {
+    "ar": "سافر",
+    "tl": "saafara",
+    "en": "traveled",
+    "root": "س.ف.ر",
+    "pattern": "فَاعَلَ"
+   },
+   {
+    "ar": "عاد",
+    "tl": "aada",
+    "en": "returned",
+    "root": "ع.و.د",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "دعا",
+    "tl": "da'aa",
+    "en": "called/supplicated",
+    "root": "د.ع.و",
+    "pattern": "فَعَلَ"
+   },
+   {
+    "ar": "استمع",
+    "tl": "istami'a",
+    "en": "listened",
+    "root": "س.م.ع",
+    "pattern": "اِفْتَعَلَ"
+   },
+   {
+    "ar": "أمن",
+    "tl": "amina",
+    "en": "felt safe",
+    "root": "أ.م.ن",
+    "pattern": "فَعِلَ"
+   },
+   {
+    "ar": "خاف",
+    "tl": "khaafa",
+    "en": "feared",
+    "root": "خ.و.ف",
+    "pattern": "فَعِلَ"
+   },
+   {
+    "ar": "حبّ",
+    "tl": "ahabba",
+    "en": "loved",
+    "root": "ح.ب.ب",
+    "pattern": "أَفْعَلَ"
+   },
+   {
+    "ar": "كره",
+    "tl": "kariha",
+    "en": "hated",
+    "root": "ك.ر.ه",
+    "pattern": "فَعِلَ"
    }
   ]
  },
@@ -4160,207 +4022,345 @@
    }
   ]
  },
- "quran-pronouns": {
-  "title": "Pronouns & Demonstratives",
-  "desc": "Personal, demonstrative, and relative pronouns — essential building blocks of every Arabic sentence.",
+ "everyday": {
+  "title": "Everyday Arabic",
+  "desc": "People, places, adjectives — Madinah Book 1 vocabulary.",
   "words": [
    {
-    "ar": "أنا",
-    "tl": "anaa",
-    "en": "I / me",
-    "type": "pronoun"
+    "ar": "ولد",
+    "tl": "walad",
+    "en": "boy",
+    "root": "و.ل.د",
+    "pattern": "فَعَل"
    },
    {
-    "ar": "نحن",
-    "tl": "nahnu",
-    "en": "we / us",
-    "type": "pronoun"
+    "ar": "بنت",
+    "tl": "bint",
+    "en": "girl",
+    "root": "ب.ن.ت",
+    "pattern": "فِعْل"
    },
    {
-    "ar": "أنتَ",
-    "tl": "anta",
-    "en": "you (m. sg.)",
-    "type": "pronoun"
+    "ar": "رجل",
+    "tl": "rajul",
+    "en": "man",
+    "root": "ر.ج.ل",
+    "pattern": "فَعُل"
    },
    {
-    "ar": "أنتِ",
-    "tl": "anti",
-    "en": "you (f. sg.)",
-    "type": "pronoun"
+    "ar": "امرأة",
+    "tl": "imra'a",
+    "en": "woman",
+    "root": "م.ر.أ",
+    "pattern": "فَعْلَأَة"
    },
    {
-    "ar": "أنتم",
-    "tl": "antum",
-    "en": "you (m. pl.)",
-    "type": "pronoun"
+    "ar": "أب",
+    "tl": "ab",
+    "en": "father",
+    "root": "أ.ب.و",
+    "pattern": "فَعْل"
    },
    {
-    "ar": "أنتنّ",
-    "tl": "antunna",
-    "en": "you (f. pl.)",
-    "type": "pronoun"
+    "ar": "أم",
+    "tl": "umm",
+    "en": "mother",
+    "root": "أ.م.م",
+    "pattern": "فَعْل"
    },
    {
-    "ar": "هو",
-    "tl": "huwa",
-    "en": "he / it",
-    "type": "pronoun"
+    "ar": "أخ",
+    "tl": "akh",
+    "en": "brother",
+    "root": "أ.خ.و",
+    "pattern": "فَعْل"
    },
    {
-    "ar": "هي",
-    "tl": "hiya",
-    "en": "she / it",
-    "type": "pronoun"
+    "ar": "أخت",
+    "tl": "ukht",
+    "en": "sister",
+    "root": "أ.خ.و",
+    "pattern": "فَعْلَة"
    },
    {
-    "ar": "هم",
-    "tl": "hum",
-    "en": "they (m.)",
-    "type": "pronoun"
+    "ar": "طالب",
+    "tl": "talib",
+    "en": "student",
+    "root": "ط.ل.ب",
+    "pattern": "فَاعِل"
    },
    {
-    "ar": "هنّ",
-    "tl": "hunna",
-    "en": "they (f.)",
-    "type": "pronoun"
+    "ar": "معلم",
+    "tl": "mu'allim",
+    "en": "teacher",
+    "root": "ع.ل.م",
+    "pattern": "مُفْعِل"
    },
    {
-    "ar": "هُما",
-    "tl": "humaa",
-    "en": "they two (m.)",
-    "type": "pronoun"
+    "ar": "طبيب",
+    "tl": "tabeeb",
+    "en": "doctor",
+    "root": "ط.ب.ب",
+    "pattern": "فَعِيل"
    },
    {
-    "ar": "كما",
-    "tl": "kumaa",
-    "en": "you two",
-    "type": "pronoun"
+    "ar": "تاجر",
+    "tl": "tajir",
+    "en": "merchant",
+    "root": "ت.ج.ر",
+    "pattern": "فَاعِل"
    },
    {
-    "ar": "نا",
-    "tl": "-naa",
-    "en": "our (suffix)",
-    "type": "pronoun"
+    "ar": "مدرسة",
+    "tl": "madrasa",
+    "en": "school",
+    "root": "د.ر.س",
+    "pattern": "مَفْعَلَة"
    },
    {
-    "ar": "كم",
-    "tl": "-kum",
-    "en": "your (m. pl. suffix)",
-    "type": "pronoun"
+    "ar": "جامعة",
+    "tl": "jaami'a",
+    "en": "university",
+    "root": "ج.م.ع",
+    "pattern": "فَاعِلَة"
    },
    {
-    "ar": "كن",
-    "tl": "-kunna",
-    "en": "your (f. pl. suffix)",
-    "type": "pronoun"
+    "ar": "مسجد",
+    "tl": "masjid",
+    "en": "mosque",
+    "root": "س.ج.د",
+    "pattern": "مَفْعِل"
    },
    {
-    "ar": "هُم",
-    "tl": "hum (suffix)",
-    "en": "them / their (attached -hum)",
-    "type": "pronoun"
+    "ar": "سوق",
+    "tl": "sooq",
+    "en": "market",
+    "root": "س.و.ق",
+    "pattern": "فَعْل"
    },
    {
-    "ar": "هن",
-    "tl": "-hunna",
-    "en": "their (f. suffix)",
-    "type": "pronoun"
+    "ar": "سيارة",
+    "tl": "sayyaara",
+    "en": "car",
+    "root": "س.ي.ر",
+    "pattern": "فَعَّالَة"
    },
    {
-    "ar": "ه",
-    "tl": "-hu",
-    "en": "him/it (suffix)",
-    "type": "pronoun"
+    "ar": "قطار",
+    "tl": "qitaar",
+    "en": "train",
+    "root": "ق.ط.ر",
+    "pattern": "فِعَال"
    },
    {
-    "ar": "ها",
-    "tl": "-haa",
-    "en": "her/it (suffix)",
-    "type": "pronoun"
+    "ar": "طائرة",
+    "tl": "taa'ira",
+    "en": "airplane",
+    "root": "ط.ي.ر",
+    "pattern": "فَاعِلَة"
    },
    {
-    "ar": "ك",
-    "tl": "-ka",
-    "en": "you (m. sg. suffix)",
-    "type": "pronoun"
+    "ar": "سفينة",
+    "tl": "safeena",
+    "en": "ship",
+    "root": "س.ف.ن",
+    "pattern": "فَعِيلَة"
    },
    {
-    "ar": "كِ",
-    "tl": "-ki",
-    "en": "you (f. sg. suffix)",
-    "type": "pronoun"
+    "ar": "كبير",
+    "tl": "kabeer",
+    "en": "big",
+    "root": "ك.ب.ر",
+    "pattern": "فَعِيل"
    },
    {
-    "ar": "ما",
-    "tl": "maa",
-    "en": "what / that which",
-    "type": "relative"
+    "ar": "صغير",
+    "tl": "sagheer",
+    "en": "small",
+    "root": "ص.غ.ر",
+    "pattern": "فَعِيل"
    },
    {
-    "ar": "من",
-    "tl": "man",
-    "en": "who / whom",
-    "type": "relative"
+    "ar": "جميل",
+    "tl": "jameel",
+    "en": "beautiful",
+    "root": "ج.م.ل",
+    "pattern": "فَعِيل"
    },
    {
-    "ar": "هذا",
-    "tl": "haadhaa",
-    "en": "this (m.)",
-    "type": "demonstrative"
+    "ar": "طويل",
+    "tl": "taweel",
+    "en": "tall/long",
+    "root": "ط.و.ل",
+    "pattern": "فَعِيل"
    },
    {
-    "ar": "هذه",
-    "tl": "haadhihi",
-    "en": "this (f.)",
-    "type": "demonstrative"
+    "ar": "قصير",
+    "tl": "qaseer",
+    "en": "short",
+    "root": "ق.ص.ر",
+    "pattern": "فَعِيل"
    },
    {
-    "ar": "هؤلاء",
-    "tl": "haa'ulaa'i",
-    "en": "these",
-    "type": "demonstrative"
+    "ar": "جديد",
+    "tl": "jadeed",
+    "en": "new",
+    "root": "ج.د.د",
+    "pattern": "فَعِيل"
    },
    {
-    "ar": "ذلك",
-    "tl": "dhaalika",
-    "en": "that (m.)",
-    "type": "demonstrative"
+    "ar": "قديم",
+    "tl": "qadeem",
+    "en": "old",
+    "root": "ق.د.م",
+    "pattern": "فَعِيل"
    },
    {
-    "ar": "تلك",
-    "tl": "tilka",
-    "en": "that (f.)",
-    "type": "demonstrative"
+    "ar": "سهل",
+    "tl": "sahl",
+    "en": "easy",
+    "root": "س.ه.ل",
+    "pattern": "فَعْل"
    },
    {
-    "ar": "أولئك",
-    "tl": "ulaa'ika",
-    "en": "those",
-    "type": "demonstrative"
+    "ar": "صعب",
+    "tl": "sa'b",
+    "en": "difficult",
+    "root": "ص.ع.ب",
+    "pattern": "فَعْل"
    },
    {
-    "ar": "الذين",
-    "tl": "alladheena",
-    "en": "those who (m.)",
-    "type": "relative"
+    "ar": "حلو",
+    "tl": "hulw",
+    "en": "sweet/nice",
+    "root": "ح.ل.و",
+    "pattern": "فَعْل"
    },
    {
-    "ar": "اللّاتي",
-    "tl": "allaaatee",
-    "en": "those who / which (f.)",
-    "type": "relative"
+    "ar": "مرّ",
+    "tl": "murr",
+    "en": "bitter",
+    "root": "م.ر.ر",
+    "pattern": "فَعْل"
    },
    {
-    "ar": "اللّذين",
-    "tl": "alladhaani",
-    "en": "those two (m.)",
-    "type": "relative"
+    "ar": "ساخن",
+    "tl": "saakhin",
+    "en": "hot",
+    "root": "س.خ.ن",
+    "pattern": "فَاعِل"
    },
    {
-    "ar": "اللّتان",
-    "tl": "allataani",
-    "en": "those two (f.)",
-    "type": "relative"
+    "ar": "بارد",
+    "tl": "baarid",
+    "en": "cold",
+    "root": "ب.ر.د",
+    "pattern": "فَاعِل"
+   },
+   {
+    "ar": "نظيف",
+    "tl": "nadheef",
+    "en": "clean",
+    "root": "ن.ظ.ف",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "وسخ",
+    "tl": "wasikh",
+    "en": "dirty",
+    "root": "و.س.خ",
+    "pattern": "فَعِل"
+   },
+   {
+    "ar": "غني",
+    "tl": "ghanee",
+    "en": "rich",
+    "root": "غ.ن.ي",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "فقير",
+    "tl": "faqeer",
+    "en": "poor",
+    "root": "ف.ق.ر",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "قوي",
+    "tl": "qawiyy",
+    "en": "strong",
+    "root": "ق.و.ي",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "ضعيف",
+    "tl": "da'eef",
+    "en": "weak",
+    "root": "ض.ع.ف",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "سعيد",
+    "tl": "sa'eed",
+    "en": "happy",
+    "root": "س.ع.د",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "حزين",
+    "tl": "hazeen",
+    "en": "sad",
+    "root": "ح.ز.ن",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "ذكي",
+    "tl": "dhakee",
+    "en": "intelligent",
+    "root": "ذ.ك.ي",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "غبي",
+    "tl": "ghabee",
+    "en": "foolish",
+    "root": "غ.ب.ي",
+    "pattern": "فَعِيل"
+   },
+   {
+    "ar": "شجاع",
+    "tl": "shujaa'",
+    "en": "brave",
+    "root": "ش.ج.ع",
+    "pattern": "فَعَال"
+   },
+   {
+    "ar": "خائف",
+    "tl": "khaa'if",
+    "en": "afraid",
+    "root": "خ.و.ف",
+    "pattern": "فَاعِل"
+   },
+   {
+    "ar": "جوعان",
+    "tl": "joo'aan",
+    "en": "hungry",
+    "root": "ج.و.ع",
+    "pattern": "فَعْلَان"
+   },
+   {
+    "ar": "عطشان",
+    "tl": "'atshaan",
+    "en": "thirsty",
+    "root": "ع.ط.ش",
+    "pattern": "فَعْلَان"
+   },
+   {
+    "ar": "متعب",
+    "tl": "mut'ab",
+    "en": "tired",
+    "root": "ت.ع.ب",
+    "pattern": "مُفْعَل"
    }
   ]
  }

@@ -562,6 +562,14 @@ if preserved_decks:
 if preserved_words:
     print(f"preserved curated words not in source: {', '.join(preserved_words)}")
 
+# Display order. Every page builds its deck list from decks.json key order
+# (Object.entries(decks)), so this is what puts the Quran-comprehension decks
+# first and the general "Everyday Arabic" deck last.
+DECK_ORDER = ["quran-core", "quran-freq-200", "surah-vocab", "quran-prepositions",
+              "quran-pronouns", "verbs-50", "divine-names", "everyday"]
+merged_decks = {k: merged_decks[k] for k in DECK_ORDER if k in merged_decks} | {
+    k: v for k, v in merged_decks.items() if k not in DECK_ORDER}
+
 files = {
     "alphabet.json": alphabet,
     "decks.json": merged_decks,
